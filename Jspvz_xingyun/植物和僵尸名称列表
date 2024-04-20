@@ -1,0 +1,73 @@
+僵尸
+陆地[oBackupDancer 伴舞僵尸
+oBalloonZombie 气球僵尸
+oBucketheadZombie 铁桶僵尸
+oConeheadZombie 路障僵尸
+oDancingZombie 舞王僵尸
+oFlagZombie 旗帜僵尸
+oFootballZombie 橄榄僵尸
+oImp 小鬼僵尸
+oJackinTheBoxZombie 小丑僵尸
+oNewspaperZombie 读报僵尸
+oPoleVaultingZombie 撑杆僵尸
+oScreenDoorZombie 铁门僵尸
+oZombie 普僵
+oZomboni 冰车僵尸
+]
+水面[oDolphinRiderZombie 海豚僵尸
+oDuckyTubeZombie1 鸭子僵尸
+oDuckyTubeZombie2 路障鸭子僵尸
+oDuckyTubeZombie3 铁桶路障僵尸
+oSnorkelZombie 潜水僵尸
+]
+
+植物
+攻击类[
+豌豆类[oGatlingPea 机枪射手,
+oPeashooter 豌豆射手,
+oRepeater 双发射手,
+oRepeater2 反向双发,
+oSnowPea 寒冰射手,
+oSpikeweed 裂荚射手,
+oThreepeater 三线射手
+]
+蘑菇类[oCoffeeBean 咖啡豆,
+oDoomShroom 毁灭菇,
+oGloomShroom 忧郁菇,
+oGraveBuster 噬墓碑,
+oHypnoShroom 魅惑菇,
+oIceShroom 寒冰菇,
+oFumeShroom 大喷菇,
+oPuffShroom 小喷菇,
+oScaredyShroom 胆小菇,
+oSeaShroom 海兵菇,
+oSunShroom 阳光菇,
+]
+其他[oCactus 仙人掌
+oCherryBomb 樱桃炸弹
+oChomper 大嘴花
+oJalapeno 火爆辣椒
+oPotatoMine 土豆地雷
+oSpikerock 地刺王
+oSpikeweed 地刺
+oSquash 倭瓜
+oStarfruit 杨桃
+oTangleKelp 缠绕水草
+oTorchwood 火炬树桩
+]
+]
+防御类[oPumpkinHead 南瓜套
+oTallNut 高坚果
+oWallNut 坚果
+oGarlic 大蒜
+]
+阳光类[
+oSunFlower 向日葵
+oSunShroom 阳光菇
+oTwinSunflower 双子向日葵
+]
+特殊[oBlover 三叶草
+oFlowerPot 花盆
+oLilyPad 荷叶
+oPlantern 路灯花
+]
