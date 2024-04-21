@@ -587,7 +587,7 @@ oBackupDancer = InheritO(OrnNoneZombies, {
 oDancingZombie = InheritO(OrnNoneZombies, {
 	EName: "oDancingZombie",
 	CName: "舞王僵尸",
-	HP: 500,
+	HP: 800,
 	BreakPoint: 166,
 	Lvl: 3,
 	StandGif: 9,
@@ -1171,6 +1171,24 @@ oConeheadZombie = InheritO(OrnIZombies, {
 	},
 	Produce: '他的路障头盔，使他两倍坚韧于普通僵尸。<p>韧性：<font color="#FF0000">中</font></p>和其他僵尸一样，路障头僵尸盲目地向前。但某些事物却使他停下脚步，捡起一个交通路障，并固实在自己的脑袋上。是的，他很喜欢参加聚会。'
 }),
+oBigConeheadZombiebie = InheritO(OrnIZombies, {
+	EName: "BigoConeheadZombie",
+	CName: "路障僵尸",
+	OrnHP: 1000,
+	Lvl: 2,
+	SunNum: 150,
+	StandGif: 11,
+	PicArr: (function() {
+		var b = "images/Zombies/ConeheadZombie/",
+		a = "images/Zombies/Zombie/";
+		return ["images/Card/Zombies/ConeheadZombie.png", b + "0.gif", b + "ConeheadZombie.gif", b + "ConeheadZombieAttack.gif", a + "ZombieLostHead.gif", a + "ZombieLostHeadAttack.gif", a + "ZombieHead.gif" + $Random, a + "ZombieDie.gif" + $Random, a + "BoomDie.gif" + $Random, a + "Zombie.gif", a + "ZombieAttack.gif", b + "1.gif"]
+	})(),
+	AudioArr: ["plastichit"],
+	PlayNormalballAudio: function() {
+		PlayAudio("plastichit")
+	},
+	Produce: '他的路障头盔，使他两倍坚韧于普通僵尸。<p>韧性：<font color="#FF0000">中</font></p>和其他僵尸一样，路障头僵尸盲目地向前。但某些事物却使他停下脚步，捡起一个交通路障，并固实在自己的脑袋上。是的，他很喜欢参加聚会。'
+}),
 oBucketheadZombie = InheritO(oConeheadZombie, {
 	EName: "oBucketheadZombie",
 	CName: "铁桶僵尸",
@@ -1192,12 +1210,58 @@ oBucketheadZombie = InheritO(oConeheadZombie, {
 		11 : "images/Zombies/BucketheadZombie/1.gif"
 	}
 }),
+oBigBucketheadZombie = InheritO(oConeheadZombie, {
+	EName: "oBigBucketheadZombie",
+	CName: "铁桶僵尸",
+	OrnHP: 2200,
+	Lvl: 3,
+	SunNum: 250,
+	PlayNormalballAudio: function() {
+		PlayAudio(["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)])
+	},
+	Produce: '他的铁桶头盔，能极大程度的承受伤害。<p>韧性：<font color="#FF0000">高</font><br>弱点：<font color="#FF0000">磁力菇</font></p>铁桶头僵尸经常戴着水桶，在冷漠的世界里显得独一无二。但事实上，他只是忘记了，那铁桶还在他头上而已。'
+},
+{
+	PicArr: {
+		0 : "images/Card/Zombies/BucketheadZombie.png",
+		1 : "images/Zombies/BucketheadZombie/0.gif",
+		2 : "images/Zombies/BucketheadZombie/BucketheadZombie.gif",
+		3 : "images/Zombies/BucketheadZombie/BucketheadZombieAttack.gif",
+		9 : "images/Zombies/Zombie/Zombie2.gif",
+		11 : "images/Zombies/BucketheadZombie/1.gif"
+	}
+}),
 oFootballZombie = InheritO(oConeheadZombie, {
 	EName: "oFootballZombie",
 	CName: "橄榄球僵尸",
-	OrnHP: 1400,
+	OrnHP: 1500,
 	Lvl: 3,
 	SunNum: 175,
+	StandGif: 11,
+	width: 154,
+	height: 160,
+	OSpeed: 3.2,
+	Speed: 3.2,
+	beAttackedPointL: 40,
+	beAttackedPointR: 134,
+	PlayNormalballAudio: function() {
+		PlayAudio("plastichit")
+	},
+	PicArr: (function() {
+		var a = "images/Zombies/FootballZombie/";
+		return ["images/Card/Zombies/FootballZombie.png", a + "0.gif", a + "FootballZombie.gif", a + "Attack.gif", a + "LostHead.gif", a + "LostHeadAttack.gif", "images/Zombies/Zombie/ZombieHead.gif" + $Random, a + "Die.gif" + $Random, a + "BoomDie.gif" + $Random, a + "OrnLost.gif", a + "OrnLostAttack.gif", a + "1.gif"]
+	})(),
+	getShadow: function(a) {
+		return "left:" + (a.beAttackedPointL + 15) + "px;top:" + (a.height - 22) + "px"
+	},
+	Produce: '橄榄球僵尸的表演秀。<p>韧性：<font color="#FF0000">极高</font><br>速度：<font color="#FF0000">快</font><br>弱点：<font color="#FF0000">磁力菇</font></p>在球场上，橄榄球僵尸表现出110%的激情，他进攻防守样样在行。虽然他完全不知道橄榄球是什么。'
+}),
+oBigFootballZombie = InheritO(oConeheadZombie, {
+	EName: "oBigFootballZombie",
+	CName: "橄榄球僵尸",
+	OrnHP: 5000,
+	Lvl: 3,
+	SunNum: 350,
 	StandGif: 11,
 	width: 154,
 	height: 160,
@@ -1952,7 +2016,7 @@ oSmallFootballZombie = InheritO(oFootballZombie, {
 oSmallSnorkelZombie = InheritO(oSnorkelZombie, {
 	EName: "oSmallSnorkelZombie",
 	CName: "小潜水僵尸",
-	HP: 800,
+	HP: 40,
 	width: 71,
 	height: 100,
 	beAttackedPointL: 20,
@@ -2363,7 +2427,7 @@ oDolphinRiderZombie = InheritO(oAquaticZombie, {
 oImp = InheritO(OrnNoneZombies, {
 	EName: "oImp",
 	CName: "小鬼僵尸",
-	HP: 70,
+	HP: 80,
 	BreakPoint: 23,
 	beAttackedPointL: 30,
 	beAttackedPointR: 60,
