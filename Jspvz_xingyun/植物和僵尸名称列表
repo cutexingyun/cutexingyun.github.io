@@ -20,6 +20,15 @@ oDuckyTubeZombie2 路障鸭子僵尸
 oDuckyTubeZombie3 铁桶路障僵尸
 oSnorkelZombie 潜水僵尸
 ]
+特殊[oSmallZombie
+oSmallFlagZombie
+oSmallDuckyTubeZombie1
+oSmallConeheadZombie
+oSmallFootballZombie
+oSmallSnorkelZombie
+
+
+]
 
 植物
 攻击类[

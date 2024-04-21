@@ -1815,7 +1815,7 @@ oSnorkelZombie = InheritO(oDuckyTubeZombie1, {
 oSmallZombie = InheritO(oZombie, {
 	EName: "oSmallZombie",
 	CName: "小领带僵尸",
-	HP: 67,
+	HP: 300,
 	width: 83,
 	height: 72,
 	beAttackedPointL: 41,
@@ -1842,7 +1842,7 @@ oSmallZombie = InheritO(oZombie, {
 oSmallFlagZombie = InheritO(oFlagZombie, {
 	EName: "oSmallFlagZombie",
 	CName: "小旗帜僵尸",
-	HP: 67,
+	HP: 450,
 	width: 83,
 	height: 72,
 	beAttackedPointL: 41,
@@ -1869,7 +1869,7 @@ oSmallFlagZombie = InheritO(oFlagZombie, {
 oSmallDuckyTubeZombie1 = InheritO(oDuckyTubeZombie1, {
 	EName: "oSmallDuckyTubeZombie1",
 	CName: "小鸭子救生圈僵尸",
-	HP: 67,
+	HP: 600,
 	width: 83,
 	height: 72,
 	beAttackedPointL: 41,
@@ -1896,8 +1896,8 @@ oSmallDuckyTubeZombie1 = InheritO(oDuckyTubeZombie1, {
 oSmallConeheadZombie = InheritO(oConeheadZombie, {
 	EName: "oSmallConeheadZombie",
 	CName: "小路障僵尸",
-	OrnHP: 92,
-	HP: 67,
+	OrnHP: 400,
+	HP: 270,
 	width: 83,
 	height: 72,
 	beAttackedPointL: 41,
@@ -1924,8 +1924,8 @@ oSmallConeheadZombie = InheritO(oConeheadZombie, {
 oSmallFootballZombie = InheritO(oFootballZombie, {
 	EName: "oSmallFootballZombie",
 	CName: "小橄榄球僵尸",
-	OrnHP: 350,
-	HP: 67,
+	OrnHP: 2000,
+	HP: 300,
 	width: 77,
 	height: 80,
 	beAttackedPointL: 20,
@@ -1952,7 +1952,7 @@ oSmallFootballZombie = InheritO(oFootballZombie, {
 oSmallSnorkelZombie = InheritO(oSnorkelZombie, {
 	EName: "oSmallSnorkelZombie",
 	CName: "小潜水僵尸",
-	HP: 67,
+	HP: 800,
 	width: 71,
 	height: 100,
 	beAttackedPointL: 20,
