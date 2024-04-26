@@ -1119,6 +1119,15 @@ oZombie3 = InheritO(oZombie, {
 		9 : "images/Zombies/Zombie/3.gif"
 	}
 }),
+oZombie4 = InheritO(oZombie, {
+	EName: "oZombie4"
+},
+{
+	PicArr: {
+		2 : "images/Zombies/Zombie/unlook.gif",
+		9 : "images/Zombies/Zombie/unlook.gif"
+	}
+}),
 oFlagZombie = InheritO(oZombie, {
 	PicArr: (function() {
 		var a = "images/Zombies/FlagZombie/";
@@ -1171,6 +1180,24 @@ oConeheadZombie = InheritO(OrnIZombies, {
 	},
 	Produce: '他的路障头盔，使他两倍坚韧于普通僵尸。<p>韧性：<font color="#FF0000">中</font></p>和其他僵尸一样，路障头僵尸盲目地向前。但某些事物却使他停下脚步，捡起一个交通路障，并固实在自己的脑袋上。是的，他很喜欢参加聚会。'
 }),
+oConeheadZombie1 = InheritO(OrnIZombies, {
+	EName: "oConeheadZombie1",
+	CName: "路障僵尸",
+	OrnHP: 370,
+	Lvl: 2,
+	SunNum: 75,
+	StandGif: 11,
+	PicArr: (function() {
+		var b = "images/Zombies/ConeheadZombie/",
+		a = "images/Zombies/Zombie/";
+		return ["images/Card/Zombies/unlook.gif", b + "unlook.gif", b + "unlook.gif", b + "unlook.gif", a + "unlook.gif", a + "unlook.gif", a + "unlook.gif" + $Random, a + "unlook.gif" + $Random, a + "unlook.gif" + $Random, a + "unlook.gif", a + "unlook.gif", b + "unlook.gif"]
+	})(),
+	AudioArr: ["plastichit"],
+	PlayNormalballAudio: function() {
+		PlayAudio("plastichit")
+	},
+	Produce: '他的路障头盔，使他两倍坚韧于普通僵尸。<p>韧性：<font color="#FF0000">中</font></p>和其他僵尸一样，路障头僵尸盲目地向前。但某些事物却使他停下脚步，捡起一个交通路障，并固实在自己的脑袋上。是的，他很喜欢参加聚会。'
+}),
 oBigConeheadZombiebie = InheritO(OrnIZombies, {
 	EName: "BigoConeheadZombie",
 	CName: "路障僵尸",
@@ -1208,6 +1235,27 @@ oBucketheadZombie = InheritO(oConeheadZombie, {
 		3 : "images/Zombies/BucketheadZombie/BucketheadZombieAttack.gif",
 		9 : "images/Zombies/Zombie/Zombie2.gif",
 		11 : "images/Zombies/BucketheadZombie/1.gif"
+	}
+}),
+oBucketheadZombie1 = InheritO(oConeheadZombie, {
+	EName: "oBucketheadZombie1",
+	CName: "铁桶僵尸",
+	OrnHP: 1100,
+	Lvl: 3,
+	SunNum: 125,
+	PlayNormalballAudio: function() {
+		PlayAudio(["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)])
+	},
+	Produce: '他的铁桶头盔，能极大程度的承受伤害。<p>韧性：<font color="#FF0000">高</font><br>弱点：<font color="#FF0000">磁力菇</font></p>铁桶头僵尸经常戴着水桶，在冷漠的世界里显得独一无二。但事实上，他只是忘记了，那铁桶还在他头上而已。'
+},
+{
+	PicArr: {
+		0 : "images/Card/Zombies/unlook.gif",
+		1 : "images/Zombies/BucketheadZombie/unlook.gif",
+		2 : "images/Zombies/BucketheadZombie/unlook.gif",
+		3 : "images/Zombies/BucketheadZombie/unlook.gif",
+		9 : "images/Zombies/Zombie/unlook.gif",
+		11 : "images/Zombies/BucketheadZombie/unlook.gif"
 	}
 }),
 oBigBucketheadZombie = InheritO(oConeheadZombie, {

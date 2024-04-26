@@ -1,6 +1,6 @@
 oS.Init({
     PName: [oPeashooter,oSunFlower,oCherryBomb,oWallNut,oPotatoMine,oSnowPea,oChomper,oSplitPea,oJalapeno,oSpikeweed,oRepeater,oTallNut,oPumpkinHead,oSquash,oFlowerPot,oTorchwood,oThreepeater,oGatlingPea,oTwinSunflower,oSpikerock,oFumeShroom,oCoffeeBean,oGloomShroom,oSunShroom,oPuffShroom,oScaredyShroom,oGarlic,oGraveBuster,oStarfruit,oLilyPad,oHypnoShroom,oIceShroom,oDoomShroom,oTangleKelp,oSeaShroom,oPlantern,oCactus,oBlover],
-    ZName: [oBigFootballZombie],
+    ZName: [oBucketheadZombie1],
     PicArr: ["images/interface/background3.jpg"], 
     backgroundImage: "images/interface/background3.jpg",
 	Coord:2,
@@ -18,7 +18,7 @@ oS.Init({
 },
 {
     AZ: [
-	[oBigFootballZombie , 12, 2]
+	[oBucketheadZombie1 , 12, 2]
     ], 
     FlagNum: 20,
     FlagToSumNum: {
