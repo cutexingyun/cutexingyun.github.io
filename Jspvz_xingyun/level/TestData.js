@@ -1,6 +1,6 @@
 oS.Init({
-    PName: [oPeashooter,oSunFlower,oCherryBomb,oWallNut,oPotatoMine,oSnowPea,oChomper,oSplitPea,oJalapeno,oSpikeweed,oRepeater,oTallNut,oPumpkinHead,oSquash,oFlowerPot,oTorchwood,oThreepeater,oGatlingPea,oTwinSunflower,oSpikerock,oFumeShroom,oCoffeeBean,oGloomShroom,oSunShroom,oPuffShroom,oScaredyShroom,oGarlic,oGraveBuster,oStarfruit,oLilyPad,oHypnoShroom,oIceShroom,oDoomShroom,oTangleKelp,oSeaShroom,oPlantern,oCactus,oBlover],
-    ZName: [oBucketheadZombie1],
+    PName: [oPeashooter,oSunFlower,oCherryBomb,oWallNut,oPotatoMine,oSnowPea,oChomper,oSplitPea,oJalapeno,oSpikeweed,oRepeater,oTallNut,oPumpkinHead,oSquash,oFlowerPot,oTorchwood,oThreepeater,oGatlingPea,oTwinSunflower,oSpikerock,oFumeShroom,oCoffeeBean,oGloomShroom,oSunShroom,oPuffShroom,oScaredyShroom,oGarlic,oGraveBuster,oStarfruit,oLilyPad,oHypnoShroom,oIceShroom,oDoomShroom,oTangleKelp,oSeaShroom,oPlantern,oCactus,oBlover,oCattail],
+    ZName: [oZombie,oConeheadZombie,oFlagZombie,oPoleVaultingZombie,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie],
     PicArr: ["images/interface/background3.jpg"], 
     backgroundImage: "images/interface/background3.jpg",
 	Coord:2,
@@ -18,7 +18,27 @@ oS.Init({
 },
 {
     AZ: [
-	[oBucketheadZombie1 , 12, 2]
+//oZombie,oConeheadZombie,oFlagZombie,oPoleVaultingZombie,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie
+	[oZombie, 1, 1,],
+	[oConeheadZombie, 1, 1],
+	[oFlagZombie, 1, 1],
+	[oPoleVaultingZombie, 1, 1],
+	[oBucketheadZombie, 1, 1],
+	[oNewspaperZombie, 1, 1],
+	[oScreenDoorZombie, 1, 1],
+	[oFootballZombie, 1, 1],
+	[oDancingZombie, 1, 1],
+	[oBackupDancer, 1, 1],
+	[oDuckyTubeZombie1, 1, 1],
+	[oDuckyTubeZombie2, 1, 1],
+	[oDuckyTubeZombie3, 1, 1],
+	[oSnorkelZombie, 1, 1],
+	[oZomboni, 1, 1,[1]],
+	[oDolphinRiderZombie, 1, 1],
+	[oJackinTheBoxZombie, 1, 1],
+	[oBalloonZombie, 1, 1],
+	[oImp, 1, 1],
+	[oDiggerZombie, 1, 1,[1]]
     ], 
     FlagNum: 20,
     FlagToSumNum: {

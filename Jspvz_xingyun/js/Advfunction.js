@@ -1353,7 +1353,7 @@ InitPCard = function() {
 InitHandBookPCard = function() {
 	PlayAudio("gravebutton");
 	var d = "",
-	g, f, e = [oPeashooter, oSunFlower, oCherryBomb, oWallNut, oPotatoMine, oSnowPea, oChomper, oRepeater, oPuffShroom, oSunShroom, oFumeShroom, oGraveBuster, oHypnoShroom, oScaredyShroom, oIceShroom, oDoomShroom, oLilyPad, oSquash, oThreepeater, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead, oFlowerPot, oCoffeeBean, oGarlic, oGatlingPea, oGloomShroom, oTwinSunflower, oSpikerock],
+	g, f, e = [oPeashooter, oSunFlower, oCherryBomb, oWallNut, oPotatoMine, oSnowPea, oChomper, oRepeater, oPuffShroom, oSunShroom, oFumeShroom, oGraveBuster, oHypnoShroom, oScaredyShroom, oIceShroom, oDoomShroom, oLilyPad, oSquash, oThreepeater, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead, oFlowerPot, oCoffeeBean, oGarlic, oGatlingPea, oTwinSunflower, oGloomShroom, oCattail, oSpikerock],
 	a = e.length,
 	b = 0,
 	c;
@@ -1374,7 +1374,7 @@ InitHandBookPCard = function() {
 InitHandBookZCard = function() {
 	PlayAudio("gravebutton");
 	var d = "",
-	g, f, e = [oZombie, oFlagZombie, oConeheadZombie, oPoleVaultingZombie, oBucketheadZombie, oNewspaperZombie, oScreenDoorZombie, oFootballZombie, oDancingZombie, oBackupDancer, oDuckyTubeZombie1, oSnorkelZombie, oZomboni, oDolphinRiderZombie, oImp, oJackinTheBoxZombie, oBalloonZombie],
+	g, f, e = [oZombie, oFlagZombie, oConeheadZombie, oPoleVaultingZombie, oBucketheadZombie, oNewspaperZombie, oScreenDoorZombie, oFootballZombie, oDancingZombie, oBackupDancer, oDuckyTubeZombie1, oSnorkelZombie, oZomboni, oDolphinRiderZombie, oJackinTheBoxZombie, oBalloonZombie, oDiggerZombie, oImp],
 	a = e.length,
 	b = 0,
 	c;

@@ -30,6 +30,14 @@ var CZombies = function(b, a) {
 		OrnHP: 0,
 		OSpeed: 1.6,
 		Speed: 1.6,
+            FangXiang: 'GoLeft',
+            isGoingDie: 0,
+            DeltaDirectionSpeed: {
+                'GoLeft': 1,
+                'GoRight': -1,
+                'GoUp': 0,
+                'GoDown': 0
+            },
 		CSS_fliph: "",
 		CSS_alpha: "",
 		AKind: 0,
@@ -42,6 +50,17 @@ var CZombies = function(b, a) {
 		FreeSetbodyTime: 0,
 		FreeFreezeTime: 0,
 		FreeSlowTime: 0,
+            HeadPosition: [{
+                x: 62,
+                y: 16,
+                width: 40,
+                height: 40
+            }, {
+                x: 62,
+                y: 16,
+                width: 40,
+                height: 40
+            }],
 		CanPass: function(d, c) {
 			return c && c != 2
 		},
@@ -458,6 +477,17 @@ oBackupDancer = InheritO(OrnNoneZombies, {
 	beAttackedPointR: 95,
 	Speed: 3.5,
 	OSpeed: 3.5,
+        HeadPosition: [{
+            x: 82,
+            y: 30,
+            width: 40,
+            height: 40
+        }, {
+            x: 82,
+            y: 30,
+            width: 40,
+            height: 40
+        }],
 	PicArr: (function() {
 		var a = "images/Zombies/BackupDancer/";
 		return ["images/Card/Zombies/BackupDancer.png", a + "0.gif", a + "BackupDancer.gif", a + "Attack.gif", a + "LostHead.gif", a + "LostHeadAttack.gif", a + "Head.gif" + $Random, a + "Die.gif" + $Random, a + "BoomDie.gif" + $Random, a + "Dancing.gif" + $Random, a + "LostHeadDancing.gif" + $Random, a + "Mound.gif" + $Random]
@@ -1137,6 +1167,17 @@ oFlagZombie = InheritO(oZombie, {
 	CName: "旗帜僵尸",
 	OSpeed: 2.2,
 	Speed: 2.2,
+        HeadPosition: [{
+            x: 80,
+            y: 10,
+            width: 40,
+            height: 40
+        }, {
+            x: 80,
+            y: 10,
+            width: 40,
+            height: 40
+        }],
 	beAttackedPointR: 101,
 	Produce: '旗帜僵尸标志着即将来袭的一大堆僵尸"流"。<p>韧性：<font color="#FF0000">低</font></p>毫无疑问，摇旗僵尸喜爱脑髓。但在私下里他也迷恋旗帜。也许是因为旗帜上也画有脑子吧，这很难说。'
 }),
@@ -1169,6 +1210,17 @@ oConeheadZombie = InheritO(OrnIZombies, {
 	Lvl: 2,
 	SunNum: 75,
 	StandGif: 11,
+        HeadPosition: [{
+            x: 72,
+            y: 20,
+            width: 40,
+            height: 40
+        }, {
+            x: 72,
+            y: 16,
+            width: 40,
+            height: 40
+        }],
 	PicArr: (function() {
 		var b = "images/Zombies/ConeheadZombie/",
 		a = "images/Zombies/Zombie/";
@@ -1295,6 +1347,17 @@ oFootballZombie = InheritO(oConeheadZombie, {
 	PlayNormalballAudio: function() {
 		PlayAudio("plastichit")
 	},
+        HeadPosition: [{
+            x: 50,
+            y: 8,
+            width: 40,
+            height: 40
+        }, {
+            x: 50,
+            y: 16,
+            width: 40,
+            height: 40
+        }],
 	PicArr: (function() {
 		var a = "images/Zombies/FootballZombie/";
 		return ["images/Card/Zombies/FootballZombie.png", a + "0.gif", a + "FootballZombie.gif", a + "Attack.gif", a + "LostHead.gif", a + "LostHeadAttack.gif", "images/Zombies/Zombie/ZombieHead.gif" + $Random, a + "Die.gif" + $Random, a + "BoomDie.gif" + $Random, a + "OrnLost.gif", a + "OrnLostAttack.gif", a + "1.gif"]
@@ -1346,6 +1409,17 @@ oPoleVaultingZombie = InheritO(OrnNoneZombies, {
 	GetDY: function() {
 		return 2
 	},
+        HeadPosition: [{
+            x: 192,
+            y: 80,
+            width: 40,
+            height: 40
+        }, {
+            x: 192,
+            y: 80,
+            width: 40,
+            height: 40
+        }],
 	Lvl: 2,
 	SunNum: 75,
 	BookHandPosition: "-30px 70%",
@@ -1462,6 +1536,17 @@ oNewspaperZombie = InheritO(OrnIIZombies, {
 	beAttackedPointL: 60,
 	beAttackedPointR: 240,
 	LostPaperSpeed: 5,
+        HeadPosition: [{
+            x: 62,
+            y: 30,
+            width: 40,
+            height: 40
+        }, {
+            x: 62,
+            y: 30,
+            width: 40,
+            height: 40
+        }],
 	PicArr: (function() {
 		var a = "images/Zombies/NewspaperZombie/";
 		return ["images/Card/Zombies/NewspaperZombie.png", a + "0.gif", a + "HeadWalk1.gif", a + "HeadAttack1.gif", a + "LostHeadWalk1.gif", a + "LostHeadAttack1.gif", a + "HeadWalk0.gif", a + "HeadAttack0.gif", a + "LostHeadWalk0.gif", a + "LostHeadAttack0.gif", a + "Head.gif" + $Random, a + "Die.gif" + $Random, a + "BoomDie.gif" + $Random, a + "LostNewspaper.gif", a + "1.gif"]
@@ -1819,6 +1904,17 @@ oSnorkelZombie = InheritO(oDuckyTubeZombie1, {
 	OSpeed: 3.2,
 	Speed: 3.2,
 	Altitude: 1,
+        HeadPosition: [{
+                x: 42,
+                y: 146,
+                width: 40,
+                height: 40
+            }, {
+                x: 42,
+                y: 146,
+                width: 40,
+                height: 40
+            }],
 	Produce: '潜水僵尸可以在水下前行。<p>韧性：<font color="#FF0000">低</font><br>特点：<font color="#FF0000">潜泳以避免遭到攻击<br>只在水池关卡出现</font></p>僵尸不呼吸。他们不需要空气。那么为什么潜水僵尸需要一套潜水装置来潜水呢？<br>答案：同行的压力。',
 	JumpTime: 40,
 	getShadow: function(a) {
@@ -2124,6 +2220,13 @@ oZomboni = function() {
 		GetDY: function() {
 			return 0
 		},
+            HeadPosition: [{
+                x: 185,
+                y: 180
+            }, {
+                x: 185,
+                y: 180
+            }],
 		OSpeed: 2.5,
 		Speed: 2.5,
 		AKind: 2,
@@ -2330,6 +2433,17 @@ oDolphinRiderZombie = InheritO(oAquaticZombie, {
 	width: 282,
 	height: 210,
 	Lvl: 2,
+        HeadPosition: [{
+            x: 177,
+            y: 105,
+            width: 40,
+            height: 40
+        }, {
+            x: 177,
+            y: 105,
+            width: 40,
+            height: 40
+        }],
 	getShadow: function(a) {
 		return ("left:105px;top:175px")
 	},
@@ -2435,6 +2549,17 @@ oDolphinRiderZombie = InheritO(oAquaticZombie, {
 			s,
 			n = function() {
 				q.src = h.PicArr[10];
+                        h.HeadPosition=[{
+                            x: 42,
+                            y: 140,
+                            width: 40,
+                            height: 40
+                        }, {
+                            x: 42,
+                            y: 140,
+                            width: 40,
+                            height: 40
+                        }],
 				h.isAttacking = 0;
 				h.Altitude = 1;
 				h.OSpeed = h.Speed = 1.6;
@@ -2488,6 +2613,17 @@ oImp = InheritO(OrnNoneZombies, {
 	AttackGif: 2,
 	OSpeed: 5.4,
 	Speed: 5.4,
+        HeadPosition: [{
+            x: 22,
+            y: 30,
+            width: 40,
+            height: 40
+        }, {
+            x: 22,
+            y: 30,
+            width: 40,
+            height: 40
+        }],
 	GetDX: function() {
 		return - 50
 	},
@@ -2833,4 +2969,95 @@ oBalloonZombie = InheritO(OrnIZombies, {
 		(this.Altitude == 1) && (this.getHit0(this, 13));
 	},
 	prepareBirth: oZomboni.prototype.prepareBirth
+});
+    oDiggerZombie = InheritO(OrnNoneZombies, {
+	EName: "oDiggerZombie",
+	CName: "矿工僵尸",
+	Lvl: 4, SunNum: 125, HP: 370, BreakPoint: 70,
+	width: 167, height: 170, GetDTop: 20,
+	beAttackedPointL: 65, beAttackedPointR: 120,OrnHP:1,
+	OSpeed: 7.8, Speed: 7.8, Altitude: 0, // 挖矿
+	CardGif: 0, StandGif: 1, StaticGif: 2, NormalGif: 3, WalkGif0: 3, WalkGif1: 4, WalkGif2: 5,
+	AttackGif: 3, AttackGif_Up0: 6, AttackGif_Up1: 7, HeadGif: 8, DieGif: 9, 
+	UpGif: 10, DownGif: 11, BoomDieGif: 8, LostHeadGif: 5, LostHeadAttackGif: 5,
+
+    Produce: '这种僵尸通过挖地来绕过防线。<p>韧性：<font color="#FF0000">中</font><Br>速度：<font color="#FF0000">快,而后慢</font><BR>特点：<font color="#FF0000">挖地道，然后在草地的左侧现身</font><BR>弱点：<font color="#FF0000">分裂射手，磁力菇</font></p>矿工僵尸每周都要花三天的时间来等候挖地许可。',
+	BirthCallBack: function(f) {
+		var e = f.delayT, d = f.id, c = f.Ele = $(d);
+		f.EleShadow = c.firstChild, f.EleBody = c.childNodes[1], SetHidden(f.EleShadow);
+		e ? oSym.addTask(e, function(h, g) {var i = $Z[h]; i && (i.FreeSetbodyTime = 0, SetBlock(g));}, [d, c]) : SetBlock(c);
+	},
+	HeadPosition: [{x: 42, y: 146}, {x: 40, y: 147}],
+	getShadow: function(a) {
+		return "left:" + a.beAttackedPointL + "px;top:" + (a.height - 20) + "px"
+	},
+isUp:0,
+JudgeLR: function(f, d, e, c, g) {
+                return e > 10 || e < 1 ? false : function() {
+                    d += --e + "_";
+                    var h = 3,
+                        i;
+                    while (h--) {
+                        if ((i = g[d + h]) && i.canEat) {
+                            return i.AttackedRX >= c && i.AttackedLX <= c ? [f.id, i.id] : false
+                        }
+                    }
+                }()
+            },
+            JudgeSR: function(f, d, e, c, g) {
+                return e > 9 ? false : function() {
+                    d += e + "_";
+                    var h = 3,
+                        i;
+                    while (h--) {
+                        if ((i = g[d + h]) && i.canEat) {
+                            return i.AttackedRX >= c && i.AttackedLX <= c ? [f.id, i.id] : false
+                        }
+                    }
+                }()
+            },
+	PicArr: (function() {
+		var a = "images/Zombies/Diggerzombie/";
+		return ["images/Card/Zombies/Diggerzombie.png", a + "0.gif", a + "DiggerZombie.gif", a + "Walk1.gif", a + "Walk2.gif", a + "Walk3.gif", a + "Attack1.gif", a + "Attack2.gif", "images/Plants/Peashooter/NonePeashooter.gif"+ $Random, a + "Die.gif" + $Random, a + "Up.gif" + $Random, a + "Down.gif" + $Random, a + "BoomDie.gif"+ $Random]
+	} ()),
+	AudioArr: ["zombie_entering_water"],
+	Go_Up: function(a, WD) { // WD: 方向，1右0左
+  a.isUp=1;//a.Ifgc=0;
+		a.beAttacked && (a.WalkDirection = WD,a.BoomDieGif=12, PlayAudio("zombie_entering_water"), a.Altitude = 4, SetVisible(a.EleShadow), a.EleBody.src = a.PicArr[a.UpGif] + Math.random(), a.OSpeed = a.Speed = 0), a.ChkActs = function() {return 1;}; // 跳起来
+		oSym.addTask(100, function(c, b) {
+			WD ? (b.AttackGif = b.AttackGif_Up0, b.AttackedRX += 30, b.beAttackedPointL = 70, b.beAttackedPointR = 130, b.Ele.lastChild.style.left = "40px",b.JudgeAttack = b.JudgeAttack_Up1) : (b.AttackGif = b.AttackGif_Up1); // GIF
+			$Z[c] && b.beAttacked && (WD && b.ExchangeLR(b, WD), b.Altitude = 1, b.isAttacking = 0, b.EleBody.src = b.PicArr[b.NormalGif = b.DownGif]); // 眩晕
+			$Z[c] && b.beAttacked && oSym.addTask(WD ? 400 : 0, function(c, b){ // 行走
+				b.EleBody.src = b.PicArr[b.NormalGif = (WD ? b.WalkGif1 : b.WalkGif2)], b.OSpeed = b.Speed = 1.6, b.ChkActs = OrnNoneZombies["prototype"][WD ? "ChkActs1" : "ChkActs"];
+			}, [c,b]);
+		}, [a.id, a]);
+	},
+	ChkActs: function(f, d, g, c) { // 到了左边自己钻出来
+		if(f.Altitude == 0 && f.AttackedRX < GetX(1) - 15) return f.Go_Up(f, 1), 1;
+
+		var b, a, e; ! (f.FreeFreezeTime || f.FreeSetbodyTime) ? (f.beAttacked && !f.isAttacking && f.JudgeAttack_Dig(), !f.isAttacking ? ((a = f.AttackedRX -= (b = f.Speed)) < -50 ? (g.splice(c, 1), f.DisappearDie(), e = 0) : (a < 100 && !f.PointZombie && (f.PointZombie = 1, !oS.CardKind && (StopMusic(), PlayAudio("losemusic", false)), f.ChangeR({
+			R: d, ar: [oS.R - 1], CustomTop: 400 - f.height + f.GetDY()
+		})), f.ZX = f.AttackedLX -= b, f.Ele.style.left = Math.floor(f.X -= b) + "px", e = 1)) : e = 1) : e = 1;
+		return e
+	},
+	CanDig: {"oPotatoMine": true},
+	JudgeAttack_Dig: function() {
+		var g = this, d = g.ZX, e = g.R + "_", f = GetC(d), h = oGd.$, c;
+		((c = g.JudgeLR(g, e, f, d, h) || g.JudgeSR(g, e, f, d, h)) && (g.CanDig[$P[c[1]]["EName"]])) ? (!g.isAttacking && (g.isAttacking = 1, g.EleBody.src = g.PicArr[g.AttackGif]), g.NormalAttack(c[0], c[1])) : g.isAttacking && (g.isAttacking = 0, g.EleBody.src = g.PicArr[g.NormalGif])
+	},
+JudgeAttack_Up1: function() {
+		var g = this,
+		d = g.AttackedRX,
+		e = g.R + "_",
+		f = GetC(d),
+		h = oGd.$,
+		c; (c = g.JudgeSR(g, e, f, d, h) || g.JudgeLR(g, e, f, d, h)) ? (!g.isAttacking && (g.isAttacking = 1, g.EleBody.src = g.PicArr[g.AttackGif]), g.NormalAttack(c[0], c[1])) : g.isAttacking && (g.isAttacking = 0, g.EleBody.src = g.PicArr[g.NormalGif])
+	},
+	Stone_of_Sinan_Up: function() { // 被磁铁吸了镐子调用的函数
+		var g = this; //alert(1);
+    if(g.isUp){g.EleBody.src = g.PicArr[g.isAttacking?g.AttackGif=g.AttackGif_Up1:g.NormalGif = g.WalkGif2];}
+    else{g.Go_Up(g, 0);}
+    g.Stone_of_Sinan_Up = function() {};
+    
+	}
 });
