@@ -55,14 +55,19 @@ position:absolute;width:900px;height:50px;top:500px;left:0;z-index:100;text-alig
 }
 
 #dSurface{display:none;z-index:255}
-#dAdventure{position:absolute;left:474px;top:80px;width:331px;height:146px;cursor:pointer}
+#dAdventure{position:absolute;left:474px;top:60px;width:331px;height:146px;cursor:pointer}
+#dAdventurn{position:absolute;left: 465px;top: 478px;width: 130px;height: 89px;cursor:pointer}
+#dAdventurf{position:absolute;left: 204px;top: 400px;width: 191px;height:163px;cursor:pointer}
 #iSurfaceBackground .adventure0{background:url(images/interface/SelectorScreenStartAdventure_32.png) no-repeat;_background:url(images/interface/SelectorScreenStartAdventure_8.png) no-repeat}
 #iSurfaceBackground .adventure1{background:url(images/interface/SelectorScreenAdventure_32.png) no-repeat;_background:url(images/interface/SelectorScreenAdventure_8.png) no-repeat}
-#iSurfaceBackground .mini{position:absolute;background:url(images/interface/SelectorScreenSurvival_32.png) no-repeat;_background:url(images/interface/SelectorScreenSurvival_8.png) no-repeat;left:474px;top:203px;width:313px;height:133px;cursor:pointer}
-#iSurfaceBackground .riddle{position:absolute;background:url(images/interface/SelectorScreenChallenges_32.png) no-repeat;_background:url(images/interface/SelectorScreenChallenges_8.png) no-repeat;left:478px;top:303px;width:286px;height:122px;cursor:pointer}
+#iSurfaceBackground .adventurn0{background:url(images/interface/TwinSun.png) no-repeat;_background:url(images/interface/TwinSun.png) no-repeat}
+#iSurfaceBackground .adventurf0{background:url(images/interface/huayuan.png) no-repeat;_background:url(images/interface/huayuan.png) no-repeat}
+#iSurfaceBackground .mini{position:absolute;background:url(images/interface/SelectorScreenSurvival_32.png) no-repeat;_background:url(images/interface/SelectorScreenSurvival_8.png) no-repeat;left:474px;top:163px;width:313px;height:133px;cursor:pointer}
+#iSurfaceBackground .scms{position:absolute;background:url(images/interface/scms.png) no-repeat;_background:url(images/interface/scms.png) no-repeat;left:474px;top:318px;width:266px;height:123px;cursor:pointer}
+#iSurfaceBackground .riddle{position:absolute;background:url(images/interface/SelectorScreenChallenges_32.png) no-repeat;_background:url(images/interface/SelectorScreenChallenges_8.png) no-repeat;left:478px;top:248px;width:286px;height:122px;cursor:pointer}
 #iSurfaceBackground .handbook{position:absolute;background:url(images/interface/SelectorScreen_Almanac_32.png) no-repeat;_background:url(images/interface/SelectorScreen_Almanac_8.png) no-repeat;left:374px;top:428px;width:99px;height:99px;cursor:pointer}
 #ZombieHand{position:absolute;width:330px;height:330px;left:262px;top:264px;display:none;overflow:hidden}
-#dName{position:absolute;left:35px;width:230px;top:93px;height:25px;text-align:center;color:#fff5c8;font-size:20px;font-family:Briannetod,微软雅黑,Verdana,Tahoma}
+#dName{position:absolute;left:35px;width:230px;top:93px;height:25px;text-align:center;color:#FC6;font-weight:bold;font-size:18px;font-family:Briannetod,微软雅黑,Verdana,Tahoma}
 #dNameDiv0{position:absolute;left:20px;top:-260px;width:293px;height:260px;background:url(images/interface/SelectorScreen_WoodSign1_32.png) no-repeat;_background:url(images/interface/SelectorScreen_WoodSign1_8.png) no-repeat}
 #dNameDiv1{cursor:pointer;position:absolute;left:3px;top:96px;width:291px;height:71px;background:url(images/interface/SelectorScreen_WoodSign2_32.png) no-repeat;_background:url(images/interface/SelectorScreen_WoodSign2_8.png) no-repeat}
 #dNameDiv2{position:absolute;left:14px;top:136px;width:293px;height:150px;background:url(images/interface/SelectorScreen_WoodSign3_32.png) no-repeat;_background:url(images/interface/SelectorScreen_WoodSign3_8.png) no-repeat;overflow:hidden}

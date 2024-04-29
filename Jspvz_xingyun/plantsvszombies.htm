@@ -8,9 +8,9 @@
 <link rel="shortcut icon" href="favicon.ico">
 <link type=text/css rel=stylesheet href="g.css">
 <title>Jspvz_xingyun</title>
-<script src="js/Advfunction.js"></script>
-<script src="js/AdvPlants.js"></script>
-<script src="js/AdvZombie.js"></script>
+<script src="js/Cfunction.js"></script>
+<script src="js/CPlants.js"></script>
+<script src="js/CZombie.js"></script>
 <script id="JSProcess"></script>
 <body id="dBody" topmargin="0" leftmargin="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 <script>
@@ -20,15 +20,6 @@ google_ad_slot = "2263586206";
 google_ad_width = 468;
 google_ad_height = 15;
 </script>
-<!--相关链接-->
-<div id="dLvlLink">
-	<span>Game 相关的链接</span>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="http://www.baidu.com/s?wd=%D6%B2%CE%EF%B4%F3%D5%BD%BD%A9%CA%AC%CD%F8%D2%B3%B0%E6" target="_blank">搜索游戏内容</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="javascript:;" target="_blank" id="aLvlLink">本关攻略</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="http://www.lonelystar.org/html/1-1.htm" target="_blank">壁纸和音乐</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="http://blog.lonelystar.org" target="_blank">作者博客</a>
-	<a href="https://cutexingyun.github.io/" target="_blank">改版作者</a>
-</div>
 <!--进度条-->
 <div id="dFlagMeter">
 	<div id="dFlagMeterTitle"><div id="dFlagMeterTitleB"></div><div id="sFlagMeterTitleF"></div></div>
@@ -56,12 +47,14 @@ google_ad_height = 15;
 			</script>
 		</map>
 		<img src="images/interface/Surface.jpg" usemap="#FPMap0" border="0">
-		<div style="position:absolute;width:350px;height:150px;left:468px;top:82px;background:url(images/interface/SelectorScreen_Shadow_Adventure.png)"></div>
+		<div style="position:absolute;width:350px;height:150px;left:468px;top:62px;background:url(images/interface/SelectorScreen_Shadow_Adventure.png)"></div>
 		<div class="adventure0" id="dAdventure" onmouseover="this.style.backgroundPosition='bottom';PlayAudio('bleep');" onmouseout="this.style.backgroundPosition='top'" onclick="StartAdventure()"></div>
-		<div style="position:absolute;width:318px;height:136px;left:476px;top:208px;background:url(images/interface/SelectorScreen_Shadow_Survival.png)"></div>
+		<div style="position:absolute;width:318px;height:136px;left:476px;top:168px;background:url(images/interface/SelectorScreen_Shadow_Survival.png)"></div>
 		<div class="mini" onmouseover="this.style.backgroundPosition='bottom';PlayAudio('bleep');" onmouseout="this.style.backgroundPosition='top'" onclick="ShowMiniGame()"></div>
-		<div style="position:absolute;width:289px;height:127px;left:480px;top:307px;background:url(images/interface/SelectorScreen_Shadow_Challenge.png)"></div>
+		<div style="position:absolute;width:289px;height:127px;left:480px;top:252px;background:url(images/interface/SelectorScreen_Shadow_Challenge.png)"></div>
 		<div class="riddle" onmouseover="this.style.backgroundPosition='bottom';PlayAudio('bleep');" onmouseout="this.style.backgroundPosition='top'" onclick="ShowRiddleGame()"></div>
+   		<div style="position:absolute;width:262px;height:122px;left:482px;top:325px;background:url(images/interface/SelectorScreen_Shadow_ZenGarden.png)"></div>
+  		<div class="scms" onmouseover="this.style.backgroundPosition='bottom';PlayAudio('bleep');" onmouseout="this.style.backgroundPosition='top'"></div>
 		<div class="handbook" onmouseover="this.style.backgroundPosition='bottom'" onmouseout="this.style.backgroundPosition='top'" onclick="ViewHandBook()"></div>
 		<div id="ZombieHand"></div> <!--僵尸手-->
 	</div>
@@ -164,7 +157,7 @@ LvlList=function(BLvl,SLvl1,SLvl2){
 					<img class="img2" border="0" src="images/interface/Almanac_ZombieWindow2.png" width="76" height="76"></p>
 				</div>
 				<div class="lvl2">
-					<script>LvlList(3,1,5)</script>
+					<script>LvlList(3,1,7)</script>
 				</div>
 			</div>
 			<div class="button" onmouseover="this.style.backgroundPosition='bottom'" onmouseout="this.style.backgroundPosition='top'"  onclick="HiddenLevel()">关闭</div>
