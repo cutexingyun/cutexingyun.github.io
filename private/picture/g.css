@@ -1,0 +1,19 @@
+/* styles.css */
+#passwordContainer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image {
+    width: 15%; /* 调整图像容器的宽度 */
+    margin: 1%;
+}
+
+.image img {
+    width: 100%; /* 图像充满其容器 */
+}
