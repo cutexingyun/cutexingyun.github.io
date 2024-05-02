@@ -66,6 +66,9 @@ oTorchwood 火炬树桩
 	EName: "oCattail",魔法猫咪
 	EName: "oMelonPult", CName: "西瓜投手",
 	EName: "oCabbage", CName: "卷心菜投手",
+	oWinterMelon 冰瓜
+	oKernelPult玉米投手
+	oMagnetShroom磁力菇
 
 ]
 ]
