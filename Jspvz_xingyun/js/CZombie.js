@@ -61,6 +61,100 @@ var CZombies = function(b, a) {
                 width: 40,
                 height: 40
             }],
+            Ifgc:0,
+            getButter(self, time = 400, img = null, wh = [1, 1], delta = [0, 0]) {
+                if (!$Z[self.id] || self.HP < self.BreakPoint) {
+                    return;
+                }
+                if (img === null) {
+                    img = "images/Plants/KernelPult/butter.png";
+                }
+                var body = self._TMP_ELEBODY ? self._TMP_ELEBODY : self.EleBody;
+                var bodyStyle = body.style;
+                var oOpacity = bodyStyle.opacity;
+                var canvas, ctx;
+                if (!self.FreeSetbodyTime) {
+                    canvas = NewEle("Buttered_Zombie_" + Math.random(), "canvas", bodyStyle.cssText, {
+                        "height": body.offsetHeight,
+                        "width": body.offsetWidth
+                    }, self.Ele);
+                    ctx = canvas.getContext("2d");
+                    ctx.drawImage(self.EleBody, 0, 0, body.offsetWidth, body.offsetHeight);
+                    self._TMP_ELEBODY = self.EleBody;
+                    self.EleBody.style.opacity = 0;
+                    self.Speed = 0;
+                    self.EleBody = canvas;
+                    for (var i = 0; i < self._TMP_ELEBODY.attributes.length; i++) {
+                        var name = self._TMP_ELEBODY.attributes[i].nodeName;
+                        if (!/id|width|height|style/.test(name)) {
+                            self.EleBody.setAttribute(name, self._TMP_ELEBODY.attributes[i].nodeValue);
+                        }
+                    }
+                    oSym.addTask(1, function CheckSPC(last = null) {
+                        if (!$Z[self.id] || self.HP < self.BreakPoint) {
+                            if (self._FREESetBody_) {
+                                self._FREESetBody_();
+                            }
+                        } else if ($Z[self.id] && self.FreeSetbodyTime) {
+                            if (canvas.src) {
+                                self._TMP_ELEBODY.src = canvas.src;
+                                canvas.src = "";
+                            }
+                            if (last != self._TMP_ELEBODY.src) {
+                                ctx.clearRect(0, 0, body.offsetWidth * 2, body.offsetHeight * 2);
+                                ctx.drawImage(self._TMP_ELEBODY, 0, 0, body.offsetWidth, body.offsetHeight);
+                                last = self._TMP_ELEBODY.src;
+                            }
+                            var position = self.HeadPosition.length > self.isAttacking ? self.HeadPosition[self.isAttacking] : self.HeadPosition[0];
+                            for (var i of self._Butter_Img_) {
+                                if (position.x != Number.parseInt(i.style.left) || position.y != Number.parseInt(i.style.top)) {
+                                    i.style.left = (position.x + delta[0]) + "px";
+                                    i.style.top = (position.y + delta[1]) + "px";
+                                }
+                            }
+                            oSym.addTask(1, CheckSPC, [last]);
+                        }
+                    });
+                    self._FREESetBody_ = function() {
+                        self.FreeSetbodyTime = 0;
+                        self.EleBody = self._TMP_ELEBODY;
+                        if (self.EleBody) {
+                            self.EleBody.style.opacity = oOpacity;
+                            for (var i = 0; i < canvas.attributes.length; i++) {
+                                var name = canvas.attributes[i].nodeName;
+                                if (!/id|width|height/.test(name)) {
+                                    self.EleBody.setAttribute(name, canvas.attributes[i].nodeValue);
+                                }
+                            }
+                            canvas.src && (self.EleBody.src = canvas.src);
+                        }
+                        ClearChild(canvas);
+                        delete self._TMP_ELEBODY;
+                        for (var i = self._Butter_Img_.length - 1; i >= 0; i--) {
+                            ClearChild(self._Butter_Img_[i]);
+                        }
+                        delete self._Butter_Img_;
+                        if (!self.FreeFreezeTime) {
+                            self.Speed = self.FreeSlowTime ? self.OSpeed / 2 : self.OSpeed;
+                            self.isAttacking && self.JudgeAttack();
+                        }
+                        delete self._FREESetBody_;
+                    }
+                } else {
+                    canvas = self.EleBody;
+                    ctx = canvas.getContext("2d");
+                }
+                if (!$("butter" + self.id + img)) {
+                    !self._Butter_Img_ && (self._Butter_Img_ = []);
+                    var position = self.HeadPosition.length > self.isAttacking ? self.HeadPosition[self.isAttacking] : self.HeadPosition[0];
+                    self._Butter_Img_.push(NewImg("butter_" + self.id + img, img, (self.FangXiang == "GoRight" ? 'transform:rotateY(180deg);' : "") + `position:absolute;left:${position.x+delta[0]}px;top:${position.y+delta[1]}px;width:${position.width*wh[0]}px;height:${position.height*wh[1]}px;`, self.Ele));
+                }
+                oSym.addTask(time, expectedFSBT => {
+                    if ($Z[self.id] && self.FreeSetbodyTime === expectedFSBT && self._FREESetBody_) {
+                        self._FREESetBody_();
+                    }
+                }, [self.FreeSetbodyTime = oSym.Now + time]);
+            },
 		CanPass: function(d, c) {
 			return c && c != 2
 		},
@@ -2973,9 +3067,9 @@ oBalloonZombie = InheritO(OrnIZombies, {
     oDiggerZombie = InheritO(OrnNoneZombies, {
 	EName: "oDiggerZombie",
 	CName: "矿工僵尸",
-	Lvl: 4, SunNum: 125, HP: 370, BreakPoint: 70,
+	Lvl: 4, SunNum: 125, HP:500, BreakPoint: 70,
 	width: 167, height: 170, GetDTop: 20,
-	beAttackedPointL: 65, beAttackedPointR: 120,OrnHP:1,
+	beAttackedPointL: 65, beAttackedPointR: 120,OrnHP:100,
 	OSpeed: 7.8, Speed: 7.8, Altitude: 0, // 挖矿
 	CardGif: 0, StandGif: 1, StaticGif: 2, NormalGif: 3, WalkGif0: 3, WalkGif1: 4, WalkGif2: 5,
 	AttackGif: 3, AttackGif_Up0: 6, AttackGif_Up1: 7, HeadGif: 8, DieGif: 9, 

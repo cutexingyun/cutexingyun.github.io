@@ -3030,3 +3030,847 @@ oFlowerVase = InheritO(CPlants, {
 		return true;
 	}
 });
+oCabbage = InheritO(oPeashooter, {
+        EName: "oCabbage",
+        CName: "卷心菜投手",
+        width: 140,
+        height: 103,
+        beAttackedPointL: 20,
+        beAttackedPointR: 80,
+        SunNum: 100,
+        AttackGif: 5,
+        Attack: 40,
+        AudioArr: ["CabbageAttack1", "CabbageAttack2"],
+        PicArr: (function() {
+            var a = "images/Plants/Cabbage/";
+            return ["images/Card/Plants/Cabbagepult.png", a + "Cabbage.gif", a + "Cabbage.gif", a + "Bullet.png", a + "BulletHit.gif", a + "CabbageAttack.gif"]
+        })(),
+        Tooltip: "向敌人抛出卷心菜",
+        Produce: '卷心菜投手可以投掷卷心菜。<p>伤害：<font color="#FF0000">一般<br></font>距离：<font color="#FF0000">投掷</font></p>卷心菜投手用卷心菜砸僵尸干得很好，它以此赚钱，毕竟，它擅长这个。只是首先他不明白僵尸们是怎么爬上屋顶的。',
+        
+        TriggerCheck: function(b, a) {
+            this.AttackCheck2(b) && ((this.canTrigger = 0, this.CheckLoop(b.id, a)))
+        },
+        AttackCheck2: function(c) {
+            var b = c.Altitude;
+            return b == 1 || c.EName=="oSnorkelZombie"
+        },
+        PrivateBirth(a) {
+            a.BulletEle = NewImg(0, a.PicArr[3], "left:" + (a.pixelLeft + 50) + "px;top:" + (a.pixelTop + 10) + "px;visibility:hidden;z-index:" + (a.zIndex + 2));
+        },
+        getAngle(x, y, lastX, lastY) {
+            return 180 / Math.PI * Math.atan2((y - lastY), (x - lastX));
+        },
+        CheckLoop(zid, direction) {
+            var self = this;
+            var pid = self.id;
+            if ($P[pid]) {
+                self.NormalAttack(zid);
+                oSym.addTask(290, _ => {
+                    $P[pid] && self.AttackCheck1(zid, direction)
+                });
+            }
+        },
+        HitZombie(zombieTarget, self) {
+            zombieTarget.getPea(zombieTarget, 0);
+            zombieTarget.getHit2(zombieTarget, self.Attack);
+        },
+        AttackAnim(ele, self) {
+            ele.childNodes[1].src = self.PicArr[self.AttackGif]+"?"+this.id;
+        },
+        NormalAttack(zid) {
+            var self = this;
+            var ele = $(self.id);
+            var zombieTarget = oZ.getRangeLeftZ(self.pixelLeft + self.beAttackedPointR, oS.W, self.R, true);
+            if (!zombieTarget) return;
+            var bullet = EditEle(self.BulletEle.cloneNode(false), {
+                id: "CB" + Math.random()
+            }, 0, EDPZ);
+            //alert(bullet); 
+            self.AttackAnim(ele, self);
+            oSym.addTask(275, _ => $P[self.id] && (ele.childNodes[1].src = self.PicArr[self.NormalGif]+"?"+this.id));
+            oSym.addTask(95, _ => {
+                //PlayAudio(self.AudioArr.slice(0, 2).random());
+                SetVisible(bullet);
+                var x = self.pixelLeft + 50;
+                var y = self.pixelTop + 10;
+                var zomRelativePos = zombieTarget.HeadPosition[zombieTarget.isAttacking] ? zombieTarget.HeadPosition[zombieTarget.isAttacking] : zombieTarget.HeadPosition[0];
+                var s = Number.parseInt(zombieTarget.Ele.style.left) + zomRelativePos.x - 10 - x - !zombieTarget.isAttacking * zombieTarget.Speed * zombieTarget.DeltaDirectionSpeed[zombieTarget.FangXiang] * 10 * 1;
+                //alert(1);
+                var x2 = x + s;
+                var gravity = 0.2;
+                var vy = -10;
+                var vx = -(gravity * s) / (2 * vy);
+                var lastTime = 0;
+                var zY = Number.parseInt(zombieTarget.Ele.style.top) + zomRelativePos.y - 20;
+                var [lastX, lastY] = [x, y];
+                var defAngle = self.getAngle(x + vx, y + vy + gravity, lastX, lastY);
+                var bulletShadow = NewEle(`${self.id}_B_${Math.random()}_Shadow`, 'div', `opacity:0.5;background-size:29px;background-repeat: no-repeat;width:29px;left:${x}px;top:${self.pixelTop+self.height-10}px;`, {
+                    className: 'Shadow'
+                }, EDPZ);
+                (function drawFrame() {
+                    vy += gravity;
+                    bullet.style.left = (x += vx) + 'px';
+                    bulletShadow.style.left = x + 'px';
+                    bullet.style.top = (y += vy) + 'px';
+                    bullet.style.transform = `rotate(${self.getAngle(x,y,lastX,lastY)-defAngle-25}deg)`;
+                    if (!$Z[zombieTarget.id]) {
+                        zY = GetY(self.R) - 70;
+                    }
+                    if ((x >= x2 - 0 && y >= zY && vy > 0) || s < 40) {
+                        bullet && (bullet.src = self.PicArr[4], bullet.style.transform = `rotate(0deg)`, oSym.addTask(120, ClearChild, [bullet]));
+                        $Z[zombieTarget.id] && self.HitZombie(zombieTarget, self);
+                        return;
+                    }
+
+                    var currTime = new Date().getTime();
+                    var timeToCall = Math.max(0, 50 / 3 - (currTime - lastTime)) / 10;
+                    oSym.addTask(timeToCall, drawFrame);
+                    lastTime = currTime + timeToCall;
+                    [lastX, lastY] = [x, y];
+                })();
+            });
+        },
+    }),
+oMelonPult = InheritO(oCabbage, {
+        EName: "oMelonPult",
+        CName: "西瓜投手",
+        width: 210,
+        height: 130,
+        beAttackedPointR: 100,
+        SunNum: 300,
+        AttackGif: 4,
+        Attack: 80,
+        AudioArr: ["CabbageAttack1", "CabbageAttack2", "melonimpact1", "melonimpact2"],
+        PicArr: (function() {
+            var b = "images/Plants/MelonPult/",
+                arr = [];
+            for (var i = 1; i <= 7; i++) {
+                arr.push(b + "piece" + i + ".webp");
+            }
+            return ["images/Card/Plants/MelonPult.png", b + "0.gif", b + "0.gif", b + "Bullet.png", b + "attack.gif"].concat(arr)
+        })(),
+        Tooltip: "向敌人抛出带有溅射的西瓜瓣",
+        Produce: '西瓜投手对成群的僵尸造成大量伤害<p>伤害：<font color="#FF0000">大量</font><br>范围：<font color="#FF0000">投掷</font><br>特点：<font color="#FF0000">西瓜砸碎时会对附近的僵尸造成伤害</font></p>西瓜投手毫不羞怯。“在所有植物武器中，我的打击力度比较大。”，他说，“我可不是瞎吹牛。不信?自己数数就知道了。”',
+        PrivateBirth(a) {
+            a.BulletEle = NewImg(0, a.PicArr[3], "left:" + (a.pixelLeft + 50) + "px;top:" + (a.pixelTop + 10) + "px;width:55px;visibility:hidden;z-index:" + (a.zIndex + 2));
+        },
+        CheckLoop(zid, direction) {
+            var self = this;
+            var pid = self.id;
+            if ($P[pid]) {
+                self.NormalAttack(zid);
+                oSym.addTask(290, _ => {
+                    $P[pid] && self.AttackCheck1(zid, direction)
+                });
+            }
+        },
+        HitZombie(zombieTarget, self, x2, zY) {
+            if ($Z[zombieTarget.id]) {
+                zombieTarget.getHit2(zombieTarget, self.Attack);
+            }
+            //PlayAudio(self.AudioArr.slice(2, 4).random());
+            for (var i = Math.max(1, self.R - 1); i <= Math.min(self.R + 1, 5); i++) {
+                for (var zombie of oZ.getArZ(x2 - 50, x2 + 70, i)) {
+                    if (zombie != zombieTarget) {
+                        var attack = self.Attack;
+                        if (zombie.isPuppet) {
+                            attack += 60;
+                        }
+                        zombie.getHit2(zombie, (zombie.isPuppet ? Math.floor(attack / 1.5) : Math.floor(attack / 3)));
+                    }
+                }
+            }
+            var obj = [];
+            for (var i = 0; i < Math.round(5 + Math.random() * 4); i++) {
+                var vy = 0.5 - Math.random() * 3;
+                var ay = 0.2;
+                var vx = Math.random() * 2 - 1;
+                var rotate = (Math.random() * 0.25) * (vx > 0 ? 1 : -1);
+                var alpha = Math.random() * 0.8 + 1;
+                var baseY = 50;
+                var dy = baseY + Math.random() * 18 - 9;
+                var ly = GetY(self.R) - 30 - (zY - 20) + (dy - baseY);
+                obj.push({
+                    src: self.PicArr[Math.floor(Math.random() * 7) + 5],
+                    rotate: Math.random() * 360,
+                    x: 50 + Math.random() * 18 - 9,
+                    y: dy,
+                    width: Math.round(18 + (Math.random() * 6 - 2)),
+                    height: Math.round(18 + (Math.random() * 6 - 2)),
+                    move() {
+                        var self = this;
+                        self.x += vx;
+                        self.y += vy;
+                        vy += ay;
+                        self.y = Math.min(ly, self.y);
+                        if (self.y == ly) {
+                            vy = -vy / 3;
+                            rotate /= 1.2;
+                        }
+                        self.rotate += rotate;
+                        self.alpha = Math.max(0, Math.min(alpha, 1));
+                        alpha -= 0.05;
+                    }
+                });
+            }
+        },
+        AttackAnim(ele, self) {
+            ele.childNodes[1].src = self.PicArr[self.AttackGif]+"?"+this.id;
+            //alert(ele.childNodes[1].src);
+        },
+        NormalAttack(zid) {
+            var self = this;
+            var ele = $(self.id);
+            var zombieTarget = oZ.getRangeLeftZ(self.pixelLeft + self.beAttackedPointR, oS.W, self.R, true);
+            //alert(zombieTarget);
+            if (!zombieTarget) return;
+            var bullet = EditEle(self.BulletEle.cloneNode(), {
+                id: "CB" + Math.random()
+            }, 0, EDPZ);
+            self.AttackAnim(ele, self);
+            oSym.addTask(257, _ => $P[self.id] && (ele.childNodes[1].src = self.PicArr[self.NormalGif]+"?"+this.id));
+            oSym.addTask(105, _ => {
+                //PlayAudio(self.AudioArr.slice(0, 2).random());
+                SetVisible(bullet);
+                var x = self.pixelLeft + 80;
+                var y = self.pixelTop;
+                var zomRelativePos = zombieTarget.HeadPosition[zombieTarget.isAttacking] ? zombieTarget.HeadPosition[zombieTarget.isAttacking] : zombieTarget.HeadPosition[0];
+                var s = Number.parseInt(zombieTarget.Ele.style.left) + zomRelativePos.x - x - !zombieTarget.isAttacking * zombieTarget.Speed * zombieTarget.DeltaDirectionSpeed[zombieTarget.FangXiang] * 10 * 1;
+                var x2 = x + s;
+                var gravity = 0.2;
+                var vy = -8;
+                var vx = -(gravity * s) / (2 * vy);
+                var lastTime = 0;
+                var zY = Number.parseInt(zombieTarget.Ele.style.top) + zomRelativePos.y - 20;
+                var [lastX, lastY] = [x, y];
+                var defAngle = Math.floor(Math.random() * 20 - 10);
+                var rotSpd = Math.floor(Math.random() * 6 + 3);
+                var bulletShadow = NewEle(`${self.id}_B_${Math.random()}_Shadow`, 'div', `opacity:0.5;background-size:29px;background-repeat: no-repeat;width:29px;left:${x}px;top:${self.pixelTop+self.height-10}px;`, {
+                    className: 'Shadow'
+                }, EDPZ);
+                requestAnimationFrame(function drawFrame() {
+                    
+                    //NewImg("imgSF", "images/Plants/MelonPult/Bullet.png", `left:${x}px;top:${y}px`, EDAll, {});
+                    vy += gravity;
+                    bullet.style.left = (x += vx) + 'px';
+                    bulletShadow.style.left = x + 'px';
+                    bullet.style.top = (y += vy) + 'px';
+                    bullet.style.transform = `rotate(${defAngle+=rotSpd}deg)`;
+                    if (!$Z[zombieTarget.id]) {
+                        zY = GetY(self.R) - 70;
+                    }
+                    if ((x >= x2 - 0 && y >= zY && vy > 0) || s < 40) {
+                        ClearChild(bullet);
+                        self.HitZombie(zombieTarget, self, x, y);
+                        ClearChild(bulletShadow);
+                        return;
+                    }
+                    var currTime = new Date().getTime();
+                    var timeToCall = Math.max(0, 50 / 3 - (currTime - lastTime)) / 10;
+                    oSym.addTask(timeToCall, drawFrame);
+                    lastTime = currTime + timeToCall;
+                    [lastX, lastY] = [x, y];
+                });
+            });
+        },
+    }),oWinterMelon = InheritO(oCabbage, {
+        EName: "oWinterMelon",
+        CName: "冰瓜投手",
+        width: 230,
+        height: 140,
+        beAttackedPointR: 140,
+        SunNum: 200,
+        AttackGif: 4,
+        Attack: 80,
+        coolTime: 50,
+        AudioArr: ["CabbageAttack1", "CabbageAttack2", "melonimpact1", "melonimpact2"],
+        PicArr: (function() {
+            var b = "images/Plants/WinterMelon/",
+                arr = [];
+            for (var i = 1; i <= 7; i++) {
+                arr.push(b + "piece" + i + ".webp");
+            }
+            return ["images/Card/Plants/WinterMelonpult.png", b + "0.gif", b + "0.gif", b + "Bullet.png", b + "Attack.gif"].concat(arr)
+        })(),
+        Tooltip: "向敌人抛出带有溅射的冰西瓜瓣",
+        Produce: '冰瓜投手能对成群僵尸造成大量伤害并减速他们。<p>伤害：<font color="#FF0000">高</font><br>范围：<font color="#FF0000">投掷</font><br>特点：<font color="#FF0000">西瓜会对附近僵尸造成溅射伤害并减速他们</font></p>冰瓜投手试着让自己紧绷的神经冷静下来，他听到僵尸步步逼近。他能做到吗？有人能做到吗？',
+        CanGrow: function(b, a, d) {
+            var c = b[1];
+            return c && c.EName == "oMelonPult"
+        },
+        PrivateBirth(a) {
+            a.BulletEle = NewImg(0, a.PicArr[3], "left:" + (a.pixelLeft + 50) + "px;top:" + (a.pixelTop + 10) + "px;width:55px;visibility:hidden;z-index:" + (a.zIndex + 2));
+        },
+        CheckLoop(zid, direction) {
+            var self = this;
+            var pid = self.id;
+            if ($P[pid]) {
+                self.NormalAttack(zid);
+                oSym.addTask(290, _ => {
+                    $P[pid] && self.AttackCheck1(zid, direction)
+                });
+            }
+        },
+        HitZombie(zombieTarget, self, x2, zY) {
+            if ($Z[zombieTarget.id]) {
+                zombieTarget.getSnowPea(zombieTarget, 0);
+                zombieTarget.getHit2(zombieTarget, self.Attack);
+            }
+            //PlayAudio(self.AudioArr.slice(2, 4).random());
+            for (var i = Math.max(1, self.R - 1); i <= Math.min(self.R + 1, 5); i++) {
+                for (var zombie of oZ.getArZ(x2 - 50, x2 + 70, i)) {
+                    if (zombie != zombieTarget) {
+                        var attack = self.Attack;
+                        if (zombie.isPuppet) {
+                            attack += 60;
+                        }
+                        zombieTarget.getSnowPea(zombie, 0);
+                        zombie.getHit2(zombie, (zombie.isPuppet ? Math.floor(attack / 1.5) : Math.floor(attack / 3)));
+                    }
+                }
+            }
+            var obj = [];
+            for (var i = 0; i < Math.round(5 + Math.random() * 4); i++) {
+                var vy = 0.5 - Math.random() * 3;
+                var ay = 0.2;
+                var vx = Math.random() * 2 - 1;
+                var rotate = (Math.random() * 0.25) * (vx > 0 ? 1 : -1);
+                var alpha = Math.random() * 0.8 + 1;
+                var baseY = 50;
+                var dy = baseY + Math.random() * 18 - 9;
+                var ly = GetY(self.R) - 30 - (zY - 20) + (dy - baseY);
+                obj.push({
+                    src: self.PicArr[Math.floor(Math.random() * 7) + 5],
+                    rotate: Math.random() * 360,
+                    x: 50 + Math.random() * 18 - 9,
+                    y: dy,
+                    width: Math.round(18 + (Math.random() * 6 - 2)),
+                    height: Math.round(18 + (Math.random() * 6 - 2)),
+                    move() {
+                        var self = this;
+                        self.x += vx;
+                        self.y += vy;
+                        vy += ay;
+                        self.y = Math.min(ly, self.y);
+                        if (self.y == ly) {
+                            vy = -vy / 3;
+                            rotate /= 1.2;
+                        }
+                        self.rotate += rotate;
+                        self.alpha = Math.max(0, Math.min(alpha, 1));
+                        alpha -= 0.05;
+                    }
+                });
+            }
+        },
+        AttackAnim(ele, self) {
+            ele.childNodes[1].src = self.PicArr[self.AttackGif]+"?"+this.id;
+        },
+        NormalAttack(zid) {
+            var self = this;
+            var ele = $(self.id);
+            var zombieTarget = oZ.getRangeLeftZ(self.pixelLeft + self.beAttackedPointR, oS.W, self.R, true);
+            //alert(zombieTarget);
+            if (!zombieTarget) return;
+            var bullet = EditEle(self.BulletEle.cloneNode(), {
+                id: "CB" + Math.random()
+            }, 0, EDPZ);
+            self.AttackAnim(ele, self);
+            oSym.addTask(265, _ => $P[self.id] && (ele.childNodes[1].src = self.PicArr[self.NormalGif]+"?"+this.id));
+            oSym.addTask(105, _ => {
+                //PlayAudio(self.AudioArr.slice(0, 2).random());
+                SetVisible(bullet);
+                var x = self.pixelLeft + 80;
+                var y = self.pixelTop;
+                var zomRelativePos = zombieTarget.HeadPosition[zombieTarget.isAttacking] ? zombieTarget.HeadPosition[zombieTarget.isAttacking] : zombieTarget.HeadPosition[0];
+                var s = Number.parseInt(zombieTarget.Ele.style.left) + zomRelativePos.x - x - !zombieTarget.isAttacking * zombieTarget.Speed * zombieTarget.DeltaDirectionSpeed[zombieTarget.FangXiang] * 10 * 1;
+                var x2 = x + s;
+                var gravity = 0.2;
+                var vy = -8;
+                var vx = -(gravity * s) / (2 * vy);
+                var lastTime = 0;
+                var zY = Number.parseInt(zombieTarget.Ele.style.top) + zomRelativePos.y - 20;
+                var [lastX, lastY] = [x, y];
+                var defAngle = Math.floor(Math.random() * 20 - 10);
+                var rotSpd = Math.floor(Math.random() * 6 + 3);
+                var bulletShadow = NewEle(`${self.id}_B_${Math.random()}_Shadow`, 'div', `opacity:0.5;background-size:29px;background-repeat: no-repeat;width:29px;left:${x}px;top:${self.pixelTop+self.height-10}px;`, {
+                    className: 'Shadow'
+                }, EDPZ);
+                (function drawFrame() {
+                    
+                    //NewImg("imgSF", "images/Plants/MelonPult/Bullet.png", `left:${x}px;top:${y}px`, EDAll, {});
+                    vy += gravity;
+                    bullet.style.left = (x += vx) + 'px';
+                    bulletShadow.style.left = x + 'px';
+                    bullet.style.top = (y += vy) + 'px';
+                    bullet.style.transform = `rotate(${defAngle+=rotSpd}deg)`;
+                    if (!$Z[zombieTarget.id]) {
+                        zY = GetY(self.R) - 70;
+                    }
+                    if ((x >= x2 - 0 && y >= zY && vy > 0) || s < 40) {
+                        ClearChild(bullet);
+                        self.HitZombie(zombieTarget, self, x, y);
+                        ClearChild(bulletShadow);
+                        return;
+                    }
+                    var currTime = new Date().getTime();
+                    var timeToCall = Math.max(0, 50 / 3 - (currTime - lastTime)) / 10;
+                    oSym.addTask(timeToCall, drawFrame);
+                    lastTime = currTime + timeToCall;
+                    [lastX, lastY] = [x, y];
+                })();
+            });
+        },
+});
+oKernelPult = InheritO(oCabbage, {
+        EName: "oKernelPult",
+        CName: "玉米投手",
+        Attack: 20,
+        ButterAttack: 40,
+        AttackGif: 3,
+        width: 185,
+        isj: 0,
+        height: 145,
+        SunNum: 100,
+        ButterChance: 0.25,
+        beAttackedPointR: 90,
+        beAttackedPointL: 50,
+        Tooltip: "向敌人投掷玉米粒和黄油",
+        Produce: '玉米投手能向僵尸投掷玉米粒和黄油。<p>伤害：<font color="#FF0000">低（玉米粒），中（黄油）</font><br>范围：<font color="#FF0000">投掷</font><br>特殊：<font color="#FF0000">黄油会固定僵尸</font></p>玉米投手是投手兄弟的老大。他们三兄弟当中，衹有玉米始终记得其他兄弟的生日，为此他也略微有点烦他们。',
+        PicArr: (function() {
+            var a = "images/Plants/KernelPult/";
+            return ["images/Card/Plants/KernelPult.png", a + "kernelpult.gif", a + "kernelpult.gif", a + "attack1.gif", a + "attack2.gif", a + "corn.png", a + "Pbutter.png", a + "corn_hit.webp", a + "butter_hit.webp"]
+        })(),
+        BirthStyle: (self, id, ele, style) => {
+            EditEle(ele.childNodes[1], {}, {
+                top: "5px"
+            });
+            EditEle(ele, {
+                id,
+                'data-jng-constructor': self.EName
+            }, style, EDPZ)
+        },
+        CheckLoop(zid, direction) {
+            var self = this;
+            var pid = self.id;
+            if ($P[pid]) {
+                self.NormalAttack(zid);
+                oSym.addTask(290, _ => {
+                    $P[pid] && self.AttackCheck1(zid, direction)
+                });
+            }
+        },
+        PrivateBirth(a) {
+            a.BulletEle = NewImg(0, a.PicArr[5], "left:" + (a.pixelLeft + 50) + "px;top:" + (a.pixelTop + 10) + "px;visibility:hidden;z-index:" + (a.zIndex + 2));
+            a.ButterEle = NewImg(0, a.PicArr[6], "left:" + (a.pixelLeft + 50) + "px;top:" + (a.pixelTop + 10) + "px;height:40;width:auto;visibility:hidden;z-index:" + (a.zIndex + 2));
+            a.ButterChance += Math.random() * 0.4 - 0.1;
+        },
+        HitZombie(zombieTarget, self, isButter) {
+            if (zombieTarget.Altitude != 1) {
+                return;
+            }
+            if (isButter) {
+                //StopAudio("butter");
+                //PlayAudio("butter");
+                zombieTarget.getButter(zombieTarget);
+                zombieTarget.getHit2(zombieTarget, self.ButterAttack);
+            } else {
+                //StopAudio("kernelpult1");
+                //StopAudio("kernelpult2");
+                //PlayAudio(`kernelpult${Math.floor(Math.random()*2+1)}`);
+                zombieTarget.getHit2(zombieTarget, self.Attack);
+            }
+        },
+        AttackAnim(ele, self, isButter) {
+            ele.childNodes[1].src = self.PicArr[self.AttackGif + isButter]+"?"+this.id;
+        },
+        NormalAttack(zid) {
+            var self = this;
+            var ele = $(self.id);
+            var isButter = Math.random() < self.ButterChance ? 1 : 0;
+            var zombieTarget = oZ.getRangeLeftZ(self.pixelLeft + self.beAttackedPointR, oS.W, self.R, true);
+            if (!zombieTarget) return;
+            var bullet = EditEle(isButter ? self.ButterEle.cloneNode() : self.BulletEle.cloneNode(), {
+                id: "KB" + Math.random()
+            }, 0, EDPZ);
+            if (self.ButterChance > self.__proto__.ButterChance) {
+                self.ButterChance = Math.max(self.ButterChance - Math.random() * 0.02, self.__proto__.ButterChance);
+            } else if (self.ButterChance < self.__proto__.ButterChance) {
+                self.ButterChance = Math.min(self.ButterChance + Math.random() * 0.02, self.__proto__.ButterChance);
+            }
+            self.AttackAnim(ele, self, isButter);
+            oSym.addTask(180, _ => $P[self.id] && (ele.childNodes[1].src = self.PicArr[self.NormalGif]+"?"+this.id));
+            oSym.addTask(85, _ => {
+                //PlayAudio(self.AudioArr.slice(0, 2).random());
+                SetVisible(bullet);
+                var x = self.pixelLeft + 70;
+                var y = self.pixelTop + 10;
+                var zomRelativePos = zombieTarget.HeadPosition[zombieTarget.isAttacking] ? zombieTarget.HeadPosition[zombieTarget.isAttacking] : zombieTarget.HeadPosition[0];
+                var s = Number.parseInt(zombieTarget.Ele.style.left) + zomRelativePos.x - 10 - x - !zombieTarget.isAttacking * zombieTarget.Speed * zombieTarget.DeltaDirectionSpeed[zombieTarget.FangXiang] * 10 * 1;
+                var x2 = x + s;
+                var gravity = 0.2;
+                var vy = -10;
+                var vx = -(gravity * s) / (2 * vy);
+                var lastTime = 0;
+                var zY = Number.parseInt(zombieTarget.Ele.style.top) + zomRelativePos.y;
+                var angle = 0;
+                var rotSpd = Math.random() * 3 + 2;
+                var bulletShadow = NewEle(`${self.id}_B_${Math.random()}_Shadow`, 'div', `opacity:0.5;background-size:29px;background-repeat: no-repeat;width:29px;left:${x}px;top:${self.pixelTop+self.height-10}px;`, {
+                    className: 'Shadow'
+                }, EDPZ);
+                (function drawFrame() {
+                    vy += gravity;
+                    bullet.style.left = (x += vx) + 'px';
+                    bulletShadow.style.left = x + 'px';
+                    bullet.style.top = (y += vy) + 'px';
+                    bullet.style.transform = `rotate(${angle+=rotSpd}deg)`;
+                    if (!$Z[zombieTarget.id]) {
+                        zY = GetY(self.R) - 70;
+                    }
+                    if ((x >= x2 - 0 && y >= zY && vy > 0) || s < 40) {
+                        if (s < 40) {
+                            bullet.style.top = zY + "px";
+                            bullet.style.left = x2 + "px";
+                        }
+                        bullet && (bullet.src = self.PicArr[7 + isButter], bullet.style.transform = `rotate(0deg)`, oSym.addTask(13, ClearChild, [bullet]));
+                        $Z[zombieTarget.id] && self.HitZombie(zombieTarget, self, isButter);
+                        return;
+                    }
+                    var currTime = new Date().getTime();
+                    var timeToCall = Math.max(0, 50 / 3 - (currTime - lastTime)) / 10;
+                    oSym.addTask(timeToCall, drawFrame);
+                    lastTime = currTime + timeToCall;
+                })();
+            });
+        },
+    }),
+    oCobCannon = InheritO(CPlants, {
+        EName: "oCobCannon",
+        Canhead: 0,
+        CName: "玉米加农炮",
+        width: 250,
+        beAttackedPointR: 198,
+        height: 140,
+        coolTime: 50,
+        SunNum: 500,
+        catt:0,
+        cd: 0,
+        cdtime:3500,
+        Tooltip: "点击玉米加农炮发射致命的玉米炮弹",
+        Produce: '点击玉米加农炮发射致命的玉米炮弹<p><font color="#FF0000">必须种植在两个相邻的玉米投手上</font></p>玉米加农炮到底是怎样？，嗯～他曾经在哈佛学习，并就职于一家著名的纽约法律事务所。他发射一次就能炸烂大范围的僵尸。这是大家都知道的事。不过往深了想，到底是什么激发了他？',
+        PicArr: ["images/Card/Plants/CobCannon.png", "images/Plants/CobCannon/CobCannon.gif", "images/Plants/CobCannon/CobCannon.gif", "images/Plants/CobCannon/Attack.gif", "images/Plants/CobCannon/CobCannon无子弹.gif", "images/Plants/CobCannon/填充Bullet.gif", "images/Plants/CobCannon/0.gif"],
+        InitTrigger: function() {},
+        CanGrow: function(b, a, d) {
+            //alert(x);
+            var c = b[1],x=0;
+            if(c && (c.EName == "oKernelPult"||c.EName == "oButterPult")){
+                var p,oBalloon,self=c;
+                for (p in $P) {
+                    oBalloon = $P[p];
+if(oBalloon.R==self.R&&self.C+1==oBalloon.C&&(oBalloon.EName=="oKernelPult"||oBalloon.EName=="oButterPult")){
+                        x=1;
+                        return 1;                      
+                        break;
+                    }
+                }
+            }
+            if(!x){return 0;}
+            
+        },
+        getShadow: function(a) {
+            return "left:" + (a.width * 0.5 - 48) + "px;top:" + (a.height - 22) + "px"
+        },
+        Birth: function(d, c, h, a, m, n) {
+        var e = this,
+            k = d + e.GetDX(),
+            i = c + e.GetDY(h, a, m),
+            l = e.prototype,
+            g = i - e.height,
+            b = e.id = "P_" + Math.random(),
+            j = e.zIndex += 3 * h,
+            f = NewEle(0, "div", "position:absolute");
+        NewImg(0, ShadowPNG1, e.getShadow(e), f);
+        NewImg(0, e.PicArr[e.NormalGif], "", f);
+        e.imgnn=f;
+        e.pixelLeft = k;
+        e.pixelRight = k + e.width;
+        e.pixelTop = g;
+        e.pixelBottom = g + e.GetDBottom();
+        e.opacity = 1;
+        e.InitTrigger(e, b, e.R = h, e.C = a, e.AttackedLX = k + e.beAttackedPointL, e.AttackedRX = k + e.beAttackedPointR);
+        $P[b] = e;
+        $P.length += 1;
+        e.BirthStyle(e, b, f, {
+                left: k + "px",
+                top: g + "px",
+                zIndex: j
+            },
+            n);
+        oGd.add(e, h + "_" + a + "_" + e.PKind);
+        e.PrivateBirth(e, n);
+    },
+        Die: function(a) {
+            var b = this,
+                c = b.id;
+            ClearChild(b.imgnn);
+            b.oTrigger && oT.delP(b);
+            b.HP = 0;
+            delete $P[c];
+            delete oGd.$[b.R + "_" + b.C + "_" + b.PKind];
+            $P.length -= 1;
+            ClearChild($("oCheck_" + c));
+            !a && ClearChild($(c));
+            b.PrivateDie(b)
+        },
+        BirthStyle: function(c, e, b, a) {
+            var d = b.childNodes[1];
+            //alert(b.SunNum);
+            var self=this;
+            EditEle(b, {
+                id: e
+            }, a, EDPZ);
+            ckhtml = NewEle("oCheck_" + c.id, "div", "left:" + b.style.left + ";top:" + b.style.top + ";position:absolute;width:340px;height:194px;background:#FFF;filter:alpha(opacity=0);opacity:0;z-index:150", 0, EDAll);
+            
+            ckhtml.onclick = function(g) {
+                //alert(g);
+                if(!self.cd&&!canpao){//判断其他玉米炮是否还在攻击，或是否在填充
+                //alert(1);
+                self.catt=1;self.cd=1;
+                Chosepao(g,self.R,self.C);
+                }
+            };
+        },
+        PrivateBirth: function(self) { 
+            var p,oBalloon;
+                for (p in $P) {
+                    oBalloon = $P[p];
+if(oBalloon.R==self.R&&self.C+1==oBalloon.C&&(oBalloon.EName=="oKernelPult"||oBalloon.EName=="oButterPult")){
+                        oBalloon.Die();               
+                        break;
+                    }
+                }
+            CustomSpecial(oCobCannonNone, self.R, self.C+1);
+            var id=$(self.id);
+            if(!this) return;
+            self.cd=1;
+            var chpic=id.childNodes[1];
+            var yleft=id.childNodes[1].style.left;
+            var ytop=id.childNodes[1].style.top;
+            id.childNodes[1].src=self.PicArr[4]+'?'+self.id;
+            oSym.addTask(self.cdtime, function letsgop(){
+                if(!this) return ;
+                id.childNodes[1].src=self.PicArr[5]+"?"+this.id;
+                SetStyle(chpic, {
+                    position: "absolute",
+                    left: (id.childNodes[1].style.left+10),
+                    top: (id.childNodes[1].style.top),
+                });
+                oSym.addTask(90, function letbull(){
+                    id.childNodes[1].src=self.PicArr[2]+'?'+self.id;
+                    self.cd=0;    
+                    SetStyle(chpic, {
+                            position: "absolute",
+                            left: (yleft),
+                            top: (ytop),
+                        });
+                });
+            });
+            oSym.addTask(10, function d() {
+                if(this&&canpao==1&&paoattack[0]==self.R&&paoattack[1]==self.C&&self.catt){
+                    self.catt=0;canpao=0;paoattack=[-1,-1];  
+                    if(!this) return;            
+                    id.childNodes[1].src=self.PicArr[3]+"?"+this.id;
+                    var chpic=id.childNodes[1],yleft=id.childNodes[1].style.left,ytop=id.childNodes[1].style.top;
+                    SetStyle(chpic, {
+                        position: "absolute",
+                        left: (id.childNodes[1].style.left+55),
+                        top: (id.childNodes[1].style.top-450),
+                    });
+                    oSym.addTask(310, function kl() {
+                        if(!this) return;
+                        id.childNodes[1].src=self.PicArr[4]+'?'+self.id;
+                        SetStyle(chpic, {
+                            position: "absolute",
+                            left: (yleft),
+                            top: (ytop),
+                        });
+                        oSym.addTask(self.cdtime, function letsgobull(){
+                            if(!this) return;
+                            var src1=self.PicArr[5]+"?"+this.id;
+                            id.childNodes[1].src=src1;
+                            SetStyle(chpic, {
+                                position: "absolute",
+                                left: (id.childNodes[1].style.left+10),
+                                top: (id.childNodes[1].style.top),
+                            });
+                            oSym.addTask(90, function letsgopu(){
+                                if(!this) return;
+                                id.childNodes[1].src=self.PicArr[2]+'?'+self.id;
+                                SetStyle(chpic, {
+                                    position: "absolute",
+                                    left: (yleft),
+                                    top: (ytop),
+                                });
+                                self.cd=0;
+                            });
+                            
+                        });
+                    });
+                }
+                oSym.addTask(10, d);
+            });
+        },        
+    }),
+        
+  
+    oCobCannonNone = InheritO(CPlants, {
+        EName: "oCobCannonNone",
+        CName: "玉米加农炮用的占位",
+        width: 118,
+        beAttackedPointR: 98,
+        height: 120,
+        SunNum: 100,
+        canShovel: 0,
+        canEat: 0,
+        Canhead: 0,
+        PicArr: ["images/Card/Plants/Blover.png", "images/Plants/Peashooter/NonePeashooter.gif", "images/Plants/Peashooter/NonePeashooter.gif"],
+        getShadow: function(a) {
+            return "display:none"
+        },
+        InitTrigger: function() {},
+        PrivateBirth: function(self) { 
+            oSym.addTask(250, function d() {
+                if (!$P[self.id]) {
+                    return;
+                }
+                var p,oBalloon,x=0;
+                for (p in $P) {
+                    oBalloon = $P[p];
+                    //alert(oBalloon.EName);
+                    if(oBalloon.R==self.R&&self.C-1==oBalloon.C&&oBalloon.EName=="oCobCannon"){
+                        x=1;break;
+                    }
+                }
+                if(!x) {self.Die();return;}
+                oSym.addTask(250, d);
+            });
+        },        
+    })
+
+    oMagnetShroom = InheritO(CPlants, {
+        EName: "oMagnetShroom",
+        CName: "磁力菇",
+        width: 102,
+        beAttackedPointR: 98,
+        height: 90,
+        target: -1,
+        SunNum: 100,
+        BookHandBack: 2,
+        SleepGif: 3,
+        cd: 1,
+        cotcd: 1000,
+        night: true,    
+        Tooltip: "可以用磁力吸取僵尸的头盔",
+        Produce: '磁力菇可以用磁力吸取僵尸的头盔等其它金属物品。<p>范围：<font color="#FF0000">靠近的僵尸</font><br>特点：<font color="#FF0000">移除僵尸们所有的金属物品<br>白天睡觉</font></p>磁力是一种强大的力量，非常强大，强大到有时都吓到磁力菇自己了。能力越大，责任越大，他不知道自己能否肩负得起这责任。',
+        InitTrigger: function() {},
+        PicArr: ["images/Card/Plants/MagnetShroom.png", "images/Plants/Ms/Ms.gif", "images/Plants/Ms/Ms.gif", "images/Plants/Ms/sleep.gif"],
+        getTriggerRange: (R, LX, RX) => [[0, oS.W, 0]],
+        AudioArr: ['blover'],
+        BirthStyle: function(c, d, b, a) {
+            oS.DKind && (c.canTrigger = 0, c.Sleep = 1, b.childNodes[1].src = c.PicArr[c.SleepGif]);
+            oSym.addTask(1,function(self){
+                self.NormalAttack();
+                oSym.addTask(1,arguments.callee,[self]);
+            },[c]);
+            EditEle(b, {
+                id: d
+            }, a, EDPZ)
+        },
+        Die: function(a) {
+            var b = this,
+                c = b.id;
+            b.cd=0;
+            ClearChild(b.imgnn);
+            b.target="die";
+            b.oTrigger && oT.delP(b);
+            b.HP = 0;
+            delete $P[c];
+            delete oGd.$[b.R + "_" + b.C + "_" + b.PKind];
+            $P.length -= 1;
+            !a && ClearChild($(c));
+            b.PrivateDie(b)
+        },
+        getTriggerR: selfR => [selfR-2<1?1:selfR-2, selfR+2>oS.R?oS.R:selfR+2],
+        PrivateBirth: function() {},
+        Plength: function(pid,zid){ //判断僵尸是否在磁力菇的攻击范围内
+            if(zid.Ifgc!=0||zid.OrnHP==0) return 0;
+            //alert(123);
+            if(zid.EName!='oScreenDoorZombie'&&zid.EName!='oDuckyTubeZombie4'&&zid.EName!='oSmallFootballZombie'&&zid.EName!='oFootballZombie'&&zid.EName!='oDuckyTubeZombie3'&&zid.EName!='oJackinTheBoxZombie'&&zid.EName!='oBucketheadZombie'&&zid.EName!='oDiggerZombie') return 0;
+            if(Math.abs(zid.R-pid.R)>2) return 0;
+            if(Math.abs(zid.X-pid.pixelLeft)>200) return 0;
+            return 1;
+        },
+        Plength1: function(pid,zid){//计算僵尸和磁力菇之间的距离
+            var chang=Math.abs(zid.R-pid.R)*100;
+            var kuan=Math.abs(zid.X-GetX(pid.C));
+            return Math.sqrt(chang*chang+kuan*kuan);
+        },
+        AttackCheckZ: function() { //查找僵尸
+            var self = this,
+                z, otarget,llen,lastx;
+            var Target=-1;
+            for (z in $Z) {
+                otarget = $Z[z];
+                if(!self.Plength(self,otarget)||otarget.PZ==0) continue;             
+                if(Target==-1){
+                    Target = $Z[z];
+                    continue;
+                }
+                llen=self.Plength1(self,otarget);
+                if(llen<self.Plength1(self,Target)){
+                    Target=otarget;
+                }
+            }
+            self.target=Target;
+            if(self.target==-1) return 0;
+            return 1;
+        },
+        Yesgif: function(){
+            try{
+                if(this.cd&&$(this.id).childNodes[1].src!='images/Plants/Ms/Ms.gif') $(this.id).childNodes[1].src='images/Plants/Ms/Ms.gif';
+            }catch(arr){}
+        },
+        attackzombiest: function(zid){
+            if(zid.CName=='矿工僵尸'){
+                //alert(1);     
+                zid.Stone_of_Sinan_Up();
+            }else{
+                zid.OrnHP=0;
+                zid.getHit0(zid,0,0);    
+            }
+        },
+        NormalAttack: function(){ 
+            //alert(this.canTrigger);        
+            //alert(1);   
+            if(this.AttackCheckZ()&&this.cd){
+                var self=this;
+                var id=self.id;
+                var zid=self.target;
+                if(zid.Ifgc==1) return;
+                zid.Ifgc=1;
+                $(id).childNodes[1].src='images/Plants/Ms/attack.gif'+"?"+Date.now()+Math.random();
+                oSym.addTask(80, function(zid,self) {
+                     self.attackzombiest(zid);
+                }, [zid,self]);
+                self.cd=0;
+                oSym.addTask(self.cotcd, function(id) {
+                    self.target=-1;       
+                    self.cd=1;
+                    self.Yesgif();
+                }, [id]);
+            }
+        },
+        
+    });
+

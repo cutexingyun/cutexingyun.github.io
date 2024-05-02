@@ -29,12 +29,12 @@ oS.Init({
 	FlagToMonitor: {//监视器
 		99: [ShowFinalWave, 0]//到达第99波，显示最后一波
 	},
-	FlagToEnd: function() {//你赢了
-  	  	NewImg("imgSF", "images/interface/Trophy.png", "left:727px;top:325px;clip:rect(auto,auto,auto,auto)", EDAll, {
-       			onclick: function() {//创建奖杯
-            				SelectModal(0)//返回主界面
-        			}
-  	  	});
-    	NewImg("PointerUD", "images/interface/PointerDown.gif", "top:290px;left:736px", EDAll)//箭头
+	FlagToEnd: function() { // 通关时执行的函数
+		NewImg("imgSF", "images/interface/trophy.png", "left:43.5%;top:220px", EDAll, { // 奖杯
+			onclick: function() {
+				SelectModal(0), PlayAudio("winmusic");
+			} // 先 SelectModal 可以确保过关音乐正常播放
+		});
+		NewImg("PointerUD", "images/interface/PointerDown.gif", "top:185px;left:51%", EDAll); // 箭头
 	}
 });

@@ -16,6 +16,7 @@
 	}: function(l, k) {
 		l.textContent = k
 	};
+        ShadowPNG1="images/interface/plantshadow322.png";
 	e ? (document.execCommand("BackgroundImageCache", false, true), ShadowPNG = "images/interface/plantshadow8.gif") : ShadowPNG = "images/interface/plantshadow32.png";
 	return {
 		Browser: {
@@ -1195,24 +1196,28 @@ WhichMouseButton = function(a) {
 		"default": 1
 	})
 },
-GroundOnmousedown = function(i) {
-	i = window.event || i;
-	var a = i.clientX - EDAlloffsetLeft + EBody.scrollLeft || EElement.scrollLeft,
-	k = i.clientY + EBody.scrollTop || EElement.scrollTop,
-	g = ChosePlantX(a),
-	h = ChosePlantY(k),
-	d = g[0],
-	c = h[0],
-	f = h[1],
-	b = g[1],
-	j = GetAP(a, k, f, b);
-	switch (oS.Chose) {
-	case 1:
-		WhichMouseButton(i) < 2 ? GrowPlant(j[0], d, c, f, b) : (PlayAudio("tap"), CancelPlant());
-		break;
-	case - 1 : WhichMouseButton(i) < 2 ? (PlayAudio("plant2"), ShovelPlant(j)) : (PlayAudio("tap"), CancelShovel())
-	}
-},
+    GroundOnmousedown = function(i) {
+        i = window.event || i;
+        var a = i.clientX - EDAlloffsetLeft + EBody.scrollLeft || EElement.scrollLeft,
+            k = i.clientY + EBody.scrollTop || EElement.scrollTop,
+            g = ChosePlantX(a),
+            h = ChosePlantY(k),
+            d = g[0],
+            c = h[0],
+            f = h[1],
+            b = g[1],
+            j = GetAP(a, k, f, b);
+        switch (oS.Chose) {
+            case 1:
+                WhichMouseButton(i) < 2 ? GrowPlant(j[0], d, c, f, b) : (PlayAudio("tap"), CancelPlant());
+                break;
+            case -1:
+                WhichMouseButton(i) < 2 ? (PlayAudio("plant2"), ShovelPlant(j)) : (PlayAudio("tap"), CancelShovel())
+                break;
+            case -2:
+                WhichMouseButton(i) < 2 ? (PlayAudio("plant2"), jianongpao(f,b)) : (PlayAudio("tap"), CancelPao()) 
+        }
+    },
 GetAP = function(a, h, d, c) {
 	var f, i = oGd.$,
 	e, g = [],
@@ -1220,19 +1225,24 @@ GetAP = function(a, h, d, c) {
 	for (f = 0; f < 4; g.push(e = i[d + "_" + c + "_" + f++]), e && !(a < e.pixelLeft || a > e.pixelRight || h < e.pixelTop || h > e.pixelBottom) && (b = e)) {}
 	return [g, b]
 },
-GroundOnkeydown = function(b) {
-	var a;
-	if ((a = (b || event).keyCode) == 27) {
-		switch (oS.Chose) {
-		case 1:
-			CancelPlant();
-			break;
-		case - 1 : CancelShovel()
-		}
-		return (false)
-	} else { ! oS.Chose && KeyBoardGrowPlant(a)
-	}
-},
+    GroundOnkeydown = function(b) {
+        var a;
+        if ((a = (b || event).keyCode) == 27) {
+            switch (oS.Chose) {
+                case 1:
+                    CancelPlant();
+                    break;
+                case -1:
+                    CancelShovel();
+                    break;
+                case -2:
+                    CancelPao();
+            }
+            return (false)
+        } else {
+            !oS.Chose && KeyBoardGrowPlant(a)
+        }
+    },
 KeyBoardGrowPlant = function(b, a) {
 	a = a || 0;
 	if (b > 47 && b < 58) {
@@ -1291,6 +1301,66 @@ GroundOnmousemove2 = function(k) {
 		left: d - 15 + "px",
 		top: b - 16 + "px"
 	})
+},
+    jianongpao=function(R,C) {
+        CancelPao();
+        oSym.addTask(400, function myc() {            
+             NewImg("tPat", "images/Plants/CobCannon/BulletHit.gif"+"?"+Date.now(), "left:" + (GetX(C)-130) + "px;top:" + (GetY(R)-470) + "px;z-index:25", EDAll);          
+        });
+        
+        
+        oSym.addTask(100+400, function c() {            
+            ClearChild($("tPat"));           
+        });
+        oSym.addTask(452, function d() {            
+            var j = R,
+            g = j > 2 ? j - 1 : 1,
+            e = j < oS.R ? j + 1 : oS.R,
+            l = GetX(C) - 80,
+            k = GetX(C) + 160,
+            d, h;
+            //alert(g);     
+            do {
+                h = (d = oZ.getArZ(l, k, g)).length;
+                while (h--) {
+                    d[h].getExplosion()
+                }
+            } while (g++ < e);
+            
+        });
+                    
+    },
+    GroundOnmousemove3 = function(kl) {
+        k = window.event || kl;
+        var d = k.clientX - EDAlloffsetLeft + EBody.scrollLeft || EElement.scrollLeft,
+            b = k.clientY + EBody.scrollTop || EElement.scrollTop,
+            m = oS.ChoseCard,
+            h = ChosePlantX(d),
+            i = ChosePlantY(b),
+            f = h[0],
+            c = i[0],
+            g = i[1],
+            a = h[1];
+        //jianongpao(g,a);
+        SetStyle($("tPao"), {
+            left: d - 15 + "px",
+            top: b - 16 + "px"
+        })
+    },
+    paoattack=[-1,-1],
+    canpao=0,
+Chosepao = function(a,R,C) {
+    //PlayAudio("shovel");
+    WhichMouseButton(a) < 2 && (SetHidden($("imgPao")), NewImg("tPao", "images/Plants/target.png", "left:" + (a.clientX - 10) + "px;top:" + (a.clientY + document.body.scrollTop - 17) + "px;z-index:25", EDAll), paoattack[0]=R,paoattack[1]=C,oS.Chose = -2, GroundOnmousemove = GroundOnmousemove3,StopBubble(a))
+},
+CancelPao = function(a) {
+    var b = oS.MPID;
+    canpao=1;
+    ClearChild($("tPao"));
+    oS.Chose = 0;
+    SetVisible($("imgPao"));
+    b && SetAlpha($(b).childNodes[1], 100, 1);
+    GroundOnmousemove = function() {}
 },
 DisplayZombie = function() {
 	SetVisible($("bShowHandBook"));
@@ -1353,7 +1423,7 @@ InitPCard = function() {
 InitHandBookPCard = function() {
 	PlayAudio("gravebutton");
 	var d = "",
-	g, f, e = [oPeashooter, oSunFlower, oCherryBomb, oWallNut, oPotatoMine, oSnowPea, oChomper, oRepeater, oPuffShroom, oSunShroom, oFumeShroom, oGraveBuster, oHypnoShroom, oScaredyShroom, oIceShroom, oDoomShroom, oLilyPad, oSquash, oThreepeater, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead, oFlowerPot, oCoffeeBean, oGarlic, oGatlingPea, oTwinSunflower, oGloomShroom, oCattail, oSpikerock],
+	g, f, e = [oPeashooter, oSunFlower, oCherryBomb, oWallNut, oPotatoMine, oSnowPea, oChomper, oRepeater, oPuffShroom, oSunShroom, oFumeShroom, oGraveBuster, oHypnoShroom, oScaredyShroom, oIceShroom, oDoomShroom, oLilyPad, oSquash, oThreepeater, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead, oMagnetShroom, oCabbage, oFlowerPot, oKernelPult, oCoffeeBean, oGarlic, oMelonPult, oGatlingPea, oTwinSunflower, oGloomShroom, oCattail, oWinterMelon, oSpikerock, oCobCannon],
 	a = e.length,
 	b = 0,
 	c;
@@ -2556,13 +2626,11 @@ function(b) {
 	g = b.loop,
 	m,
 	h = {
-		mp3: "audio/mpeg",
-		ogg: "audio/ogg",
-		aac: "audio/mp4"
+		mp3: "audio/mpeg"
 	},
 	k = b.preload,
 	l = b.callback,
-	j = ["mp3", "ogg"],
+	j = ["mp3"],
 	e = j.length,
 	d;
 	f.autoplay = c ? true: false;
