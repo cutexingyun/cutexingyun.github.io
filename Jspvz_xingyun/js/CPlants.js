@@ -2780,7 +2780,7 @@ oBlover = InheritO(CPlants, {
 	SunNum: 100,
 	PicArr: ["images/Card/Plants/Blover.png", "images/Plants/Blover/0.gif", "images/Plants/Blover/Blover.gif"],
 	Tooltip: "能吹走所有气球和迷雾",
-	Produce: '三叶草，能吹走所有的气球僵尸，也可以把雾吹散。<p>使用方法：<font color="#FF0000">单独使用，立即生效</font><br>特点：<font color="#FF0000">吹走屏幕上所有的气球僵尸</font></p>当三叶草五岁生日的时候，他得到了一个闪亮的生日蛋糕。他许好愿，然后深吸一口气却只吹灭了60%的蜡烛。然而他没有放弃，小时候的那次失败促使他更加努力直到现在。',
+	Produce: '三叶草，能吹走所有的气球僵尸，也可以把雾吹散。<p>使用方法：<font color="#FF0000">单独使用，立即生效</font><br>特点：<font color="#FF0000">吹走屏幕上所有的气球僵尸</font></p>你来错地方了qwq',
 	AudioArr:['blover'],
 	InitTrigger: function() {},
 	PrivateBirth: function(o) { // 种植后0.5秒开始吹风
