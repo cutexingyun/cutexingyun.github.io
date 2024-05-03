@@ -1789,7 +1789,7 @@ oSquash = InheritO(CPlants, {
 	PicArr: ["images/Card/Plants/Squash.png", "images/Plants/Squash/0.gif", "images/Plants/Squash/Squash.gif", "images/Plants/Squash/SquashAttack.gif", "images/Plants/Squash/SquashL.png", "images/Plants/Squash/SquashR.png"],
 	AudioArr: ["squash_hmm", "gargantuar_thump"],
 	Tooltip: "压扁接近的僵尸",
-	Produce: '窝瓜会压扁第一个接近它的僵尸。<p>伤害：<font color="#FF0000">极高</font><br>范围：<font color="#FF0000">短，覆盖所有它压到的僵尸。</font><br>用法：<font color="#FF0000">单独使用</font></p>“我准备好了！”窝瓜大吼道，“干吧！！算我一份！没人比我厉害！我就是你要的人！来啊！等啥啊？要的就是这个！”',
+	Produce: '窝瓜会压扁第一个接近它的僵尸。<p>伤害：<font color="#FF0000">极高</font><br>范围：<font color="#FF0000">短，覆盖所有它压到的僵尸。</font><br>用法：<font color="#FF0000">单独使用</font></p>“迎面走来的你让我如此蠢蠢欲动～”',
 	GetDY: function(b, c, a) {
 		return a[0] ? -21 : -10
 	},
@@ -3185,7 +3185,7 @@ oMelonPult = InheritO(oCabbage, {
             return ["images/Card/Plants/MelonPult.png", b + "0.gif", b + "0.gif", b + "Bullet.png", b + "attack.gif"].concat(arr)
         })(),
         Tooltip: "向敌人抛出带有溅射的西瓜瓣",
-        Produce: '西瓜投手对成群的僵尸造成大量伤害<p>伤害：<font color="#FF0000">大量</font><br>范围：<font color="#FF0000">投掷</font><br>特点：<font color="#FF0000">西瓜砸碎时会对附近的僵尸造成伤害</font></p>对于瓜哥自傲的发言，植物们表示强烈不满，并想通过一些更厉害的植物来浇灭他的信心，可惜他以前和双发一起混社会，脾气不怎么好，动不动就把瓜往植物脸上扔，对那些更厉害的植物不屑一顾，直到玉米炮的到来才让他彻底服气',
+        Produce: '西瓜投手对成群的僵尸造成大量伤害<p>伤害：<font color="#FF0000">大量</font><br>范围：<font color="#FF0000">投掷</font><br>特点：<font color="#FF0000">西瓜砸碎时会对附近的僵尸造成伤害</font></p>西瓜投手毫不羞怯。“在所有植物武器中，我的打击力度比较大。”，他说，“我可不是瞎吹牛。不信?自己数数就知道了。”',
         PrivateBirth(a) {
             a.BulletEle = NewImg(0, a.PicArr[3], "left:" + (a.pixelLeft + 50) + "px;top:" + (a.pixelTop + 10) + "px;width:55px;visibility:hidden;z-index:" + (a.zIndex + 2));
         },

@@ -763,7 +763,7 @@ oDancingZombie = InheritO(OrnNoneZombies, {
 		b = d + "spotlight2" + c + ".png" + $Random;
 		return ["images/Card/Zombies/DancingZombie.png", d + "0.gif", d + "DancingZombie.gif", d + "Attack.gif", d + "LostHead.gif", d + "LostHeadAttack.gif", d + "Head.gif" + $Random, d + "Die.gif" + $Random, d + "BoomDie.gif" + $Random, d + "SlidingStep.gif" + $Random, d + "Dancing.gif" + $Random, d + "Summon1.gif", d + "Summon2.gif", d + "Summon3.gif", d + "LostHeadSlidingStep.gif" + $Random, d + "LostHeadDancing.gif" + $Random, d + "LostHeadSummon.gif" + $Random, a, b]
 	})(),
-	Produce: '舞王僵尸和人类(在世或者死去的)如有雷同，纯属巧合。</p><p>韧性：<font color="#FF0000">中</font><br>特点：<font color="#FF0000">召唤伴舞僵尸</font></p>“麦蒄杰克逊还在！稳辣！”—来自一个iz玩家的尖叫。',
+	Produce: '舞王僵尸和人类(在世或者死去的)如有雷同，纯属巧合。</p><p>韧性：<font color="#FF0000">中</font><br>特点：<font color="#FF0000">召唤伴舞僵尸</font></p>舞王僵尸的最新唱片“抓住脑子啃啊啃”在僵尸界的人气正急速飙升。',
 	getSnowPea: function() {
 		this.PlaySlowballAudio();
 	},
@@ -1522,7 +1522,7 @@ oPoleVaultingZombie = InheritO(OrnNoneZombies, {
 		return ["images/Card/Zombies/PoleVaultingZombie.png", a + "0.gif", a + "PoleVaultingZombie.gif", a + "PoleVaultingZombieAttack.gif", a + "PoleVaultingZombieLostHead.gif", a + "PoleVaultingZombieLostHeadAttack.gif", a + "PoleVaultingZombieHead.gif" + $Random, a + "PoleVaultingZombieDie.gif" + $Random, a + "BoomDie.gif" + $Random, a + "PoleVaultingZombieWalk.gif", a + "PoleVaultingZombieLostHeadWalk.gif", a + "PoleVaultingZombieJump.gif", a + "PoleVaultingZombieJump2.gif", a + "1.gif"]
 	})(),
 	AudioArr: ["polevault", "grassstep"],
-	Produce: '撑杆僵尸运用标杆高高地跃过障碍物。<p>韧性：<font color="#FF0000">中</font><Br>速度：<font color="#FF0000">快,而后慢(跳跃后)</font><BR>特点：<font color="#FF0000">跃过他所碰到的第一筑植物</font></p>一些僵尸渴望走得更远、得到更多，这也促使他们由普通成为非凡。那就是撑杆僵尸。',
+	Produce: '撑杆僵尸运用标杆高高地跃过障碍物。<p>韧性：<font color="#FF0000">中</font><Br>速度：<font color="#FF0000">快,而后慢(跳跃后)</font><BR>特点：<font color="#FF0000">跃过他所碰到的第一筑植物</font></p>事实证明，体育生还是很吸引女生的，尤其是他，他用矫健的身躯与他的这一身装扮，成功吸引了一众女生，表白信数不胜数，但背地里他不爱运动，他的撑杆跳技术也一般（要不然怎么跳不过高坚果）',
 	getShadow: function(a) {
 		return "left:" + (a.beAttackedPointL - 20) + "px;top:" + (a.height - 35) + "px"
 	},
@@ -1782,7 +1782,7 @@ oScreenDoorZombie = InheritO(oNewspaperZombie, {
 	PlayNormalballAudio: function() {
 		PlayAudio("splat" + Math.floor(1 + Math.random() * 3))
 	},
-	Produce: '他的铁栅门是有效的盾牌。<p>韧性：<font color="#FF0000">低</font><br>铁栅门韧性：<font color="#FF0000">高</font><br>弱点：大喷菇和磁力菇</p>门板僵尸上次拜访过的房主防守并不专业，在吃掉房主的脑子后拿走了他家的铁栅门。',
+	Produce: '他的铁栅门是有效的盾牌。<p>韧性：<font color="#FF0000">低</font><br>铁栅门韧性：<font color="#FF0000">高</font><br>弱点：大喷菇和磁力菇</p>其实读报的增强，他也沾了一点光，但可惜，就算是这么一点光，星云也不让他沾，也许是因为他曾经有吃过脑的经历吧',
 	GoingDie: CZombies.prototype.GoingDie,
 	getFirePea: function(c, a, b) {
 		PlayAudio(b == c.WalkDirection ? ["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)] : "splat" + Math.floor(1 + Math.random() * 3));
@@ -2010,7 +2010,7 @@ oSnorkelZombie = InheritO(oDuckyTubeZombie1, {
                 width: 40,
                 height: 40
             }],
-	Produce: '潜水僵尸可以在水下前行。<p>韧性：<font color="#FF0000">低</font><br>特点：<font color="#FF0000">潜泳以避免遭到攻击<br>只在水池关卡出现</font></p>僵尸不呼吸。他们不需要空气。那么为什么潜水僵尸需要一套潜水装置来潜水呢？<br>答案：同行的压力。',
+	Produce: '潜水僵尸可以在水下前行。<p>韧性：<font color="#FF0000">低</font><br>特点：<font color="#FF0000">潜泳以避免遭到攻击<br>只在水池关卡出现</font></p>潜水僵尸一直都知道“低头做人”的僵生格言，这样可以让他多活一会儿，但是仅此而已',
 	JumpTime: 40,
 	getShadow: function(a) {
 		return "left:" + a.beAttackedPointL + "px;top:" + (a.height - 45) + "px"
