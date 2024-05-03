@@ -760,7 +760,7 @@ oSunFlower = InheritO(CPlants, {
 	SunNum: 50,
 	PicArr: ["images/Card/Plants/SunFlower.png", "images/Plants/SunFlower/0.gif", "images/Plants/SunFlower/SunFlower1.gif", "images/Plants/SunFlower/SunFlower.gif"],
 	Tooltip: "提供你额外的阳光",
-	Produce: '向日葵，为你生产额外阳光的经济作物。尝试尽可能多种植吧！<p>阳光产量：<font color="#FF0000">中等</font></p>向日葵情不自禁地和着节拍起舞。是什么节拍呢？嗨，是大地自己用来提神的爵士节拍，这种频率的节拍，只有向日葵才能听到。',
+	Produce: '向日葵，为你生产额外阳光的经济作物。尝试尽可能多种植吧！<p>阳光产量：<font color="#FF0000">中等</font></p>向日葵，也称坚果葵，全称会产阳光的坚果，它间接掌握着抵御僵尸的利器，它的瓜子就连僵尸也流连忘返，它也是i中的致富之宝，它足足有着坚果40分之3的血量，为群居性植物，常为一列至两列，纵列分布。',
 	BirthStyle: function(c, e, b, a) {
 		var d = b.childNodes[1];
 		d.src = "images/Plants/SunFlower/SunFlower.gif";
