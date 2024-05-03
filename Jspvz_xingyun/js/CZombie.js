@@ -3077,7 +3077,7 @@ oBalloonZombie = InheritO(OrnIZombies, {
 	AttackGif: 3, AttackGif_Up0: 6, AttackGif_Up1: 7, HeadGif: 8, DieGif: 9, 
 	UpGif: 10, DownGif: 11, BoomDieGif: 8, LostHeadGif: 5, LostHeadAttackGif: 5,
 
-    Produce: '这种僵尸通过挖地来绕过防线。<p>韧性：<font color="#FF0000">中</font><Br>速度：<font color="#FF0000">快,而后慢</font><BR>特点：<font color="#FF0000">挖地道，然后在草地的左侧现身</font><BR>弱点：<font color="#FF0000">分裂射手，磁力菇</font></p>矿工僵尸每周都要花三天的时间来等候挖地许可。',
+    Produce: '这种僵尸通过挖地来绕过防线。<p>韧性：<font color="#FF0000">中</font><Br>速度：<font color="#FF0000">快,而后慢</font><BR>特点：<font color="#FF0000">挖地道，然后在草地的左侧现身</font><BR>弱点：<font color="#FF0000">分裂射手，磁力菇</font></p>最近，他一直在听奥特曼的主题曲，据他所述，他好像是在某一处听到这首歌，觉得很好听，于是他现在也不挖土了，天天循环播放这首歌',
 	BirthCallBack: function(f) {
 		var e = f.delayT, d = f.id, c = f.Ele = $(d);
 		f.EleShadow = c.firstChild, f.EleBody = c.childNodes[1], SetHidden(f.EleShadow);
