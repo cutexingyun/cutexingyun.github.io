@@ -3185,7 +3185,7 @@ oMelonPult = InheritO(oCabbage, {
             return ["images/Card/Plants/MelonPult.png", b + "0.gif", b + "0.gif", b + "Bullet.png", b + "attack.gif"].concat(arr)
         })(),
         Tooltip: "向敌人抛出带有溅射的西瓜瓣",
-        Produce: '西瓜投手对成群的僵尸造成大量伤害<p>伤害：<font color="#FF0000">大量</font><br>范围：<font color="#FF0000">投掷</font><br>特点：<font color="#FF0000">西瓜砸碎时会对附近的僵尸造成伤害</font></p>西瓜投手毫不羞怯。“在所有植物武器中，我的打击力度比较大。”，他说，“我可不是瞎吹牛。不信?自己数数就知道了。”',
+        Produce: '西瓜投手对成群的僵尸造成大量伤害<p>伤害：<font color="#FF0000">大量</font><br>范围：<font color="#FF0000">投掷</font><br>特点：<font color="#FF0000">西瓜砸碎时会对附近的僵尸造成伤害</font></p>对于瓜哥自傲的发言，植物们表示强烈不满，并想通过一些更厉害的植物来浇灭他的信心，可惜他以前和双发一起混社会，脾气不怎么好，动不动就把瓜往植物脸上扔，对那些更厉害的植物不屑一顾，直到玉米炮的到来才让他彻底服气',
         PrivateBirth(a) {
             a.BulletEle = NewImg(0, a.PicArr[3], "left:" + (a.pixelLeft + 50) + "px;top:" + (a.pixelTop + 10) + "px;width:55px;visibility:hidden;z-index:" + (a.zIndex + 2));
         },
