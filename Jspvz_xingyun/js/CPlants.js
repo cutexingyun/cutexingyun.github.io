@@ -1514,7 +1514,7 @@ oCattail = InheritO(oPeashooter, {
 		return ["images/Card/Plants/Catttail.png", a + "cat.gif", a + "cat.gif", "images/Plants/Cactus/Projectile" + ($User.Browser.IE6 ? 8 : 32) + ".png","images/Plants/Peashooter/NonePeashooter.gif", a + "Attack.gif"]
 	})(),
 	Tooltip: "猫尾草能够攻击气球僵尸或任何一条路上的僵尸。",
-	Produce: '猫尾草能够攻击气球僵尸或任何一条路上的僵尸。<p><font color="#FF0000">必须种在睡莲上。</font></p>“喔！”猫尾草说，“喔喔喔！这让你困惑了么？你不会看到我的名字里有‘猫’，而且我也长得像猫咪，就期待我像猫儿一样‘喵喵’地叫吧？那种想法在这儿可不管用。我可不想被擅自归类。”', 
+	Produce: '猫尾草能够攻击气球僵尸或任何一条路上的僵尸。<p><font color="#FF0000">必须种在睡莲上。</font></p>魔法猫咪！稳辣！稳辣！猫尾草不知道从哪里听的这句话，总之在听完之后，她破防了，她怒骂道：“一群*东西！我下次就用我对待僵尸的方式十倍来对待你们！”', 
 	TriggerCheck: function(b, a) {
 		this.AttackCheck2(b) && ((this.canTrigger = 0, this.CheckLoop(b.id, a)))
 	},
