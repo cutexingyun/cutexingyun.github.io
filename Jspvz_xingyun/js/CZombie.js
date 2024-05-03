@@ -1766,6 +1766,7 @@ oScreenDoorZombie = InheritO(oNewspaperZombie, {
 	EName: "oScreenDoorZombie",
 	CName: "铁栅门僵尸",
 	OrnHP: 1100,
+	HP:270,
 	Lvl: 3,
 	SunNum: 100,
 	StandGif: 13,
