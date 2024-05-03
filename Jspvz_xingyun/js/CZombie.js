@@ -2940,7 +2940,8 @@ oBalloonZombie = InheritO(OrnIZombies, {
 		var a = "images/Zombies/BalloonZombie/";
 		return ["images/Card/Zombies/Balloonzombie.png", a + "0.gif", a + "1.gif", a + "Attack.gif", a + "Walk2.gif", a + "Attack2.gif", a + "Head.gif" + $Random, a + "Die.gif" + $Random, a + "Boom.gif", a + "Walk.gif", a + "Drop.gif", a + "Boom2.gif"]
 	})(),
-	Produce: '气球僵尸漂浮在空中，躲过大多数攻击。<p>韧性：<font color="#FF0000">低</font><br>特点：<font color="#FF0000">飞行</font><br>弱点：<font color="#FF0000">仙人掌和三叶草</font></p>气球僵尸真幸运。气球有很多功效，而其他僵尸都不曾捡到过。',
+	Produce: '气球僵尸漂浮在空中，躲过大多数攻击。<p>韧性：<font color="#FF0000">低</font><br>特点：<font color="#FF0000">飞行</font><br>弱点：<font color="#FF0000">仙人掌和三叶草</font></p>“气球在天空中飞，你说你有点难追~
+～”。',
 	BirthCallBack: function(e) {
 		var d = e.delayT, c = e.id, a = e.Ele = $(c), f = oGd.$Balloon, b = e.R;
 		e.EleShadow = a.firstChild;
