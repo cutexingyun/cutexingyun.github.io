@@ -1646,7 +1646,7 @@ oNewspaperZombie = InheritO(OrnIIZombies, {
 		return ["images/Card/Zombies/NewspaperZombie.png", a + "0.gif", a + "HeadWalk1.gif", a + "HeadAttack1.gif", a + "LostHeadWalk1.gif", a + "LostHeadAttack1.gif", a + "HeadWalk0.gif", a + "HeadAttack0.gif", a + "LostHeadWalk0.gif", a + "LostHeadAttack0.gif", a + "Head.gif" + $Random, a + "Die.gif" + $Random, a + "BoomDie.gif" + $Random, a + "LostNewspaper.gif", a + "1.gif"]
 	})(),
 	AudioArr: ["newspaper_rarrgh2"],
-	Produce: '他的报纸只能提供有限的防御。<p>韧性：<font color="#FF0000">中</font><br>报纸韧性：<font color="#FF0000">低</font><br>速度：正常，而后快(失去报纸后)</p>看到在另一个平行宇宙称霸的二爷，停留在原时空的读报也坐不住了，终于在星云的帮助下喝了药水，喝完后，他的感言：“ I feel I become stronger!}）,
+	Produce: '他的报纸只能提供有限的防御。<p>韧性：<font color="#FF0000">中</font><br>报纸韧性：<font color="#FF0000">低</font><br>速度：正常，而后快(失去报纸后)</p>看到在另一个平行宇宙称霸的二爷，停留在原时空的读报也坐不住了，终于在星云的帮助下喝了药水，喝完后，他的感言：“ I feel I become stronger!',
 	getShadow: function(a) {
 		return "left:75px;top:" + (a.height - 25) + "px"
 	},
