@@ -3471,7 +3471,7 @@ oKernelPult = InheritO(oCabbage, {
         beAttackedPointR: 90,
         beAttackedPointL: 50,
         Tooltip: "向敌人投掷玉米粒和黄油",
-        Produce: '玉米投手能向僵尸投掷玉米粒和黄油。<p>伤害：<font color="#FF0000">低（玉米粒），中（黄油）</font><br>范围：<font color="#FF0000">投掷</font><br>特殊：<font color="#FF0000">黄油会固定僵尸</font></p>玉米投手是投手兄弟的老大。他们三兄弟当中，衹有玉米始终记得其他兄弟的生日，为此他也略微有点烦他们。',
+        Produce: '玉米投手能向僵尸投掷玉米粒和黄油。<p>伤害：<font color="#FF0000">低（玉米粒），中（黄油）</font><br>范围：<font color="#FF0000">投掷</font><br>特殊：<font color="#FF0000">黄油会固定僵尸</font></p>其实玉米之间也有内斗，为了夺得每年的“求生玉”称号，它们有些便开始疯狂的投黄油，玩家常把他们称为“欧玉”，而剩下还有一些摆烂仔，它们因为各种原因始终只投玉米粒，被玩家称之为“非玉”',
         PicArr: (function() {
             var a = "images/Plants/KernelPult/";
             return ["images/Card/Plants/KernelPult.png", a + "kernelpult.gif", a + "kernelpult.gif", a + "attack1.gif", a + "attack2.gif", a + "corn.png", a + "Pbutter.png", a + "corn_hit.webp", a + "butter_hit.webp"]
