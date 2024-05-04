@@ -2099,6 +2099,7 @@ CheckLogin = function(inx) {
 SelectModal = function(g) {
 	HiddenLevel();
 	HiddenMiniGame(1);
+	HiddenSC(1);
 	HiddenRiddleGame(1);
 	AllAudioStop();
 	PausedAudioArr = [];
@@ -2162,7 +2163,6 @@ LoadLvl = function(e, c) {
 		document.getElementsByTagName("head").item(0))
 	},
 	[e && b ? 0 : e]);
-	$("aLvlLink").href = "html/2-1" + (e && !isNaN(e) ? "-" + e: "") + ".htm"
 },
 AppearTombstones = function(n, e, m) {
 	var r = oGd.$Tombstones,
@@ -2256,6 +2256,13 @@ ShowMiniGame = function() {
 },
 HiddenMiniGame = function(a) { ! a && PlayAudio("tap");
 	SetNone($("dMiniSmallContainer"))
+},
+ShowSC = function() {
+	PlayAudio("gravebutton");
+	SetBlock($("dSCSmallContainer"))
+},
+HiddenSC = function(a) { ! a && PlayAudio("tap");
+	SetNone($("dSCSmallContainer"))
 },
 ShowRiddleGame = function() {
     	PlayAudio("gravebutton");

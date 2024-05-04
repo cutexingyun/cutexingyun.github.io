@@ -54,7 +54,7 @@ google_ad_height = 15;
 		<div style="position:absolute;width:289px;height:127px;left:480px;top:252px;background:url(images/interface/SelectorScreen_Shadow_Challenge.png)"></div>
 		<div class="riddle" onmouseover="this.style.backgroundPosition='bottom';PlayAudio('bleep');" onmouseout="this.style.backgroundPosition='top'" onclick="ShowRiddleGame()"></div>
    		<div style="position:absolute;width:262px;height:122px;left:482px;top:325px;background:url(images/interface/SelectorScreen_Shadow_ZenGarden.png)"></div>
-  		<div class="scms" onmouseover="this.style.backgroundPosition='bottom';PlayAudio('bleep');" onmouseout="this.style.backgroundPosition='top'"></div>
+  		<div class="scms" onmouseover="this.style.backgroundPosition='bottom';PlayAudio('bleep');" onmouseout="this.style.backgroundPosition='top'" onclick="ShowSC()"></div>
 		<div class="handbook" onmouseover="this.style.backgroundPosition='bottom'" onmouseout="this.style.backgroundPosition='top'" onclick="ViewHandBook()"></div>
 		<div id="ZombieHand"></div> <!--僵尸手-->
 	</div>
@@ -215,6 +215,48 @@ LvlList=function(BLvl,SLvl1,SLvl2){
 				</script>
 				</table>
 				<div class="button" onmouseover="this.style.backgroundPosition='bottom'" onmouseout="this.style.backgroundPosition='top'"  onclick="HiddenMiniGame()">关闭</div>
+			</div>
+		</div>
+
+		<div id="dSCSmallContainer" class="TitleSmallContainer Challenge_Background">
+			<div id="dSCSmallTitle">生存模式</div>
+			<div id="dSC0" style="width:885px;height:475px;overflow-y:scroll;">
+				<table cellspacing="10" width="100%" style="position:static;">
+				<script>
+							(function () {
+								var l = 1, i = 0, s = "", LevelList = { // [标题, 图片, 是否新启一行]
+									ShengD: ["生存模式白天", "S1.png", false], 
+									ShengN: ["生存模式夜晚", "S2.png", false], 
+									ShengP: ["生存模式泳池", "S3.png", false], 
+									ShengF: ["生存模式浓雾", "S4.png", false], 
+									ShengD1: ["生存模式困难白天", "SC1.png", true], 
+									ShengN1: ["生存模式困难夜晚", "SC2.png", false], 
+									ShengP1: ["生存模式困难泳池", "SC3.png", false], 
+									ShengF1: ["生存模式困难浓雾", "SC4.png", false], 
+									wujin1: ["生存模式无尽白天", "SE1.png", true], 
+									wujin2: ["生存模式无尽夜晚", "SE2.png", false], 
+									wujin3: ["生存模式无尽泳池", "SE3.png", false], 
+									wujin4: ["生存模式无尽浓雾", "SE4.png", false], 
+								};
+
+								for (var Q in LevelList) {
+									var Title = LevelList[Q][0], IMG = LevelList[Q][1], NewLine = LevelList[Q][2];
+
+									if (i % 5 == 0) s += "<tr>"; // 如果是一行开始，直接加表头
+									else if (NewLine) { // 否则如果是新开一行的配置
+										while (i % 5 != 0) s += "<td></td>", ++i;
+										s += "</tr><tr>";
+									}
+
+									// 加入该入口的 HTMl 元素
+									s += '<td height="139" valign="top" onclick="SelectModal(\'' + Q + '\')"><div><img src="images/interface/' + IMG + '"></div><div class="list">' + Title + '</div></td>';
+									++i, l = Math.floor(i / 5) + 1, i % 5 == 0 && (++l, s += "</tr>"); // 如果末尾，则换行 
+								}
+								document.write(s);
+							})()
+				</script>
+				</table>
+				<div class="button" onmouseover="this.style.backgroundPosition='bottom'" onmouseout="this.style.backgroundPosition='top'"  onclick="HiddenSC()">关闭</div>
 			</div>
 		</div>
 

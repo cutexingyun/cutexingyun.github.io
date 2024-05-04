@@ -249,21 +249,21 @@ dd.yellow{color:#FF0}
 #dOptionsMenu .OMd0 .OMd1 div{height:30px}
 #dOptionsMenu .OMd0 .OMd1 div label{color:#FFF}
 
-#dMiniSmallContainer,#dRiddleSmallContainer,#dAdvSmallContainer{display:none;position:absolute;left:0;top:0}
-#dMiniSmallContainer table{position:absolute;left:0}
-#dRiddleTitle,#dMiniSmallTitle,#dAdvSmallTitle{position:relative;text-align:center;line-height:88px;height:88px;width:100%;font-size:30px; font-weight: bold; font-family: 黑体}
+#dMiniSmallContainer,#dSCSmallContainer,#dRiddleSmallContainer,#dAdvSmallContainer{display:none;position:absolute;left:0;top:0}
+#dMiniSmallContainer table,#dSCSmallContainer table{position:absolute;left:0}
+#dRiddleTitle,#dMiniSmallTitle,#dSCSmallTitle,#dAdvSmallTitle{position:relative;text-align:center;line-height:88px;height:88px;width:100%;font-size:30px; font-weight: bold; font-family: 黑体}
 #dRiddleInx{position:relative;height:473px;width:100%}
 #dRiddleInx div{position:absolute;width:50%;height:442px;text-align:center}
 #dRiddleInx .button{cursor:pointer;width:113px;height:41px;border-left:3px solid #85411C;border-right:3px solid #4E250C;border-top:3px solid #85411C;border-bottom:3px solid #4E250C;background-color:#8F431B;color:#FC6;font-weight:bold;font-size:14pt;font-family:幼圆;margin-top:26px}
 #dRiddleInx .inx0{cursor:pointer;top:0;left:50%;margin-left:-110px;width:221px;height:310px;background:url(images/interface/Almanac_IndexBack.png) no-repeat left top}
 #dRiddleInx .inx1{cursor:pointer;top:0;left:50%;margin-left:-110px;width:221px;height:310px;background:url(images/interface/Almanac_IndexBack.png) no-repeat right top}
 
-#dRiddle0 td,#dMini0 td{cursor:pointer;width:20%;text-align:center;background:url(images/interface/Challenge.png) no-repeat 50%;padding-top:18px}
+#dRiddle0 td,#dMini0 td,#dSC0 td{cursor:pointer;width:20%;text-align:center;background:url(images/interface/Challenge.png) no-repeat 50%;padding-top:18px}
 #dRiddle0{position:relative;height:473px;width:96%;top:-10px;display:none}
-#dRiddle0 .list,#dMini0 .list{margin-top:15px;height:45px}
+#dRiddle0 .list,#dMini0 .list,#dSC0 .list{margin-top:15px;height:45px}
 #dRiddle0 .button,#dRiddle1 .button{top:485px;position:absolute;left:30px;text-align:center;cursor:pointer;width:164px;height:26px;line-height:26px;background:url(images/interface/Almanac_IndexButton.png);color:#000080;font-size:12px}
 #dRiddle1{text-align:left;position:relative;height:473px;width:100%;display:none;top:-10px}
-#dRiddleClose,#dMini0 .button,#dAdvSmallContainer .button{position:absolute;left:700px;top:564px;text-align:center;cursor:pointer;width:89px;height:26px;line-height:26px;background:url(images/interface/Almanac_CloseButton.png);color:#000080;font-size:12px}
+#dRiddleClose,#dMini0 .button,#dSC0 .button,#dAdvSmallContainer .button{position:absolute;left:700px;top:564px;text-align:center;cursor:pointer;width:89px;height:26px;line-height:26px;background:url(images/interface/Almanac_CloseButton.png);color:#000080;font-size:12px}
 #dRiddle1 .list{width:48%}
 
 #dAdvSmallContainer{}

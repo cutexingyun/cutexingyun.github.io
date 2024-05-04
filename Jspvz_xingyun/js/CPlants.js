@@ -3906,5 +3906,6 @@ if(oBalloon.R==self.R&&self.C+1==oBalloon.C&&(oBalloon.EName=="oKernelPult"||oBa
             }
         },
         
-    });
+    }),
+ShengPlantList = [oPeashooter, oSunFlower, oCherryBomb, oWallNut, oPotatoMine, oSnowPea, oChomper, oRepeater, oPuffShroom, oSunShroom, oFumeShroom, oGraveBuster, oHypnoShroom, oScaredyShroom, oIceShroom, oDoomShroom, oLilyPad, oSquash, oThreepeater, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead, oMagnetShroom, oCabbage, oFlowerPot, oKernelPult, oCoffeeBean, oGarlic, oMelonPult, oGatlingPea, oTwinSunflower, oGloomShroom, oCattail, oWinterMelon, oSpikerock, oCobCannon]
 
