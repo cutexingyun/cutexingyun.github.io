@@ -262,8 +262,31 @@ var CZombies = function(b, a) {
 			var c = this;
 			$Z[c.id] = c;
 			oZ.add(c);
-			c.BirthCallBack(c)
+			c.BirthCallBack(c);c.GetOnclick(c)
 		},
+	GetOnclick: function(f) {
+		let c = this,
+		d = f.id,
+		zombieTarget = this;
+		if ( oS.LevelEName == 'Cob' ) {
+            		$(d).onclick = function(){
+                		c.getButter(zombieTarget)
+            		}
+		} else if ( oS.LevelEName == 'ChuiZi' ) {
+            		$(d).onclick = function(){
+                    		switch (c.Ornaments) {
+                        		case 0:
+                            		c.NormalDie();
+                            		break;
+                        		case 1:
+                            		c.getHit0(c, Math.min(c.OrnHP, 900), 0);
+                            		break;
+                        		default:
+                            		c.CheckOrnHP(c, d, c.OrnHP, 400, c.PicArr, 0, 0, 0)
+                    		}
+			}
+		}
+	},
 		getCrushed: function(c) {
 			return true
 		},
