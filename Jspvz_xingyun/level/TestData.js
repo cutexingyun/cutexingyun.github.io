@@ -23,7 +23,7 @@ oS.Init({
 	[oConeheadZombie, 1, 1],
 	[oFlagZombie, 1, 1],
 	[oPoleVaultingZombie, 1, 1],
-	[oBucketheadZombie, 1, 1,[1]]/*,
+	[oBucketheadZombie, 1, 1,[1]],
 	[oNewspaperZombie, 1, 1],
 	[oScreenDoorZombie, 1, 1],
 	[oFootballZombie, 1, 1],
@@ -39,7 +39,7 @@ oS.Init({
 	[oBalloonZombie, 1, 1],
 	[oImp, 1, 1],
 	[oDiggerZombie, 1, 1]
-	*/
+	
     ], 
     FlagNum: 20,
     FlagToSumNum: {
