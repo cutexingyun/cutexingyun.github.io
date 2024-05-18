@@ -33,18 +33,18 @@ oS.Init({
 	[oDuckyTubeZombie2, 1, 1],
 	[oDuckyTubeZombie3, 1, 1],
 	[oSnorkelZombie, 1, 1],
-	[oZomboni, 1, 1],
-	[oDolphinRiderZombie, 1, 1],
-	[oJackinTheBoxZombie, 1, 1],
+	[oZomboni, 1, 1,[8]],
+	[oDolphinRiderZombie, 1, 1,[3]],
+	[oJackinTheBoxZombie, 1, 1,[4]],
 	[oBalloonZombie, 1, 1],
-	[oImp, 1, 1],
-	[oDiggerZombie, 1, 1]
+	[oImp, 1, 1,[3]],
+	[oDiggerZombie, 1, 1,[2]]
 	
     ], 
     FlagNum: 20,
     FlagToSumNum: {
-        a1: [],
-        a2: [2]
+        a1: [1,5,7,10],
+        a2: [2,10,17,25,45]
     },
     FlagToMonitor: {
         9 : [ShowLargeWave, 0],
