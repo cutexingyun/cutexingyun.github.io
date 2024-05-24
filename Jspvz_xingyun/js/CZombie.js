@@ -1794,7 +1794,7 @@ oNewspaperZombie1 = InheritO(OrnIIZombies, {
 	StandGif: 14,
 	width: 216,
 	height: 164,
-	SunNum: 75,
+	SunNum: 50,
 	beAttackedPointL: 60,
 	beAttackedPointR: 130,
 	LostPaperSpeed: 4.8,
