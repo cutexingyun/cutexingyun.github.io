@@ -15,7 +15,7 @@ oS.Init({
     LoadMusic: "Mountains", // 加载音乐
     StartGameMusic: "Mountains", // 开始游戏音乐
     ArP: { // ArP对象
-        ArC: [1, 3], // ArC数组
+        ArC: [1, 5], // ArC数组
         ArR: [1, 5], // ArR数组
         Auto: 1, // 是否自动
         P: [
