@@ -1785,6 +1785,151 @@ oNewspaperZombie = InheritO(OrnIIZombies, {
 		[h, f[[g.NormalGif = g.OrnLostNormalGif, g.AttackGif = g.OrnLostAttackGif][b]]]))
 	}
 }),
+oNewspaperZombie1 = InheritO(OrnIIZombies, {
+	EName: "oNewspaperZombie1",
+	CName: "读报僵尸",
+	OrnHP: 150,
+	Lvl: 2,
+	LostPaperGif: 13,
+	StandGif: 14,
+	width: 216,
+	height: 164,
+	SunNum: 75,
+	beAttackedPointL: 60,
+	beAttackedPointR: 130,
+	LostPaperSpeed: 4.8,
+        HeadPosition: [{
+            x: 62,
+            y: 30,
+            width: 40,
+            height: 40
+        }, {
+            x: 62,
+            y: 30,
+            width: 40,
+            height: 40
+        }],
+	PicArr: (function() {
+		var a = "images/Zombies/NewspaperZombie/";
+		return ["images/Card/Zombies/NewspaperZombie.png", a + "0.gif", a + "HeadWalk1.gif", a + "HeadAttack1.gif", a + "LostHeadWalk1.gif", a + "LostHeadAttack1.gif", a + "HeadWalk0.gif", a + "HeadAttack0.gif", a + "LostHeadWalk0.gif", a + "LostHeadAttack0.gif", a + "Head.gif" + $Random, a + "Die.gif" + $Random, a + "BoomDie.gif" + $Random, a + "LostNewspaper.gif", a + "1.gif"]
+	})(),
+	AudioArr: ["newspaper_rarrgh2"],
+	Produce: '他的报纸只能提供有限的防御。<p>韧性：<font color="#FF0000">中</font><br>报纸韧性：<font color="#FF0000">低</font><br>速度：正常，而后快(失去报纸后)</p>看到在另一个平行宇宙称霸的二爷，停留在原时空的读报也坐不住了，终于在星云的帮助下喝了药水，喝完后，他的感言：“ I feel I become stronger!',
+	getShadow: function(a) {
+		return "left:75px;top:" + (a.height - 25) + "px"
+	},
+	GoingDie: function(b) {
+		var a = this,
+		c = a.id;
+		a.EleBody.src = b;
+		oSym.addTask(200, ClearChild, [NewImg(0, a.PicArr[a.HeadGif] + Math.random(), "left:" + a.AttackedLX + "px;top:" + (a.pixelTop - 20) + "px;z-index:" + a.zIndex, EDPZ)]);
+		a.beAttacked = 0;
+		a.FreeFreezeTime = a.FreeSetbodyTime = a.FreeSlowTime = 0;
+		a.AutoReduceHP(c)
+	},
+	getHurtOrnLost: function(j, a, g, m, c, l, k, i) {
+		var e = this;
+		if (!e.beAttacked) {
+			k && e.DisappearDie();
+			return
+		}
+		var b = e.id,
+		h = e.HP,
+		d = e.PicArr,
+		f = e.isAttacking;
+		switch (true) {
+		case(h -= g) < 1 : e.HP = 0;
+			e.NormalDie();
+			return;
+		case h < 91 : e.HP = h;
+			e.GoingDie(d[[e.OrnLostHeadNormalGif, e.OrnLostHeadAttackGif][f]]);
+			return
+		}
+		e.HP = h;
+		switch (m) {
+		case - 1 : e.getSlow(e, b, 1000);
+			break;
+		case 1:
+			e.getFireball(e, b, a);
+			break;
+		default:
+			!i && j == -1 && e.PlayNormalballAudio()
+		}
+		SetAlpha(e.EleBody, 50, 0.5);
+		oSym.addTask(10,
+		function(q) {
+			var n = $Z[q];
+			n && SetAlpha(n.EleBody, 100, 1)
+		},
+		[b])
+	},
+	getSnowPea: function(c, a, b) {
+		PlayAudio("splat" + Math.floor(1 + Math.random() * 3));
+		c.getHit0(c, a, b)
+	},
+	getFirePea: function(f, b, e) {
+		f.PlayFireballAudio(); (f.FreeSlowTime || f.FreeFreezeTime) && (f.Speed = f.OSpeed, f.FreeSlowTime = 0, f.FreeFreezeTime = 0);
+		f.Attack = 100;
+		var d = f.AttackedLX,
+		g = f.AttackedRX,
+		a = oZ.getArZ(d, d + 40, f.R),
+		c = a.length,
+		h;
+		while (c--) { (h = a[c]) != this && h.getFirePeaSputtering()
+		} (f.HP -= b) < f.BreakPoint ? (f.getFirePea = OrnNoneZombies.prototype.getFirePea, f.GoingDie(f.PicArr[[f.LostHeadGif, f.LostHeadAttackGif][f.isAttacking]]), f.getHit = f.getHit0 = f.getHit1 = f.getHit2 = f.getHit3 = function() {}) : (f.CheckOrnHP(f, f.id, f.OrnHP, b, f.PicArr, f.isAttacking, 0), f.SetAlpha(f, f.EleBody, 50, 0.5), oSym.addTask(10,
+		function(j, i) { (i = $Z[j]) && i.SetAlpha(i, i.EleBody, 100, 1)
+		},
+		[f.id]))
+	},
+	getHit0: function(c, a, b) {
+		b == c.WalkDirection ? (c.CheckOrnHP(c, c.id, c.OrnHP, a, c.PicArr, c.isAttacking, 1), c.SetAlpha(c, c.EleBody, 50, 0.5), oSym.addTask(10,
+		function(e, d) { (d = $Z[e]) && d.SetAlpha(d, d.EleBody, 100, 1)
+		},
+		[c.id])) : (c.HP -= a) < c.BreakPoint && (c.GoingDie(c.PicArr[[c.LostHeadGif, c.LostHeadAttackGif][c.isAttacking]]), c.getFirePea = OrnNoneZombies.prototype.getFirePea, c.getSnowPea = OrnNoneZombies.prototype.getSnowPea, c.getHit = c.getHit0 = c.getHit1 = c.getHit2 = c.getHit3 = function() {})
+	},
+	getHit1: function(b, a) { (b.HP -= a) < b.BreakPoint ? (b.GoingDie(b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]), b.getFirePea = OrnNoneZombies.prototype.getFirePea, b.getSnowPea = OrnNoneZombies.prototype.getSnowPea, b.getHit = b.getHit0 = b.getHit1 = b.getHit2 = b.getHit3 = function() {}) : (b.CheckOrnHP(b, b.id, b.OrnHP, a, b.PicArr, b.isAttacking, 0), b.SetAlpha(b, b.EleBody, 50, 0.5), oSym.addTask(10,
+		function(d, c) { (c = $Z[d]) && c.SetAlpha(c, c.EleBody, 100, 1)
+		},
+		[b.id]))
+	},
+	getHit2: function(b, a) { (b.HP -= a) < b.BreakPoint ? (b.GoingDie(b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]), b.getFirePea = OrnNoneZombies.prototype.getFirePea, b.getSnowPea = OrnNoneZombies.prototype.getSnowPea, b.getHit = b.getHit0 = b.getHit1 = b.getHit2 = b.getHit3 = function() {}) : (b.SetAlpha(b, b.EleBody, 50, 0.5), oSym.addTask(10,
+		function(d, c) { (c = $Z[d]) && c.SetAlpha(c, c.EleBody, 100, 1)
+		},
+		[b.id]))
+	},
+	getHit3: function(b, a) { (b.HP -= a) < b.BreakPoint ? (b.GoingDie(b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]), b.getFirePea = OrnNoneZombies.prototype.getFirePea, b.getSnowPea = OrnNoneZombies.prototype.getSnowPea, b.getHit = b.getHit0 = b.getHit1 = b.getHit2 = b.getHit3 = function() {}) : (b.CheckOrnHP(b, b.id, b.OrnHP, a, b.PicArr, b.isAttacking, 0), b.SetAlpha(b, b.EleBody, 50, 0.5), oSym.addTask(10,
+		function(d, c) { (c = $Z[d]) && c.SetAlpha(c, c.EleBody, 100, 1)
+		},
+		[b.id]))
+	},
+	CheckOrnHP: function(g, h, d, c, f, b, a) {
+		var e = OrnNoneZombies.prototype; (g.OrnHP = d -= c) < 1 && (a && (g.HP += d), g.ChkActs = function() {
+			return 1
+		},
+		g.ChkActs1 = function() {
+			return 1
+		},
+		g.EleBody.src = f[g.LostPaperGif] + $Random + Math.random(), g.Ornaments = 0, g.LostHeadGif = 8, g.LostHeadAttackGif = 9, g.getFirePea = e.getFirePea, g.getSnowPea = e.getSnowPea, g.getHit = g.getHit0 = g.getHit1 = g.getHit2 = g.getHit3 = e.getHit, oSym.addTask(150,
+		function(m, l) {
+			var k = $Z[m];
+			if (!k) {
+				return
+			}
+			var j = CZombies.prototype,
+			i = k.OSpeed = k.LostPaperSpeed;
+			k.ChkActs = j.ChkActs;
+			k.ChkActs1 = j.ChkActs1;
+			k.Speed && (k.Speed = !k.FreeSlowTime ? i: 0.5 * i);
+			if (!k.beAttacked) {
+				return
+			}
+			PlayAudio("newspaper_rarrgh2");
+			k.EleBody.src = l;
+			k.JudgeAttack()
+		},
+		[h, f[[g.NormalGif = g.OrnLostNormalGif, g.AttackGif = g.OrnLostAttackGif][b]]]))
+	}
+}),
 oScreenDoorZombie = InheritO(oNewspaperZombie, {
 	EName: "oScreenDoorZombie",
 	CName: "铁栅门僵尸",

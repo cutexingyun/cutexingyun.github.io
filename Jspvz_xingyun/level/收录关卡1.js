@@ -1,16 +1,16 @@
 // 初始化游戏设置
 oS.Init({
-    PName: [oPeashooter], // 植物名称数组
-    ZName: [oZombie], // 僵尸名称数组
+    PName: [oPotatoMine,oSpikeweed,oStarfruit,oTallNut,oSunFlower,oCactus,oGloomShroom,oFumeShroom,oChomper,oSnowPea], // 植物名称数组
+    ZName: [oNewspaperZombie1,oPoleVaultingZombie], // 僵尸名称数组
     PicArr: ["images/interface/background2.jpg", "images/interface/trophy.png", "images/interface/Stripe.png"], // 图片数组
     backgroundImage: "images/interface/background2.jpg", // 背景图片
     ShowScroll: false, // 是否显示滚动条
-    SunNum: 600, // 初始阳光数量
+    SunNum: 200, // 初始阳光数量
     BrainsNum: 5, // 初始大脑数量
     ProduceSun: false, // 是否产生阳光
     CardKind: 1, // 卡片种类
     DKind: 0, // D种类
-    LevelName:'Test', // 关卡名称
+    LevelName:'五列小阵', // 关卡名称
     LvlEName: "ImZombie", // 关卡E名称
     LoadMusic: "Mountains", // 加载音乐
     StartGameMusic: "Mountains", // 开始游戏音乐
@@ -19,21 +19,30 @@ oS.Init({
         ArR: [1, 5], // ArR数组
         Auto: 1, // 是否自动
         P: [
-		[0, 1, 1],//植物，列，行
-		[0, 1, 2],
-		[0, 1, 3],
-		[0, 1, 4],
-		[0, 1, 5],
-		[0, 2, 1],
-		[0, 2, 2],
-		[0, 2, 3],
-		[0, 2, 4],
-		[0, 2, 5],
-		[0, 3, 1],
-		[0, 3, 2],
+		[0, 3, 1],//植物，列，行
 		[0, 3, 3],
+		[0, 1, 4],
 		[0, 3, 4],
-		[0, 3, 5]
+		[0, 4, 4],
+		[0, 4, 5],
+        [0, 5, 5],
+		[1, 2, 1],
+		[1, 1, 2],
+		[1, 1, 3],
+		[1, 2, 3],
+		[1, 5, 5],
+		[2, 1, 1],
+		[3, 4, 5],
+		[4, 4, 2],
+		[4, 5, 1],
+		[4, 5, 3],
+        [4, 3, 5],
+        [5, 2 ,2],
+        [5, 1, 5],
+        [6, 2 ,5],
+        [7, 4 ,3],
+        [8, 3 ,2],
+        [9, 2 ,4]
 	] // P数组
     },
     // 自动增长谜题
