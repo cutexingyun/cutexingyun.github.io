@@ -1671,7 +1671,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
 			[e, d]))
 		},
 		[b, c]);
-		c.Summon(c, b)
+		//c.Summon(c, b)
 	},
 	NormalAttack: function(a) {
 		var b = $Z[a];
