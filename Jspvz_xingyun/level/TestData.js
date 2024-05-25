@@ -1,6 +1,6 @@
 
 oS.Init({
-    PName: [oPeashooter, oSunFlower, oCherryBomb, oWallNut, oPotatoMine, oSnowPea, oChomper, oRepeater, oPuffShroom, oSunShroom, oFumeShroom, oGraveBuster, oHypnoShroom, oScaredyShroom, oIceShroom, oDoomShroom, oLilyPad, oSquash, oThreepeater, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead, oMagnetShroom, oCabbage, oFlowerPot, oKernelPult, oCoffeeBean, oGarlic, oMelonPult, oGatlingPea, oTwinSunflower, oGloomShroom, oCattail, oWinterMelon, oSpikerock, oCobCannon],
+    PName: [oPeashooter, oSunFlower,oSnowPea1, oCherryBomb, oWallNut, oPotatoMine, oSnowPea, oChomper, oRepeater, oPuffShroom, oSunShroom, oFumeShroom, oGraveBuster, oHypnoShroom, oScaredyShroom, oIceShroom, oDoomShroom, oLilyPad, oSquash, oThreepeater, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead, oMagnetShroom, oCabbage, oFlowerPot, oKernelPult, oCoffeeBean, oGarlic, oMelonPult, oGatlingPea, oTwinSunflower, oGloomShroom, oCattail, oWinterMelon, oSpikerock, oCobCannon],
     ZName: [oZombie,oConeheadZombie,oFlagZombie,oPoleVaultingZombie,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oDancingZombie1,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie],
     PicArr: ["images/interface/background3.jpg"], 
     backgroundImage: "images/interface/background3.jpg",
@@ -23,12 +23,12 @@ oS.Init({
 	[oConeheadZombie, 1, 1],
 	[oFlagZombie, 1, 1],
 	[oPoleVaultingZombie, 1, 1],
-	[oBucketheadZombie, 1, 1,[1]],
+	[oBucketheadZombie, 1, 1,],
 	[oNewspaperZombie, 1, 1],
 	[oScreenDoorZombie, 1, 1],
 	[oFootballZombie, 1, 1],
 	[oDancingZombie, 1, 1],
-    [oDancingZombie1, 1, 1,[1]],
+    [oDancingZombie1, 1, 1,],
 	[oBackupDancer, 1, 1],
 	[oDuckyTubeZombie1, 1, 1],
 	[oDuckyTubeZombie2, 1, 1],
