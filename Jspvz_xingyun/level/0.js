@@ -23,22 +23,5 @@ oS.Init({
         NewAudio({
             source: "evillaugh"
         });
-        (function() { // 页面初始化动画
-            var animUp = function(y) {
-                    $('dBalloonZombie') && ($('dBalloonZombie')
-                        .style.top = (y -= 2.75) + 'px');
-                    oSym.addTask(5, function(y) {
-                        (y < -19 ? animDown : animUp)(y)
-                    }, [y]);
-                },
-                animDown = function(y) {
-                    $('dBalloonZombie') && ($('dBalloonZombie')
-                        .style.top = (y += 1.1) + 'px');
-                    oSym.addTask(4, function(y) {
-                        (y > 34 ? animUp : animDown)(y)
-                    }, [y]);
-                };
-            animUp(35);
-        })();
     }
 });

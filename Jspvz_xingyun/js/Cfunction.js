@@ -2027,7 +2027,7 @@ addCookie = function(b, d, e) {
 deleteCookie = function(a) {
 	document.cookie = a + "=0;"
 },
-WordUTF8 = '<div id="dLogo" style="position:absolute;width:900px;height:600px;z-index:1"><div id="LogoWord" style="position:absolute;color:#FF0;top:285px;width:100%;height:140px"><span style="position:absolute;width:135px;height:100%;left:400px;top:0;cursor:pointer" onclick="PlayAudio(\'gravebutton\');SetBlock($(\'dSurface\'),$(\'iSurfaceBackground\'));ShowNameDiv()"></span><div style="position:absolute;font-size:13px;left:610px;text-align:center;width:140px;top:110px;line-height:1.6;font-weight:bold"><span style="cursor:pointer"></span></div></div><div id="dBalloonZombie"><img src="images/interface/balloon_zombie32.png"></div></div>',
+WordUTF8 = '<div id="dLogo" style="position:absolute;width:900px;height:600px;z-index:1"><div id="LogoWord" style="position:absolute;color:#FF0;top:285px;width:100%;height:140px"><span style="position:absolute;width:135px;height:100%;left:400px;top:0;cursor:pointer" onclick="PlayAudio(\'gravebutton\');SetBlock($(\'dSurface\'),$(\'iSurfaceBackground\'));ShowNameDiv()"></span><div style="position:absolute;font-size:13px;left:610px;text-align:center;width:140px;top:110px;line-height:1.6;font-weight:bold"><span style="cursor:pointer"></span></div></div></div>',
 ShowNameDiv = function() {
 },
 GotoAuthorWebsite = function(b) {
