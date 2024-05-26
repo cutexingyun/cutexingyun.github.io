@@ -1,11 +1,11 @@
 
 oS.Init({
-    PName: [oPuffShroom1,oSnowPea1,oNutBowling,oHugeNutBowling,oBoomNutBowling,oHypnoShroom1,oLawnCleaner,oCoffeeBean],
+    PName: [oPuffShroom1,oSnowPea1,oNutBowling,oHugeNutBowling,oBoomNutBowling,oGatlingPea1,oHypnoShroom1,oGloomShroom1,oLawnCleaner,oCoffeeBean],
     ZName: [oZombie,oConeheadZombie,oFlagZombie,oPoleVaultingZombie,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oDancingZombie1,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie],
-    PicArr: ["images/interface/background1unsodded_1.jpg"], 
-    backgroundImage: "images/interface/background1unsodded_1.jpg",
-	Coord:1,
-	LF:[0,0,0,1,0,0,0],
+    PicArr: ["images/interface/background3.jpg"], 
+    backgroundImage: "images/interface/background3.jpg",
+	Coord:2,
+	LF:[0,1,1,2,2,1,1],
 	//ZF:[0,0,0,2,2,0,0],
     CanSelectCard: 1, 
     LevelName: "测试",  

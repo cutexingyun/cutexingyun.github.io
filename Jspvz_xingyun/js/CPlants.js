@@ -700,6 +700,88 @@ oGatlingPea = InheritO(oPeashooter, {
 		[this.id, 3])
 	}
 }),
+oGatlingPea0 = InheritO(oPeashooter, {
+	EName: "oGatlingPea0",
+	CName: "加特林",
+	width: 88,
+	height: 84,
+	beAttackedPointR: 68,
+	SunNum: 250,
+	coolTime: 50,
+	PicArr: ["images/Card/Plants/GatlingPea.png", "images/Plants/GatlingPea/0.gif", "images/Plants/GatlingPea/GatlingPea.gif", "images/Plants/PB00.gif", "images/Plants/PeaBulletHit.gif"],
+	AudioArr: ["splat1", "splat2", "splat3", "plastichit", "shieldhit", "shieldhit2"],
+	Tooltip: "一次发射四颗豌豆<br>(需要双发射手)",
+	Produce: '加特林可以一次发射四颗豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">四倍<br>只能种在双发射手上</font></p>当加特林宣布他要参军的时候，他的父母很为他担心，他们异口同声地对他说：“亲爱的，但这太危险了。”加特林拒绝让步，“生活本就危险，”他这样回答着，此时他的眼睛里，正闪烁着钢铁般的信念。',
+	PrivateBirth: function(c) {
+		var b = c.AttackedLX,
+		a = b - 40;
+		c.BulletClass = NewO({
+			X: b,
+			R: c.R,
+			D: 0,
+			Attack: 20,
+			Kind: c.BKind,
+			ChangeC: 0,
+			pixelLeft: a,
+			F: oGd.MB1
+		});
+		c.BulletEle = NewImg(0, c.PicArr[3], "left:" + a + "px;top:" + (c.pixelTop + 8) + "px;visibility:hidden;z-index:" + (c.zIndex + 2))
+	},
+	NormalAttack1: oPeashooter.prototype.NormalAttack,
+	NormalAttack: function(a) {
+		this.NormalAttack1();
+		oSym.addTask(15,
+		function(d, b) {
+			var c = $P[d];
+			c && c.NormalAttack1(); --b && oSym.addTask(15, arguments.callee, [d, b])
+		},
+		[this.id, 3])
+	}
+}),
+oGatlingPea1 = InheritO(oGatlingPea0, {
+	EName: "oGatlingPea1",
+	CName: "加特林plus",
+	width: 88,
+	height: 84,
+	beAttackedPointR: 68,
+	SunNum: 450,
+	coolTime: 30,
+	PicArr: ["images/Card/Plants/GatlingPea.png", "images/Plants/GatlingPea/0.gif", "images/Plants/GatlingPea/GatlingPea.gif", "images/Plants/PB-10.gif", "images/Plants/PeaBulletHit.gif"],
+	AudioArr: ["splat1", "splat2", "splat3", "plastichit", "shieldhit", "shieldhit2"],
+	Tooltip: "一次发射四颗冰豌豆",
+	Produce: '加特林可以一次发射四颗豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">四倍<br>只能种在双发射手上</font></p>当加特林宣布他要参军的时候，他的父母很为他担心，他们异口同声地对他说：“亲爱的，但这太危险了。”加特林拒绝让步，“生活本就危险，”他这样回答着，此时他的眼睛里，正闪烁着钢铁般的信念。',
+		NormalAttack: function() {
+		var a = this,
+		b = "PB" + Math.random();
+		EditEle(a.BulletEle.cloneNode(false), {
+			id: b
+		},
+		0, EDPZ);
+		oSym.addTask(15,
+		function(d) {
+			var c = $(d);
+			c && SetVisible(c)
+		},
+		[b]);
+		oSym.addTask(15,
+		function(f, j, h, c, n, i, m, k, o, g) {
+			var l, e = GetC(n),
+			d = oZ["getZ" + c](n, i);
+			m < 1 && g[i + "_" + e] && k != e && (PlayAudio("firepea"), ++m && (h = 40), k = e, j.src = "images/Plants/PB" + m + c + ".gif");
+			d && d.Altitude == 1 ? (d[{
+				"-1": "getSnowPea",
+				0 : "getPea",
+				1 : "getFirePea"
+			} [m]](d, h, c), (SetStyle(j, {
+				left: o + 28 + "px",
+				width: "52px",
+				height: "46px"
+			})).src = "images/Plants/PeaBulletHit.gif", oSym.addTask(10, ClearChild, [j])) : (n += (l = !c ? 5 : -5)) < oS.W && n > 100 ? (j.style.left = (o += l) + "px", oSym.addTask(1, arguments.callee, [f, j, h, c, n, i, m, k, o, g])) : ClearChild(j)
+		},
+		[b, $(b), 20, 0, a.AttackedLX, a.R, -1, 0, a.AttackedLX - 40, oGd.$Torch])
+	
+	}
+}),
 oSplitPea = InheritO(oPeashooter, {
 	EName: "oSplitPea",
 	CName: "分裂射手",
@@ -2048,6 +2130,68 @@ oGloomShroom = InheritO(oFumeShroom, {
 		var c = b[1];
 		return c && c.EName == "oFumeShroom"
 	},
+	BirthStyle: function(c, d, b, a) {
+		oGd.$[c.R + "_" + c.C + "_1"] && oGd.$[c.R + "_" + c.C + "_1"].Sleep && (c.canTrigger = 0, c.Sleep = 1, b.childNodes[1].src = c.PicArr[3]);
+		EditEle(b, { id: d }, a, EDPZ);
+	},
+	GetDX: CPlants.prototype.GetDX,
+	PrivateBirth: function(b) {
+		var a = b.id;
+		NewEle(a + "_Bullet", "div", "position:absolute;visibility:hidden;width:210px;height:200px;left:" + (b.pixelLeft - 60) + "px;top:" + (b.pixelTop - 65) + "px;background:url(images/Plants/GloomShroom/GloomShroomBullet.gif);z-index:" + (b.zIndex + 1), 0, EDPZ)
+	},
+	PrivateDie: function(a) {
+		ClearChild($(a.id + "_Bullet"))
+	},
+	getTriggerRange: function(c, d, e) {
+		var f = GetX(this.C),
+		b = this.MinX = f - 120,
+		a = this.MaxX = f + 120;
+		return [[b, a, 0]]
+	},
+	getTriggerR: function(c) {
+		var b = this.MinR = c > 2 ? c - 1 : 1,
+		a = this.MaxR = c < oS.R ? Number(c) + 1 : c;
+		return [b, a]
+	},
+	NormalAttack: function() {
+		var k = this,
+		g, f = k.MaxR,
+		c = k.MinX,
+		b = k.MaxX,
+		e, h, a, j = k.id,
+		d = $(j),
+		l = j + "_Bullet";
+		for (g = k.MinR; g <= f; g++) {
+			e = oZ.getArZ(c, b, g);
+			for (h = e.length; h--; (a = e[h]).Altitude < 2 && a.getHit1(a, 80)) {}
+		}
+		oSym.addTask(100,
+		function(i) {
+			PlayAudio(["kernelpult", "kernelpult2"][Math.floor(Math.random() * 2)]); --i && oSym.addTask(100, arguments.callee, [i])
+		},
+		[4]);
+		d.childNodes[1].src = "images/Plants/GloomShroom/GloomShroomAttack.gif";
+		SetVisible($(l));
+		ImgSpriter(l, j, [["0 0", 9, 1], ["0 -200px", 9, 2], ["0 -400px", 9, 3], ["0 -600px", 9, 4], ["0 -800px", 9, 5], ["0 -1000px", 9, 6], ["0 -1200px", 9, 7], ["0 -1400px", 9, 8], ["0 -1600px", 9, 9], ["0 -1800px", 9, 10], ["0 -2000px", 9, 11], ["0 -2200px", 9, -1]], 0,
+		function(m, n) {
+			var i = $(n);
+			$P[n] && (i.childNodes[1].src = "images/Plants/GloomShroom/GloomShroom.gif");
+			SetHidden($(m))
+		})
+	}
+}),
+oGloomShroom1 = InheritO(oRepeater, {
+	EName: "oGloomShroom1",
+	CName: "曾哥plus",
+	width: 88,
+	height: 83,
+	beAttackedPointR: 68,
+	SunNum: 150,
+	coolTime: 50,
+	PicArr: ["images/Card/Plants/GloomShroom.png", "images/Plants/GloomShroom/0.gif", "images/Plants/GloomShroom/GloomShroom.gif", "images/Plants/GloomShroom/GloomShroomSleep.gif", "images/Plants/GloomShroom/GloomShroomAttack.gif", "images/Plants/GloomShroom/GloomShroomBullet.gif"],
+	AudioArr: ["kernelpult", "kernelpult2"],
+	Tooltip: "曾哥plus他再也不需要大喷菇了",
+	Produce: '伪娘终结者，喜欢围绕自身释放大量绵羊音<p><font color="#FF0000">必须种植在大喷菇上</font></p>起初人们一直非议他，后来曾哥用自己独特的绵羊音横扫了宇宙拆迁办，全世界都拜倒在他的脚下。“听说有个节目叫‘快男’？”曾哥说，“没有我在他们真应该感到羞愧。”他于是决定明年去看看。',
 	BirthStyle: function(c, d, b, a) {
 		oGd.$[c.R + "_" + c.C + "_1"] && oGd.$[c.R + "_" + c.C + "_1"].Sleep && (c.canTrigger = 0, c.Sleep = 1, b.childNodes[1].src = c.PicArr[3]);
 		EditEle(b, { id: d }, a, EDPZ);
