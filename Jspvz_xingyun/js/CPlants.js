@@ -556,36 +556,15 @@ oSnowPea1 = InheritO(oSnowPea, {
 	Tooltip: "一次发射两寒冰豌豆",
 	Produce: '双冰射手可以一次发射两颗冰豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">两倍</font></p>作者声明:双发寒冰射手和双发射手没有一点关系',
 	NormalAttack1: oPeashooter.prototype.NormalAttack,
-	NormalAttack: function() {
-		var a = this,
-		b = "PB" + Math.random();
-		EditEle(a.BulletEle.cloneNode(false), {
-			id: b
-		},
-		0, EDPZ);
+	NormalAttack: function(a) {
+		this.NormalAttack1();
 		oSym.addTask(15,
-		function(d) {
-			var c = $(d);
-			c && SetVisible(c)
+		function(c) {
+			var b = $P[c];
+			b && b.NormalAttack1()
 		},
-		[b]);
-		oSym.addTask(15,
-		function(f, j, h, c, n, i, m, k, o, g) {
-			var l, e = GetC(n),
-			d = oZ["getZ" + c](n, i);
-			m < 1 && g[i + "_" + e] && k != e && (PlayAudio("firepea"), ++m && (h = 40), k = e, j.src = "images/Plants/PB" + m + c + ".gif");
-			d && d.Altitude == 1 ? (d[{
-				"-1": "getSnowPea",
-				0 : "getPea",
-				1 : "getFirePea"
-			} [m]](d, h, c), (SetStyle(j, {
-				left: o + 28 + "px",
-				width: "52px",
-				height: "46px"
-			})).src = "images/Plants/PeaBulletHit.gif", oSym.addTask(10, ClearChild, [j])) : (n += (l = !c ? 5 : -5)) < oS.W && n > 100 ? (j.style.left = (o += l) + "px", oSym.addTask(1, arguments.callee, [f, j, h, c, n, i, m, k, o, g])) : ClearChild(j)
-		},
-		[b, $(b), 20, 0, a.AttackedLX, a.R, -1, 0, a.AttackedLX - 40, oGd.$Torch])
-	}
+		[this.id])
+	}	
 }),
 oThreepeater = InheritO(oSnowPea, {
 	EName: "oThreepeater",
