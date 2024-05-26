@@ -14,9 +14,10 @@ oS.Init({
 	HaveFog: 4, StartGameMusic: "Loonboon",
 	LargeWaveFlag: {
 		10: $("imgFlag4"),
-		20: $("imgFlag3"),
-		30: $("imgFlag2"),
-		40: $("imgFlag1")
+		30: $("imgFlag3"),
+		50: $("imgFlag2"),
+		80: $("imgFlag1"),
+		
 	},
     UserDefinedFlagFunc: function(a) {
         oP.FlagNum == oP.FlagZombies && oP.SetTimeoutWaterZombie(5, 9, 4, [oDuckyTubeZombie1, oDuckyTubeZombie2, oDuckyTubeZombie3])
