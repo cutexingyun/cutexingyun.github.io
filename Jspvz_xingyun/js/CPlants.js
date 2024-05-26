@@ -679,17 +679,17 @@ oGatlingPea = InheritO(oPeashooter, {
 		[this.id, 3])
 	}
 }),
-oGatlingPea0 = InheritO(oPeashooter, {
-	EName: "oGatlingPea0",
-	CName: "加特林",
+oGatlingPea1 = InheritO(oSnowPea, {
+	EName: "oGatlingPea1",
+	CName: "加特林plus",
 	width: 88,
 	height: 84,
 	beAttackedPointR: 68,
 	SunNum: 250,
 	coolTime: 50,
-	PicArr: ["images/Card/Plants/GatlingPea.png", "images/Plants/GatlingPea/0.gif", "images/Plants/GatlingPea/GatlingPea.gif", "images/Plants/PB00.gif", "images/Plants/PeaBulletHit.gif"],
+	PicArr: ["images/Card/Plants/GatlingPea.png", "images/Plants/GatlingPea/0.gif", "images/Plants/GatlingPea/GatlingPea.gif", "images/Plants/PB-10.gif", "images/Plants/PeaBulletHit.gif"],
 	AudioArr: ["splat1", "splat2", "splat3", "plastichit", "shieldhit", "shieldhit2"],
-	Tooltip: "一次发射四颗豌豆<br>(需要双发射手)",
+	Tooltip: "一次发射四颗冰豌豆",
 	Produce: '加特林可以一次发射四颗豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">四倍<br>只能种在双发射手上</font></p>当加特林宣布他要参军的时候，他的父母很为他担心，他们异口同声地对他说：“亲爱的，但这太危险了。”加特林拒绝让步，“生活本就危险，”他这样回答着，此时他的眼睛里，正闪烁着钢铁般的信念。',
 	PrivateBirth: function(c) {
 		var b = c.AttackedLX,
@@ -706,7 +706,7 @@ oGatlingPea0 = InheritO(oPeashooter, {
 		});
 		c.BulletEle = NewImg(0, c.PicArr[3], "left:" + a + "px;top:" + (c.pixelTop + 8) + "px;visibility:hidden;z-index:" + (c.zIndex + 2))
 	},
-	NormalAttack1: oPeashooter.prototype.NormalAttack,
+	NormalAttack1: oSnowPea.prototype.NormalAttack,
 	NormalAttack: function(a) {
 		this.NormalAttack1();
 		oSym.addTask(15,
@@ -715,50 +715,6 @@ oGatlingPea0 = InheritO(oPeashooter, {
 			c && c.NormalAttack1(); --b && oSym.addTask(15, arguments.callee, [d, b])
 		},
 		[this.id, 3])
-	}
-}),
-oGatlingPea1 = InheritO(oGatlingPea0, {
-	EName: "oGatlingPea1",
-	CName: "加特林plus",
-	width: 88,
-	height: 84,
-	beAttackedPointR: 68,
-	SunNum: 450,
-	coolTime: 30,
-	PicArr: ["images/Card/Plants/GatlingPea.png", "images/Plants/GatlingPea/0.gif", "images/Plants/GatlingPea/GatlingPea.gif", "images/Plants/PB-10.gif", "images/Plants/PeaBulletHit.gif"],
-	AudioArr: ["splat1", "splat2", "splat3", "plastichit", "shieldhit", "shieldhit2"],
-	Tooltip: "一次发射四颗冰豌豆",
-	Produce: '加特林可以一次发射四颗豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">四倍<br>只能种在双发射手上</font></p>当加特林宣布他要参军的时候，他的父母很为他担心，他们异口同声地对他说：“亲爱的，但这太危险了。”加特林拒绝让步，“生活本就危险，”他这样回答着，此时他的眼睛里，正闪烁着钢铁般的信念。',
-		NormalAttack: function() {
-		var a = this,
-		b = "PB" + Math.random();
-		EditEle(a.BulletEle.cloneNode(false), {
-			id: b
-		},
-		0, EDPZ);
-		oSym.addTask(15,
-		function(d) {
-			var c = $(d);
-			c && SetVisible(c)
-		},
-		[b]);
-		oSym.addTask(15,
-		function(f, j, h, c, n, i, m, k, o, g) {
-			var l, e = GetC(n),
-			d = oZ["getZ" + c](n, i);
-			m < 1 && g[i + "_" + e] && k != e && (PlayAudio("firepea"), ++m && (h = 40), k = e, j.src = "images/Plants/PB" + m + c + ".gif");
-			d && d.Altitude == 1 ? (d[{
-				"-1": "getSnowPea",
-				0 : "getPea",
-				1 : "getFirePea"
-			} [m]](d, h, c), (SetStyle(j, {
-				left: o + 28 + "px",
-				width: "52px",
-				height: "46px"
-			})).src = "images/Plants/PeaBulletHit.gif", oSym.addTask(10, ClearChild, [j])) : (n += (l = !c ? 5 : -5)) < oS.W && n > 100 ? (j.style.left = (o += l) + "px", oSym.addTask(1, arguments.callee, [f, j, h, c, n, i, m, k, o, g])) : ClearChild(j)
-		},
-		[b, $(b), 20, 0, a.AttackedLX, a.R, -1, 0, a.AttackedLX - 40, oGd.$Torch])
-	
 	}
 }),
 oSplitPea = InheritO(oPeashooter, {
