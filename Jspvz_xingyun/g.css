@@ -76,10 +76,10 @@ position:absolute;width:900px;height:50px;top:500px;left:0;z-index:100;text-alig
 #dHelp{width:614px;height:399px;background:url(images/interface/Help.png) no-repeat;position:absolute;display:none;left:143px;top:100px}
 
 
-@#dSelectLevel{position:absolute;width:100%;height:100%;font-weight:bold;display:none}
+#dSelectLevel{position:absolute;width:100%;height:100%;font-weight:bold;display:none}
 #dOptionsMenuBack{position:absolute;text-align:center;left:244px;top:60px;width:412px;height:483px;display:none;background:url(images/interface/OptionsMenuback32.png) no-repeat;_background:url(images/interface/OptionsMenuback8.png) no-repeat}
 .TitleBigContainer{position:relative;width:220px;margin:120px auto 0 auto;height:240px;overflow:hidden}
-@#dTitleSmallContainer span{cursor:pointer}
+#dTitleSmallContainer span{cursor:pointer}
 
 
 #dMiniSmallContainer .SmallLevel{width:100%}
@@ -266,7 +266,7 @@ dd.yellow{color:#FF0}
 #dRiddleClose,#dMini0 .button,#dSC0 .button,#dAdvSmallContainer .button{position:absolute;left:700px;top:564px;text-align:center;cursor:pointer;width:89px;height:26px;line-height:26px;background:url(images/interface/Almanac_CloseButton.png);color:#000080;font-size:12px}
 #dRiddle1 .list{width:48%}
 
-#dAdvSmallContainer{}
+#dAdvSmallContainer{
 #dAdvSmallContainer img{position:absolute;}
 #dAdvSmallContainer .lvl{font-size:16px;font-weight:bold;font-family:黑体;float:left;cursor:pointer;margin-left:40px}
 #dAdvSmallContainer .lvl2{position:relative;float:left;width:500px;line-height:35px;padding-top:15px}
@@ -275,7 +275,7 @@ dd.yellow{color:#FF0}
 #dAdvSmallContainer .list .icon{position:relative;height:100px;width:100px;float:left;margin-left:20px}
 #dAdvSmallContainer .img1{top:17px}
 #dAdvSmallContainer .img2{left:8px;top:11px}
-
+}
 .Announcement{position:absolute;left:50%;background:#EFEBEF;margin-left:-450px;height:50px;overflow:hidden;top:600px;width:900px;z-index:65535}
 .Announcement .d1{float:left;position:relative;height:50px;width:40%;text-align:right;margin-top:10px}
 .Announcement .d1 .share{font-weight:bold;float:left;line-height:40px;margin-left:0;font-size:14px}
@@ -339,4 +339,3 @@ button.jhp:focus{
 .ButtonTabL{margin-right:8px;width:85%}
 .ButtonTabR{margin-left:8px;width:81%}
 .dShowMsgTabTR2 div,.dShowMsgTabTR4 div{float:left}
-/* 提示框的样式 */
