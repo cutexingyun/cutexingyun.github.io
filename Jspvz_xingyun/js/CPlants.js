@@ -196,8 +196,9 @@ oLawnCleaner = InheritO(CPlants, {
 	height: 57,
 	beAttackedPointL: 0,
 	beAttackedPointR: 71,
-	SunNum: 0,
-	PicArr: ["images/interface/LawnCleaner.png"],
+	SunNum: 1000,
+	cooltime: 50,
+	PicArr: ["images/interface/LawnCleaner.png","images/interface/LawnCleaner.png"],
 	AudioArr: ["lawnmower"],
 	NormalGif: 0,
 	canEat: 0,
@@ -228,7 +229,7 @@ oPoolCleaner = InheritO(oLawnCleaner, {
 	height: 64,
 	beAttackedPointL: 0,
 	beAttackedPointR: 47,
-	SunNum: 0,
+	SunNum: 125,
 	PicArr: ["images/interface/PoolCleaner.png"],
 	Tooltip: "池塘清扫车",
 	AudioArr: ["pool_cleaner"]
@@ -1188,9 +1189,9 @@ oNutBowling = InheritO(CPlants, {
 	height: 71,
 	beAttackedPointL: 10,
 	beAttackedPointR: 61,
-	SunNum: 0,
+	SunNum: 100,
 	HP: 4000,
-	coolTime: 0,
+	coolTime: 30,
 	canEat: 0,
 	Tooltip: "",
 	PicArr: ["images/Card/Plants/WallNut.png", "images/Plants/WallNut/0.gif", "images/Plants/WallNut/WallNutRoll.gif"],
@@ -1270,6 +1271,7 @@ oHugeNutBowling = InheritO(oNutBowling, {
 	height: 142,
 	beAttackedPointL: 5,
 	beAttackedPointR: 137,
+	SunNum: 500,
 	HP: 8000,
 	Stature: 1,
 	PicArr: ["images/Card/Plants/HugeWallNut.png", "images/Plants/WallNut/2.gif", "images/Plants/WallNut/HugeWallNutRoll.gif"],
@@ -1294,6 +1296,7 @@ oHugeNutBowling = InheritO(oNutBowling, {
 oBoomNutBowling = InheritO(oNutBowling, {
 	EName: "oBoomNutBowling",
 	CName: "爆炸坚果",
+	SunNum: 500,
 	PicArr: ["images/Card/Plants/BoomWallNut.png", "images/Plants/WallNut/1.gif", "images/Plants/WallNut/BoomWallNutRoll.gif", "images/Plants/CherryBomb/Boom.gif"],
 	AudioArr: ["cherrybomb", "bowling"],
 	PrivateBirth: function(a) {
@@ -2146,6 +2149,57 @@ oPuffShroom = InheritO(oFumeShroom, {
 		[c, $(c), a, b.R, a - 46])
 	}
 }),
+oPuffShroom1 = InheritO(oRepeater, {
+	EName: "oPuffShroom1",
+	CName: "小喷菇",
+	width: 40,
+	height: 66,
+	beAttackedPointL: 15,
+	beAttackedPointR: 25,
+	SunNum: 0,
+	Stature: -1,
+	PicArr: ["images/Card/Plants/PuffShroom.png", "images/Plants/PuffShroom/0.gif", "images/Plants/PuffShroom/PuffShroom.gif", "images/Plants/PuffShroom/PuffShroomSleep.gif", "images/Plants/ShroomBullet.gif", "images/Plants/ShroomBulletHit.gif"],
+	AudioArr: ["puff"],
+	Tooltip: "向敌人发射短程孢子but双倍伤害",
+	Produce: '小喷菇是免费的，不过射程很近。<p>伤害：<font color="#FF0000">中等</font><br>范围：<font color="#FF0000">近<br>白天要睡觉</font></p>小喷菇：“我也是最近才知道僵尸的存在，和很多蘑菇一样，我只是把他们想象成童话和电影里的怪物。不过这次的经历已经让我大开眼界了。',
+	GetDX: CPlants.prototype.GetDX,
+	getTriggerRange: function(a, b, c) {
+		return [[b, Math.min(c + 250, oS.W), 0]]
+	},
+	PrivateBirth: function(a) {
+		a.BulletEle = NewImg(0, "images/Plants/ShroomBullet.gif", "left:" + (a.AttackedLX - 46) + "px;top:" + (a.pixelTop + 40) + "px;visibility:hidden;z-index:" + (a.zIndex + 2))
+	},
+	PrivateDie: function(a) {
+		a.BulletEle = null
+	},
+	NormalAttack: function() {
+		PlayAudio("puff");
+		var b = this,
+		c = "PSB" + Math.random(),
+		a = b.AttackedLX;
+		EditEle(b.BulletEle.cloneNode(false), {
+			id: c
+		},
+		0, EDPZ);
+		oSym.addTask(15,
+		function(e) {
+			var d = $(e);
+			d && SetVisible(d)
+		},
+		[c]);
+		oSym.addTask(1,
+		function(j, d, e, f, g) {
+			var i = GetC(e),
+			h = oZ.getZ0(e, f);
+			h && h.Altitude == 1 ? (h.getPea(h, 20, 0), (SetStyle(d, {
+				left: g + 38 + "px",
+				width: "52px",
+				height: "46px"
+			})).src = "images/Plants/ShroomBulletHit.gif", oSym.addTask(10, ClearChild, [d])) : (e += 5) < oS.W ? (d.style.left = (g += 5) + "px", oSym.addTask(1, arguments.callee, [j, d, e, f, g])) : ClearChild(d)
+		},
+		[c, $(c), a, b.R, a - 46])
+	}
+}),
 oScaredyShroom = InheritO(oFumeShroom, {
 	EName: "oScaredyShroom",
 	CName: "胆小菇",
@@ -2260,6 +2314,34 @@ oHypnoShroom = InheritO(oFumeShroom, {
 		case 0:
 			!c.Sleep && d.bedevil(d);
 			c.Die();
+			break;
+		default:
+			c.Die()
+		}
+	}
+}),
+oHypnoShroom1 = InheritO(oFumeShroom, {
+	EName: "oHypnoShroom1",
+	CName: "魅惑菇",
+	width: 71,
+	height: 78,
+	beAttackedPointL: 10,
+	beAttackedPointR: 61,
+	HP: 1000,
+	coolTime: 30,
+	PicArr: ["images/Card/Plants/HypnoShroom.png", "images/Plants/HypnoShroom/0.gif", "images/Plants/HypnoShroom/HypnoShroom.gif", "images/Plants/HypnoShroom/HypnoShroomSleep.gif"],
+	Tooltip: "让多只僵尸为你作战",
+	Produce: '当僵尸吃下魅惑菇后，他将会掉转方向为你作战。<p>使用方法：<font color="#FF0000">单独使用，接触生效</font><br>特点：<font color="#FF0000">让一只僵尸为你作战<br>白天睡觉</font></p>魅惑菇声称：“僵尸们是我们的朋友，他们被严重误解了，僵尸们在我们的生态环境里扮演着重要角色。我们可以也应当更努力地让他们学会用我们的方式来思考。”',
+	InitTrigger: function() {},
+	getHurt: function(d, b, a) {
+		var c = this;
+		switch (b) {
+		case 3:
+			(c.HP -= a) < 1 && c.Die();
+			break;
+		case 0:
+			 !c.Sleep && d.bedevil(d) || (c.HP -= a) < 1 && c.Die();
+			//c.Die();
 			break;
 		default:
 			c.Die()
