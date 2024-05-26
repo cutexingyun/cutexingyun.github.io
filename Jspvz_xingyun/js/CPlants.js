@@ -945,6 +945,95 @@ oSunFlower = InheritO(CPlants, {
 	},
 	InitTrigger: function() {}
 }),
+/*
+ * 向日葵类
+ * 继承自 CPlants 类
+ */
+oSunFlower1 = InheritO(CPlants, {
+ EName: "oSunFlower1",
+ CName: "炮灰葵",
+ width: 73,
+ height: 74,
+ beAttackedPointR: 53,
+ coolTime: 0,
+ HP:540,
+ SunNum: 50,
+ PicArr: ["images/Card/Plants/SunFlower.png", "images/Plants/SunFlower/0.gif", "images/Plants/SunFlower/SunFlower1.gif", "images/Plants/SunFlower/SunFlower.gif"],
+ Tooltip: "牺牲自己拖住僵尸",
+ Produce: '向日葵，为你生产额外阳光的经济作物。尝试尽可能多种植吧！<p>阳光产量：<font color="#FF0000">中等</font></p>向日葵，也称坚果葵，全称会产阳光的坚果，它间接掌握着抵御僵尸的利器，它的瓜子就连僵尸也流连忘返，它也是i中的致富之宝，它足足有着坚果40分之3的血量，为群居性植物，常为一列至两列，纵列分布。',
+ 
+ /*
+  * 创建植物的 DOM 元素
+  */
+ BirthStyle: function(c, e, b, a) {
+  var d = b.childNodes[1];
+  d.src = "images/Plants/SunFlower/SunFlower.gif";
+  d.style.clip = "rect(0,auto,74px,0)";
+  d.style.height = "148px";
+  EditEle(b, {
+   id: e
+  },
+  a, EDPZ)
+ },
+ 
+ /*
+  * 改变植物的位置
+  */
+ ChangePosition: function(c, a) {
+  var b = c.childNodes[1];
+  a ? SetStyle(b, {
+   clip: "rect(74px,auto,auto,auto)",
+   top: "-74px"
+  }) : SetStyle(b, {
+   clip: "rect(auto,auto,74px,auto)",
+   top: 0
+  })
+ },
+ /*
+  * 私有函数，当向日葵被复制时，产生阳光
+  */
+ /*PrivateBirth: function(a) {
+  oS.ProduceSun ? oSym.addTask(500,
+  function(d, c, b) {
+   $P[d] && (a.ChangePosition($(d), 1), oSym.addTask(100,
+   function(h, g, f, e) {
+    $P[h] && (AppearSun(Math.floor(g + Math.random() * 41), f, 25, 0), oSym.addTask(100,
+    function(i) {
+     $P[i] && a.ChangePosition($(i), 0)
+    },
+    [h]), oSym.addTask(2400, e, [h, g, f]))
+   },
+   [d, c, b, arguments.callee]))
+  },
+  [a.id, GetX(a.C) - 40, GetY(a.R)]) : a.getHurt = function(f, c, b) {
+   var e = this;
+   switch (c) {
+   case 0:
+    var d = (e.HP -= b); ! (d % 100) && (AppearSun(Math.floor(GetX(e.C) - 40 + Math.random() * 41), GetY(e.R), 25, 0), oSym.addTask(50,
+    function(h, g) {
+     AppearSun(Math.floor(GetX(h) - 40 + Math.random() * 41), GetY(g), 25, 0)
+    },
+    [e.C, e.R]), d < 1 ? e.Die() : oSym.addTask(50,
+    function(h, g) {
+     AppearSun(Math.floor(GetX(h) - 40 + Math.random() * 41), GetY(g), 25, 0)
+    },
+    [e.C, e.R]));
+    break;
+   case 3:
+    (e.HP -= b) < 1 && e.Die();
+    break;
+   default: // 如果是非自然原因死亡，直接把剩余价值压榨出来
+    if (e.HP > 0) AppearSun(Math.floor(GetX(e.C) - 40 + Math.random() * 41), GetY(e.R), Math.floor(e.HP / 1.5 / 25) * 25, 0);
+    e.Die();
+   }
+  }
+ },*/
+ 
+ /*
+  * 初始化触发器
+  */
+ InitTrigger: function() {}
+})
 oTwinSunflower = InheritO(oSunFlower, {
 	EName: "oTwinSunflower",
 	CName: "双子向日葵",
