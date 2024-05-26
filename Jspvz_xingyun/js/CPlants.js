@@ -1214,30 +1214,83 @@ oPotatoMine = InheritO(CPlants, {
 		[d])
 	}
 }),
+// 定义火炬树桩类，继承自植物类
 oTorchwood = InheritO(CPlants, {
-	EName: "oTorchwood",
-	CName: "火炬树桩",
-	width: 73,
-	height: 83,
-	beAttackedPointR: 53,
-	SunNum: 175,
-	PicArr: ["images/Card/Plants/Torchwood.png", "images/Plants/Torchwood/0.gif", "images/Plants/Torchwood/Torchwood.gif", "images/Plants/PB00.gif", "images/Plants/PB01.gif", "images/Plants/PB10.gif", "images/Plants/PB11.gif", "images/Plants/Torchwood/SputteringFire.gif"],
-	AudioArr: ["firepea", "ignite", "ignite2"],
-	Tooltip: "通过火炬树桩的豌豆将变为火球",
-	Produce: '火炬树桩可以把穿过他的豌豆变成火球，可以造成两倍伤害。<p>特点：<font color="#FF0000">让穿过他的火球造成两倍伤害。火球也会对附近僵尸造成溅射伤害</font></p>每个人都喜欢并敬重火炬树桩。他们喜欢他的诚实和坚贞的友谊，以及增强豌豆伤害的能力。但他也有自己的秘密：他不识字！',
-	PrivateBirth: function(c) {
-		var a = c.R,
-		b = c.C;
-		oGd.$Torch[a + "_" + b] = c.id;
-		oS.HaveFog && oGd.GatherFog(a, b, 1, 1, 0)
-	},
-	InitTrigger: function() {},
-	PrivateDie: function(c) {
-		var a = c.R,
-		b = c.C;
-		delete oGd.$Torch[a + "_" + b];
-		oS.HaveFog && oGd.GatherFog(a, b, 1, 1, 1)
-	}
+ // 名称
+ EName: "oTorchwood",
+ // 中文名称
+ CName: "火炬树桩",
+ // 宽度
+ width: 73,
+ // 高度
+ height: 83,
+ // 被攻击的点的半径
+ beAttackedPointR: 53,
+ // 阳光值
+ SunNum: 175,
+ // 图片数组
+ PicArr: ["images/Card/Plants/Torchwood.png", "images/Plants/Torchwood/0.gif", "images/Plants/Torchwood/Torchwood.gif", "images/Plants/PB00.gif", "images/Plants/PB01.gif", "images/Plants/PB10.gif", "images/Plants/PB11.gif", "images/Plants/Torchwood/SputteringFire.gif"],
+ // 音频数组
+ AudioArr: ["firepea", "ignite", "ignite2"],
+ // 提示
+ Tooltip: "通过火炬树桩的豌豆将变为火球",
+ // 产出
+ Produce: '火炬树桩可以把穿过他的豌豆变成火球，可以造成两倍伤害。<p>特点：<font color="#FF0000">让穿过他的火球造成两倍伤害。火球也会对附近僵尸造成溅射伤害</font></p>每个人都喜欢并敬重火炬树桩。他们喜欢他的诚实和坚贞的友谊，以及增强豌豆伤害的能力。但他也有自己的秘密：他不识字！',
+ // 私有出生函数
+ PrivateBirth: function(c) {
+  var a = c.R,
+  b = c.C;
+  oGd.$Torch[a + "_" + b] = c.id;
+  oS.HaveFog && oGd.GatherFog(a, b, 1, 1, 0)
+ },
+ // 初始化触发函数
+ InitTrigger: function() {},
+ // 私有死亡函数
+ PrivateDie: function(c) {
+  var a = c.R,
+  b = c.C;
+  delete oGd.$Torch[a + "_" + b];
+  oS.HaveFog && oGd.GatherFog(a, b, 1, 1, 1)
+ }
+}),
+// 定义火炬树桩类，继承自植物类
+oTorchwood1 = InheritO(CPlants, {
+ // 名称
+ EName: "oTorchwood1",
+ // 中文名称
+ CName: "幽灵火炬树桩",
+ // 宽度
+ width: 73,
+ // 高度
+ height: 83,
+ // 被攻击的点的半径
+ beAttackedPointR: 0,
+ // 阳光值
+ SunNum: 175,
+ // 图片数组
+ PicArr: ["images/Card/Plants/Torchwood.png", "images/Plants/Torchwood/0.gif", "images/Plants/Torchwood/Torchwood.gif", "images/Plants/PB00.gif", "images/Plants/PB01.gif", "images/Plants/PB10.gif", "images/Plants/PB11.gif", "images/Plants/Torchwood/SputteringFire.gif"],
+ // 音频数组
+ AudioArr: ["firepea", "ignite", "ignite2"],
+ // 提示
+ Tooltip: "通过火炬树桩的豌豆将变为火球，妈妈再也不用我被吃了",
+ // 产出
+ Produce: '火炬树桩可以把穿过他的豌豆变成火球，可以造成两倍伤害。<p>特点：<font color="#FF0000">让穿过他的火球造成两倍伤害。火球也会对附近僵尸造成溅射伤害</font></p>每个人都喜欢并敬重火炬树桩。他们喜欢他的诚实和坚贞的友谊，以及增强豌豆伤害的能力。但他也有自己的秘密：他不识字！',
+ // 私有出生函数
+ PrivateBirth: function(c) {
+  var a = c.R,
+  b = c.C;
+  oGd.$Torch[a + "_" + b] = c.id;
+  oS.HaveFog && oGd.GatherFog(a, b, 1, 1, 0)
+ },
+ // 初始化触发函数
+ InitTrigger: function() {},
+ // 私有死亡函数
+ PrivateDie: function(c) {
+  var a = c.R,
+  b = c.C;
+  delete oGd.$Torch[a + "_" + b];
+  oS.HaveFog && oGd.GatherFog(a, b, 1, 1, 1)
+ }
 }),
 oWallNut = InheritO(CPlants, {
 	EName: "oWallNut",
