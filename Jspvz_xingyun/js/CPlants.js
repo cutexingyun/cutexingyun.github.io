@@ -1303,7 +1303,7 @@ oTorchwood1 = InheritO(CPlants, {
  // 被攻击的点的半径
  beAttackedPointR: 0,
  // 阳光值
- SunNum: 175,
+ SunNum: 200,
  // 图片数组
  PicArr: ["images/Card/Plants/Torchwood.png", "images/Plants/Torchwood/0.gif", "images/Plants/Torchwood/Torchwood.gif", "images/Plants/PB00.gif", "images/Plants/PB01.gif", "images/Plants/PB10.gif", "images/Plants/PB11.gif", "images/Plants/Torchwood/SputteringFire.gif"],
  // 音频数组
