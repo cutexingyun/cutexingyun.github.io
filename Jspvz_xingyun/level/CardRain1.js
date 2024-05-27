@@ -4,7 +4,7 @@
 */
 
 oS.Init({
-	PName: [oLilyPad, oLilyPad, oLilyPad, oPeashooter, oCherryBomb, ofireWallNut, ofireWallNut,oPotatoMine, oSnowPea, oSnowPea1, oChomper, oRepeater, oPuffShroom, oPuffShroom1, oHypnoShroom1,oFumeShroom, oHypnoShroom1, oScaredyShroom, oIceShroom, oDoomShroom, oSquash, oThreepeater, oGatlingPea1, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood1, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead],
+	PName: [oLilyPad, oLilyPad, oLilyPad, oPeashooter, oCherryBomb, ofireWallNut, ofireWallNut,oPotatoMine, oSnowPea, oSnowPea1, oChomper, oRepeater, oPuffShroom, oPuffShroom1,oFumeShroom, oHypnoShroom1, oScaredyShroom, oIceShroom, oDoomShroom, oSquash, oThreepeater, oGatlingPea1, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood1, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead],
 	ZName: [oZombie, oZombie2, oZombie3, oConeheadZombie, oBigConeheadZombiebie, oBucketheadZombie, oDuckyTubeZombie1, oDuckyTubeZombie2, oDuckyTubeZombie3, oJackinTheBoxZombie, oNewspaperZombie, oScreenDoorZombie, oFootballZombie, oZomboni, oDancingZombie, oBackupDancer,oBigFootballZombie,oConeheadZombie1],
 	PicArr: ["images/interface/background4.jpg","images/interface/trophy.png","images/interface/PointerDown.gif"],
 	backgroundImage: "images/interface/background4.jpg",
