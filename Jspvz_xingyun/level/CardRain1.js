@@ -5,7 +5,7 @@
 
 oS.Init({
 	PName: [oLilyPad, oLilyPad, oLilyPad, oPeashooter, oCherryBomb, ofireWallNut, oPotatoMine, oSnowPea, oSnowPea1, oChomper, oRepeater, oPuffShroom, oPuffShroom1, oFumeShroom, oHypnoShroom1, oScaredyShroom, oIceShroom, oDoomShroom, oSquash, oThreepeater, oGatlingPea1, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood1, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead],
-	ZName: [oZombie, oZombie2, oZombie3, oConeheadZombie, oBucketheadZombie, oDuckyTubeZombie1, oDuckyTubeZombie2, oDuckyTubeZombie3, oJackinTheBoxZombie, oNewspaperZombie, oScreenDoorZombie, oFootballZombie, oZomboni, oDancingZombie, oBackupDancer,oBigFootballZombie],
+	ZName: [oZombie, oZombie2, oZombie3, oConeheadZombie, oBigConeheadZombiebie, oBucketheadZombie, oDuckyTubeZombie1, oDuckyTubeZombie2, oDuckyTubeZombie3, oJackinTheBoxZombie, oNewspaperZombie, oScreenDoorZombie, oFootballZombie, oZomboni, oDancingZombie, oBackupDancer,oBigFootballZombie,oConeheadZombie1],
 	PicArr: ["images/interface/background4.jpg","images/interface/trophy.png","images/interface/PointerDown.gif"],
 	backgroundImage: "images/interface/background4.jpg",
 	LF: [0, 1, 1, 2, 2, 1, 1],
@@ -41,7 +41,7 @@ oS.Init({
 		});
 	}
 }, {
-	AZ: [[oZombie, 2, 1], [oZombie2, 2, 1], [oZombie3, 1, 1], [oConeheadZombie, 2, 1], [oBucketheadZombie, 1, 1], [oDuckyTubeZombie1, 1, 8, [8]], [oDuckyTubeZombie2, 1, 8], [oDuckyTubeZombie3, 1, 8], [oJackinTheBoxZombie, 1, 11, [11]], [oScreenDoorZombie, 1, 14, [14]], [oFootballZombie, 1, 19, [19]], [oNewspaperZombie, 1, 33], [oDancingZombie, 1, 25, [10, 20, 30, 40]],[oBigFootballZombie,40,2,[40,50,60,70,80]]],
+	AZ: [[oZombie, 2, 1], [oZombie2, 2, 1], [oZombie3, 1, 1], [oConeheadZombie, 2, 1], [oConeheadZombie1,5,2], [oBigConeheadZombiebie, 5, 1], [oBucketheadZombie, 1, 1], [oDuckyTubeZombie1, 1, 8, [8]], [oDuckyTubeZombie2, 1, 8], [oDuckyTubeZombie3, 1, 8], [oJackinTheBoxZombie, 1, 11, [11]], [oScreenDoorZombie, 1, 14, [14]], [oFootballZombie, 1, 19, [19]], [oNewspaperZombie, 1, 33], [oDancingZombie, 1, 25, [10, 20, 30, 40]],[oBigFootballZombie,40,2,[40,50,60,70,80]]],
 	FlagNum: 80,
 	FlagToSumNum: {
 		a1: [   3, 6,  9, 10, 15, 18, 19, 20, 23, 26, 29, 30, 33, 37, 39,49,69,79],
