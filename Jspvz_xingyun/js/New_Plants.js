@@ -171,7 +171,7 @@ oSnowPea1 = InheritO(oSnowPea, {
 	height: 71,
 	beAttackedPointR: 53,
 	SunNum: 250,
-	PicArr: ["images/Card/Plants/Snowpea1.png", "images/Plants/Repeater/0.gif", "images/Plants/Repeater/Repeater.gif", "images/Plants/PB-10.gif", "images/Plants/PeaBulletHit.gif"],
+	PicArr: ["images/Card/Plants/SnowRepeater.png", "images/Plants/SnowRepeater/0.gif", "images/Plants/SnowRepeater/SnowPea.gif", "images/Plants/PB-10.gif", "images/Plants/PeaBulletHit.gif"],
 	AudioArr: ["splat1", "splat2", "splat3", "plastichit", "shieldhit", "shieldhit2"],
 	Tooltip: "一次发射两寒冰豌豆",
 	Produce: '双冰射手可以一次发射两颗冰豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">两倍</font></p>没错我的子弹是冰冷的，但似乎还留有余温',
