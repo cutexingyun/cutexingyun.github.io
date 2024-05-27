@@ -186,6 +186,147 @@ oSnowPea1 = InheritO(oSnowPea, {
 		[this.id])
 	}	
 }),
+oPuffShroom1 = InheritO(oRepeater, {
+	EName: "oPuffShroom1",
+	CName: "小喷菇",
+	width: 40,
+	height: 66,
+	beAttackedPointL: 15,
+	beAttackedPointR: 25,
+	SunNum: 0,
+	Stature: -1,
+	PicArr: ["images/Card/Plants/PuffShroom.png", "images/Plants/PuffShroom/0.gif", "images/Plants/PuffShroom/PuffShroom.gif", "images/Plants/PuffShroom/PuffShroomSleep.gif", "images/Plants/ShroomBullet.gif", "images/Plants/ShroomBulletHit.gif"],
+	AudioArr: ["puff"],
+	Tooltip: "向敌人发射短程孢子but双倍伤害",
+	Produce: '小喷菇是免费的，不过射程很近。<p>伤害：<font color="#FF0000">中等</font><br>范围：<font color="#FF0000">近<br>白天要睡觉</font></p>小喷菇：“我也是最近才知道僵尸的存在，和很多蘑菇一样，我只是把他们想象成童话和电影里的怪物。不过这次的经历已经让我大开眼界了。',
+	GetDX: CPlants.prototype.GetDX,
+	getTriggerRange: function(a, b, c) {
+		return [[b, Math.min(c + 250, oS.W), 0]]
+	},
+	PrivateBirth: function(a) {
+		a.BulletEle = NewImg(0, "images/Plants/ShroomBullet.gif", "left:" + (a.AttackedLX - 46) + "px;top:" + (a.pixelTop + 40) + "px;visibility:hidden;z-index:" + (a.zIndex + 2))
+	},
+	PrivateDie: function(a) {
+		a.BulletEle = null
+	},
+	NormalAttack: function() {
+		PlayAudio("puff");
+		var b = this,
+		c = "PSB" + Math.random(),
+		a = b.AttackedLX;
+		EditEle(b.BulletEle.cloneNode(false), {
+			id: c
+		},
+		0, EDPZ);
+		oSym.addTask(15,
+		function(e) {
+			var d = $(e);
+			d && SetVisible(d)
+		},
+		[c]);
+		oSym.addTask(1,
+		function(j, d, e, f, g) {
+			var i = GetC(e),
+			h = oZ.getZ0(e, f);
+			h && h.Altitude == 1 ? (h.getPea(h, 20, 0), (SetStyle(d, {
+				left: g + 38 + "px",
+				width: "52px",
+				height: "46px"
+			})).src = "images/Plants/ShroomBulletHit.gif", oSym.addTask(10, ClearChild, [d])) : (e += 5) < oS.W ? (d.style.left = (g += 5) + "px", oSym.addTask(1, arguments.callee, [j, d, e, f, g])) : ClearChild(d)
+		},
+		[c, $(c), a, b.R, a - 46])
+	}
+}),
+oGloomShroom1 = InheritO(oRepeater, {
+	EName: "oGloomShroom1",
+	CName: "曾哥plus",
+	width: 88,
+	height: 83,
+	beAttackedPointR: 68,
+	SunNum: 150,
+	coolTime: 50,
+	PicArr: ["images/Card/Plants/GloomShroom.png", "images/Plants/GloomShroom/0.gif", "images/Plants/GloomShroom/GloomShroom.gif", "images/Plants/GloomShroom/GloomShroomSleep.gif", "images/Plants/GloomShroom/GloomShroomAttack.gif", "images/Plants/GloomShroom/GloomShroomBullet.gif"],
+	AudioArr: ["kernelpult", "kernelpult2"],
+	Tooltip: "曾哥plus他再也不需要大喷菇了",
+	Produce: '伪娘终结者，喜欢围绕自身释放大量绵羊音<p><font color="#FF0000">必须种植在大喷菇上</font></p>起初人们一直非议他，后来曾哥用自己独特的绵羊音横扫了宇宙拆迁办，全世界都拜倒在他的脚下。“听说有个节目叫‘快男’？”曾哥说，“没有我在他们真应该感到羞愧。”他于是决定明年去看看。',
+	BirthStyle: function(c, d, b, a) {
+		oGd.$[c.R + "_" + c.C + "_1"] && oGd.$[c.R + "_" + c.C + "_1"].Sleep && (c.canTrigger = 0, c.Sleep = 1, b.childNodes[1].src = c.PicArr[3]);
+		EditEle(b, { id: d }, a, EDPZ);
+	},
+	GetDX: CPlants.prototype.GetDX,
+	PrivateBirth: function(b) {
+		var a = b.id;
+		NewEle(a + "_Bullet", "div", "position:absolute;visibility:hidden;width:210px;height:200px;left:" + (b.pixelLeft - 60) + "px;top:" + (b.pixelTop - 65) + "px;background:url(images/Plants/GloomShroom/GloomShroomBullet.gif);z-index:" + (b.zIndex + 1), 0, EDPZ)
+	},
+	PrivateDie: function(a) {
+		ClearChild($(a.id + "_Bullet"))
+	},
+	getTriggerRange: function(c, d, e) {
+		var f = GetX(this.C),
+		b = this.MinX = f - 120,
+		a = this.MaxX = f + 120;
+		return [[b, a, 0]]
+	},
+	getTriggerR: function(c) {
+		var b = this.MinR = c > 2 ? c - 1 : 1,
+		a = this.MaxR = c < oS.R ? Number(c) + 1 : c;
+		return [b, a]
+	},
+	NormalAttack: function() {
+		var k = this,
+		g, f = k.MaxR,
+		c = k.MinX,
+		b = k.MaxX,
+		e, h, a, j = k.id,
+		d = $(j),
+		l = j + "_Bullet";
+		for (g = k.MinR; g <= f; g++) {
+			e = oZ.getArZ(c, b, g);
+			for (h = e.length; h--; (a = e[h]).Altitude < 2 && a.getHit1(a, 80)) {}
+		}
+		oSym.addTask(100,
+		function(i) {
+			PlayAudio(["kernelpult", "kernelpult2"][Math.floor(Math.random() * 2)]); --i && oSym.addTask(100, arguments.callee, [i])
+		},
+		[4]);
+		d.childNodes[1].src = "images/Plants/GloomShroom/GloomShroomAttack.gif";
+		SetVisible($(l));
+		ImgSpriter(l, j, [["0 0", 9, 1], ["0 -200px", 9, 2], ["0 -400px", 9, 3], ["0 -600px", 9, 4], ["0 -800px", 9, 5], ["0 -1000px", 9, 6], ["0 -1200px", 9, 7], ["0 -1400px", 9, 8], ["0 -1600px", 9, 9], ["0 -1800px", 9, 10], ["0 -2000px", 9, 11], ["0 -2200px", 9, -1]], 0,
+		function(m, n) {
+			var i = $(n);
+			$P[n] && (i.childNodes[1].src = "images/Plants/GloomShroom/GloomShroom.gif");
+			SetHidden($(m))
+		})
+	}
+}),
+oHypnoShroom1 = InheritO(oFumeShroom, {
+	EName: "oHypnoShroom1",
+	CName: "魅惑菇",
+	width: 71,
+	height: 78,
+	beAttackedPointL: 10,
+	beAttackedPointR: 61,
+	HP: 1000,
+	coolTime: 30,
+	PicArr: ["images/Card/Plants/HypnoShroom.png", "images/Plants/HypnoShroom/0.gif", "images/Plants/HypnoShroom/HypnoShroom.gif", "images/Plants/HypnoShroom/HypnoShroomSleep.gif"],
+	Tooltip: "让多只僵尸为你作战",
+	Produce: '当僵尸吃下魅惑菇后，他将会掉转方向为你作战。<p>使用方法：<font color="#FF0000">单独使用，接触生效</font><br>特点：<font color="#FF0000">让一只僵尸为你作战<br>白天睡觉</font></p>魅惑菇声称：“僵尸们是我们的朋友，他们被严重误解了，僵尸们在我们的生态环境里扮演着重要角色。我们可以也应当更努力地让他们学会用我们的方式来思考。”',
+	InitTrigger: function() {},
+	getHurt: function(d, b, a) {
+		var c = this;
+		switch (b) {
+		case 3:
+			(c.HP -= a) < 1 && c.Die();
+			break;
+		case 0:
+			 !c.Sleep && d.bedevil(d) || (c.HP -= a) < 1 && c.Die();
+			//c.Die();
+			break;
+		default:
+			c.Die()
+		}
+	}
+}),
 ofireWallNut = InheritO(CPlants, {
 	EName: "ofireWallNut",
 	CName: "火炬坚果墙",
