@@ -51,9 +51,9 @@ oS.Init({
 		9: [ShowLargeWave, 0],
 		19: [ShowLargeWave, 0],
 		29: [ShowLargeWave, 0],
-		39: [ShowFinalWave, 0],
-		59: [ShowFinalWave, 0],
-		79: [ShowLargeWave, 0]
+		39: [ShowLargeWave, 0],
+		59: [ShowLargeWave, 0],
+		79: [ShowFinalWave, 0]
 	},
 	FlagToEnd: function() {
 		NewImg("imgSF", "images/interface/trophy.png", "left:43.5%;top:220px", EDAll, { onclick: function() { SelectModal(0), PlayAudio("winmusic"); } });
