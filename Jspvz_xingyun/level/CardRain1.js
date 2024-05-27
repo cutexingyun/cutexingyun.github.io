@@ -4,7 +4,7 @@
 */
 
 oS.Init({
-	PName: [oLilyPad, oLilyPad, oLilyPad, oPeashooter, oCherryBomb, oWallNut, oPotatoMine, oSnowPea, oSnowPea1, oChomper, oRepeater, oPuffShroom, oPuffShroom1, oFumeShroom, oHypnoShroom1, oScaredyShroom, oIceShroom, oDoomShroom, oSquash, oThreepeater, oGatlingPea1, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood1, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead, oGarlic],
+	PName: [oLilyPad, oLilyPad, oLilyPad, oPeashooter, oCherryBomb, ofireWallNut, oPotatoMine, oSnowPea, oSnowPea1, oChomper, oRepeater, oPuffShroom, oPuffShroom1, oFumeShroom, oHypnoShroom1, oScaredyShroom, oIceShroom, oDoomShroom, oSquash, oThreepeater, oGatlingPea1, oTangleKelp, oJalapeno, oSpikeweed, oTorchwood1, oTallNut, oSeaShroom, oPlantern, oCactus, oBlover, oSplitPea, oStarfruit, oPumpkinHead],
 	ZName: [oZombie, oZombie2, oZombie3, oConeheadZombie, oBucketheadZombie, oDuckyTubeZombie1, oDuckyTubeZombie2, oDuckyTubeZombie3, oJackinTheBoxZombie, oNewspaperZombie, oScreenDoorZombie, oFootballZombie, oZomboni, oDancingZombie, oBackupDancer],
 	PicArr: ["images/interface/background4.jpg","images/interface/trophy.png","images/interface/PointerDown.gif"],
 	backgroundImage: "images/interface/background4.jpg",
@@ -53,7 +53,7 @@ oS.Init({
 		29: [ShowLargeWave, 0],
 		39: [ShowFinalWave, 0],
 		59: [ShowFinalWave, 0],
-		79: [ShowFinalWave, 0]
+		79: [ShowLargeWave, 0]
 	},
 	FlagToEnd: function() {
 		NewImg("imgSF", "images/interface/trophy.png", "left:43.5%;top:220px", EDAll, { onclick: function() { SelectModal(0), PlayAudio("winmusic"); } });

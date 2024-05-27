@@ -137,7 +137,7 @@ oSunFlower1 = InheritO(CPlants, {
 	PicArr: ["images/Card/Plants/GatlingPea.png", "images/Plants/GatlingPea/0.gif", "images/Plants/GatlingPea/GatlingPea.gif", "images/Plants/PB-10.gif", "images/Plants/PeaBulletHit.gif"],
 	AudioArr: ["splat1", "splat2", "splat3", "plastichit", "shieldhit", "shieldhit2"],
 	Tooltip: "一次发射四颗冰豌豆",
-	Produce: '加特林可以一次发射四颗豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">四倍<br>只能种在双发射手上</font></p>当加特林宣布他要参军的时候，他的父母很为他担心，他们异口同声地对他说：“亲爱的，但这太危险了。”加特林拒绝让步，“生活本就危险，”他这样回答着，此时他的眼睛里，正闪烁着钢铁般的信念。',
+	Produce: '加特林可以一次发射四颗豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">四倍</font></p>吾心已死，寒风刺骨',
 	PrivateBirth: function(c) {
 		var b = c.AttackedLX,
 		a = b - 40;
@@ -174,7 +174,7 @@ oSnowPea1 = InheritO(oSnowPea, {
 	PicArr: ["images/Card/Plants/Snowpea1.png", "images/Plants/Repeater/0.gif", "images/Plants/Repeater/Repeater.gif", "images/Plants/PB-10.gif", "images/Plants/PeaBulletHit.gif"],
 	AudioArr: ["splat1", "splat2", "splat3", "plastichit", "shieldhit", "shieldhit2"],
 	Tooltip: "一次发射两寒冰豌豆",
-	Produce: '双冰射手可以一次发射两颗冰豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">两倍</font></p>作者声明:双发寒冰射手和双发射手没有一点关系',
+	Produce: '双冰射手可以一次发射两颗冰豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">两倍</font></p>没错我的子弹是冰冷的，但似乎还留有余温',
 	NormalAttack1: oPeashooter.prototype.NormalAttack,
 	NormalAttack: function(a) {
 		this.NormalAttack1();
@@ -185,4 +185,36 @@ oSnowPea1 = InheritO(oSnowPea, {
 		},
 		[this.id])
 	}	
+}),
+ofireWallNut = InheritO(CPlants, {
+	EName: "ofireWallNut",
+	CName: "火炬坚果墙",
+	width: 65,
+	height: 73,
+	beAttackedPointR: 45,
+	SunNum: 50,
+	HP: 3000,
+	coolTime: 30,
+	PicArr: ["images/Card/Plants/BoomWallNut.png", "images/Plants/WallNut/0.gif", "images/Plants/WallNut/WallNut.gif", "images/Plants/WallNut/Wallnut_cracked1.gif", "images/Plants/WallNut/Wallnut_cracked2.gif"],
+	Tooltip: "具有火炬的能力",
+	Produce: '火炬坚果墙拥有足以让你用来保护其它植物的坚硬外壳。<p>韧性：<font color="FF0000">高</font></p>火炬坚果墙：“也许看起来，我与其他坚果没有区别，但我的内心是火热的！！”',
+	 // 私有出生函数
+    PrivateBirth: function(c) {
+    var a = c.R,
+    b = c.C;
+    oGd.$Torch[a + "_" + b] = c.id;
+    oS.HaveFog && oGd.GatherFog(a, b, 1, 1, 0)
+    },
+    CanGrow: function(c, b, f) {
+		var a = b + "_" + f,
+		d = c[1],
+		e = oS.ArP;
+		return e ? oGd.$LF[b] == 1 ? f > 0 && f < e.ArC[1] && !(oGd.$Crater[a] || oGd.$Tombstones[a] || d) : c[0] && !d: d && d.EName == "oWallNut" ? 1 : oGd.$LF[b] == 1 ? !(f < 1 || f > 9 || oGd.$Crater[a] || oGd.$Tombstones[a] || d) : c[0] && !d
+	},
+	InitTrigger: function() {},
+	HurtStatus: 0,
+	getHurt: function(e, b, a) {
+		var c = this,
+		d = $(c.id).childNodes[1]; ! (b % 3) ? (c.HP -= a) < 1 ? c.Die() : c.HP < 1334 ? c.HurtStatus < 2 && (c.HurtStatus = 2, d.src = "images/Plants/WallNut/Wallnut_cracked2.gif") : c.HP < 2667 && c.HurtStatus < 1 && (c.HurtStatus = 1, d.src = "images/Plants/WallNut/Wallnut_cracked1.gif") : c.Die()
+	}
 });
