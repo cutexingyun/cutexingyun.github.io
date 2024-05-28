@@ -575,6 +575,12 @@ var // 定义火炬树桩类，继承自植物类
       oGd.$Torch[a + "_" + b] = c.id;
       oS.HaveFog && oGd.GatherFog(a, b, 1, 1, 0);
     },
+	PrivateDie: function (c) {
+      var a = c.R,
+        b = c.C;
+      delete oGd.$Torch[a + "_" + b];
+      oS.HaveFog && oGd.GatherFog(a, b, 1, 1, 1);
+    },
     CanGrow: function (c, b, f) {
       var a = b + "_" + f,
         d = c[1],
