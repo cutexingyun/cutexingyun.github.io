@@ -319,7 +319,7 @@ var // 定义火炬树桩类，继承自植物类
       );
     },
   }),
-  oPuffShroom1 = InheritO(oRepeater, {
+  oPuffShroom1 = InheritO(oPuffShroom, {
     EName: "oPuffShroom1",
     CName: "小喷菇",
     width: 40,
@@ -386,7 +386,7 @@ var // 定义火炬树桩类，继承自植物类
           var i = GetC(e),
             h = oZ.getZ0(e, f);
           h && h.Altitude == 1
-            ? (h.getPea(h, 20, 0),
+            ? (h.getPea(h, 40, 0),
               (SetStyle(d, {
                 left: g + 38 + "px",
                 width: "52px",
