@@ -609,4 +609,11 @@ var // 定义火炬树桩类，继承自植物类
             (d.src = "images/Plants/WallNut/Wallnut_cracked1.gif"))
         : c.Die();
     },
+	 // 私有死亡函数
+    PrivateDie: function (c) {
+      var a = c.R,
+        b = c.C;
+      delete oGd.$Torch[a + "_" + b];
+      oS.HaveFog && oGd.GatherFog(a, b, 1, 1, 1);
+    },
   });
