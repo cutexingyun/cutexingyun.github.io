@@ -148,21 +148,14 @@ var // 定义火炬树桩类，继承自植物类
      */
     InitTrigger: function () {},
   }),
-  oGatlingPea1 = InheritO(oSnowPea, {
-    EName: "oGatlingPea1",
-    CName: "加特林plus",
-    width: 88,
-    height: 84,
-    beAttackedPointR: 68,
-    SunNum: 250,
-    coolTime: 50,
-    PicArr: [
-      "images/Card/Plants/GatlingPea.png",
-      "images/Plants/GatlingPea/0.gif",
-      "images/Plants/GatlingPea/GatlingPea.gif",
-      "images/Plants/PB-10.gif",
-      "images/Plants/PeaBulletHit.gif",
-    ],
+  ofirePeashooter = InheritO(CPlants, {
+    EName: "ofirePeashooter",
+    CName: "红温射手",
+    width: 71,
+    height: 71,
+    beAttackedPointR: 51,
+    SunNum: 150,
+    BKind: 0,
     AudioArr: [
       "splat1",
       "splat2",
@@ -171,54 +164,165 @@ var // 定义火炬树桩类，继承自植物类
       "shieldhit",
       "shieldhit2",
     ],
-    Tooltip: "一次发射四颗冰豌豆",
+    PicArr: [
+      "images/Card/Plants/firePeashooter.png",
+      "images/Plants/Peashooter/0.gif",
+      "images/Plants/Peashooter/Peashooter.gif",
+      "images/Plants/PB10.gif",
+      "images/Plants/PeaBulletHit.gif",
+    ],
+    Tooltip: "向敌人射出火豌豆",
     Produce:
-      '加特林可以一次发射四颗豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">四倍</font></p>吾心已死，寒风刺骨',
-    PrivateBirth: function (c) {
-      var b = c.AttackedLX,
-        a = b - 40;
-      c.BulletClass = NewO({
-        X: b,
-        R: c.R,
-        D: 0,
-        Attack: 20,
-        Kind: c.BKind,
-        ChangeC: 0,
-        pixelLeft: a,
-        F: oGd.MB1,
-      });
-      c.BulletEle = NewImg(
+      '豌豆射手，你的第一道防线。它们通过发射豌豆来攻击僵尸。<p>伤害：<font color="#FF0000">中等</font></p>一棵植物，怎么能如此快地生长，并发射如此多的豌豆呢？豌豆射手：“努力工作，奉献自己，再加上一份阳光，高纤维和氧化碳均衡搭配，这种健康早餐让一切成为可能。”', // 设置 oPeashooter 对象的 Produce 属性为包含描述信息的字符串
+
+    PrivateBirth: function (a) {
+      a.BulletEle = NewImg(
         0,
-        c.PicArr[3],
+        a.PicArr[3],
         "left:" +
-          a +
+          (a.AttackedLX - 40) +
           "px;top:" +
-          (c.pixelTop + 8) +
+          (a.pixelTop + 3) +
           "px;visibility:hidden;z-index:" +
-          (c.zIndex + 2)
+          (a.zIndex + 2)
       );
     },
-    NormalAttack1: oSnowPea.prototype.NormalAttack,
-    NormalAttack: function (a) {
-      this.NormalAttack1();
+    PrivateDie: function (a) {
+      a.BulletEle = null;
+    },
+
+    NormalAttack: function () {
+      var a = this,
+        b = "PB" + Math.random();
+
+      EditEle(
+        a.BulletEle.cloneNode(false),
+        {
+          id: b,
+        },
+        0,
+        EDPZ
+      );
+
       oSym.addTask(
         15,
-        function (d, b) {
-          var c = $P[d];
-          c && c.NormalAttack1();
-          --b && oSym.addTask(15, arguments.callee, [d, b]);
+
+        function (d) {
+          var c = $(d);
+          c && SetVisible(c);
         },
-        [this.id, 3]
+        [b]
+      );
+
+      oSym.addTask(
+        1,
+
+        function (f, j, h, c, n, i, m, k, o, g) {
+          var l,
+            e = GetC(n),
+            d = oZ["getZ" + c](n, i);
+          m == 0 &&
+            g[i + "_" + e] &&
+            k != e &&
+            (PlayAudio("firepea"),
+            (m = 1),
+            (h = 40),
+            (k = e),
+            (j.src = "images/Plants/PB" + m + c + ".gif"));
+          d && d.Altitude == 1
+            ? (d[
+                {
+                  "-1": "getSnowPea",
+                  0: "getPea",
+                  1: "getFirePea",
+                }[m]
+              ](d, h, c),
+              (SetStyle(j, {
+                left: o + 28 + "px",
+                width: "52px",
+                height: "46px",
+              }).src = "images/Plants/PeaBulletHit.gif"),
+              oSym.addTask(10, ClearChild, [j]))
+            : (n += l = !c ? 5 : -5) < oS.W && n > 100
+            ? ((j.style.left = (o += l) + "px"),
+              oSym.addTask(1, arguments.callee, [f, j, h, c, n, i, m, k, o, g]))
+            : ClearChild(j);
+        },
+        [b, $(b), 40, 0, a.AttackedLX, a.R, 0, 0, a.AttackedLX - 40, oGd.$Torch]
       );
     },
-  }),
-  oSnowPea1 = InheritO(oSnowPea, {
+  });
+(oGatlingPea1 = InheritO(oSnowPea, {
+  EName: "oGatlingPea1",
+  CName: "加特林plus",
+  width: 88,
+  height: 84,
+  beAttackedPointR: 68,
+  SunNum: 250,
+  coolTime: 50,
+  PicArr: [
+    "images/Card/Plants/GatlingPea.png",
+    "images/Plants/GatlingPea/0.gif",
+    "images/Plants/GatlingPea/GatlingPea.gif",
+    "images/Plants/PB-10.gif",
+    "images/Plants/PeaBulletHit.gif",
+  ],
+  AudioArr: [
+    "splat1",
+    "splat2",
+    "splat3",
+    "plastichit",
+    "shieldhit",
+    "shieldhit2",
+  ],
+  Tooltip: "一次发射四颗冰豌豆",
+  Produce:
+    '加特林可以一次发射四颗豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">四倍</font></p>吾心已死，寒风刺骨',
+  PrivateBirth: function (c) {
+    var b = c.AttackedLX,
+      a = b - 40;
+    c.BulletClass = NewO({
+      X: b,
+      R: c.R,
+      D: 0,
+      Attack: 20,
+      Kind: c.BKind,
+      ChangeC: 0,
+      pixelLeft: a,
+      F: oGd.MB1,
+    });
+    c.BulletEle = NewImg(
+      0,
+      c.PicArr[3],
+      "left:" +
+        a +
+        "px;top:" +
+        (c.pixelTop + 8) +
+        "px;visibility:hidden;z-index:" +
+        (c.zIndex + 2)
+    );
+  },
+  NormalAttack1: oSnowPea.prototype.NormalAttack,
+  NormalAttack: function (a) {
+    this.NormalAttack1();
+    oSym.addTask(
+      15,
+      function (d, b) {
+        var c = $P[d];
+        c && c.NormalAttack1();
+        --b && oSym.addTask(15, arguments.callee, [d, b]);
+      },
+      [this.id, 3]
+    );
+  },
+})),
+  (oSnowPea1 = InheritO(oSnowPea, {
     EName: "oSnowPea1",
     CName: "双发寒冰射手",
     width: 73,
     height: 71,
     beAttackedPointR: 53,
-	coolTime: 7.5,
+    coolTime: 7.5,
     SunNum: 250,
     PicArr: [
       "images/Card/Plants/SnowRepeater.png",
@@ -250,8 +354,8 @@ var // 定义火炬树桩类，继承自植物类
         [this.id]
       );
     },
-  }),
-  oIceFumeShroom = InheritO(oFumeShroom, {
+  })),
+  (oIceFumeShroom = InheritO(oFumeShroom, {
     EName: "oIceFumeShroom",
     CName: "Icy Fume-shroom",
     SunNum: 200,
@@ -318,8 +422,8 @@ var // 定义火炬树桩类，继承自植物类
         }
       );
     },
-  }),
-  oPuffShroom1 = InheritO(oPuffShroom, {
+  })),
+  (oPuffShroom1 = InheritO(oPuffShroom, {
     EName: "oPuffShroom1",
     CName: "小喷菇",
     width: 40,
@@ -401,8 +505,8 @@ var // 定义火炬树桩类，继承自植物类
         [c, $(c), a, b.R, a - 46]
       );
     },
-  }),
-  oGloomShroom1 = InheritO(oRepeater, {
+  })),
+  (oGloomShroom1 = InheritO(oRepeater, {
     EName: "oGloomShroom1",
     CName: "曾哥plus",
     width: 88,
@@ -514,8 +618,8 @@ var // 定义火炬树桩类，继承自植物类
         }
       );
     },
-  }),
-  oHypnoShroom1 = InheritO(oFumeShroom, {
+  })),
+  (oHypnoShroom1 = InheritO(oFumeShroom, {
     EName: "oHypnoShroom1",
     CName: "魅惑菇",
     width: 71,
@@ -548,8 +652,8 @@ var // 定义火炬树桩类，继承自植物类
           c.Die();
       }
     },
-  }),
-  ofireWallNut = InheritO(CPlants, {
+  })),
+  (ofireWallNut = InheritO(CPlants, {
     EName: "ofireWallNut",
     CName: "火炬坚果墙",
     width: 65,
@@ -609,11 +713,11 @@ var // 定义火炬树桩类，继承自植物类
             (d.src = "images/Plants/WallNut/Wallnut_cracked1.gif"))
         : c.Die();
     },
-	 // 私有死亡函数
+    // 私有死亡函数
     PrivateDie: function (c) {
       var a = c.R,
         b = c.C;
       delete oGd.$Torch[a + "_" + b];
       oS.HaveFog && oGd.GatherFog(a, b, 1, 1, 1);
     },
-  });
+  }));
