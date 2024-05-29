@@ -1,7 +1,7 @@
 ﻿body {
 	-moz-user-select: none;
 	background: #000;
-	font-family: Yahei mono, Verdana, fixedsys;
+	font-family: Menlo, Verdana, fixedsys;
 	overflow-x: hidden
 }
 
