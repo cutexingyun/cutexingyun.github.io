@@ -20,6 +20,7 @@ oS.Init({
     AZ: [
 //oZombie,oConeheadZombie,oFlagZombie,oPoleVaultingZombie,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie
 	[oZombie, 1, 1,[1]],
+    [oBalloonZombie,1,2,[2]]
 
     ], 
     FlagNum: 20,
