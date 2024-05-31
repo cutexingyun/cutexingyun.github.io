@@ -1042,6 +1042,32 @@ var oDancingZombie1 = InheritO(OrnNoneZombies, {
       );
     },
   }),
+    oTrashZombie = InheritO(oScreenDoorZombie, {
+    EName: "oTrashZombie",
+    CName: "垃圾桶僵尸",
+    PicArr: (function () {
+      var a = "images/Zombies/TrashZombie/",
+        b = "images/Zombies/Zombie/";
+      return [
+        "images/Card/Zombies/TrashZombie.png",
+        a + "0.gif",
+        a + "HeadWalk1.gif",
+        a + "HeadAttack1.gif",
+        a + "LostHeadWalk1.gif",
+        a + "LostHeadAttack1.gif",
+        b + "Zombie.gif",
+        b + "ZombieAttack.gif",
+        b + "ZombieLostHead.gif",
+        b + "ZombieLostHeadAttack.gif",
+        b + "ZombieHead.gif" + $Random,
+        b + "ZombieDie.gif" + $Random,
+        "images/Zombies/BoomDie.gif" + $Random,
+        a + "1.gif",
+      ];
+    })(),
+    Produce:
+      "出没于常青之塔的神秘僵尸。</p>有这样一个故事：老人买了房子，不久便有、个年轻人在附近踢垃圾桶玩。 老人受不了这些噪音，于是和年轻人说“你每天都来踢垃圾桶，我给你一块钱。”年轻人很高兴，踹起了垃圾桶。三天后，老人说：“因为通货膨胀，明天起我只能给你5毛钱。“年轻人不大开心，但还是接受了。下午，他继续去踹垃圾桶。五天后，老人对他说：“最近没有收到养老金，只能给两毛了。”“两毛钱？”年轻人发起了火，之后便再没来踹垃圾桶了 ",
+  }),
   oBigFootballZombie = InheritO(oConeheadZombie, {
     EName: "oBigFootballZombie",
     CName: "橄榄球僵尸",
