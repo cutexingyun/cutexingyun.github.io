@@ -316,6 +316,70 @@ var // 定义火炬树桩类，继承自植物类
     );
   },
 })),
+  (oGatlingPea2 = InheritO(oPeashooter, {
+    EName: "oGatlingPea2",
+    CName: "加特林",
+    width: 88,
+    height: 84,
+    beAttackedPointR: 68,
+    SunNum: 250,
+    coolTime: 50,
+    PicArr: [
+      "images/Card/Plants/GatlingPea.png",
+      "images/Plants/GatlingPea/0.gif",
+      "images/Plants/GatlingPea/GatlingPea.gif",
+      "images/Plants/PB00.gif",
+      "images/Plants/PeaBulletHit.gif",
+    ],
+    AudioArr: [
+      "splat1",
+      "splat2",
+      "splat3",
+      "plastichit",
+      "shieldhit",
+      "shieldhit2",
+    ],
+    Tooltip: "一次发射四颗豌豆",
+    Produce:
+      '加特林可以一次发射四颗豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">四倍</font></p>当加特林宣布他要参军的时候，他的父母很为他担心，他们异口同声地对他说：“亲爱的，但这太危险了。”加特林拒绝让步，“生活本就危险，”他这样回答着，此时他的眼睛里，正闪烁着钢铁般的信念。',
+    PrivateBirth: function (c) {
+      var b = c.AttackedLX,
+        a = b - 40;
+      c.BulletClass = NewO({
+        X: b,
+        R: c.R,
+        D: 0,
+        Attack: 20,
+        Kind: c.BKind,
+        ChangeC: 0,
+        pixelLeft: a,
+        F: oGd.MB1,
+      });
+      c.BulletEle = NewImg(
+        0,
+        c.PicArr[3],
+        "left:" +
+          a +
+          "px;top:" +
+          (c.pixelTop + 8) +
+          "px;visibility:hidden;z-index:" +
+          (c.zIndex + 2)
+      );
+    },
+    NormalAttack1: oPeashooter.prototype.NormalAttack,
+    NormalAttack: function (a) {
+      this.NormalAttack1();
+      oSym.addTask(
+        15,
+        function (d, b) {
+          var c = $P[d];
+          c && c.NormalAttack1();
+          --b && oSym.addTask(15, arguments.callee, [d, b]);
+        },
+        [this.id, 3]
+      );
+    },
+  })),
   (oSnowPea1 = InheritO(oSnowPea, {
     EName: "oSnowPea1",
     CName: "双发寒冰射手",
