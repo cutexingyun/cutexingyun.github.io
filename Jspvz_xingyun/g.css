@@ -1,6 +1,6 @@
 ﻿body {
 	-moz-user-select: none;
-	background: #000;
+	background: #d6d5b7;
 	font-family: Menlo, Verdana, fixedsys;
 	overflow-x: hidden
 }
@@ -2032,7 +2032,4 @@ button.jhp:focus {
 	display: none;
 }
 
-table, th, td {
-            color: white; /* 设置表格内文字的颜色为白色 */
-        }
 /* 提示框的样式 */
