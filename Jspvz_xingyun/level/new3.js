@@ -124,9 +124,7 @@ oS.Init(
           {
             onclick: function () {
               GetNewCard(this, oIceFumeShroom, 51);
-              if (Store.get("Town_关卡进程") < 51) {
-                Store.set("Town_关卡进程", 51);
-              }
+ 
             },
           }
         );
