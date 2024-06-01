@@ -419,7 +419,7 @@ var // 定义火炬树桩类，继承自植物类
       );
     },
   })),
-    (oWinterMelon1 = InheritO(oCabbage, {
+  (oWinterMelon1 = InheritO(oCabbage, {
     EName: "oWinterMelon1",
     CName: "冰瓜投手",
     width: 230,
@@ -622,7 +622,168 @@ var // 定义火炬树桩类，继承自植物类
         })();
       });
     },
-  }));
+  })),
+  (oSunPeashooter = InheritO(oPeashooter, {
+    EName: "oSunPeashooter",
+    CName: "向日葵豌豆",
+    Tooltip: "生产阳光，发射子弹",
+    Produce: "生产阳光，发射子弹。",
+    SunNum: 150,
+    OSunNum: 150,
+    ChangePosition: function () {},
+    PrivateBirth: function (a) {
+      a.BulletEle = NewImg(
+        0,
+        a.PicArr[3],
+        "left:" +
+          (a.AttackedLX - 40) +
+          "px;top:" +
+          (a.pixelTop + 3) +
+          "px;visibility:hidden;z-index:" +
+          (a.zIndex + 2)
+      );
+      oS.ProduceSun
+        ? oSym.addTask(
+            500,
+            function (d, c, b) {
+              $P[d] &&
+                (a.ChangePosition($(d), 1),
+                oSym.addTask(
+                  100,
+                  function (h, g, f, e) {
+                    $P[h] &&
+                      (AppearSun(Math.floor(g + Math.random() * 41), f, 25, 0),
+                      oSym.addTask(
+                        100,
+                        function (i) {
+                          $P[i] && a.ChangePosition($(i), 0);
+                        },
+                        [h]
+                      ),
+                      oSym.addTask(2400, e, [h, g, f]));
+                  },
+                  [d, c, b, arguments.callee]
+                ));
+            },
+            [a.id, GetX(a.C) - 40, GetY(a.R)]
+          )
+        : (a.getHurt = function (f, c, b) {
+            var e = this;
+            switch (c) {
+              case 0:
+                var d = (e.HP -= b);
+                !(d % 100) &&
+                  (AppearSun(
+                    Math.floor(GetX(e.C) - 40 + Math.random() * 41),
+                    GetY(e.R),
+                    25,
+                    0
+                  ),
+                  oSym.addTask(
+                    25,
+                    function (h, g) {
+                      AppearSun(
+                        Math.floor(GetX(h) - 40 + Math.random() * 41),
+                        GetY(g),
+                        25,
+                        0
+                      );
+                    },
+                    [e.C, e.R]
+                  ),
+                  d < 1
+                    ? e.Die()
+                    : oSym.addTask(
+                        50,
+                        function (h, g) {
+                          AppearSun(
+                            Math.floor(GetX(h) - 40 + Math.random() * 41),
+                            GetY(g),
+                            50,
+                            0
+                          );
+                        },
+                        [e.C, e.R]
+                      ));
+                break;
+              case 3:
+                (e.HP -= b) < 1 && e.Die();
+                break;
+              default: // 如果是非自然原因死亡，直接把剩余价值压榨出来
+                if (e.HP > 0)
+                  AppearSun(
+                    Math.floor(GetX(e.C) - 40 + Math.random() * 41),
+                    GetY(e.R),
+                    Math.floor(e.HP / 1.5 / 25) * 25,
+                    0
+                  );
+                e.Die();
+            }
+          });
+    },
+    NormalAttack: function () {
+      // 在当前作用域中声明变量 a，并赋值为 this
+      var a = this,
+        // 在当前作用域中声明变量 b，赋值为 "PB" 加上一个随机数
+        b = "PB" + Math.random();
+      // 调用 EditEle 方法，在 b 的基础上添加 id 属性，值为 b
+      EditEle(
+        a.BulletEle.cloneNode(false),
+        {
+          id: b,
+        },
+        0,
+        EDPZ
+      );
+      // 调用 oSym.addTask 方法，设置定时任务，延迟 15 帧
+      oSym.addTask(
+        15,
+        // 匿名函数，参数为 d
+        function (d) {
+          var c = $(d);
+          c && SetVisible(c);
+        },
+        [b]
+      );
+      // 调用 oSym.addTask 方法，设置定时任务，延迟 1 帧
+      oSym.addTask(
+        1,
+        // 匿名函数，参数为 f, j, h, c, n, i, m, k, o, g
+        function (f, j, h, c, n, i, m, k, o, g) {
+          var l,
+            e = GetC(n),
+            d = oZ["getZ" + c](n, i);
+          m == 0 &&
+            g[i + "_" + e] &&
+            k != e &&
+            (PlayAudio("firepea"),
+            (m = 1),
+            (h = 40),
+            (k = e),
+            (j.src = "images/Plants/PB" + m + c + ".gif"));
+          d && d.Altitude == 1
+            ? (d[
+                {
+                  "-1": "getSnowPea",
+                  0: "getPea",
+                  1: "getFirePea",
+                }[m]
+              ](d, h, c),
+              (SetStyle(j, {
+                left: o + 28 + "px",
+                width: "52px",
+                height: "46px",
+              }).src = "images/Plants/PeaBulletHit.gif"),
+              oSym.addTask(10, ClearChild, [j]))
+            : (n += l = !c ? 5 : -5) < oS.W && n > 100
+            ? ((j.style.left = (o += l) + "px"),
+              oSym.addTask(1, arguments.callee, [f, j, h, c, n, i, m, k, o, g]))
+            : ClearChild(j);
+        },
+        [b, $(b), 20, 0, a.AttackedLX, a.R, 0, 0, a.AttackedLX - 40, oGd.$Torch]
+      );
+    },
+  })),
   (oIceFumeShroom = InheritO(oFumeShroom, {
     EName: "oIceFumeShroom",
     CName: "Icy Fume-shroom",

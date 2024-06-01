@@ -159,7 +159,7 @@ AZ: [
 	[oPoleVaultingZombie, 2, 1],
 	[oConeheadZombie, 4, 1],
 	[oBucketheadZombie, 2, 1],
-	[oNewspaperZombie, 3, 21, [1]],
+	[oNewspaperZombie1, 3, 21, [1]],
 	[oScreenDoorZombie, 1, 21, [2]],
 	[oFootballZombie, 2, 1],
 	[oDancingZombie, 3, 23],
