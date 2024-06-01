@@ -2102,7 +2102,7 @@ var CZombies = (function (b, a) {
   oFootballZombie = InheritO(oConeheadZombie, {
     EName: "oFootballZombie",
     CName: "橄榄球僵尸",
-    OrnHP: 1500,
+    OrnHP: 1400,
     Lvl: 3,
     SunNum: 175,
     StandGif: 11,
