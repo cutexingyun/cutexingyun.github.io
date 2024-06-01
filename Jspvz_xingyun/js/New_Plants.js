@@ -419,6 +419,210 @@ var // 定义火炬树桩类，继承自植物类
       );
     },
   })),
+    (oWinterMelon1 = InheritO(oCabbage, {
+    EName: "oWinterMelon1",
+    CName: "冰瓜投手",
+    width: 230,
+    height: 140,
+    beAttackedPointR: 140,
+    SunNum: 200,
+    AttackGif: 4,
+    Attack: 80,
+    coolTime: 50,
+    AudioArr: [
+      "CabbageAttack1",
+      "CabbageAttack2",
+      "melonimpact1",
+      "melonimpact2",
+    ],
+    PicArr: (function () {
+      var b = "images/Plants/WinterMelon/",
+        arr = [];
+      for (var i = 1; i <= 7; i++) {
+        arr.push(b + "piece" + i + ".webp");
+      }
+      return [
+        "images/Card/Plants/WinterMelonpult.png",
+        b + "0.gif",
+        b + "0.gif",
+        b + "bullet.png",
+        b + "Attack.gif",
+      ].concat(arr);
+    })(),
+    Tooltip: "向敌人抛出带有溅射的冰西瓜瓣",
+    Produce:
+      '冰瓜投手能对成群僵尸造成大量伤害并减速他们。<p>伤害：<font color="#FF0000">高</font><br>范围：<font color="#FF0000">投掷</font><br>特点：<font color="#FF0000">西瓜会对附近僵尸造成溅射伤害并减速他们</font></p>冰瓜投手试着让自己紧绷的神经冷静下来，他听到僵尸步步逼近。他能做到吗？有人能做到吗？',
+    PrivateBirth(a) {
+      a.BulletEle = NewImg(
+        0,
+        a.PicArr[3],
+        "left:" +
+          (a.pixelLeft + 50) +
+          "px;top:" +
+          (a.pixelTop + 10) +
+          "px;width:55px;visibility:hidden;z-index:" +
+          (a.zIndex + 2)
+      );
+    },
+    CheckLoop(zid, direction) {
+      var self = this;
+      var pid = self.id;
+      if ($P[pid]) {
+        self.NormalAttack(zid);
+        oSym.addTask(290, (_) => {
+          $P[pid] && self.AttackCheck1(zid, direction);
+        });
+      }
+    },
+    HitZombie(zombieTarget, self, x2, zY) {
+      if ($Z[zombieTarget.id]) {
+        zombieTarget.getSnowPea(zombieTarget, 0);
+        zombieTarget.getHit2(zombieTarget, self.Attack);
+      }
+      //PlayAudio(self.AudioArr.slice(2, 4).random());
+      for (var i = Math.max(1, self.R - 1); i <= Math.min(self.R + 1, 5); i++) {
+        for (var zombie of oZ.getArZ(x2 - 50, x2 + 70, i)) {
+          if (zombie != zombieTarget) {
+            var attack = self.Attack;
+            if (zombie.isPuppet) {
+              attack += 60;
+            }
+            zombieTarget.getSnowPea(zombie, 0);
+            zombie.getHit2(
+              zombie,
+              zombie.isPuppet
+                ? Math.floor(attack / 1.5)
+                : Math.floor(attack / 3)
+            );
+          }
+        }
+      }
+      var obj = [];
+      for (var i = 0; i < Math.round(5 + Math.random() * 4); i++) {
+        var vy = 0.5 - Math.random() * 3;
+        var ay = 0.2;
+        var vx = Math.random() * 2 - 1;
+        var rotate = Math.random() * 0.25 * (vx > 0 ? 1 : -1);
+        var alpha = Math.random() * 0.8 + 1;
+        var baseY = 50;
+        var dy = baseY + Math.random() * 18 - 9;
+        var ly = GetY(self.R) - 30 - (zY - 20) + (dy - baseY);
+        obj.push({
+          src: self.PicArr[Math.floor(Math.random() * 7) + 5],
+          rotate: Math.random() * 360,
+          x: 50 + Math.random() * 18 - 9,
+          y: dy,
+          width: Math.round(18 + (Math.random() * 6 - 2)),
+          height: Math.round(18 + (Math.random() * 6 - 2)),
+          move() {
+            var self = this;
+            self.x += vx;
+            self.y += vy;
+            vy += ay;
+            self.y = Math.min(ly, self.y);
+            if (self.y == ly) {
+              vy = -vy / 3;
+              rotate /= 1.2;
+            }
+            self.rotate += rotate;
+            self.alpha = Math.max(0, Math.min(alpha, 1));
+            alpha -= 0.05;
+          },
+        });
+      }
+    },
+    AttackAnim(ele, self) {
+      ele.childNodes[1].src = self.PicArr[self.AttackGif] + "?" + this.id;
+    },
+    NormalAttack(zid) {
+      var self = this;
+      var ele = $(self.id);
+      var zombieTarget = oZ.getRangeLeftZ(
+        self.pixelLeft + self.beAttackedPointR,
+        oS.W,
+        self.R,
+        true
+      );
+      //alert(zombieTarget);
+      if (!zombieTarget) return;
+      var bullet = EditEle(
+        self.BulletEle.cloneNode(),
+        {
+          id: "CB" + Math.random(),
+        },
+        0,
+        EDPZ
+      );
+      self.AttackAnim(ele, self);
+      oSym.addTask(
+        265,
+        (_) =>
+          $P[self.id] &&
+          (ele.childNodes[1].src = self.PicArr[self.NormalGif] + "?" + this.id)
+      );
+      oSym.addTask(105, (_) => {
+        //PlayAudio(self.AudioArr.slice(0, 2).random());
+        SetVisible(bullet);
+        var x = self.pixelLeft + 80;
+        var y = self.pixelTop;
+        var zomRelativePos = zombieTarget.HeadPosition[zombieTarget.isAttacking]
+          ? zombieTarget.HeadPosition[zombieTarget.isAttacking]
+          : zombieTarget.HeadPosition[0];
+        var s =
+          Number.parseInt(zombieTarget.Ele.style.left) +
+          zomRelativePos.x -
+          x -
+          !zombieTarget.isAttacking *
+            zombieTarget.Speed *
+            zombieTarget.DeltaDirectionSpeed[zombieTarget.FangXiang] *
+            10 *
+            1;
+        var x2 = x + s;
+        var gravity = 0.2;
+        var vy = -8;
+        var vx = -(gravity * s) / (2 * vy);
+        var lastTime = 0;
+        var zY =
+          Number.parseInt(zombieTarget.Ele.style.top) + zomRelativePos.y - 20;
+        var [lastX, lastY] = [x, y];
+        var defAngle = Math.floor(Math.random() * 20 - 10);
+        var rotSpd = Math.floor(Math.random() * 6 + 3);
+        var bulletShadow = NewEle(
+          `${self.id}_B_${Math.random()}_Shadow`,
+          "div",
+          `opacity:0.5;background-size:29px;background-repeat: no-repeat;width:29px;left:${x}px;top:${
+            self.pixelTop + self.height - 10
+          }px;`,
+          {
+            className: "Shadow",
+          },
+          EDPZ
+        );
+        (function drawFrame() {
+          //NewImg("imgSF", "images/Plants/WinterMelon/bullet.png", `left:${x}px;top:${y}px`, EDAll, {});
+          vy += gravity;
+          bullet.style.left = (x += vx) + "px";
+          bulletShadow.style.left = x + "px";
+          bullet.style.top = (y += vy) + "px";
+          bullet.style.transform = `rotate(${(defAngle += rotSpd)}deg)`;
+          if (!$Z[zombieTarget.id]) {
+            zY = GetY(self.R) - 70;
+          }
+          if ((x >= x2 - 0 && y >= zY && vy > 0) || s < 40) {
+            ClearChild(bullet);
+            self.HitZombie(zombieTarget, self, x, y);
+            ClearChild(bulletShadow);
+            return;
+          }
+          var currTime = new Date().getTime();
+          var timeToCall = Math.max(0, 50 / 3 - (currTime - lastTime)) / 10;
+          oSym.addTask(timeToCall, drawFrame);
+          lastTime = currTime + timeToCall;
+          [lastX, lastY] = [x, y];
+        })();
+      });
+    },
+  }));
   (oIceFumeShroom = InheritO(oFumeShroom, {
     EName: "oIceFumeShroom",
     CName: "Icy Fume-shroom",
