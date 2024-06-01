@@ -1,6 +1,6 @@
 
 oS.Init({
-    PName: [oPuffShroom1,oSnowPea1, ofirePeashooter, oSunPeashooter ,ofireWallNut, oIceFumeShroom , oGatlingPea,oNutBowling,oHugeNutBowling,oBoomNutBowling,oTorchwood1,oSunFlower1,oGatlingPea1,oHypnoShroom1,oGloomShroom1,oLawnCleaner,oCoffeeBean],
+    PName: ShengPlantList,
     ZName: [oZombie,oConeheadZombie,oTrashZombie,oNewspaperZombie2,oFlagZombie,oJalapenoZombie,oPoleVaultingZombie,oZombiejump,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oDancingZombie1,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie],
     PicArr: ["images/interface/background3.jpg"], 
     backgroundImage: "images/interface/background3.jpg",
@@ -8,7 +8,7 @@ oS.Init({
 	LF:[0,1,1,2,2,1,1],
 	//ZF:[0,0,0,2,2,0,0],
     CanSelectCard: 1, 
-    LevelName: "测试",  
+    LevelName: "二爷",  
     LvlEName: 1,  
     SunNum: 9900,
     LargeWaveFlag: {
@@ -19,12 +19,9 @@ oS.Init({
 {
     AZ: [
 //oZombie,oConeheadZombie,oFlagZombie,oPoleVaultingZombie,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie
-	[oZombie, 1, 1,[1]],
-    [oNewspaperZombie2,1,1,[1]],
-    [oTrashZombie,1,1,[1]],
-    [oConeheadZombie,1,1,[1]],
-    [oFlagZombie,1,1,[1]],
-    [oJalapenoZombie,1,1,[1]]
+
+    [oNewspaperZombie2,1,1,[1]]
+
 
     ], 
     FlagNum: 20,
