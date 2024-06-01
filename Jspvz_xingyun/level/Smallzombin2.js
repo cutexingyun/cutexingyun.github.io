@@ -2,7 +2,7 @@ oS.Init({
 	PName: [oPeashooter,oSunFlower,oCherryBomb,oWallNut,oPotatoMine,oSnowPea,oChomper,oSplitPea,oJalapeno,oSpikeweed,oRepeater,oTallNut,oPumpkinHead,oSquash,oFlowerPot,oTorchwood,oThreepeater,oGatlingPea,oTwinSunflower,oSpikerock,oFumeShroom,oCoffeeBean,oGloomShroom,oSunShroom,oPuffShroom,oScaredyShroom,oGarlic,oGraveBuster,oStarfruit,oLilyPad,oHypnoShroom,oIceShroom,oDoomShroom,oTangleKelp,oSeaShroom,oPlantern,oCactus,oBlover],
 	ZName: [oSmallZombie,oSmallConeheadZombie,oSmallFootballZombie],
 	PicArr: ["images/interface/background1.jpg"],//图片列表：白天草坪
-	backgroundImage: "images/interface/background1.jpg",//背景白天草坪
+	backgroundImage: "images/interface/background2.jpg",//背景黑夜草坪
 	CanSelectCard: 1,//允许选择卡片
 	LevelName: "小僵尸突袭（蘑菇加班）",//关卡的名字
 	LvlEName: "TestFloorTesting",//关卡英文名
@@ -24,10 +24,10 @@ oS.Init({
 	FlagNum: 20,//一共几波
 	FlagToSumNum: {//每波怪物数量
 		a1: [3, 5, 8,15],//3波，5波，8波
-		a2: [1, 2, 4, 9,50]//3波前：1个僵尸，3-4：2个僵尸，5-7：4个僵尸，8波后：9个僵尸
+		a2: [1, 20, 25, 9,500]//3波前：1个僵尸，3-4：2个僵尸，5-7：4个僵尸，8波后：9个僵尸
 	},
 	FlagToMonitor: {//监视器
-		99: [ShowFinalWave, 0]//到达第99波，显示最后一波
+		19: [ShowFinalWave, 0]//到达第19波，显示最后一波
 	},
 	FlagToEnd: function() {//你赢了
   	  	NewImg("imgSF", "images/interface/Trophy.png", "left:727px;top:325px;clip:rect(auto,auto,auto,auto)", EDAll, {
