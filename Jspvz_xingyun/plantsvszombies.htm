@@ -642,12 +642,52 @@ ShowAD();
 //初始化系统对象
 InitGame();
 </script>
-<audio controls>
-    <source src="audio/Blessing.mp3" type="audio/mpeg">
-    您的浏览器不支持音频播放。
-</audio>
+<!--网站统计代码-->
 <script async src="//webviso.yestool.org/js/index.min.js"></script>
 <p style="color:White;">本页访问人数:<span id="page_uv"></span></p>
+
+    <button onclick="showMusicList()">显示/隐藏歌曲</button>
+
+    <div id="musicList" class="hidden">
+        <h2>音乐歌单</h2>
+        <table>
+            <tr>
+                <th>歌曲名</th>
+                <th>播放器</th>
+            </tr>
+            <tr>
+                <td>呐呐呐</td>
+                <td>
+                    <audio controls>
+                        <source src="audio/nanana.mp3" type="audio/mpeg">
+                        您的浏览器不支持音频播放。
+                    </audio>
+                </td>
+            </tr>
+            <tr>
+                <td>Blessing</td>
+                <td>
+                    <audio controls>
+                        <source src="audio/Blessing.mp3" type="audio/mpeg">
+                        您的浏览器不支持音频播放。
+                    </audio>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function showMusicList() {
+                       var musicListDiv = document.getElementById("musicList");
+            if (musicListDiv.style.display === "none") {
+                musicListDiv.style.display = "block";
+            } else {
+                musicListDiv.style.display = "none";
+            }
+        }
+        
+    </script>
+
 <script id="JSPVZ"></script>
 
 </body>
