@@ -786,7 +786,7 @@ var // 定义火炬树桩类，继承自植物类
   })),
   (oIceFumeShroom = InheritO(oFumeShroom, {
     EName: "oIceFumeShroom",
-    CName: "Icy Fume-shroom",
+    CName: "冰喷菇",
     SunNum: 200,
     PicArr: [
       "images/Card/Plants/IcyFumeShroom.png",
