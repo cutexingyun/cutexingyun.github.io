@@ -2463,7 +2463,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
         (h = a[c]) != this && h.getFirePeaSputtering();
       }
       (f.HP -= b) < f.BreakPoint
-        ? ((f.getFirePea = OrnNoneZombies1.prototype.getFirePea),
+        ? ((f.getFirePea = OrnNoneZombies.prototype.getFirePea),
           f.GoingDie(
             f.PicArr[[f.LostHeadGif, f.LostHeadAttackGif][f.isAttacking]]
           ),
@@ -2498,8 +2498,8 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
           (c.GoingDie(
             c.PicArr[[c.LostHeadGif, c.LostHeadAttackGif][c.isAttacking]]
           ),
-          (c.getFirePea = OrnNoneZombies1.prototype.getFirePea),
-          (c.getSnowPea = OrnNoneZombies1.prototype.getSnowPea),
+          (c.getFirePea = OrnNoneZombies.prototype.getFirePea),
+          (c.getSnowPea = OrnNoneZombies.prototype.getSnowPea),
           (c.getHit =
             c.getHit0 =
             c.getHit1 =
@@ -2512,8 +2512,8 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
         ? (b.GoingDie(
             b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]
           ),
-          (b.getFirePea = OrnNoneZombies1.prototype.getFirePea),
-          (b.getSnowPea = OrnNoneZombies1.prototype.getSnowPea),
+          (b.getFirePea = OrnNoneZombies.prototype.getFirePea),
+          (b.getSnowPea = OrnNoneZombies.prototype.getSnowPea),
           (b.getHit =
             b.getHit0 =
             b.getHit1 =
@@ -2535,8 +2535,8 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
         ? (b.GoingDie(
             b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]
           ),
-          (b.getFirePea = OrnNoneZombies1.prototype.getFirePea),
-          (b.getSnowPea = OrnNoneZombies1.prototype.getSnowPea),
+          (b.getFirePea = OrnNoneZombies.prototype.getFirePea),
+          (b.getSnowPea = OrnNoneZombies.prototype.getSnowPea),
           (b.getHit =
             b.getHit0 =
             b.getHit1 =
@@ -2557,8 +2557,8 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
         ? (b.GoingDie(
             b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]
           ),
-          (b.getFirePea = OrnNoneZombies1.prototype.getFirePea),
-          (b.getSnowPea = OrnNoneZombies1.prototype.getSnowPea),
+          (b.getFirePea = OrnNoneZombies.prototype.getFirePea),
+          (b.getSnowPea = OrnNoneZombies.prototype.getSnowPea),
           (b.getHit =
             b.getHit0 =
             b.getHit1 =
@@ -2576,7 +2576,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
           ));
     },
     CheckOrnHP: function (g, h, d, c, f, b, a) {
-      var e = OrnNoneZombies1.prototype;
+      var e = OrnNoneZombies.prototype;
       (g.OrnHP = d -= c) < 1 &&
         (a && (g.HP += d),
         (g.ChkActs = function () {
