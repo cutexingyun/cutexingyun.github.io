@@ -323,7 +323,7 @@ var // 定义火炬树桩类，继承自植物类
     height: 84,
     beAttackedPointR: 68,
     SunNum: 250,
-    coolTime: 50,
+    coolTime: 7.5,
     PicArr: [
       "images/Card/Plants/GatlingPea.png",
       "images/Plants/GatlingPea/0.gif",
