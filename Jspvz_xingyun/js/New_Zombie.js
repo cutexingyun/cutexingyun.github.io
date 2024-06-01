@@ -1112,7 +1112,7 @@ var oDancingZombie1 = InheritO(OrnNoneZombies, {
   oSmallZombie = InheritO(oZombie, {
     EName: "oSmallZombie",
     CName: "小领带僵尸",
-    HP: 300,
+    HP: 67,
     width: 83,
     height: 72,
     beAttackedPointL: 41,
@@ -1173,7 +1173,7 @@ var oDancingZombie1 = InheritO(OrnNoneZombies, {
   oSmallFlagZombie = InheritO(oFlagZombie, {
     EName: "oSmallFlagZombie",
     CName: "小旗帜僵尸",
-    HP: 450,
+    HP: 67,
     width: 83,
     height: 72,
     beAttackedPointL: 41,
@@ -1234,7 +1234,7 @@ var oDancingZombie1 = InheritO(OrnNoneZombies, {
   oSmallDuckyTubeZombie1 = InheritO(oDuckyTubeZombie1, {
     EName: "oSmallDuckyTubeZombie1",
     CName: "小鸭子救生圈僵尸",
-    HP: 600,
+    HP: 67,
     width: 83,
     height: 72,
     beAttackedPointL: 41,
@@ -1295,8 +1295,8 @@ var oDancingZombie1 = InheritO(OrnNoneZombies, {
   oSmallConeheadZombie = InheritO(oConeheadZombie, {
     EName: "oSmallConeheadZombie",
     CName: "小路障僵尸",
-    OrnHP: 400,
-    HP: 270,
+    OrnHP: 92,
+    HP: 67,
     width: 83,
     height: 72,
     beAttackedPointL: 41,
@@ -1357,7 +1357,7 @@ var oDancingZombie1 = InheritO(OrnNoneZombies, {
   oSmallFootballZombie = InheritO(oFootballZombie, {
     EName: "oSmallFootballZombie",
     CName: "小橄榄球僵尸",
-    OrnHP: 2000,
+    OrnHP: 350,
     HP: 300,
     width: 77,
     height: 80,
@@ -1419,7 +1419,7 @@ var oDancingZombie1 = InheritO(OrnNoneZombies, {
   oSmallSnorkelZombie = InheritO(oSnorkelZombie, {
     EName: "oSmallSnorkelZombie",
     CName: "小潜水僵尸",
-    HP: 40,
+    HP: 67,
     width: 71,
     height: 100,
     beAttackedPointL: 20,
