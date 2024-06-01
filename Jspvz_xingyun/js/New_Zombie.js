@@ -1068,6 +1068,517 @@ var oDancingZombie1 = InheritO(OrnNoneZombies, {
     Produce:
       "出没于常青之塔的神秘僵尸。</p>有这样一个故事：老人买了房子，不久便有、个年轻人在附近踢垃圾桶玩。 老人受不了这些噪音，于是和年轻人说“你每天都来踢垃圾桶，我给你一块钱。”年轻人很高兴，踹起了垃圾桶。三天后，老人说：“因为通货膨胀，明天起我只能给你5毛钱。“年轻人不大开心，但还是接受了。下午，他继续去踹垃圾桶。五天后，老人对他说：“最近没有收到养老金，只能给两毛了。”“两毛钱？”年轻人发起了火，之后便再没来踹垃圾桶了 ",
   }),
+    oZombieBoss = InheritO(oZombie, {
+    EName: "oZombieBoss",
+    CName: "boss僵尸",
+    Attack: Infinity,
+    HP: Infinity,
+    Lvl: 10000,
+    width: 166,
+    height: 144,
+    beAttackedPointL: 82,
+    beAttackedPointR: 156,
+    OSpeed: 0.9,
+    Speed: 0.9,
+    ShowBool: false,
+    BreakPoint: 90,
+    StartGIF: 0,
+    MinHP: 0,
+    AllLevelsHpNums: [75000, 60000, 40000, 25000],
+    AllLevelsZombie: [
+      oFootballZombie,
+      oDancingZombie,
+      oScreenDoorZombie,
+      oNewspaperZombie,
+    ],
+    AllLevelsSkills: [
+      [
+        {
+          T: 1500,
+          f: function () {
+            for (let i = 1; i <= oS.R; i++) {
+              SummonZombie(oJackinTheBoxZombie, i, 11);
+              SummonZombie(oJackinTheBoxZombie, i, 11);
+              oP.NumZombies += 2;
+            }
+          },
+        },
+        {
+          T: 200,
+          f: function (d) {
+            (d.ZX += 5), (d.AttackedLX += 5), (d.AttackedRX += 5), (d.X += 5);
+            d.ChangeR({ R: d.R });
+          },
+        },
+      ],
+      [
+        {
+          T: 4000,
+          f: function () {
+            for (let i = 1; i <= oS.R; i++) {
+              c = SetTimeoutSummonZombie(oFootballZombie, i, 7);
+              c.Speed = c.OSpeed = 0;
+            }
+          },
+        },
+        {
+          T: 1500,
+          f: function () {
+            oP.SetTimeoutTomZombie([
+              oPoleVaultingZombie,
+              oBucketheadZombie,
+              oDancingZombie,
+            ]);
+          },
+        },
+        {
+          T: 500,
+          f: function (d) {
+            (d.ZX += 5), (d.AttackedLX += 5), (d.AttackedRX += 5), (d.X += 5);
+            d.ChangeR({ R: d.R });
+          },
+        },
+        {
+          T: 0,
+          f: function () {
+            try {
+              for (let i = 1; i <= oS.R; i++) {
+                c = SetTimeoutSummonZombie(oFootballZombie, i, 7);
+                c.Speed = c.OSpeed = 0;
+              }
+              AppearTombstones(8, 9, 12);
+            } catch {}
+          },
+        },
+      ],
+      [
+        {
+          T: 4000,
+          f: function () {
+            ShowLargeWave();
+            for (let i = 1; i <= oS.R; i++) {
+              SummonZombie(oJalapenoZombie, i, 11);
+              SummonZombie(oJalapenoZombie, i, 11);
+              SummonZombie(oJalapenoZombie, i, 11);
+              SummonZombie(oJalapenoZombie, i, 11);
+              SummonZombie(oJalapenoZombie, i, 11);
+              oP.NumZombies += 5;
+            }
+          },
+        },
+        {
+          T: 2000,
+          f: function () {
+            oP.SetTimeoutTomZombie([oDancingZombie]);
+          },
+        },
+        {
+          T: 7000,
+          f: function (d) {
+            (d.ZX += 5), (d.AttackedLX += 5), (d.AttackedRX += 5), (d.X += 5);
+            d.ChangeR({ R: d.R });
+          },
+        },
+      ],
+      [
+        {
+          T: 1000,
+          f: function () {
+            for (d in ArSun) {
+              (ArSun[d].N = -25),
+                ($(d).style.width = "35px"),
+                ($(d).style.height = "35px");
+            }
+          },
+        },
+        {
+          T: 2500,
+          f: function () {
+            Nownum =
+              1 +
+              Math.max(
+                0,
+                Math.min(29, 29 - Number((oS.SunNum / 100).toFixed()))
+              );
+            while (Nownum--) {
+              oP.SetTimeoutZombie([oJalapenoZombie, oScreenDoorZombie], 0);
+              oP.NumZombies += 2;
+            }
+          },
+        },
+        {
+          T: 0,
+          f: function () {
+            try {
+              AppearTombstones(8, 9, 12);
+            } catch {}
+            oP.SetTimeoutTomZombie([
+              oJalapenoZombie,
+              oScreenDoorZombie,
+              oNewspaperZombie,
+            ]);
+            oP.SetTimeoutTomZombie([
+              oJalapenoZombie,
+              oScreenDoorZombie,
+              oNewspaperZombie,
+            ]);
+            oP.SetTimeoutTomZombie([
+              oJalapenoZombie,
+              oScreenDoorZombie,
+              oNewspaperZombie,
+            ]);
+          },
+        },
+        {
+          T: 500,
+          f: function (d) {
+            (d.ZX += 5), (d.AttackedLX += 5), (d.AttackedRX += 5), (d.X += 5);
+            d.ChangeR({ R: d.R });
+          },
+        },
+      ],
+      [
+        {
+          T: 0,
+          f: function () {
+            oS.LastTomStone = 2;
+            (function () {
+              oSym.addTask(10, arguments.callee, []);
+              try {
+                oZ.traversalOf();
+              } catch {}
+            })();
+            try {
+              AppearTombstones(8, 9, 12);
+            } catch {}
+            oP.SetTimeoutZombie([oZomboni, oZomboni, oZomboni], 0),
+              (oP.NumZombies += 3);
+          },
+        },
+        {
+          T: 600,
+          f: function (d) {
+            (d.ZX += 5), (d.AttackedLX += 5), (d.AttackedRX += 5), (d.X += 5);
+            d.ChangeR({ R: d.R });
+          },
+        },
+        {
+          T: 2500,
+          f: function () {
+            for (let i = 1; i <= oS.R; i++) {
+              for (let j = 3; j <= 4; j++) {
+                (c = SetTimeoutSummonZombie(oNewspaperZombie, j, i)),
+                  (c.Speed = c.OSpeed = 0);
+              }
+            }
+            for (let i = 3; i <= 4; i++) {
+              for (let j = 1; j <= 6; j++) {
+                (c = SetTimeoutSummonZombie(oNewspaperZombie, j, i)),
+                  (c.Speed = c.OSpeed = 0);
+              }
+            }
+          },
+        },
+        {
+          T: 4000,
+          f: function () {
+            oP.SetTimeoutZombie([oZomboni, oZomboni, oZomboni], 0),
+              (oP.NumZombies += 3);
+          },
+        },
+        {
+          T: 3000,
+          f: function () {
+            oP.SetTimeoutTomZombie([oSnorkelZombie]);
+          },
+        },
+        {
+          T: 12000,
+          f: function () {
+            if (oS.LastTomStone <= 0 || oS.LastTomStone >= 9) {
+              for (let i = 0; i <= 20; i++) {
+                oP.SetTimeoutTomZombie([oNewspaperZombie]);
+              }
+              return;
+            } else {
+              try {
+                AppearTombstones(
+                  9 - oS.LastTomStone,
+                  9,
+                  6 + 6 * oS.LastTomStone
+                );
+              } catch {}
+              oS.LastTomStone++;
+            }
+          },
+        },
+      ],
+    ],
+    SkillsNums: -1,
+    NowObj: oZombie,
+    NowLevelsNum: 0,
+    NowGifNum: 10,
+    PicArr: (function () {
+      EndGIF = [];
+      EndGIF = EndGIF.concat(oZombie.prototype.PicArr);
+      EndGIF = EndGIF.concat(oJackinTheBoxZombie.prototype.PicArr);
+      EndGIF = EndGIF.concat(oFootballZombie.prototype.PicArr);
+      EndGIF = EndGIF.concat(oDancingZombie.prototype.PicArr);
+      EndGIF = EndGIF.concat(oScreenDoorZombie.prototype.PicArr);
+      EndGIF = EndGIF.concat(oNewspaperZombie.prototype.PicArr);
+      return EndGIF;
+    })(),
+    Produce:
+      '韧性：<font color="#FF0000">高得离谱</font></p>一种只在血夜出没的僵尸，没人知道它到底长什么样',
+    Birth: function () {
+      var c = this;
+      $Z[c.id] = c;
+      oZ.add(c);
+      c.BirthCallBack(c);
+      StopMusic(oS.LoadMusic);
+      oSym.addTask(
+        20,
+        function (f) {
+          if (f.X <= 650) {
+            (f.HP = f.HP2 = 85000),
+              (f.X = 650),
+              (f.ZX = f.X - f.beAttackedPointL),
+              (f.OSpeed = f.Speed = 0),
+              (f.ShowBool = true);
+            $("imgFlagMeterFull").style.clip = "rect(0,157px,21px,150px)";
+            PlayMusic((oS.LoadMusic = oS.StartGameMusic = "BeDone"));
+            f.BoomTransform(f, oJackinTheBoxZombie, 12);
+            SetHidden(
+              $("imgFlag1"),
+              $("imgFlag2"),
+              $("imgFlag3"),
+              $("imgFlag4"),
+              $("imgFlagHead")
+            );
+            f.CanPass = function (d, c) {
+              return c;
+            };
+          } else {
+            f.Attack = Infinity;
+            oSym.addTask(10, arguments.callee, [f]);
+          }
+        },
+        [this]
+      );
+    },
+    BoomTransform: function (f, EndObj, NxtGifNum) {
+      g = EndObj.prototype;
+      boomimg = NewImg(
+        "",
+        "images/Zombies/JackinTheBoxZombie/boom.gif",
+        "width:306px;height:300px;left:" +
+          (f.X - 16) +
+          "px;top:" +
+          (f.pixelTop - 90) +
+          "px;z-index:20"
+      );
+      EDPZ.appendChild(boomimg);
+      oSym.addTask(70, ClearChild, [boomimg]);
+      PlayAudio("explosion");
+      f.StartGIF += f.NowGifNum;
+      f.NowGifNum = NxtGifNum;
+      if (f.StartGIF >= f.PicArr.length) {
+        f.NormalDie();
+        return;
+      }
+      Endgethits = function (a, b, c, d) {
+        OrnNoneZombies.prototype.getHit(a, b, c, d);
+        f.CheckZombieHPLevels(f.HP, f);
+        f.Attack = Infinity;
+      };
+      f.NowObj = EndObj;
+      f.StandGif = f.StartGIF + g.StandGif;
+      f.NormalGif = f.StartGIF + g.NormalGif;
+      f.DieGif = f.StartGIF + g.DieGif;
+      f.BoomDieGif = f.StartGIF + g.BoomDieGif;
+      f.HeadGif = f.StartGIF + g.HeadGif;
+      f.LostHeadGif = f.StartGIF + g.LostHeadGif;
+      f.LostHeadAttackGif = f.StartGIF + g.LostHeadAttackGif;
+      f.AttackGif = f.StartGIF + g.AttackGif;
+      f.StaticGif = f.StartGIF + g.StaticGif;
+      f.DieGif = f.StartGIF + g.DieGif;
+      f.WalkGif0 = f.StartGIF + g.WalkGif0;
+      f.WalkGif1 = f.StartGIF + g.WalkGif1;
+      f.PlayNormalballAudio = g.PlayNormalballAudio;
+      f.X -= g.beAttackedPointL - f.beAttackedPointL;
+      f.AttackedLX -= g.beAttackedPointL - f.beAttackedPointL;
+      f.AttackedRX -= g.beAttackedPointL - f.beAttackedPointL;
+      f.beAttackedPointL = g.beAttackedPointL;
+      f.beAttackedPointR = g.beAttackedPointR;
+      f.BreakPoint = g.BreakPoint;
+      f.width = g.width;
+      f.height = g.height;
+      f.getHit = f.getHit0 = f.getHit1 = f.getHit2 = f.getHit3 = Endgethits;
+      f.GetDX = g.GetDX;
+      f.GetDY = g.GetDY;
+      f.GetDTop = g.GetDTop;
+      f.getShadow = g.getShadow;
+      f.EleShadow.style = f.getShadow(f);
+      (f.Ele.style.left = f.X + "px"),
+        (f.Ele.style.top = GetY(f.R) - f.height + f.GetDY(f) + "px");
+      f.EleBody.src = f.PicArr[(f.NormalGif = f.StandGif)];
+      f.SkillsNums++;
+      f.UseZombieSkill(f.SkillsNums, f, f.AllLevelsSkills[f.SkillsNums], true);
+    },
+    CheckZombieHPLevels: function (HP, f) {
+      $("imgFlagMeterFull").style.clip =
+        "rect(0,157px,21px," + ((HP / f.HP2) * 150).toFixed(2) + "px)";
+      if (f.AllLevelsHpNums[f.NowLevelsNum] == undefined) {
+        return;
+      }
+      if (HP <= f.AllLevelsHpNums[f.NowLevelsNum]) {
+        f.BoomTransform(
+          f,
+          f.AllLevelsZombie[f.NowLevelsNum],
+          f.AllLevelsZombie[f.NowLevelsNum].prototype.PicArr.length
+        );
+        f.NowLevelsNum++;
+      }
+    },
+    UseZombieSkill: function (NowLevelsNum, f, ZombieSkills, cantuse) {
+      if (NowLevelsNum < 0 || NowLevelsNum != f.SkillsNums) {
+        return;
+      }
+      ZombieSkills = ZombieSkills || [];
+      ZombieSkills.forEach((NowSkillsInfo) => {
+        if (!cantuse || !NowSkillsInfo.T) {
+          try {
+            NowSkillsInfo.f(f);
+          } catch (why) {
+            console.error(why);
+          }
+        }
+        if (NowSkillsInfo.T) {
+          oSym.addTask(NowSkillsInfo.T, f.UseZombieSkill, [
+            NowLevelsNum,
+            f,
+            [NowSkillsInfo],
+            false,
+          ]);
+        }
+      });
+    },
+    getCrushed: function () {
+      return false;
+    },
+    ExplosionDie: function () {
+      this.getHit0(this, 1800, 0);
+    },
+    DisappearDie: function () {
+      this.getHit0(this, 1800, 0);
+    },
+    getRaven: function () {
+      return this.getHit0(this, 100, 0), 0;
+    },
+    bedevil: function () {},
+    NormalDie: function () {
+      for (i in $Z) {
+        i != this.id && $Z[i].NormalDie();
+      }
+      boomimg = NewImg(
+        "",
+        "images/Zombies/JackinTheBoxZombie/boom.gif",
+        "width:306px;height:300px;left:" +
+          (this.X - 16) +
+          "px;top:" +
+          (this.pixelTop - 90) +
+          "px;z-index:20"
+      );
+      EDPZ.appendChild(boomimg);
+      oSym.addTask(70, ClearChild, [boomimg]);
+      PlayAudio("explosion");
+      var c = this;
+      c.SkillsNums = Infinity;
+      c.EleBody.src = c.PicArr[c.DieGif] + Math.random();
+      oSym.addTask(250, ClearChild, [c.Ele]);
+      c.HP = 0;
+      delete $Z[c.id];
+      BossDieAfter();
+    },
+  }),
+    oJalapenoZombie = InheritO(oZombie, {
+    EName: "oJalapenoZombie",
+    CName: "火爆辣椒僵尸",
+    width: 68,
+    height: 89,
+    beAttackedPointL: 5,
+    beAttackedPointR: 48,
+    PicArr: (function () {
+      var a = "images/Plants/Jalapeno/",
+        b = "images/Zombies/Zombie/";
+      return [
+        "images/Card/Plants/Jalapeno.png",
+        a + "0.gif",
+        a + "Jalapeno.gif",
+        a + "Jalapeno.gif",
+        a + "Jalapeno.gif",
+        a + "Jalapeno.gif",
+        a + "Jalapeno.gif" + $Random,
+        a + "Jalapeno.gif" + $Random,
+        a + "Jalapeno.gif" + $Random,
+        a + "Jalapeno.gif",
+      ];
+    })(),
+    Produce:
+      '韧性：<font color="#FF0000">低</font></p>植物家族叛变的火爆辣椒，代号47，经常自爆以摧毁植物。',
+    BirthCallBack: function (f) {
+      var e = f.delayT,
+        d = f.id,
+        c = (f.Ele = $(d));
+      f.EleShadow = c.firstChild;
+      f.EleBody = c.childNodes[1];
+      e
+        ? oSym.addTask(
+            e,
+            function (h, g) {
+              var i = $Z[h];
+              i && ((i.FreeSetbodyTime = 0), SetBlock(g));
+            },
+            [d, c]
+          )
+        : SetBlock(c);
+      f.CheckBoomFire(f);
+    },
+    CheckBoomFire: function (f) {
+      oSym.addTask(
+        100,
+        function (f) {
+          $Z[f.id] && f.X <= 420 && f.BoomFire(f.R);
+          oSym.addTask(100, arguments.callee, [f]);
+        },
+        [f]
+      );
+    },
+    BoomFire: function (y) {
+      PlayAudio("jalapeno");
+      fireid = "fire_" + Math.random();
+      NewImg(
+        fireid,
+        "images/Plants/Jalapeno/JalapenoAttack.gif",
+        "width:755px;height:131px;left:120px;top:" + (GetY(y - 1) - 42) + "px",
+        EDAll
+      );
+      oSym.addTask(
+        135,
+        (id) => {
+          ClearChild($(id));
+        },
+        [fireid]
+      );
+      for (let i = 1; i <= oS.C; i++) {
+        for (let j = 0; j < 4; j++) {
+          let g = oGd.$[y + "_" + i + "_" + j];
+          g && g.BoomDie();
+        }
+      }
+      this.DisappearDie();
+    },
+  }),
   oBigFootballZombie = InheritO(oConeheadZombie, {
     EName: "oBigFootballZombie",
     CName: "橄榄球僵尸",

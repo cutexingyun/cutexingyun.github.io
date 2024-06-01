@@ -1,7 +1,7 @@
 
 oS.Init({
     PName: [oPuffShroom1,oSnowPea1, ofirePeashooter, oSunPeashooter ,ofireWallNut, oIceFumeShroom , oGatlingPea,oNutBowling,oHugeNutBowling,oBoomNutBowling,oTorchwood1,oSunFlower1,oGatlingPea1,oHypnoShroom1,oGloomShroom1,oLawnCleaner,oCoffeeBean],
-    ZName: [oZombie,oConeheadZombie,oTrashZombie,oFlagZombie,oPoleVaultingZombie,oZombiejump,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oDancingZombie1,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie],
+    ZName: [oZombie,oConeheadZombie,oTrashZombie,oFlagZombie,oJalapenoZombie,oPoleVaultingZombie,oZombiejump,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oDancingZombie1,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie],
     PicArr: ["images/interface/background3.jpg"], 
     backgroundImage: "images/interface/background3.jpg",
 	Coord:2,
@@ -21,7 +21,10 @@ oS.Init({
 //oZombie,oConeheadZombie,oFlagZombie,oPoleVaultingZombie,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie
 	[oZombie, 1, 1,[1]],
     [oZombiejump,1,1],
-    [oTrashZombie,1,1,[1]]
+    [oTrashZombie,1,1,[1]],
+    [oConeheadZombie,1,1,[1]],
+    [oFlagZombie,1,1,[1]],
+    [oJalapenoZombie,1,1,[1]]
 
     ], 
     FlagNum: 20,
