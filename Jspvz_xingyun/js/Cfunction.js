@@ -3828,3 +3828,9 @@
           (addCookie("JSPVZSilence", (oS.Silence = b)),
           b ? PauseMusic() : NewMusic(oS.StartGameMusic));
       });
+      
+ var titles = ["Jspvz_xingyun:欢迎游玩", "Jspvz_xingyun：荇芸吖", "Jspvz_xingyun：这是基于jspvz的改版","Jspvz_xingyun：基于jspvz的游戏","Jspvz_xingyun：为什么没人玩！","Jspvz_xingyun：这游戏很好玩！","Jspvz_xingyun:千万别种向日葵，不然你就会发现阳光变多了！","Jspvz_xingyun:过不了？按l试试"];
+
+    // 随机选择一个标题并显示在页面上
+    var randomIndex = Math.floor(Math.random() * titles.length);
+    document.getElementById("randomTitle").textContent = titles[randomIndex];
