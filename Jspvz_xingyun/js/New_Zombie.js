@@ -2670,7 +2670,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
     },
     CheckBoomFire: function (f) {
       oSym.addTask(
-        2500,
+        2000,
         function (f) {
           // 生成1到100之间的随机整数
         let randomNumber = Math.floor(Math.random() * 100) + 1;
