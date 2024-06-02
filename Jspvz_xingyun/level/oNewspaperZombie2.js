@@ -2,10 +2,10 @@
 oS.Init({
     PName: ShengPlantList,
     ZName: [oNewspaperZombie2],
-    PicArr: ["images/interface/background2.jpg"], 
-    backgroundImage: "images/interface/background2.jpg",
+    PicArr: ["images/interface/background1.jpg"], 
+    backgroundImage: "images/interface/background1.jpg",
 	Coord:1,
-    DKind: 0,
+    DKind: 1,
 	LF:[0,1,1,1,1,1,1],
 	//ZF:[0,0,0,2,2,0,0],
     CanSelectCard: 1, 
