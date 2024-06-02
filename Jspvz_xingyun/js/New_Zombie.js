@@ -2627,6 +2627,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
     oJalapenoZombie = InheritO(oZombie, {
     EName: "oJalapenoZombie",
     CName: "火爆辣椒僵尸",
+    HP: 500,
     width: 68,
     height: 89,
     beAttackedPointL: 5,
