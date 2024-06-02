@@ -1,6 +1,6 @@
 // 初始化游戏设置
 oS.Init({
-    PName: [oGloomShroom,oSunFlower,oGarlic,oPumpkinHead,oRepeater,oSpikeweed,oFumeShroom,oTorchwood,oPotatoMine,oGatlingPea], // 植物名称数组
+    PName: [oGloomShroom,oSunFlower,oGarlic,oPumpkinHead,oRepeater,oSpikeweed,oFumeShroom,oTorchwood,oPotatoMine,oGatlingPea,oHypnoShroom], // 植物名称数组
     ZName: [oJalapenoZombie,oZombiejump,oZombieBoss], // 僵尸名称数组
     PicArr: ["images/interface/background2.jpg", "images/interface/trophy.png", "images/interface/Stripe.png"], // 图片数组
     backgroundImage: "images/interface/background2.jpg", // 背景图片
@@ -10,7 +10,7 @@ oS.Init({
     ProduceSun: false, // 是否产生阳光
     CardKind: 1, // 卡片种类
     DKind: 0, // D种类
-    LevelName:'五列小阵', // 关卡名称
+    LevelName:'僵尸测试', // 关卡名称
     LvlEName: "ImZombie", // 关卡E名称
     LoadMusic: "Mountains", // 加载音乐
     StartGameMusic: "Mountains", // 开始游戏音乐
@@ -21,7 +21,7 @@ oS.Init({
         P: [
 		[1, 1, 1],//植物，列，行
         [1, 2, 1],
-		[1, 3, 1],
+		[10, 3, 1],
 		[1, 1, 2],
 		[1, 2, 2],
 		[1, 1, 2],
