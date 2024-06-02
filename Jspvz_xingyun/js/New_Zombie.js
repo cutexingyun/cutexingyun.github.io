@@ -2601,7 +2601,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
             }
             var j = CZombies1.prototype,
               i = (k.OSpeed = k.LostPaperSpeed);
-            k.Attack = 1000000000;
+            k.Attack = j.Attack;
             k.ChkActs = j.ChkActs;
             k.ChkActs1 = j.ChkActs1;
             k.Speed && (k.Speed = !k.FreeSlowTime ? i : 0.5 * i);
@@ -2669,7 +2669,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
     },
     CheckBoomFire: function (f) {
       oSym.addTask(
-        100,
+        10,
         function (f) {
           $Z[f.id] && f.X <= 420 && f.BoomFire(f.R);
           oSym.addTask(100, arguments.callee, [f]);
