@@ -1681,7 +1681,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
     PicArr: (function () {
       var a = "images/Zombies/PoleVaultingZombie/";
       return [
-        "Card/Zombies/PoleVaultingZombie.png",
+        "images/Card/Zombies/PoleVaultingZombie.png",
         a + "0.gif",
         a + "PoleVaultingZombie.gif",
         a + "PoleVaultingZombieAttack.gif",
