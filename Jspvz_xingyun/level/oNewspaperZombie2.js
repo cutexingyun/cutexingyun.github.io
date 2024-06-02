@@ -9,7 +9,7 @@ oS.Init({
 	LF:[0,1,1,1,1,1,1],
 	//ZF:[0,0,0,2,2,0,0],
     CanSelectCard: 1, 
-    LevelName: "二爷",  
+    LevelName: "二爷海",  
     LvlEName: 1,  
     SunNum: 100,
     LargeWaveFlag: {
