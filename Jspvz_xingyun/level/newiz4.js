@@ -5,7 +5,7 @@ oS.Init({
     PicArr: ["images/interface/background2.jpg", "images/interface/trophy.png", "images/interface/Stripe.png"], // 图片数组
     backgroundImage: "images/interface/background2.jpg", // 背景图片
     ShowScroll: false, // 是否显示滚动条
-    SunNum: 125, // 初始阳光数量
+    SunNum: 150, // 初始阳光数量
     BrainsNum: 5, // 初始大脑数量
     ProduceSun: false, // 是否产生阳光
     CardKind: 1, // 卡片种类
