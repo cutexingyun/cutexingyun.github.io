@@ -1,5 +1,8 @@
 ﻿body {
-	-moz-user-select: none;
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* Internet Explorer */
+    user-select: none;          /* 标准属性 */
 	background: #d6d5b7;
 	font-family: Menlo, Verdana, fixedsys;
 	overflow-x: hidden
