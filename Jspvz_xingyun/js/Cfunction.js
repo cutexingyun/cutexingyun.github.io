@@ -1970,6 +1970,7 @@
         oBalloonZombie,
         oDiggerZombie,
         oImp,
+        oJalapenoZombie,
       ],
       a = e.length,
       b = 0,

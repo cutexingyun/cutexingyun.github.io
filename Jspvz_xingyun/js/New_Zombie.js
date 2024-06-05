@@ -2649,7 +2649,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
       ];
     })(),
     Produce:
-      '韧性：<font color="#FF0000">低</font></p>植物家族叛变的火爆辣椒，代号47，经常自爆以摧毁植物。',
+      '韧性：<font color="#FF0000">中等</font></p>植物家族叛变的火爆辣椒，代号47，经常自爆以摧毁植物。',
     BirthCallBack: function (f) {
       var e = f.delayT,
         d = f.id,
