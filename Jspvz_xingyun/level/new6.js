@@ -17,7 +17,7 @@ oS.Init(
     LF: [0, 2, 2, 2, 2, 2, 2],
     LevelName: "水战",
     LvlEName: "666",
-    SunNum: 300,
+    SunNum: 400,
     LvlClearFunc: function () {
       oSym.Clear();
     },
