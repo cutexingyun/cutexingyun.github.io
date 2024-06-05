@@ -1323,13 +1323,13 @@
       var a;
       for (a = b; a; this.$[a] = [], this.$R[a--] = []) {}
     },
-   /* add: function (b, a) {
+   add: function (b, a) {
       (a = oZ.$[b.R]).push(b);
       a.sort(function (d, c) {
         return d.AttackedLX - c.AttackedLX;
       });
       a.RefreshTime = oSym.Now;
-    },*/
+    },
     getZ0: function (b, d) {
       if (d < 1 || d > oS.R) {
         return;
