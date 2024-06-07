@@ -2339,7 +2339,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
     StandGif: 14,
     width: 216,
     height: 164,
-    SunNum: 75,
+    SunNum: 250,
     beAttackedPointL: 60,
     beAttackedPointR: 240,
     LostPaperSpeed: 5,
