@@ -1069,9 +1069,9 @@ var // 定义火炬树桩类，继承自植物类
     }
   },
 })),
-(oDoomShroom1 = InheritO(oHypnoShroom, {
+(oDoomShroom1 = InheritO(oFumeShroom, {
   EName: "oDoomShroom1",
-  CName: "毁灭菇",
+  CName: "魅惑毁灭菇",
   width: 102,
   height: 91,
   beAttackedPointR: 80,
@@ -1091,8 +1091,8 @@ var // 定义火炬树桩类，继承自植物类
     "images/Plants/DoomShroom/crater31.png",
     "images/Plants/DoomShroom/Boom.png",
   ],
-  Tooltip: "造成大规模的伤害, 但会在原地留下一个坑, 坑中无法种植物",
-  Produce: '毁灭菇可以摧毁大范围的僵尸，并留下一个不能种植物的大弹坑。<p>伤害：<font color="#FF0000">极高</font><br>范围：<font color="#FF0000">大范围内的所有僵尸</font><br>用法：<font color="#FF0000">单独使用，立即生效</font><br>特点：<font color="#FF0000">留下一个弹坑<br>白天睡觉</font></p>“你很幸运，我是和你一伙的，”毁灭菇说，“我能摧毁任何你所珍视的东西，小菜一碟。”',
+  Tooltip: "将大局逆转吧！！！",
+  Produce: '魅惑毁灭菇可以魅惑大范围的僵尸，并留下一个不能种植物的大弹坑。<p>伤害：<font color="#FF0000">极高</font><br>范围：<font color="#FF0000">大范围内的所有僵尸</font><br>用法：<font color="#FF0000">单独使用，立即生效</font><br>特点：<font color="#FF0000">留下一个弹坑<br>白天睡觉</font></p>“将大局逆转吧！！某位人说过”',
   InitTrigger: function() {},
   AudioArr: ["doomshroom"],
   BirthStyle: function(c, d, b, a) {
@@ -1139,7 +1139,7 @@ var // 定义火炬树桩类，继承自植物类
           do {
             k = (e = oZ.getArZ(n, m, h)).length;
             while (k--) {
-              e[k].bedevil(e);
+              e[k].bedevil(e[k]);
             }
           } while (h++ < f);
           PlayAudio("doomshroom");
