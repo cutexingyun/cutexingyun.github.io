@@ -2636,7 +2636,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
       var a = "images/Plants/Jalapeno/",
         b = "images/Zombies/Zombie/";
       return [
-        "images/Card/Plants/Jalapeno.png",
+        "images/Card/Plants/Jalapeno1.png",
         a + "0.gif",
         a + "Jalapeno.gif",
         a + "Jalapeno.gif",
