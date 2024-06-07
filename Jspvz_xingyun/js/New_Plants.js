@@ -1075,8 +1075,8 @@ var // 定义火炬树桩类，继承自植物类
   width: 102,
   height: 91,
   beAttackedPointR: 80,
-  coolTime: 0,
-  SunNum: 125,
+  coolTime: 100,
+  SunNum: 1000,
   PicArr: [
     "images/Card/Plants/DoomShroom.png",
     "images/Plants/DoomShroom/0.gif",

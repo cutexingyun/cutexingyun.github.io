@@ -1921,6 +1921,7 @@
         oSnowPea1,
         oGatlingPea1,
         ofireWallNut,
+        oDoomShroom1,
       ],
       a = e.length,
       b = 0,
