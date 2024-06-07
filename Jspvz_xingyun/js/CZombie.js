@@ -1,6 +1,6 @@
-var CZombies = (function (b, a) {
+var CZombies = (function(b, a) {
     return (
-      ((a = function () {}).prototype = {
+      ((a = function() {}).prototype = {
         name: "Zombies",
         HP: 270,
         Lvl: 1,
@@ -51,20 +51,17 @@ var CZombies = (function (b, a) {
         FreeSetbodyTime: 0,
         FreeFreezeTime: 0,
         FreeSlowTime: 0,
-        HeadPosition: [
-          {
-            x: 62,
-            y: 16,
-            width: 40,
-            height: 40,
-          },
-          {
-            x: 62,
-            y: 16,
-            width: 40,
-            height: 40,
-          },
-        ],
+        HeadPosition: [{
+          x: 62,
+          y: 16,
+          width: 40,
+          height: 40,
+        }, {
+          x: 62,
+          y: 16,
+          width: 40,
+          height: 40,
+        }, ],
         Ifgc: 0,
         getButter(self, time = 400, img = null, wh = [1, 1], delta = [0, 0]) {
           if (!$Z[self.id] || self.HP < self.BreakPoint) {
@@ -81,8 +78,7 @@ var CZombies = (function (b, a) {
             canvas = NewEle(
               "Buttered_Zombie_" + Math.random(),
               "canvas",
-              bodyStyle.cssText,
-              {
+              bodyStyle.cssText, {
                 height: body.offsetHeight,
                 width: body.offsetWidth,
               },
@@ -136,9 +132,9 @@ var CZombies = (function (b, a) {
                   last = self._TMP_ELEBODY.src;
                 }
                 var position =
-                  self.HeadPosition.length > self.isAttacking
-                    ? self.HeadPosition[self.isAttacking]
-                    : self.HeadPosition[0];
+                  self.HeadPosition.length > self.isAttacking ?
+                  self.HeadPosition[self.isAttacking] :
+                  self.HeadPosition[0];
                 for (var i of self._Butter_Img_) {
                   if (
                     position.x != Number.parseInt(i.style.left) ||
@@ -151,7 +147,7 @@ var CZombies = (function (b, a) {
                 oSym.addTask(1, CheckSPC, [last]);
               }
             });
-            self._FREESetBody_ = function () {
+            self._FREESetBody_ = function() {
               self.FreeSetbodyTime = 0;
               self.EleBody = self._TMP_ELEBODY;
               if (self.EleBody) {
@@ -186,17 +182,17 @@ var CZombies = (function (b, a) {
           if (!$("butter" + self.id + img)) {
             !self._Butter_Img_ && (self._Butter_Img_ = []);
             var position =
-              self.HeadPosition.length > self.isAttacking
-                ? self.HeadPosition[self.isAttacking]
-                : self.HeadPosition[0];
+              self.HeadPosition.length > self.isAttacking ?
+              self.HeadPosition[self.isAttacking] :
+              self.HeadPosition[0];
             self._Butter_Img_.push(
               NewImg(
                 "butter_" + self.id + img,
                 img,
-                (self.FangXiang == "GoRight"
-                  ? "transform:rotateY(180deg);"
-                  : "") +
-                  `position:absolute;left:${position.x + delta[0]}px;top:${
+                (self.FangXiang == "GoRight" ?
+                  "transform:rotateY(180deg);" :
+                  "") +
+                `position:absolute;left:${position.x + delta[0]}px;top:${
                     position.y + delta[1]
                   }px;width:${position.width * wh[0]}px;height:${
                     position.height * wh[1]
@@ -219,60 +215,60 @@ var CZombies = (function (b, a) {
             [(self.FreeSetbodyTime = oSym.Now + time)]
           );
         },
-        CanPass: function (d, c) {
+        CanPass: function(d, c) {
           return c && c != 2;
         },
-        CanGrow: function (d, c, e) {
+        CanGrow: function(d, c, e) {
           return (
             this.CanPass(c, oGd.$LF[c]) && (oS.ArP ? e > oS.ArP.ArC[1] : true)
           );
         },
-        ChkActs: function (h, f, j, e) {
+        ChkActs: function(h, f, j, e) {
           var d, c, g;
-          !(h.FreeFreezeTime || h.FreeSetbodyTime)
-            ? (h.beAttacked && !h.isAttacking && h.JudgeAttack(),
-              !h.isAttacking
-                ? (c = h.AttackedRX -= d = h.Speed) < -50
-                  ? (j.splice(e, 1), h.DisappearDie(), (g = 0))
-                  : (c < 100 &&
-                      !h.PointZombie &&
-                      ((h.PointZombie = 1),
-                      !oS.CardKind &&
-                        (StopMusic(), PlayAudio("losemusic", false)),
-                      h.ChangeR({
-                        R: f,
-                        ar: [oS.R - 1],
-                        CustomTop: 400 - h.height + h.GetDY(),
-                      })),
-                    (h.ZX = h.AttackedLX -= d),
-                    (h.Ele.style.left = Math.floor((h.X -= d)) + "px"),
-                    (g = 1))
-                : (g = 1))
-            : (g = 1);
+          !(h.FreeFreezeTime || h.FreeSetbodyTime) ?
+          (h.beAttacked && !h.isAttacking && h.JudgeAttack(),
+            !h.isAttacking ?
+            (c = h.AttackedRX -= d = h.Speed) < -50 ?
+            (j.splice(e, 1), h.DisappearDie(), (g = 0)) :
+            (c < 100 &&
+              !h.PointZombie &&
+              ((h.PointZombie = 1),
+                !oS.CardKind &&
+                (StopMusic(), PlayAudio("losemusic", false)),
+                h.ChangeR({
+                  R: f,
+                  ar: [oS.R - 1],
+                  CustomTop: 400 - h.height + h.GetDY(),
+                })),
+              (h.ZX = h.AttackedLX -= d),
+              (h.Ele.style.left = Math.floor((h.X -= d)) + "px"),
+              (g = 1)) :
+            (g = 1)) :
+          (g = 1);
           return g;
         },
-        ChkActs1: function (g, e, h, d) {
+        ChkActs1: function(g, e, h, d) {
           var c, f;
-          !(g.FreeFreezeTime || g.FreeSetbodyTime)
-            ? (g.beAttacked && !g.isAttacking && g.JudgeAttack(),
-              !g.isAttacking
-                ? (g.AttackedLX += c = g.Speed) > oS.W
-                  ? (h.splice(d, 1), g.DisappearDie(), (f = 0))
-                  : ((g.ZX = g.AttackedRX += c),
-                    (g.Ele.style.left = Math.ceil((g.X += c)) + "px"),
-                    (f = 1))
-                : (f = 1))
-            : (f = 1);
+          !(g.FreeFreezeTime || g.FreeSetbodyTime) ?
+          (g.beAttacked && !g.isAttacking && g.JudgeAttack(),
+            !g.isAttacking ?
+            (g.AttackedLX += c = g.Speed) > oS.W ?
+            (h.splice(d, 1), g.DisappearDie(), (f = 0)) :
+            ((g.ZX = g.AttackedRX += c),
+              (g.Ele.style.left = Math.ceil((g.X += c)) + "px"),
+              (f = 1)) :
+            (f = 1)) :
+          (f = 1);
           return f;
         },
-        GetDX: function () {
+        GetDX: function() {
           return -110;
         },
-        GetDY: function () {
+        GetDY: function() {
           return -10;
         },
         GetDTop: 0,
-        ChangeR: function (e) {
+        ChangeR: function(e) {
           var h = e.R,
             g = e.ar || [],
             j = e.CustomTop,
@@ -287,9 +283,9 @@ var CZombies = (function (b, a) {
             c;
           !g.length &&
             (d.CanPass(q, i[q]) && (g[++m] = q),
-            d.CanPass((q += 2), i[q]) && (g[++m] = q));
-          g.length
-            ? ((l = !d.WalkDirection ? -5 : 5),
+              d.CanPass((q += 2), i[q]) && (g[++m] = q));
+          g.length ?
+            ((l = !d.WalkDirection ? -5 : 5),
               (d.ZX += l),
               (d.AttackedLX += l),
               (d.AttackedRX += l),
@@ -297,17 +293,16 @@ var CZombies = (function (b, a) {
               (q = g[Math.floor(Math.random() * g.length)]),
               SetStyle(f, {
                 left: d.X + "px",
-                top:
-                  (d.pixelTop =
-                    j == undefined ? GetY(q) - d.height + d.GetDY() : j) + "px",
+                top: (d.pixelTop =
+                  j == undefined ? GetY(q) - d.height + d.GetDY() : j) + "px",
                 zIndex: (d.zIndex = 3 * q + 1),
               }),
               d.isAttacking && (n.src = d.PicArr[d.NormalGif]),
-              oZ.moveTo(k, h, q))
-            : (n.src = d.PicArr[d.NormalGif]);
+              oZ.moveTo(k, h, q)) :
+            (n.src = d.PicArr[d.NormalGif]);
           d.isAttacking = 0;
         },
-        getShadow: function (c) {
+        getShadow: function(c) {
           return (
             "left:" +
             (c.beAttackedPointL - 10) +
@@ -316,7 +311,7 @@ var CZombies = (function (b, a) {
             "px"
           );
         },
-        Init: function (g, i, e, d) {
+        Init: function(g, i, e, d) {
           var c = 0,
             h = this,
             f = [];
@@ -334,16 +329,16 @@ var CZombies = (function (b, a) {
             "px;top:",
             "px;z-index:",
             '"><img src="' +
-              ShadowPNG +
-              '" style="' +
-              i.getShadow(i) +
-              '"><img style="position:absolute;clip:rect(0,auto,',
+            ShadowPNG +
+            '" style="' +
+            i.getShadow(i) +
+            '"><img style="position:absolute;clip:rect(0,auto,',
             ",0);top:",
             'px" src="',
             '"></div>',
           ];
         },
-        getHTML: function (d, g, i, h, f, k, j, c) {
+        getHTML: function(d, g, i, h, f, k, j, c) {
           var e = this.ArHTML;
           return (
             e[0] +
@@ -365,7 +360,7 @@ var CZombies = (function (b, a) {
             e[8]
           );
         },
-        prepareBirth: function (f) {
+        prepareBirth: function(f) {
           var h = this,
             e = h.ArR,
             d = e[Math.floor(Math.random() * e.length)],
@@ -388,7 +383,7 @@ var CZombies = (function (b, a) {
             h.PicArr[h.NormalGif]
           );
         },
-        CustomBirth: function (i, c, d, m) {
+        CustomBirth: function(i, c, d, m) {
           var g = this,
             f = GetY(i) + g.GetDY(),
             h = f - g.height,
@@ -413,40 +408,41 @@ var CZombies = (function (b, a) {
             g.PicArr[g.NormalGif]
           );
         },
-        BirthCallBack: function (f) {
+        BirthCallBack: function(f) {
           var e = f.delayT,
             d = f.id,
             c = (f.Ele = $(d));
           f.EleShadow = c.firstChild;
           f.EleBody = c.childNodes[1];
           e
-            ? oSym.addTask(
-                e,
-                function (h, g) {
-                  var i = $Z[h];
-                  i && ((i.FreeSetbodyTime = 0), SetBlock(g));
-                },
-                [d, c]
-              )
-            : SetBlock(c);
+            ?
+            oSym.addTask(
+              e,
+              function(h, g) {
+                var i = $Z[h];
+                i && ((i.FreeSetbodyTime = 0), SetBlock(g));
+              },
+              [d, c]
+            ) :
+            SetBlock(c);
         },
-        Birth: function () {
+        Birth: function() {
           var c = this;
           $Z[c.id] = c;
           oZ.add(c);
           c.BirthCallBack(c);
           c.GetOnclick(c);
         },
-        GetOnclick: function (f) {
+        GetOnclick: function(f) {
           let c = this,
             d = f.id,
             zombieTarget = this;
           if (oS.LevelEName == "Cob") {
-            $(d).onclick = function () {
+            $(d).onclick = function() {
               c.getButter(zombieTarget);
             };
           } else if (oS.LevelEName == "ChuiZi") {
-            $(d).onclick = function () {
+            $(d).onclick = function() {
               switch (c.Ornaments) {
                 case 0:
                   c.NormalDie();
@@ -460,33 +456,33 @@ var CZombies = (function (b, a) {
             };
           }
         },
-        getCrushed: function (c) {
+        getCrushed: function(c) {
           return true;
         },
-        getRaven: function () {
+        getRaven: function() {
           return this.DisappearDie(), 1;
         },
-        getExplosion: function () {
+        getExplosion: function() {
           this.ExplosionDie();
         },
-        getThump: function () {
+        getThump: function() {
           this.DisappearDie();
         },
-        PlayNormalballAudio: function () {
+        PlayNormalballAudio: function() {
           PlayAudio("splat" + Math.floor(1 + Math.random() * 3));
         },
-        PlayFireballAudio: function () {
+        PlayFireballAudio: function() {
           PlayAudio(["ignite", "ignite2"][Math.floor(Math.random() * 2)]);
         },
-        PlaySlowballAudio: function () {
+        PlaySlowballAudio: function() {
           PlayAudio("frozen");
         },
-        getFireball: function (h, e, g) {
+        getFireball: function(h, e, g) {
           h.FreeSlowTime = 0;
           h.Attack = 100;
-          h.FreeFreezeTime || h.FreeSetbodyTime
-            ? (h.PlayNormalballAudio(), (h.Speed = h.OSpeed))
-            : h.PlayFireballAudio();
+          h.FreeFreezeTime || h.FreeSetbodyTime ?
+            (h.PlayNormalballAudio(), (h.Speed = h.OSpeed)) :
+            h.PlayFireballAudio();
           var f = h.AttackedLX,
             j = h.AttackedRX,
             c = !g ? oZ.getArZ(f, f + 40, h.R) : oZ.getArZ(j - 40, j, h.R),
@@ -495,17 +491,17 @@ var CZombies = (function (b, a) {
             c[d].getSputtering();
           }
         },
-        getSputtering: function (c) {
+        getSputtering: function(c) {
           this.getHit2(this, c || 13, 0);
         },
-        getSlow: function (h, f, g) {
+        getSlow: function(h, f, g) {
           var d = oSym.Now + g,
             e = h.FreeSlowTime,
             c = 0;
           switch (true) {
             case !e:
               !(h.FreeFreezeTime || h.FreeSetbodyTime) &&
-                (h.Speed = 0.5 * h.OSpeed);
+              (h.Speed = 0.5 * h.OSpeed);
               h.Attack = 50;
               h.PlaySlowballAudio();
               h.FreeSlowTime = d;
@@ -519,44 +515,44 @@ var CZombies = (function (b, a) {
           c &&
             oSym.addTask(
               g,
-              function (j, i) {
+              function(j, i) {
                 var k = $Z[j];
                 k &&
                   k.FreeSlowTime == i &&
                   ((k.FreeSlowTime = 0),
-                  (k.Attack = 100),
-                  k.Speed && (k.Speed = k.OSpeed));
+                    (k.Attack = 100),
+                    k.Speed && (k.Speed = k.OSpeed));
               },
               [f, d]
             );
         },
-        getFreeze: function (d, c) {
+        getFreeze: function(d, c) {
           d.beAttacked && d.getHit0(d, 20, 0);
           d.Speed = 0;
           oSym.addTask(
             400,
-            function (g, f, e) {
+            function(g, f, e) {
               ClearChild(e);
               var h = $Z[g];
               h &&
                 h.FreeFreezeTime == f &&
                 ((h.FreeFreezeTime = 0),
-                (h.Attack = 50),
-                !h.FreeSetbodyTime &&
+                  (h.Attack = 50),
+                  !h.FreeSetbodyTime &&
                   ((h.Speed = 0.5 * h.OSpeed),
-                  h.isAttacking && h.JudgeAttack()),
-                oSym.addTask(
-                  1500,
-                  function (j, i) {
-                    var k = $Z[j];
-                    k &&
-                      k.FreeSlowTime == i &&
-                      ((k.FreeSlowTime = 0),
-                      (k.Attack = 100),
-                      !k.FreeSetbodyTime && (k.Speed = k.OSpeed));
-                  },
-                  [g, (h.FreeSlowTime = oSym.Now + 1500)]
-                ));
+                    h.isAttacking && h.JudgeAttack()),
+                  oSym.addTask(
+                    1500,
+                    function(j, i) {
+                      var k = $Z[j];
+                      k &&
+                        k.FreeSlowTime == i &&
+                        ((k.FreeSlowTime = 0),
+                          (k.Attack = 100),
+                          !k.FreeSetbodyTime && (k.Speed = k.OSpeed));
+                    },
+                    [g, (h.FreeSlowTime = oSym.Now + 1500)]
+                  ));
             },
             [
               c,
@@ -570,7 +566,7 @@ var CZombies = (function (b, a) {
             ]
           );
         },
-        NormalDie: function () {
+        NormalDie: function() {
           var c = this;
           c.EleBody.src = c.PicArr[c.DieGif] + Math.random();
           oSym.addTask(250, ClearChild, [c.Ele]);
@@ -578,7 +574,7 @@ var CZombies = (function (b, a) {
           delete $Z[c.id];
           c.PZ && oP.MonPrgs();
         },
-        ExplosionDie: function () {
+        ExplosionDie: function() {
           var c = this;
           c.EleBody.src = c.PicArr[c.BoomDieGif] + Math.random();
           oSym.addTask(300, ClearChild, [c.Ele]);
@@ -586,13 +582,13 @@ var CZombies = (function (b, a) {
           delete $Z[c.id];
           c.PZ && oP.MonPrgs();
         },
-        DisappearDie: function () {
+        DisappearDie: function() {
           ClearChild(this.Ele);
           this.HP = 0;
           delete $Z[this.id];
           this.PZ && oP.MonPrgs();
         },
-        CrushDie: function () {
+        CrushDie: function() {
           var c = this;
           c.GoingDieHead(c.id, c.PicArr, c);
           ClearChild(c.Ele);
@@ -600,22 +596,22 @@ var CZombies = (function (b, a) {
           delete $Z[c.id];
           c.PZ && oP.MonPrgs();
         },
-        GoingDieHead: function (e, c, d) {
+        GoingDieHead: function(e, c, d) {
           oSym.addTask(200, ClearChild, [
             NewImg(
               0,
               c[d.HeadGif] + Math.random(),
               "left:" +
-                d.AttackedLX +
-                "px;top:" +
-                (d.pixelTop - 20) +
-                "px;z-index:" +
-                d.zIndex,
+              d.AttackedLX +
+              "px;top:" +
+              (d.pixelTop - 20) +
+              "px;z-index:" +
+              d.zIndex,
               EDPZ
             ),
           ]);
         },
-        GoingDie: function (d) {
+        GoingDie: function(d) {
           var c = this,
             e = c.id;
           c.EleBody.src = d;
@@ -624,63 +620,63 @@ var CZombies = (function (b, a) {
           c.FreeFreezeTime = c.FreeSetbodyTime = c.FreeSlowTime = 0;
           c.AutoReduceHP(e);
         },
-        AutoReduceHP: function (c) {
+        AutoReduceHP: function(c) {
           oSym.addTask(
             100,
-            function (e) {
+            function(e) {
               var d = $Z[e];
               d && ((d.HP -= 60) < 1 ? d.NormalDie() : d.AutoReduceHP(e));
             },
             [c]
           );
         },
-        JudgeAttack: function () {
+        JudgeAttack: function() {
           var g = this,
             d = g.ZX,
             e = g.R + "_",
             f = GetC(d),
             h = oGd.$,
             c;
-          (c = g.JudgeLR(g, e, f, d, h) || g.JudgeSR(g, e, f, d, h))
-            ? (!g.isAttacking &&
-                ((g.isAttacking = 1), (g.EleBody.src = g.PicArr[g.AttackGif])),
-              g.NormalAttack(c[0], c[1]))
-            : g.isAttacking &&
-              ((g.isAttacking = 0), (g.EleBody.src = g.PicArr[g.NormalGif]));
+          (c = g.JudgeLR(g, e, f, d, h) || g.JudgeSR(g, e, f, d, h)) ?
+          (!g.isAttacking &&
+            ((g.isAttacking = 1), (g.EleBody.src = g.PicArr[g.AttackGif])),
+            g.NormalAttack(c[0], c[1])) :
+          g.isAttacking &&
+            ((g.isAttacking = 0), (g.EleBody.src = g.PicArr[g.NormalGif]));
         },
-        JudgeLR: function (f, d, e, c, g) {
-          return e > 10 || e < 1
-            ? false
-            : (function () {
-                d += --e + "_";
-                var h = 3,
-                  i;
-                while (h--) {
-                  if ((i = g[d + h]) && i.canEat) {
-                    return i.AttackedRX >= c && i.AttackedLX <= c
-                      ? [f.id, i.id]
-                      : false;
-                  }
+        JudgeLR: function(f, d, e, c, g) {
+          return e > 10 || e < 1 ?
+            false :
+            (function() {
+              d += --e + "_";
+              var h = 3,
+                i;
+              while (h--) {
+                if ((i = g[d + h]) && i.canEat) {
+                  return i.AttackedRX >= c && i.AttackedLX <= c ?
+                    [f.id, i.id] :
+                    false;
                 }
-              })();
+              }
+            })();
         },
-        JudgeSR: function (f, d, e, c, g) {
-          return e > 9
-            ? false
-            : (function () {
-                d += e + "_";
-                var h = 3,
-                  i;
-                while (h--) {
-                  if ((i = g[d + h]) && i.canEat) {
-                    return i.AttackedRX >= c && i.AttackedLX <= c
-                      ? [f.id, i.id]
-                      : false;
-                  }
+        JudgeSR: function(f, d, e, c, g) {
+          return e > 9 ?
+            false :
+            (function() {
+              d += e + "_";
+              var h = 3,
+                i;
+              while (h--) {
+                if ((i = g[d + h]) && i.canEat) {
+                  return i.AttackedRX >= c && i.AttackedLX <= c ?
+                    [f.id, i.id] :
+                    false;
                 }
-              })();
+              }
+            })();
         },
-        JudgeAttackH1: function () {
+        JudgeAttackH1: function() {
           var e = this,
             d = oZ.getZ0(e.ZX, e.R),
             c = e.id;
@@ -690,25 +686,25 @@ var CZombies = (function (b, a) {
             d.Altitude == 1 &&
             (e.AttackZombie(d.id), !d.isAttacking && d.AttackZombie(c));
         },
-        JudgeAttackH: function () {
+        JudgeAttackH: function() {
           var e = this,
             d = oZ.getZ0(e.ZX, e.R),
             f = e.id,
             c;
-          d && d.beAttacked && d.AttackedLX < oS.W && d.Altitude == 1
-            ? !e.isAttacking
-              ? ((e.isAttacking = 1),
-                (e.EleBody.src = e.PicArr[e.AttackGif]),
-                e.AttackZombie(f, (c = d.id)),
-                !d.isAttacking && d.AttackZombie2(d, c, f))
-              : e.AttackZombie(f, d.id, 1)
-            : e.isAttacking &&
-              ((e.isAttacking = 0), (e.EleBody.src = e.PicArr[e.NormalGif]));
+          d && d.beAttacked && d.AttackedLX < oS.W && d.Altitude == 1 ?
+            !e.isAttacking ?
+            ((e.isAttacking = 1),
+              (e.EleBody.src = e.PicArr[e.AttackGif]),
+              e.AttackZombie(f, (c = d.id)),
+              !d.isAttacking && d.AttackZombie2(d, c, f)) :
+            e.AttackZombie(f, d.id, 1) :
+            e.isAttacking &&
+            ((e.isAttacking = 0), (e.EleBody.src = e.PicArr[e.NormalGif]));
         },
-        AttackZombie: function (d, c) {
+        AttackZombie: function(d, c) {
           oSym.addTask(
             10,
-            function (f, e) {
+            function(f, e) {
               var h = $Z[f],
                 g;
               h &&
@@ -720,32 +716,32 @@ var CZombies = (function (b, a) {
             [d, c]
           );
         },
-        AttackZombie2: function (e, d, c) {
+        AttackZombie2: function(e, d, c) {
           e.isAttacking = 1;
           e.EleBody.src = e.PicArr[e.AttackGif];
           oSym.addTask(
             10,
-            function (g, f) {
+            function(g, f) {
               var i = $Z[g],
                 h;
               i &&
                 i.beAttacked &&
                 !i.FreeFreezeTime &&
                 !i.FreeSetbodyTime &&
-                ((h = $Z[f])
-                  ? (h.getHit0(h, 10, 0),
-                    oSym.addTask(10, arguments.callee, [g, f]))
-                  : ((i.isAttacking = 0),
+                ((h = $Z[f]) ?
+                  (h.getHit0(h, 10, 0),
+                    oSym.addTask(10, arguments.callee, [g, f])) :
+                  ((i.isAttacking = 0),
                     (i.EleBody.src = i.PicArr[i.NormalGif])));
             },
             [d, c]
           );
         },
-        NormalAttack: function (d, c) {
+        NormalAttack: function(d, c) {
           PlayAudio(["chomp", "chompsoft"][Math.floor(Math.random() * 2)]);
           oSym.addTask(
             50,
-            function (e) {
+            function(e) {
               $Z[e] &&
                 PlayAudio(
                   ["chomp", "chompsoft"][Math.floor(Math.random() * 2)]
@@ -755,7 +751,7 @@ var CZombies = (function (b, a) {
           );
           oSym.addTask(
             100,
-            function (f, e) {
+            function(f, e) {
               var h = $Z[f],
                 g;
               h &&
@@ -763,13 +759,13 @@ var CZombies = (function (b, a) {
                 !h.FreeFreezeTime &&
                 !h.FreeSetbodyTime &&
                 ((g = $P[e]) && g.getHurt(h, h.AKind, h.Attack),
-                h.JudgeAttack());
+                  h.JudgeAttack());
             },
             [d, c]
           );
         },
         PZ: 1,
-        ExchangeLR: function (f, d) {
+        ExchangeLR: function(f, d) {
           var e = f.width,
             h = f.beAttackedPointL,
             c = f.beAttackedPointR,
@@ -780,14 +776,14 @@ var CZombies = (function (b, a) {
           f.EleShadow.style.cssText = f.getShadow(f);
           f.ExchangeLR2(f, f.EleBody, d);
         },
-        ExchangeLR2: $User.Browser.IE
-          ? function (e, c, d) {
-              c.style.filter = e.CSS_alpha + (e.CSS_fliph = d ? " fliph" : "");
-            }
-          : function (e, c, d) {
-              c.className = d ? "fliph" : "";
-            },
-        bedevil: function (c) {
+        ExchangeLR2: $User.Browser.IE ?
+          function(e, c, d) {
+            c.style.filter = e.CSS_alpha + (e.CSS_fliph = d ? " fliph" : "");
+          } :
+          function(e, c, d) {
+            c.className = d ? "fliph" : "";
+          },
+        bedevil: function(c) {
           c.ExchangeLR(c, 1);
           c.JudgeAttack = c.JudgeAttackH;
           c.PZ = 0;
@@ -797,31 +793,31 @@ var CZombies = (function (b, a) {
           oP.MonPrgs();
           c.CanPao222 = 0;
         },
-        SetAlpha: $User.Browser.IE
-          ? function (f, d, e, c) {
-              d.style.filter =
-                (f.CSS_alpha = "alpha(opacity=" + e + ")") + f.CSS_fliph;
-            }
-          : function (f, d, e, c) {
-              d.style.opacity = c;
-            },
+        SetAlpha: $User.Browser.IE ?
+          function(f, d, e, c) {
+            d.style.filter =
+              (f.CSS_alpha = "alpha(opacity=" + e + ")") + f.CSS_fliph;
+          } :
+          function(f, d, e, c) {
+            d.style.opacity = c;
+          },
       }),
       a
     );
   })(),
-  OrnNoneZombies = (function () {
-    var a = function (c, b) {
+  OrnNoneZombies = (function() {
+    var a = function(c, b) {
       if ((c.HP -= b) < c.BreakPoint) {
         c.GoingDie(
           c.PicArr[[c.LostHeadGif, c.LostHeadAttackGif][c.isAttacking]]
         );
-        c.getHit0 = c.getHit1 = c.getHit2 = c.getHit3 = function () {};
+        c.getHit0 = c.getHit1 = c.getHit2 = c.getHit3 = function() {};
         return;
       }
       c.SetAlpha(c, c.EleBody, 50, 0.5);
       oSym.addTask(
         10,
-        function (e, d) {
+        function(e, d) {
           (d = $Z[e]) && d.SetAlpha(d, d.EleBody, 100, 1);
         },
         [c.id]
@@ -833,14 +829,14 @@ var CZombies = (function (b, a) {
       getHit1: a,
       getHit2: a,
       getHit3: a,
-      getPea: function (e, b, c) {
+      getPea: function(e, b, c) {
         e.PlayNormalballAudio();
         e.getHit0(e, b, c);
       },
-      getFirePea: function (g, c, j) {
+      getFirePea: function(g, c, j) {
         g.PlayFireballAudio();
         (g.FreeSlowTime || g.FreeFreezeTime) &&
-          ((g.Speed = g.OSpeed), (g.FreeSlowTime = 0), (g.FreeFreezeTime = 0));
+        ((g.Speed = g.OSpeed), (g.FreeSlowTime = 0), (g.FreeFreezeTime = 0));
         g.Attack = 100;
         var f = g.AttackedLX,
           h = g.AttackedRX,
@@ -851,29 +847,29 @@ var CZombies = (function (b, a) {
         }
         g.getHit0(g, c, j);
       },
-      getFirePeaSputtering: function () {
+      getFirePeaSputtering: function() {
         this.getHit0(this, 13);
       },
-      getSnowPea: function (f, c, g) {
+      getSnowPea: function(f, c, g) {
         var e = f.FreeSlowTime,
           b = oSym.Now + 1000;
-        e == 0
-          ? (f.PlaySlowballAudio(), (f.Speed = 0.5 * f.OSpeed), (f.Attack = 50))
-          : f.PlayNormalballAudio();
+        e == 0 ?
+          (f.PlaySlowballAudio(), (f.Speed = 0.5 * f.OSpeed), (f.Attack = 50)) :
+          f.PlayNormalballAudio();
         e < b &&
           ((f.FreeSlowTime = b),
-          oSym.addTask(
-            1000,
-            function (h, d) {
-              var i = $Z[h];
-              i &&
-                i.FreeSlowTime == d &&
-                ((i.FreeSlowTime = 0),
-                (i.Attack = 100),
-                i.Speed && (i.Speed = i.OSpeed));
-            },
-            [f.id, b]
-          ));
+            oSym.addTask(
+              1000,
+              function(h, d) {
+                var i = $Z[h];
+                i &&
+                  i.FreeSlowTime == d &&
+                  ((i.FreeSlowTime = 0),
+                    (i.Attack = 100),
+                    i.Speed && (i.Speed = i.OSpeed));
+              },
+              [f.id, b]
+            ));
         f.getHit0(f, c, g);
       },
     });
@@ -892,21 +888,18 @@ var CZombies = (function (b, a) {
     beAttackedPointR: 95,
     Speed: 3.5,
     OSpeed: 3.5,
-    HeadPosition: [
-      {
-        x: 82,
-        y: 30,
-        width: 40,
-        height: 40,
-      },
-      {
-        x: 82,
-        y: 30,
-        width: 40,
-        height: 40,
-      },
-    ],
-    PicArr: (function () {
+    HeadPosition: [{
+      x: 82,
+      y: 30,
+      width: 40,
+      height: 40,
+    }, {
+      x: 82,
+      y: 30,
+      width: 40,
+      height: 40,
+    }, ],
+    PicArr: (function() {
       var a = "images/Zombies/BackupDancer/";
       return [
         "images/Card/Zombies/BackupDancer.png",
@@ -923,7 +916,7 @@ var CZombies = (function (b, a) {
         a + "Mound.gif" + $Random,
       ];
     })(),
-    bedevil: function (a) {
+    bedevil: function(a) {
       a.ExchangeLR(a, 1);
       a.JudgeAttack = a.JudgeAttackH;
       a.PZ = 0;
@@ -935,7 +928,7 @@ var CZombies = (function (b, a) {
       oP.MonPrgs();
       a.CanPao222 = 0;
     },
-    getSlow: function (f, d, e) {
+    getSlow: function(f, d, e) {
       var b = oSym.Now + e,
         c = f.FreeSlowTime,
         a = 0;
@@ -954,7 +947,7 @@ var CZombies = (function (b, a) {
       a &&
         oSym.addTask(
           e,
-          function (h, g) {
+          function(h, g) {
             var i = $Z[h];
             i &&
               i.FreeSlowTime == g &&
@@ -963,28 +956,28 @@ var CZombies = (function (b, a) {
           [d, b]
         );
     },
-    getFreeze: function (b, a) {
+    getFreeze: function(b, a) {
       b.beAttacked && b.getHit0(b, 20, 0);
       oSym.addTask(
         400,
-        function (e, d, c) {
+        function(e, d, c) {
           ClearChild(c);
           var f = $Z[e];
           f &&
             f.FreeFreezeTime == d &&
             ((f.FreeFreezeTime = 0),
-            (f.Attack = 50),
-            !f.FreeSetbodyTime && f.isAttacking && f.JudgeAttack(),
-            oSym.addTask(
-              1500,
-              function (h, g) {
-                var i = $Z[h];
-                i &&
-                  i.FreeSlowTime == g &&
-                  ((i.FreeSlowTime = 0), (i.Attack = 100));
-              },
-              [e, (f.FreeSlowTime = oSym.Now + 1500)]
-            ));
+              (f.Attack = 50),
+              !f.FreeSetbodyTime && f.isAttacking && f.JudgeAttack(),
+              oSym.addTask(
+                1500,
+                function(h, g) {
+                  var i = $Z[h];
+                  i &&
+                    i.FreeSlowTime == g &&
+                    ((i.FreeSlowTime = 0), (i.Attack = 100));
+                },
+                [e, (f.FreeSlowTime = oSym.Now + 1500)]
+              ));
         },
         [
           a,
@@ -998,7 +991,7 @@ var CZombies = (function (b, a) {
         ]
       );
     },
-    CustomBirth: function (g, d, a, b, j) {
+    CustomBirth: function(g, d, a, b, j) {
       var e = this,
         c = GetY(g) + e.GetDY(),
         f = c - e.height,
@@ -1018,9 +1011,8 @@ var CZombies = (function (b, a) {
         e.PicArr[e.StandGif]
       );
     },
-    Produce:
-      '当舞王僵尸摇摆时，这种僵尸四个结伙出现。</p><p>韧性：<font color="#FF0000">低</font><br>伴舞僵尸曾在位于僵尸纽约城的“咀利牙”表演艺术学院钻研过六年的舞技。',
-    BirthCallBack: function (e) {
+    Produce: '当舞王僵尸摇摆时，这种僵尸四个结伙出现。</p><p>韧性：<font color="#FF0000">低</font><br>伴舞僵尸曾在位于僵尸纽约城的“咀利牙”表演艺术学院钻研过六年的舞技。',
+    BirthCallBack: function(e) {
       var d = e.delayT,
         c = e.id,
         b = (e.Ele = $(c)),
@@ -1028,14 +1020,14 @@ var CZombies = (function (b, a) {
       e.EleShadow = b.firstChild;
       oSym.addTask(
         d,
-        function (g, f) {
+        function(g, f) {
           var h = $Z[g];
           h && ((h.FreeSetbodyTime = 0), SetBlock(f));
         },
         [c, b]
       );
     },
-    ChangeChkActsTo0: function (c, b, a) {
+    ChangeChkActsTo0: function(c, b, a) {
       if (!c.PZ) {
         c.ChangeChkActsTo1(c, b, a);
         return;
@@ -1046,14 +1038,14 @@ var CZombies = (function (b, a) {
       c.Speed = c.DZStep = 0;
       oSym.addTask(
         200,
-        function (e, d) {
+        function(e, d) {
           var f = $Z[e];
           f && f.beAttacked && f.ChangeChkActsTo1(f, e, d);
         },
         [b, a]
       );
     },
-    ChangeChkActsTo1: function (c, b, a) {
+    ChangeChkActsTo1: function(c, b, a) {
       c.LostHeadGif = 4;
       c.NormalGif = 2;
       c.DZStep = 1;
@@ -1061,39 +1053,39 @@ var CZombies = (function (b, a) {
       c.PZ &&
         oSym.addTask(
           220,
-          function (e, d) {
+          function(e, d) {
             var f = $Z[e];
             f && f.beAttacked && f.ChangeChkActsTo0(f, e, d);
           },
           [b, a]
         );
     },
-    ChkActs: function (g, d, h, c) {
+    ChkActs: function(g, d, h, c) {
       var e, b, a, f;
-      !(g.FreeFreezeTime || g.FreeSetbodyTime)
-        ? (g.beAttacked && !g.isAttacking && g.JudgeAttack(),
-          (e = g.id),
-          !g.isAttacking
-            ? (a = g.AttackedRX -= b = g.Speed) < -50
-              ? (h.splice(c, 1), g.DisappearDie(), (f = 0))
-              : (a < 100 &&
-                  !g.PointZombie &&
-                  ((g.PointZombie = 1),
-                  !oS.CardKind && (StopMusic(), PlayAudio("losemusic", false)),
-                  g.ChangeR({
-                    R: d,
-                    ar: [oS.R - 1],
-                    CustomTop: 400 - g.height + g.GetDY(),
-                  })),
-                (g.ZX = g.AttackedLX -= b),
-                (g.Ele.style.left = Math.floor((g.X -= b)) + "px"),
-                (f = 1))
-            : (f = 1))
-        : (f = 1);
+      !(g.FreeFreezeTime || g.FreeSetbodyTime) ?
+      (g.beAttacked && !g.isAttacking && g.JudgeAttack(),
+        (e = g.id),
+        !g.isAttacking ?
+        (a = g.AttackedRX -= b = g.Speed) < -50 ?
+        (h.splice(c, 1), g.DisappearDie(), (f = 0)) :
+        (a < 100 &&
+          !g.PointZombie &&
+          ((g.PointZombie = 1),
+            !oS.CardKind && (StopMusic(), PlayAudio("losemusic", false)),
+            g.ChangeR({
+              R: d,
+              ar: [oS.R - 1],
+              CustomTop: 400 - g.height + g.GetDY(),
+            })),
+          (g.ZX = g.AttackedLX -= b),
+          (g.Ele.style.left = Math.floor((g.X -= b)) + "px"),
+          (f = 1)) :
+        (f = 1)) :
+      (f = 1);
       g.ChkSpeed(g);
       return f;
     },
-    ChkSpeed: function (b) {
+    ChkSpeed: function(b) {
       if (!b.DZStep) {
         return;
       }
@@ -1129,29 +1121,29 @@ var CZombies = (function (b, a) {
     NormalGif: 9,
     GetDTop: 5,
     SummonX: 0,
-    Birth: function () {
+    Birth: function() {
       var c = this;
       $Z[c.id] = c;
       oZ.add(c);
       c.BirthCallBack(c);
       c.SummonX = c.R;
     },
-    getShadow: function (a) {
+    getShadow: function(a) {
       return "left:30px;top:146px";
     },
-    GetDX: function () {
+    GetDX: function() {
       return -50;
     },
-    GetDY: function () {
+    GetDY: function() {
       return -5;
     },
     LostHeadGif: 14,
-    addSpotlight: (function () {
+    addSpotlight: (function() {
       var a, b;
-      $User.Browser.IE6
-        ? ((a = "_8"), (b = "filter:alpha(opacity=30)"))
-        : (a = b = "");
-      return function (d, f, c) {
+      $User.Browser.IE6 ?
+        ((a = "_8"), (b = "filter:alpha(opacity=30)")) :
+        (a = b = "");
+      return function(d, f, c) {
         var g = $Z[d],
           e;
         NewEle(
@@ -1183,7 +1175,7 @@ var CZombies = (function (b, a) {
         );
       };
     })(),
-    PicArr: (function () {
+    PicArr: (function() {
       var d = "images/Zombies/DancingZombie/",
         c = $User.Browser.IE6 ? "_8" : "",
         a = d + "spotlight" + c + ".png" + $Random,
@@ -1210,12 +1202,11 @@ var CZombies = (function (b, a) {
         b,
       ];
     })(),
-    Produce:
-      '舞王僵尸和人类(在世或者死去的)如有雷同，纯属巧合。</p><p>韧性：<font color="#FF0000">中</font><br>特点：<font color="#FF0000">召唤伴舞僵尸</font></p>舞王僵尸的最新唱片“抓住脑子啃啊啃”在僵尸界的人气正急速飙升。',
-    getSnowPea: function () {
+    Produce: '舞王僵尸和人类(在世或者死去的)如有雷同，纯属巧合。</p><p>韧性：<font color="#FF0000">中</font><br>特点：<font color="#FF0000">召唤伴舞僵尸</font></p>舞王僵尸的最新唱片“抓住脑子啃啊啃”在僵尸界的人气正急速飙升。',
+    getSnowPea: function() {
       this.PlaySlowballAudio();
     },
-    NormalDie: function () {
+    NormalDie: function() {
       var a = this;
       a.ResetBackupDancer(a);
       a.EleBody.src = a.PicArr[a.DieGif] + Math.random();
@@ -1224,7 +1215,7 @@ var CZombies = (function (b, a) {
       delete $Z[a.id];
       a.PZ && oP.MonPrgs();
     },
-    ExplosionDie: function () {
+    ExplosionDie: function() {
       var a = this;
       a.ResetBackupDancer(a);
       a.EleBody.src = a.PicArr[a.BoomDieGif] + Math.random();
@@ -1233,14 +1224,14 @@ var CZombies = (function (b, a) {
       delete $Z[a.id];
       a.PZ && oP.MonPrgs();
     },
-    DisappearDie: function () {
+    DisappearDie: function() {
       this.ResetBackupDancer(this);
       ClearChild(this.Ele);
       this.HP = 0;
       delete $Z[this.id];
       this.PZ && oP.MonPrgs();
     },
-    CrushDie: function () {
+    CrushDie: function() {
       var a = this;
       a.ResetBackupDancer(a);
       a.GoingDieHead(a.id, a.PicArr, a);
@@ -1249,7 +1240,7 @@ var CZombies = (function (b, a) {
       delete $Z[a.id];
       a.PZ && oP.MonPrgs();
     },
-    bedevil: function (b) {
+    bedevil: function(b) {
       var a = b.id;
       b.ExchangeLR(b, 1);
       b.JudgeAttack = b.JudgeAttackH;
@@ -1260,11 +1251,11 @@ var CZombies = (function (b, a) {
       b.ChangeChkActsTo1(b, a, b.EleBody);
       b.ResetBackupDancer(b);
       ($(a + "_spotlightCon").style.left = "20px"),
-        ($(a + "_spotlight2Con").style.left = "25px");
+      ($(a + "_spotlight2Con").style.left = "25px");
       oP.MonPrgs();
       b.CanPao222 = 0;
     },
-    ResetBackupDancer: function (f) {
+    ResetBackupDancer: function(f) {
       var g = f.ArDZ,
         d = g.length,
         c,
@@ -1290,7 +1281,7 @@ var CZombies = (function (b, a) {
       a > -1 &&
         oSym.addTask(
           f.DZStepT - oSym.Now,
-          function (o, j) {
+          function(o, j) {
             var m = 4,
               l,
               k,
@@ -1298,16 +1289,16 @@ var CZombies = (function (b, a) {
               h = "ChangeChkActsTo" + j;
             while (m--) {
               (l = o[m]) &&
-                (k = l[0]) &&
-                (n = $Z[k]) &&
-                n.beAttacked &&
+              (k = l[0]) &&
+              (n = $Z[k]) &&
+              n.beAttacked &&
                 ((n.DZStep = j), n[h](n, k, n.EleBody));
             }
           },
           [g, [1, 0][a]]
         );
     },
-    BirthCallBack: function (d) {
+    BirthCallBack: function(d) {
       var b = d.delayT,
         l = d.id,
         a = (d.Ele = $(l)),
@@ -1332,11 +1323,11 @@ var CZombies = (function (b, a) {
         (f[0] = [
           "",
           s,
-          function (o) {
+          function(o) {
             return o;
           },
           3 * s + 2,
-          function (o) {
+          function(o) {
             return o - 70;
           },
           GetY(s) - 155,
@@ -1347,11 +1338,11 @@ var CZombies = (function (b, a) {
         (f[2] = [
           "",
           n,
-          function (o) {
+          function(o) {
             return o;
           },
           3 * n + 2,
-          function (o) {
+          function(o) {
             return o - 70;
           },
           GetY(n) - 155,
@@ -1361,11 +1352,11 @@ var CZombies = (function (b, a) {
       f[3] = [
         "",
         g,
-        function (o) {
+        function(o) {
           return o - 60;
         },
         e,
-        function (o) {
+        function(o) {
           return o - 130;
         },
         r,
@@ -1373,36 +1364,36 @@ var CZombies = (function (b, a) {
       f[1] = [
         "",
         g,
-        function (o) {
+        function(o) {
           return o + 100;
         },
         e,
-        function (o) {
+        function(o) {
           return o + 30;
         },
         r,
       ];
-      func = function (t, o) {
+      func = function(t, o) {
         var u = $Z[t];
         u &&
           (u.ExchangeLR(d, 1),
-          (u.DZMSpeed = 7.2),
-          (u.DZStep = -1),
-          (u.DZStepT = oSym.Now + 220),
-          (u.FreeSetbodyTime = 0),
-          SetBlock(o));
+            (u.DZMSpeed = 7.2),
+            (u.DZStep = -1),
+            (u.DZStepT = oSym.Now + 220),
+            (u.FreeSetbodyTime = 0),
+            SetBlock(o));
       };
       b ? (oSym.addTask(b, func, [l, a]), (c += b)) : func(l, a);
       oSym.addTask(
         c,
-        function (o) {
+        function(o) {
           var t = $Z[o];
           t && t.beAttacked && !t.isAttacking && t.NormalAttack(o);
         },
         [d.id]
       );
     },
-    CallBack2: function () {
+    CallBack2: function() {
       var d = this,
         l = d.id,
         a = (d.Ele = $(l)),
@@ -1425,11 +1416,11 @@ var CZombies = (function (b, a) {
         (f[0] = [
           "",
           s,
-          function (o) {
+          function(o) {
             return o;
           },
           3 * s + 2,
-          function (o) {
+          function(o) {
             return o - 70;
           },
           GetY(s) - 155,
@@ -1440,11 +1431,11 @@ var CZombies = (function (b, a) {
         (f[2] = [
           "",
           n,
-          function (o) {
+          function(o) {
             return o;
           },
           3 * n + 2,
-          function (o) {
+          function(o) {
             return o - 70;
           },
           GetY(n) - 155,
@@ -1454,11 +1445,11 @@ var CZombies = (function (b, a) {
       f[3] = [
         "",
         g,
-        function (o) {
+        function(o) {
           return o - 60;
         },
         e,
-        function (o) {
+        function(o) {
           return o - 130;
         },
         r,
@@ -1466,24 +1457,24 @@ var CZombies = (function (b, a) {
       f[1] = [
         "",
         g,
-        function (o) {
+        function(o) {
           return o + 100;
         },
         e,
-        function (o) {
+        function(o) {
           return o + 30;
         },
         r,
       ];
-      func = function (t, o) {
+      func = function(t, o) {
         var u = $Z[t];
         u &&
           (u.ExchangeLR(d, 1),
-          (u.DZMSpeed = 7.2),
-          (u.DZStep = -1),
-          (u.DZStepT = oSym.Now + 220),
-          (u.FreeSetbodyTime = 0),
-          SetBlock(o));
+            (u.DZMSpeed = 7.2),
+            (u.DZStep = -1),
+            (u.DZStepT = oSym.Now + 220),
+            (u.FreeSetbodyTime = 0),
+            SetBlock(o));
       };
       /*
         b ? (oSym.addTask(b, func, [l, a]), c += b) : func(l, a);
@@ -1496,51 +1487,51 @@ var CZombies = (function (b, a) {
 	*/
       //console.log(d.ArDZ)
     },
-    ChkActs1: function (e, b, f, a) {
+    ChkActs1: function(e, b, f, a) {
       var c, d;
-      !(e.FreeFreezeTime || e.FreeSetbodyTime)
-        ? (e.beAttacked && !e.isAttacking && e.JudgeAttack(),
-          (c = e.id),
-          !e.isAttacking
-            ? (e.AttackedLX += 3.5) > oS.W
-              ? (f.splice(a, 1), e.DisappearDie(), (d = 0))
-              : ((e.ZX = e.AttackedRX += 3.5),
-                (e.Ele.style.left = Math.ceil((e.X += 3.5)) + "px"),
-                (d = 1))
-            : (d = 1))
-        : (d = 1);
+      !(e.FreeFreezeTime || e.FreeSetbodyTime) ?
+      (e.beAttacked && !e.isAttacking && e.JudgeAttack(),
+        (c = e.id),
+        !e.isAttacking ?
+        (e.AttackedLX += 3.5) > oS.W ?
+        (f.splice(a, 1), e.DisappearDie(), (d = 0)) :
+        ((e.ZX = e.AttackedRX += 3.5),
+          (e.Ele.style.left = Math.ceil((e.X += 3.5)) + "px"),
+          (d = 1)) :
+        (d = 1)) :
+      (d = 1);
       return d;
     },
-    ChkTmp: function (c, b, d, a) {
+    ChkTmp: function(c, b, d, a) {
       c.ChkSpeed(c);
       return 0;
     },
-    ChkActs: function (g, d, h, c) {
+    ChkActs: function(g, d, h, c) {
       var e, b, a, f;
-      !(g.FreeFreezeTime || g.FreeSetbodyTime)
-        ? (g.beAttacked && !g.isAttacking && g.JudgeAttack(),
-          (e = g.id),
-          !g.isAttacking
-            ? (a = g.AttackedRX -= b = g.Speed) < -50
-              ? (h.splice(c, 1), g.DisappearDie(), (f = 0))
-              : (a < 100 &&
-                  !g.PointZombie &&
-                  ((g.PointZombie = 1),
-                  !oS.CardKind && (StopMusic(), PlayAudio("losemusic", false)),
-                  g.ChangeR({
-                    R: d,
-                    ar: [oS.R - 1],
-                    CustomTop: 400 - g.height + g.GetDY(),
-                  })),
-                (g.ZX = g.AttackedLX -= b),
-                (g.Ele.style.left = Math.floor((g.X -= b)) + "px"),
-                (f = 1))
-            : (f = 1))
-        : (f = 1);
+      !(g.FreeFreezeTime || g.FreeSetbodyTime) ?
+      (g.beAttacked && !g.isAttacking && g.JudgeAttack(),
+        (e = g.id),
+        !g.isAttacking ?
+        (a = g.AttackedRX -= b = g.Speed) < -50 ?
+        (h.splice(c, 1), g.DisappearDie(), (f = 0)) :
+        (a < 100 &&
+          !g.PointZombie &&
+          ((g.PointZombie = 1),
+            !oS.CardKind && (StopMusic(), PlayAudio("losemusic", false)),
+            g.ChangeR({
+              R: d,
+              ar: [oS.R - 1],
+              CustomTop: 400 - g.height + g.GetDY(),
+            })),
+          (g.ZX = g.AttackedLX -= b),
+          (g.Ele.style.left = Math.floor((g.X -= b)) + "px"),
+          (f = 1)) :
+        (f = 1)) :
+      (f = 1);
       g.ChkSpeed(g);
       return f;
     },
-    ChkSpeed: function (g) {
+    ChkSpeed: function(g) {
       if (!g.DZStep) {
         return;
       }
@@ -1579,31 +1570,31 @@ var CZombies = (function (b, a) {
         g.Speed != a && (g.Speed = a);
       }
     },
-    AttackZombie: function (a) {
+    AttackZombie: function(a) {
       this.ExchangeLR(this, 0);
       var b = this.id;
       this.isAttacking = 1;
       this.EleBody.src = this.PicArr[this.AttackGif];
       oSym.addTask(
         10,
-        function (d, c) {
+        function(d, c) {
           var f = $Z[d],
             e;
           f &&
             f.beAttacked &&
             !f.FreeFreezeTime &&
             !f.FreeSetbodyTime &&
-            ((e = $Z[c])
-              ? (e.getHit0(e, 10, 0),
-                oSym.addTask(10, arguments.callee, [d, c]))
-              : ((f.isAttacking = 0),
+            ((e = $Z[c]) ?
+              (e.getHit0(e, 10, 0),
+                oSym.addTask(10, arguments.callee, [d, c])) :
+              ((f.isAttacking = 0),
                 (f.EleBody.src = f.PicArr[f.NormalGif]),
                 f.TurnLeft(f)));
         },
         [b, a]
       );
     },
-    ChangeR: function (e) {
+    ChangeR: function(e) {
       var h = e.R,
         g = e.ar || [],
         j = e.CustomTop,
@@ -1618,9 +1609,9 @@ var CZombies = (function (b, a) {
         c;
       !g.length &&
         (d.CanPass(q, i[q]) && (g[++m] = q),
-        d.CanPass((q += 2), i[q]) && (g[++m] = q));
-      g.length
-        ? ((l = !d.WalkDirection ? -5 : 5),
+          d.CanPass((q += 2), i[q]) && (g[++m] = q));
+      g.length ?
+        ((l = !d.WalkDirection ? -5 : 5),
           (xyz = !d.WalkDirection ? 1 : -1),
           (d.ZX += l),
           (d.AttackedLX += l),
@@ -1630,19 +1621,18 @@ var CZombies = (function (b, a) {
           (d.SummonX = q),
           SetStyle(f, {
             left: d.X + "px",
-            top:
-              (d.pixelTop =
-                j == undefined ? GetY(q) - d.height + d.GetDY() : j) + "px",
+            top: (d.pixelTop =
+              j == undefined ? GetY(q) - d.height + d.GetDY() : j) + "px",
             zIndex: (d.zIndex = 3 * q + 1),
           }),
           d.isAttacking && (n.src = d.PicArr[d.NormalGif]),
-          oZ.moveTo(k, h, q))
-        : (n.src = d.PicArr[d.NormalGif]);
+          oZ.moveTo(k, h, q)) :
+        (n.src = d.PicArr[d.NormalGif]);
       d.isAttacking = 0;
       d.ResetBackupDancer(d);
       d.CallBack2(); //console.log(d.SummonX)
     },
-    ChkBackupDancer: function (h, g, f) {
+    ChkBackupDancer: function(h, g, f) {
       if (!h.PZ) {
         h.ChangeChkActsTo1(h, g, f);
         return;
@@ -1655,15 +1645,14 @@ var CZombies = (function (b, a) {
         a;
       while (d--) {
         (e = b[d]) &&
-          (!(c = e[0]) ||
-            !(a = $Z[c]) ||
-            (a.PZ ? false : ((e[0] = ""), true))) &&
-          (d = j = 0);
-      }
-      !h.isAttacking && j ? (f.src = h.PicArr[10]) : h.Summon(h, g);
+        (!(c = e[0]) ||
+          !(a = $Z[c]) ||
+          (a.PZ ? false : ((e[0] = ""), true))) &&
+        (d = j = 0);
+      }!h.isAttacking && j ? (f.src = h.PicArr[10]) : h.Summon(h, g);
       h.ChangeChkActsTo0(h, g, f);
     },
-    ChangeChkActsTo0: function (g, e, a) {
+    ChangeChkActsTo0: function(g, e, a) {
       if (!g.PZ) {
         g.ChangeChkActsTo1(g, e, a);
         return;
@@ -1675,13 +1664,13 @@ var CZombies = (function (b, a) {
         f;
       while (d--) {
         (b = h[d]) &&
-          (c = b[0]) &&
-          (f = $Z[c]) &&
-          f.beAttacked &&
+        (c = b[0]) &&
+        (f = $Z[c]) &&
+        f.beAttacked &&
           ((f.LostHeadGif = 10),
-          (f.NormalGif = 9),
-          !f.isAttacking && (f.EleBody.src = f.PicArr[9]),
-          (f.Speed = 0));
+            (f.NormalGif = 9),
+            !f.isAttacking && (f.EleBody.src = f.PicArr[9]),
+            (f.Speed = 0));
       }
       g.LostHeadGif = 15;
       g.NormalGif = 10;
@@ -1689,14 +1678,14 @@ var CZombies = (function (b, a) {
       g.DZStepT = oSym.Now + 200;
       oSym.addTask(
         200,
-        function (j, i) {
+        function(j, i) {
           var k = $Z[j];
           k && k.beAttacked && k.ChangeChkActsTo1(k, j, i);
         },
         [e, a]
       );
     },
-    ChangeChkActsTo1: function (g, e, a) {
+    ChangeChkActsTo1: function(g, e, a) {
       var d = 4,
         h = g.ArDZ,
         c,
@@ -1704,12 +1693,12 @@ var CZombies = (function (b, a) {
         f;
       while (d--) {
         (b = h[d]) &&
-          (c = b[0]) &&
-          (f = $Z[c]) &&
-          f.beAttacked &&
+        (c = b[0]) &&
+        (f = $Z[c]) &&
+        f.beAttacked &&
           ((f.LostHeadGif = 4),
-          (f.NormalGif = 2),
-          !f.isAttacking && (f.EleBody.src = f.PicArr[2]));
+            (f.NormalGif = 2),
+            !f.isAttacking && (f.EleBody.src = f.PicArr[2]));
       }
       g.LostHeadGif = 4;
       g.NormalGif = 2;
@@ -1719,65 +1708,65 @@ var CZombies = (function (b, a) {
       g.PZ &&
         oSym.addTask(
           220,
-          function (j, i) {
+          function(j, i) {
             var k = $Z[j];
             k && k.beAttacked && k.ChkBackupDancer(k, j, i);
           },
           [e, a]
         );
     },
-    TurnLeft: function (c) {
+    TurnLeft: function(c) {
       var a = CZombies.prototype,
         b = c.id;
       c.AttackZombie = a.AttackZombie;
       c.NormalAttack = a.NormalAttack;
       c.OSpeed = 3.5;
       !(c.FreeSlowTime || c.FreeFreezeTime || c.FreeSetbodyTime) &&
-        (c.Speed = 3.5);
+      (c.Speed = 3.5);
       c.getSnowPea = OrnNoneZombies.prototype.getSnowPea;
       c.getFreeze = CZombies.prototype.getFreeze;
       oSym.addTask(
         20,
-        function (d, e) {
+        function(d, e) {
           $Z[d] &&
             e.beAttacked &&
             (e.addSpotlight(d, e, e.Ele),
-            oSym.addTask(
-              200,
-              function (g, f, i, h, k) {
-                var j = $Z[g];
-                j &&
-                  (h > -736 ? (h -= 184) : (h = 0),
-                  (f.style.left = h + "px"),
-                  k > -736 ? (k -= 184) : (k = 0),
-                  (i.style.left = k + "px"),
-                  oSym.addTask(100, arguments.callee, [g, f, i, h, k]));
-              },
-              [d, e.spotlight, e.spotlight2, 0, 0]
-            ),
-            oSym.addTask(
-              200,
-              function (h, g) {
-                var f;
-                $Z[g] &&
-                  h.beAttacked &&
-                  ((f = h.EleBody),
-                  !h.isAttacking ? (f.src = h.PicArr[10]) : (h.isAttacking = 0),
-                  h.ChangeChkActsTo0(h, g, f));
-              },
-              [e, d]
-            ));
+              oSym.addTask(
+                200,
+                function(g, f, i, h, k) {
+                  var j = $Z[g];
+                  j &&
+                    (h > -736 ? (h -= 184) : (h = 0),
+                      (f.style.left = h + "px"),
+                      k > -736 ? (k -= 184) : (k = 0),
+                      (i.style.left = k + "px"),
+                      oSym.addTask(100, arguments.callee, [g, f, i, h, k]));
+                },
+                [d, e.spotlight, e.spotlight2, 0, 0]
+              ),
+              oSym.addTask(
+                200,
+                function(h, g) {
+                  var f;
+                  $Z[g] &&
+                    h.beAttacked &&
+                    ((f = h.EleBody),
+                      !h.isAttacking ? (f.src = h.PicArr[10]) : (h.isAttacking = 0),
+                      h.ChangeChkActsTo0(h, g, f));
+                },
+                [e, d]
+              ));
         },
         [b, c]
       );
       c.Summon(c, b);
     },
-    NormalAttack: function (a) {
+    NormalAttack: function(a) {
       var b = $Z[a];
       b.ExchangeLR(b, 0);
       b.TurnLeft(b);
     },
-    Summon: function (d, c) {
+    Summon: function(d, c) {
       d.LostHeadGif = 16;
       var a = d.EleBody,
         b = d.ChkActs;
@@ -1787,107 +1776,107 @@ var CZombies = (function (b, a) {
       PlayAudio("dancer");
       oSym.addTask(
         10,
-        function (f, e) {
+        function(f, e) {
           var g = $Z[f];
           g &&
             g.beAttacked &&
             ((e.src = "images/Zombies/DancingZombie/Summon2.gif"),
-            oSym.addTask(
-              10,
-              function (t, s, x) {
-                var h = $Z[t],
-                  v = h.ZX,
-                  m = h.ArDZ,
-                  n = [],
-                  k =
+              oSym.addTask(
+                10,
+                function(t, s, x) {
+                  var h = $Z[t],
+                    v = h.ZX,
+                    m = h.ArDZ,
+                    n = [],
+                    k =
                     "images/Zombies/BackupDancer/Mound.gif" +
                     $Random +
                     Math.random(),
-                  r = 4,
-                  w = [],
-                  u = [],
-                  o = 0,
-                  q,
-                  l;
-                if (h && h.beAttacked) {
-                  s.src = "images/Zombies/DancingZombie/Summon3.gif";
-                  while (r--) {
-                    (q = m[r]) &&
+                    r = 4,
+                    w = [],
+                    u = [],
+                    o = 0,
+                    q,
+                    l;
+                  if (h && h.beAttacked) {
+                    s.src = "images/Zombies/DancingZombie/Summon3.gif";
+                    while (r--) {
+                      (q = m[r]) &&
                       (!(l = q[0]) || !$Z[l]) &&
                       ((u[o] = (w[o] = new oBackupDancer()).CustomBirth(
-                        q[1],
-                        q[2](v),
-                        100,
-                        (q[0] = "Z_" + Math.random())
-                      )),
-                      n.push(
-                        NewImg(
-                          "",
-                          k,
-                          "z-index:" +
+                          q[1],
+                          q[2](v),
+                          100,
+                          (q[0] = "Z_" + Math.random())
+                        )),
+                        n.push(
+                          NewImg(
+                            "",
+                            k,
+                            "z-index:" +
                             q[3] +
                             ";left:" +
                             q[4](v) +
                             "px;top:" +
                             q[5] +
                             "px",
-                          EDPZ
-                        )
-                      ),
-                      ++o);
+                            EDPZ
+                          )
+                        ),
+                        ++o);
+                    }
+                    oSym.addTask(
+                      220,
+                      function() {
+                        var i = arguments.length;
+                        while (i--) {
+                          ClearChild(arguments[i]);
+                        }
+                      },
+                      n
+                    );
+                    oSym.addTask(
+                      110,
+                      function(A, y, z, i) {
+                        var B = $Z[A];
+                        B &&
+                          B.beAttacked &&
+                          (oP.AppearUP(y, z, i),
+                            oSym.addTask(
+                              100,
+                              function(D, C) {
+                                var E = $Z[D];
+                                if (E && E.beAttacked) {
+                                  return;
+                                }
+                                var j = C.length,
+                                  E;
+                                while (j--) {
+                                  (E = C[j]).ChangeChkActsTo0(E, E.id, E.EleBody);
+                                }
+                              },
+                              [A, z]
+                            ));
+                      },
+                      [t, u, w, o]
+                    );
+                    oSym.addTask(
+                      200,
+                      function(y, i) {
+                        var z = $Z[y],
+                          j;
+                        z &&
+                          z.beAttacked &&
+                          ((j = z.ChkActs),
+                            (z.ChkActs = z.ChkTmp),
+                            (z.ChkTmp = j));
+                      },
+                      [t, s]
+                    );
                   }
-                  oSym.addTask(
-                    220,
-                    function () {
-                      var i = arguments.length;
-                      while (i--) {
-                        ClearChild(arguments[i]);
-                      }
-                    },
-                    n
-                  );
-                  oSym.addTask(
-                    110,
-                    function (A, y, z, i) {
-                      var B = $Z[A];
-                      B &&
-                        B.beAttacked &&
-                        (oP.AppearUP(y, z, i),
-                        oSym.addTask(
-                          100,
-                          function (D, C) {
-                            var E = $Z[D];
-                            if (E && E.beAttacked) {
-                              return;
-                            }
-                            var j = C.length,
-                              E;
-                            while (j--) {
-                              (E = C[j]).ChangeChkActsTo0(E, E.id, E.EleBody);
-                            }
-                          },
-                          [A, z]
-                        ));
-                    },
-                    [t, u, w, o]
-                  );
-                  oSym.addTask(
-                    200,
-                    function (y, i) {
-                      var z = $Z[y],
-                        j;
-                      z &&
-                        z.beAttacked &&
-                        ((j = z.ChkActs),
-                        (z.ChkActs = z.ChkTmp),
-                        (z.ChkTmp = j));
-                    },
-                    [t, s]
-                  );
-                }
-              },
-              [f, e]
-            ));
+                },
+                [f, e]
+              ));
         },
         [c, a]
       );
@@ -1897,7 +1886,7 @@ var CZombies = (function (b, a) {
     EName: "oZombie",
     CName: "领带僵尸",
     StandGif: 9,
-    PicArr: (function () {
+    PicArr: (function() {
       var a = "images/Zombies/Zombie/";
       return [
         "images/Card/Zombies/Zombie.png",
@@ -1912,15 +1901,12 @@ var CZombies = (function (b, a) {
         a + "1.gif",
       ];
     })(),
-    Produce:
-      '韧性：<font color="#FF0000">低</font></p>这种僵尸喜爱脑髓，贪婪而不知足。脑髓，脑髓，脑髓，夜以继日地追求着。老而臭的脑髓？腐烂的脑髓？都没关系。僵尸需要它们。',
+    Produce: '韧性：<font color="#FF0000">低</font></p>这种僵尸喜爱脑髓，贪婪而不知足。脑髓，脑髓，脑髓，夜以继日地追求着。老而臭的脑髓？腐烂的脑髓？都没关系。僵尸需要它们。',
   }),
   oZombie2 = InheritO(
-    oZombie,
-    {
+    oZombie, {
       EName: "oZombie2",
-    },
-    {
+    }, {
       PicArr: {
         2: "images/Zombies/Zombie/Zombie2.gif",
         9: "images/Zombies/Zombie/2.gif",
@@ -1928,11 +1914,9 @@ var CZombies = (function (b, a) {
     }
   ),
   oZombie3 = InheritO(
-    oZombie,
-    {
+    oZombie, {
       EName: "oZombie3",
-    },
-    {
+    }, {
       PicArr: {
         2: "images/Zombies/Zombie/Zombie3.gif",
         9: "images/Zombies/Zombie/3.gif",
@@ -1940,11 +1924,9 @@ var CZombies = (function (b, a) {
     }
   ),
   oZombie4 = InheritO(
-    oZombie,
-    {
+    oZombie, {
       EName: "oZombie4",
-    },
-    {
+    }, {
       PicArr: {
         2: "images/Zombies/Zombie/unlook.gif",
         9: "images/Zombies/Zombie/unlook.gif",
@@ -1952,7 +1934,7 @@ var CZombies = (function (b, a) {
     }
   ),
   oFlagZombie = InheritO(oZombie, {
-    PicArr: (function () {
+    PicArr: (function() {
       var a = "images/Zombies/FlagZombie/";
       return [
         "images/Card/Zombies/FlagZombie.png",
@@ -1971,47 +1953,43 @@ var CZombies = (function (b, a) {
     CName: "旗帜僵尸",
     OSpeed: 2.2,
     Speed: 2.2,
-    HeadPosition: [
-      {
-        x: 80,
-        y: 10,
-        width: 40,
-        height: 40,
-      },
-      {
-        x: 80,
-        y: 10,
-        width: 40,
-        height: 40,
-      },
-    ],
+    HeadPosition: [{
+      x: 80,
+      y: 10,
+      width: 40,
+      height: 40,
+    }, {
+      x: 80,
+      y: 10,
+      width: 40,
+      height: 40,
+    }, ],
     beAttackedPointR: 101,
-    Produce:
-      '旗帜僵尸标志着即将来袭的一大堆僵尸"流"。<p>韧性：<font color="#FF0000">低</font></p>毫无疑问，摇旗僵尸喜爱脑髓。但在私下里他也迷恋旗帜。也许是因为旗帜上也画有脑子吧，这很难说。',
+    Produce: '旗帜僵尸标志着即将来袭的一大堆僵尸"流"。<p>韧性：<font color="#FF0000">低</font></p>毫无疑问，摇旗僵尸喜爱脑髓。但在私下里他也迷恋旗帜。也许是因为旗帜上也画有脑子吧，这很难说。',
   }),
-  OrnIZombies = (function () {
-    var a = function (f, b) {
+  OrnIZombies = (function() {
+    var a = function(f, b) {
       var d = f.OrnHP,
         c = f.HP,
         e = OrnNoneZombies.prototype;
       (d = f.OrnHP -= b) < 1 &&
         ((f.HP += d),
-        (f.Ornaments = 0),
-        (f.EleBody.src =
-          f.PicArr[
-            [
-              (f.NormalGif = f.OrnLostNormalGif),
-              (f.AttackGif = f.OrnLostAttackGif),
-            ][f.isAttacking]
-          ]),
-        (f.PlayNormalballAudio = e.PlayNormalballAudio),
-        (f.PlayFireballAudio = e.PlayFireballAudio),
-        (f.PlaySlowballAudio = e.PlaySlowballAudio),
-        (f.getHit = f.getHit0 = f.getHit1 = f.getHit2 = f.getHit3 = e.getHit));
+          (f.Ornaments = 0),
+          (f.EleBody.src =
+            f.PicArr[
+              [
+                (f.NormalGif = f.OrnLostNormalGif),
+                (f.AttackGif = f.OrnLostAttackGif),
+              ][f.isAttacking]
+            ]),
+          (f.PlayNormalballAudio = e.PlayNormalballAudio),
+          (f.PlayFireballAudio = e.PlayFireballAudio),
+          (f.PlaySlowballAudio = e.PlaySlowballAudio),
+          (f.getHit = f.getHit0 = f.getHit1 = f.getHit2 = f.getHit3 = e.getHit));
       f.SetAlpha(f, f.EleBody, 50, 0.5);
       oSym.addTask(
         10,
-        function (h, g) {
+        function(h, g) {
           (g = $Z[h]) && g.SetAlpha(g, g.EleBody, 100, 1);
         },
         [f.id]
@@ -2035,21 +2013,18 @@ var CZombies = (function (b, a) {
     Lvl: 2,
     SunNum: 75,
     StandGif: 11,
-    HeadPosition: [
-      {
-        x: 72,
-        y: 20,
-        width: 40,
-        height: 40,
-      },
-      {
-        x: 72,
-        y: 16,
-        width: 40,
-        height: 40,
-      },
-    ],
-    PicArr: (function () {
+    HeadPosition: [{
+      x: 72,
+      y: 20,
+      width: 40,
+      height: 40,
+    }, {
+      x: 72,
+      y: 16,
+      width: 40,
+      height: 40,
+    }, ],
+    PicArr: (function() {
       var b = "images/Zombies/ConeheadZombie/",
         a = "images/Zombies/Zombie/";
       return [
@@ -2068,27 +2043,23 @@ var CZombies = (function (b, a) {
       ];
     })(),
     AudioArr: ["plastichit"],
-    PlayNormalballAudio: function () {
+    PlayNormalballAudio: function() {
       PlayAudio("plastichit");
     },
-    Produce:
-      '他的路障头盔，使他两倍坚韧于普通僵尸。<p>韧性：<font color="#FF0000">中</font></p>和其他僵尸一样，路障头僵尸盲目地向前。但某些事物却使他停下脚步，捡起一个交通路障，并固实在自己的脑袋上。是的，他很喜欢参加聚会。',
+    Produce: '他的路障头盔，使他两倍坚韧于普通僵尸。<p>韧性：<font color="#FF0000">中</font></p>和其他僵尸一样，路障头僵尸盲目地向前。但某些事物却使他停下脚步，捡起一个交通路障，并固实在自己的脑袋上。是的，他很喜欢参加聚会。',
   }),
   oBucketheadZombie = InheritO(
-    oConeheadZombie,
-    {
+    oConeheadZombie, {
       EName: "oBucketheadZombie",
       CName: "铁桶僵尸",
       OrnHP: 1100,
       Lvl: 3,
       SunNum: 125,
-      PlayNormalballAudio: function () {
+      PlayNormalballAudio: function() {
         PlayAudio(["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)]);
       },
-      Produce:
-        '他的铁桶头盔，能极大程度的承受伤害。<p>韧性：<font color="#FF0000">高</font><br>弱点：<font color="#FF0000">磁力菇</font></p>铁桶头僵尸经常戴着水桶，在冷漠的世界里显得独一无二。但事实上，他只是忘记了，那铁桶还在他头上而已。',
-    },
-    {
+      Produce: '他的铁桶头盔，能极大程度的承受伤害。<p>韧性：<font color="#FF0000">高</font><br>弱点：<font color="#FF0000">磁力菇</font></p>铁桶头僵尸经常戴着水桶，在冷漠的世界里显得独一无二。但事实上，他只是忘记了，那铁桶还在他头上而已。',
+    }, {
       PicArr: {
         0: "images/Card/Zombies/BucketheadZombie.png",
         1: "images/Zombies/BucketheadZombie/0.gif",
@@ -2112,24 +2083,21 @@ var CZombies = (function (b, a) {
     Speed: 3.2,
     beAttackedPointL: 40,
     beAttackedPointR: 134,
-    PlayNormalballAudio: function () {
+    PlayNormalballAudio: function() {
       PlayAudio("plastichit");
     },
-    HeadPosition: [
-      {
-        x: 50,
-        y: 8,
-        width: 40,
-        height: 40,
-      },
-      {
-        x: 50,
-        y: 16,
-        width: 40,
-        height: 40,
-      },
-    ],
-    PicArr: (function () {
+    HeadPosition: [{
+      x: 50,
+      y: 8,
+      width: 40,
+      height: 40,
+    }, {
+      x: 50,
+      y: 16,
+      width: 40,
+      height: 40,
+    }, ],
+    PicArr: (function() {
       var a = "images/Zombies/FootballZombie/";
       return [
         "images/Card/Zombies/FootballZombie.png",
@@ -2146,13 +2114,12 @@ var CZombies = (function (b, a) {
         a + "1.gif",
       ];
     })(),
-    getShadow: function (a) {
+    getShadow: function(a) {
       return (
         "left:" + (a.beAttackedPointL + 15) + "px;top:" + (a.height - 22) + "px"
       );
     },
-    Produce:
-      '橄榄球僵尸的表演秀。<p>韧性：<font color="#FF0000">极高</font><br>速度：<font color="#FF0000">快</font><br>弱点：<font color="#FF0000">磁力菇</font></p>在球场上，橄榄球僵尸表现出110%的激情，他进攻防守样样在行。虽然他完全不知道橄榄球是什么。',
+    Produce: '橄榄球僵尸的表演秀。<p>韧性：<font color="#FF0000">极高</font><br>速度：<font color="#FF0000">快</font><br>弱点：<font color="#FF0000">磁力菇</font></p>在球场上，橄榄球僵尸表现出110%的激情，他进攻防守样样在行。虽然他完全不知道橄榄球是什么。',
   }),
   oPoleVaultingZombie = InheritO(OrnNoneZombies, {
     EName: "oPoleVaultingZombie",
@@ -2165,30 +2132,27 @@ var CZombies = (function (b, a) {
     beAttackedPointL: 215,
     beAttackedPointR: 260,
     StandGif: 13,
-    GetDX: function () {
+    GetDX: function() {
       return -238;
     },
-    GetDY: function () {
+    GetDY: function() {
       return 2;
     },
-    HeadPosition: [
-      {
-        x: 192,
-        y: 80,
-        width: 40,
-        height: 40,
-      },
-      {
-        x: 192,
-        y: 80,
-        width: 40,
-        height: 40,
-      },
-    ],
+    HeadPosition: [{
+      x: 192,
+      y: 80,
+      width: 40,
+      height: 40,
+    }, {
+      x: 192,
+      y: 80,
+      width: 40,
+      height: 40,
+    }, ],
     Lvl: 2,
     SunNum: 75,
     BookHandPosition: "-30px 70%",
-    PicArr: (function () {
+    PicArr: (function() {
       var a = "images/Zombies/PoleVaultingZombie/";
       return [
         "images/Card/Zombies/PoleVaultingZombie.png",
@@ -2208,29 +2172,28 @@ var CZombies = (function (b, a) {
       ];
     })(),
     AudioArr: ["polevault", "grassstep"],
-    Produce:
-      '撑杆僵尸运用标杆高高地跃过障碍物。<p>韧性：<font color="#FF0000">中</font><Br>速度：<font color="#FF0000">快,而后慢(跳跃后)</font><BR>特点：<font color="#FF0000">跃过他所碰到的第一筑植物</font></p>事实证明，体育生还是很吸引女生的，尤其是他，他用矫健的身躯与他的这一身装扮，成功吸引了一众女生，表白信数不胜数，但背地里他不爱运动，他的撑杆跳技术也一般（要不然怎么跳不过高坚果）',
-    getShadow: function (a) {
+    Produce: '撑杆僵尸运用标杆高高地跃过障碍物。<p>韧性：<font color="#FF0000">中</font><Br>速度：<font color="#FF0000">快,而后慢(跳跃后)</font><BR>特点：<font color="#FF0000">跃过他所碰到的第一筑植物</font></p>事实证明，体育生还是很吸引女生的，尤其是他，他用矫健的身躯与他的这一身装扮，成功吸引了一众女生，表白信数不胜数，但背地里他不爱运动，他的撑杆跳技术也一般（要不然怎么跳不过高坚果）',
+    getShadow: function(a) {
       return (
         "left:" + (a.beAttackedPointL - 20) + "px;top:" + (a.height - 35) + "px"
       );
     },
-    GoingDieHead: function (c, a, b) {
+    GoingDieHead: function(c, a, b) {
       oSym.addTask(200, ClearChild, [
         NewImg(
           0,
           a[b.HeadGif] + Math.random(),
           "left:" +
-            b.X +
-            "px;top:" +
-            (b.pixelTop - 20) +
-            "px;z-index:" +
-            b.zIndex,
+          b.X +
+          "px;top:" +
+          (b.pixelTop - 20) +
+          "px;z-index:" +
+          b.zIndex,
           EDPZ
         ),
       ]);
     },
-    JudgeAttack: function () {
+    JudgeAttack: function() {
       var g = this,
         b = g.ZX,
         d = g.R + "_",
@@ -2244,33 +2207,32 @@ var CZombies = (function (b, a) {
           continue;
         }
         for (
-          a = 2;
-          a > -1;
+          a = 2; a > -1;
           (p = h[d + f + "_" + a--]) &&
-          (p.EName != "oBrains"
-            ? p.AttackedRX >= e &&
-              p.AttackedLX < b &&
-              p.canEat &&
-              ((a = -1),
+          (p.EName != "oBrains" ?
+            p.AttackedRX >= e &&
+            p.AttackedLX < b &&
+            p.canEat &&
+            ((a = -1),
               (g.JudgeAttack = CZombies.prototype.JudgeAttack),
-              g.NormalAttack(g.id, p.id, p.AttackedLX))
-            : p.AttackedRX >= b &&
-              p.AttackedLX < b &&
-              ((a = -1),
+              g.NormalAttack(g.id, p.id, p.AttackedLX)) :
+            p.AttackedRX >= b &&
+            p.AttackedLX < b &&
+            ((a = -1),
               (g.JudgeAttack = CZombies.prototype.JudgeAttack),
               (g.NormalAttack = CZombies.prototype.NormalAttack)(g.id, p.id)))
         ) {}
       }
     },
-    getCrushed: function (a) {
+    getCrushed: function(a) {
       this.NormalAttack(this.id, a.id, a.AttackedLX);
-      this.getCrushed = function () {
+      this.getCrushed = function() {
         return false;
       };
       a.Stature > 0 &&
         oSym.addTask(
           50,
-          function (c) {
+          function(c) {
             var b = $Z[c];
             b && b.CrushDie();
           },
@@ -2278,12 +2240,12 @@ var CZombies = (function (b, a) {
         );
       return false;
     },
-    getRaven: function (a) {
+    getRaven: function(a) {
       return (
         !this.isAttacking && this.NormalAttack(this.id, a, $P[a].AttackedLX), 0
       );
     },
-    NormalAttack: function (d, b, g) {
+    NormalAttack: function(d, b, g) {
       var f = $Z[d],
         a = f.Ele,
         c = f.EleShadow,
@@ -2296,26 +2258,26 @@ var CZombies = (function (b, a) {
       SetHidden(c);
       f.isAttacking = 1;
       f.Altitude = 2;
-      f.getFreeze = function () {
+      f.getFreeze = function() {
         f.getSnowPea(f, 20);
       };
       oSym.addTask(
         50,
-        function (h) {
+        function(h) {
           $Z[h] && PlayAudio("polevault");
         },
         [d]
       );
       oSym.addTask(
         100,
-        function (m, j, i, l, n) {
+        function(m, j, i, l, n) {
           var h = $Z[m],
             k,
             q,
             r;
           h &&
-            ((k = $P[j]) && k.Stature > 0
-              ? ((h.AttackedRX =
+            ((k = $P[j]) && k.Stature > 0 ?
+              ((h.AttackedRX =
                   (h.X =
                     (h.AttackedLX = h.ZX = q = k.AttackedRX) -
                     h.beAttackedPointL) + h.beAttackedPointR),
@@ -2333,8 +2295,8 @@ var CZombies = (function (b, a) {
                 (h.NormalAttack = (r = CZombies.prototype).NormalAttack),
                 (h.getCrushed = r.getCrushed),
                 (h.getFreeze = r.getFreeze),
-                (h.getRaven = r.getRaven))
-              : ((h.ZX = h.AttackedLX =
+                (h.getRaven = r.getRaven)) :
+              ((h.ZX = h.AttackedLX =
                   (h.X = (h.AttackedRX = g) - h.beAttackedPointR) +
                   h.beAttackedPointL),
                 SetStyle(i, {
@@ -2347,21 +2309,21 @@ var CZombies = (function (b, a) {
                 SetVisible(l),
                 oSym.addTask(
                   80,
-                  function (s, v) {
+                  function(s, v) {
                     var u = $Z[s],
                       t;
                     u &&
                       ((v.src =
-                        "images/Zombies/PoleVaultingZombie/PoleVaultingZombieWalk.gif"),
-                      (u.isAttacking = 0),
-                      (u.Altitude = 1),
-                      (u.OSpeed = u.Speed = 1.6),
-                      (u.NormalGif = 9),
-                      (u.LostHeadGif = 10),
-                      (u.NormalAttack = (t = CZombies.prototype).NormalAttack),
-                      (u.getCrushed = t.getCrushed),
-                      (u.getFreeze = t.getFreeze),
-                      (u.getRaven = t.getRaven));
+                          "images/Zombies/PoleVaultingZombie/PoleVaultingZombieWalk.gif"),
+                        (u.isAttacking = 0),
+                        (u.Altitude = 1),
+                        (u.OSpeed = u.Speed = 1.6),
+                        (u.NormalGif = 9),
+                        (u.LostHeadGif = 10),
+                        (u.NormalAttack = (t = CZombies.prototype).NormalAttack),
+                        (u.getCrushed = t.getCrushed),
+                        (u.getFreeze = t.getFreeze),
+                        (u.getRaven = t.getRaven));
                   },
                   [m, n]
                 )));
@@ -2399,21 +2361,18 @@ var CZombies = (function (b, a) {
     beAttackedPointL: 60,
     beAttackedPointR: 240,
     LostPaperSpeed: 5,
-    HeadPosition: [
-      {
-        x: 62,
-        y: 30,
-        width: 40,
-        height: 40,
-      },
-      {
-        x: 62,
-        y: 30,
-        width: 40,
-        height: 40,
-      },
-    ],
-    PicArr: (function () {
+    HeadPosition: [{
+      x: 62,
+      y: 30,
+      width: 40,
+      height: 40,
+    }, {
+      x: 62,
+      y: 30,
+      width: 40,
+      height: 40,
+    }, ],
+    PicArr: (function() {
       var a = "images/Zombies/NewspaperZombie/";
       return [
         "images/Card/Zombies/NewspaperZombie.png",
@@ -2434,12 +2393,11 @@ var CZombies = (function (b, a) {
       ];
     })(),
     AudioArr: ["newspaper_rarrgh2"],
-    Produce:
-      '他的报纸只能提供有限的防御。<p>韧性：<font color="#FF0000">中</font><br>报纸韧性：<font color="#FF0000">低</font><br>速度：正常，而后快(失去报纸后)</p>看到在另一个平行宇宙称霸的二爷，停留在原时空的读报也坐不住了，终于在星云的帮助下喝了药水，喝完后，他的感言：“ I feel I become stronger!',
-    getShadow: function (a) {
+    Produce: '他的报纸只能提供有限的防御。<p>韧性：<font color="#FF0000">中</font><br>报纸韧性：<font color="#FF0000">低</font><br>速度：正常，而后快(失去报纸后)</p>看到在另一个平行宇宙称霸的二爷，停留在原时空的读报也坐不住了，终于在星云的帮助下喝了药水，喝完后，他的感言：“ I feel I become stronger!',
+    getShadow: function(a) {
       return "left:75px;top:" + (a.height - 25) + "px";
     },
-    GoingDie: function (b) {
+    GoingDie: function(b) {
       var a = this,
         c = a.id;
       a.EleBody.src = b;
@@ -2448,11 +2406,11 @@ var CZombies = (function (b, a) {
           0,
           a.PicArr[a.HeadGif] + Math.random(),
           "left:" +
-            a.AttackedLX +
-            "px;top:" +
-            (a.pixelTop - 20) +
-            "px;z-index:" +
-            a.zIndex,
+          a.AttackedLX +
+          "px;top:" +
+          (a.pixelTop - 20) +
+          "px;z-index:" +
+          a.zIndex,
           EDPZ
         ),
       ]);
@@ -2460,7 +2418,7 @@ var CZombies = (function (b, a) {
       a.FreeFreezeTime = a.FreeSetbodyTime = a.FreeSlowTime = 0;
       a.AutoReduceHP(c);
     },
-    getHurtOrnLost: function (j, a, g, m, c, l, k, i) {
+    getHurtOrnLost: function(j, a, g, m, c, l, k, i) {
       var e = this;
       if (!e.beAttacked) {
         k && e.DisappearDie();
@@ -2494,21 +2452,21 @@ var CZombies = (function (b, a) {
       SetAlpha(e.EleBody, 50, 0.5);
       oSym.addTask(
         10,
-        function (q) {
+        function(q) {
           var n = $Z[q];
           n && SetAlpha(n.EleBody, 100, 1);
         },
         [b]
       );
     },
-    getSnowPea: function (c, a, b) {
+    getSnowPea: function(c, a, b) {
       PlayAudio("splat" + Math.floor(1 + Math.random() * 3));
       c.getHit0(c, a, b);
     },
-    getFirePea: function (f, b, e) {
+    getFirePea: function(f, b, e) {
       f.PlayFireballAudio();
       (f.FreeSlowTime || f.FreeFreezeTime) &&
-        ((f.Speed = f.OSpeed), (f.FreeSlowTime = 0), (f.FreeFreezeTime = 0));
+      ((f.Speed = f.OSpeed), (f.FreeSlowTime = 0), (f.FreeFreezeTime = 0));
       f.Attack = 100;
       var d = f.AttackedLX,
         g = f.AttackedRX,
@@ -2518,8 +2476,8 @@ var CZombies = (function (b, a) {
       while (c--) {
         (h = a[c]) != this && h.getFirePeaSputtering();
       }
-      (f.HP -= b) < f.BreakPoint
-        ? ((f.getFirePea = OrnNoneZombies.prototype.getFirePea),
+      (f.HP -= b) < f.BreakPoint ?
+        ((f.getFirePea = OrnNoneZombies.prototype.getFirePea),
           f.GoingDie(
             f.PicArr[[f.LostHeadGif, f.LostHeadAttackGif][f.isAttacking]]
           ),
@@ -2528,30 +2486,30 @@ var CZombies = (function (b, a) {
             f.getHit1 =
             f.getHit2 =
             f.getHit3 =
-              function () {}))
-        : (f.CheckOrnHP(f, f.id, f.OrnHP, b, f.PicArr, f.isAttacking, 0),
+            function() {})) :
+        (f.CheckOrnHP(f, f.id, f.OrnHP, b, f.PicArr, f.isAttacking, 0),
           f.SetAlpha(f, f.EleBody, 50, 0.5),
           oSym.addTask(
             10,
-            function (j, i) {
+            function(j, i) {
               (i = $Z[j]) && i.SetAlpha(i, i.EleBody, 100, 1);
             },
             [f.id]
           ));
     },
-    getHit0: function (c, a, b) {
-      b == c.WalkDirection
-        ? (c.CheckOrnHP(c, c.id, c.OrnHP, a, c.PicArr, c.isAttacking, 1),
+    getHit0: function(c, a, b) {
+      b == c.WalkDirection ?
+        (c.CheckOrnHP(c, c.id, c.OrnHP, a, c.PicArr, c.isAttacking, 1),
           c.SetAlpha(c, c.EleBody, 50, 0.5),
           oSym.addTask(
             10,
-            function (e, d) {
+            function(e, d) {
               (d = $Z[e]) && d.SetAlpha(d, d.EleBody, 100, 1);
             },
             [c.id]
-          ))
-        : (c.HP -= a) < c.BreakPoint &&
-          (c.GoingDie(
+          )) :
+        (c.HP -= a) < c.BreakPoint &&
+        (c.GoingDie(
             c.PicArr[[c.LostHeadGif, c.LostHeadAttackGif][c.isAttacking]]
           ),
           (c.getFirePea = OrnNoneZombies.prototype.getFirePea),
@@ -2561,11 +2519,11 @@ var CZombies = (function (b, a) {
             c.getHit1 =
             c.getHit2 =
             c.getHit3 =
-              function () {}));
+            function() {}));
     },
-    getHit1: function (b, a) {
-      (b.HP -= a) < b.BreakPoint
-        ? (b.GoingDie(
+    getHit1: function(b, a) {
+      (b.HP -= a) < b.BreakPoint ?
+        (b.GoingDie(
             b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]
           ),
           (b.getFirePea = OrnNoneZombies.prototype.getFirePea),
@@ -2575,20 +2533,20 @@ var CZombies = (function (b, a) {
             b.getHit1 =
             b.getHit2 =
             b.getHit3 =
-              function () {}))
-        : (b.CheckOrnHP(b, b.id, b.OrnHP, a, b.PicArr, b.isAttacking, 0),
+            function() {})) :
+        (b.CheckOrnHP(b, b.id, b.OrnHP, a, b.PicArr, b.isAttacking, 0),
           b.SetAlpha(b, b.EleBody, 50, 0.5),
           oSym.addTask(
             10,
-            function (d, c) {
+            function(d, c) {
               (c = $Z[d]) && c.SetAlpha(c, c.EleBody, 100, 1);
             },
             [b.id]
           ));
     },
-    getHit2: function (b, a) {
-      (b.HP -= a) < b.BreakPoint
-        ? (b.GoingDie(
+    getHit2: function(b, a) {
+      (b.HP -= a) < b.BreakPoint ?
+        (b.GoingDie(
             b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]
           ),
           (b.getFirePea = OrnNoneZombies.prototype.getFirePea),
@@ -2598,19 +2556,19 @@ var CZombies = (function (b, a) {
             b.getHit1 =
             b.getHit2 =
             b.getHit3 =
-              function () {}))
-        : (b.SetAlpha(b, b.EleBody, 50, 0.5),
+            function() {})) :
+        (b.SetAlpha(b, b.EleBody, 50, 0.5),
           oSym.addTask(
             10,
-            function (d, c) {
+            function(d, c) {
               (c = $Z[d]) && c.SetAlpha(c, c.EleBody, 100, 1);
             },
             [b.id]
           ));
     },
-    getHit3: function (b, a) {
-      (b.HP -= a) < b.BreakPoint
-        ? (b.GoingDie(
+    getHit3: function(b, a) {
+      (b.HP -= a) < b.BreakPoint ?
+        (b.GoingDie(
             b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]
           ),
           (b.getFirePea = OrnNoneZombies.prototype.getFirePea),
@@ -2620,63 +2578,63 @@ var CZombies = (function (b, a) {
             b.getHit1 =
             b.getHit2 =
             b.getHit3 =
-              function () {}))
-        : (b.CheckOrnHP(b, b.id, b.OrnHP, a, b.PicArr, b.isAttacking, 0),
+            function() {})) :
+        (b.CheckOrnHP(b, b.id, b.OrnHP, a, b.PicArr, b.isAttacking, 0),
           b.SetAlpha(b, b.EleBody, 50, 0.5),
           oSym.addTask(
             10,
-            function (d, c) {
+            function(d, c) {
               (c = $Z[d]) && c.SetAlpha(c, c.EleBody, 100, 1);
             },
             [b.id]
           ));
     },
-    CheckOrnHP: function (g, h, d, c, f, b, a) {
+    CheckOrnHP: function(g, h, d, c, f, b, a) {
       var e = OrnNoneZombies.prototype;
       (g.OrnHP = d -= c) < 1 &&
         (a && (g.HP += d),
-        (g.ChkActs = function () {
-          return 1;
-        }),
-        (g.ChkActs1 = function () {
-          return 1;
-        }),
-        (g.EleBody.src = f[g.LostPaperGif] + $Random + Math.random()),
-        (g.Ornaments = 0),
-        (g.LostHeadGif = 8),
-        (g.LostHeadAttackGif = 9),
-        (g.getFirePea = e.getFirePea),
-        (g.getSnowPea = e.getSnowPea),
-        (g.getHit = g.getHit0 = g.getHit1 = g.getHit2 = g.getHit3 = e.getHit),
-        oSym.addTask(
-          150,
-          function (m, l) {
-            var k = $Z[m];
-            if (!k) {
-              return;
-            }
-            var j = CZombies.prototype,
-              i = (k.OSpeed = k.LostPaperSpeed);
-            k.ChkActs = j.ChkActs;
-            k.ChkActs1 = j.ChkActs1;
-            k.Speed && (k.Speed = !k.FreeSlowTime ? i : 0.5 * i);
-            if (!k.beAttacked) {
-              return;
-            }
-            PlayAudio("newspaper_rarrgh2");
-            k.EleBody.src = l;
-            k.JudgeAttack();
-          },
-          [
-            h,
-            f[
-              [
-                (g.NormalGif = g.OrnLostNormalGif),
-                (g.AttackGif = g.OrnLostAttackGif),
-              ][b]
-            ],
-          ]
-        ));
+          (g.ChkActs = function() {
+            return 1;
+          }),
+          (g.ChkActs1 = function() {
+            return 1;
+          }),
+          (g.EleBody.src = f[g.LostPaperGif] + $Random + Math.random()),
+          (g.Ornaments = 0),
+          (g.LostHeadGif = 8),
+          (g.LostHeadAttackGif = 9),
+          (g.getFirePea = e.getFirePea),
+          (g.getSnowPea = e.getSnowPea),
+          (g.getHit = g.getHit0 = g.getHit1 = g.getHit2 = g.getHit3 = e.getHit),
+          oSym.addTask(
+            150,
+            function(m, l) {
+              var k = $Z[m];
+              if (!k) {
+                return;
+              }
+              var j = CZombies.prototype,
+                i = (k.OSpeed = k.LostPaperSpeed);
+              k.ChkActs = j.ChkActs;
+              k.ChkActs1 = j.ChkActs1;
+              k.Speed && (k.Speed = !k.FreeSlowTime ? i : 0.5 * i);
+              if (!k.beAttacked) {
+                return;
+              }
+              PlayAudio("newspaper_rarrgh2");
+              k.EleBody.src = l;
+              k.JudgeAttack();
+            },
+            [
+              h,
+              f[
+                [
+                  (g.NormalGif = g.OrnLostNormalGif),
+                  (g.AttackGif = g.OrnLostAttackGif),
+                ][b]
+              ],
+            ]
+          ));
     },
   }),
   oNewspaperZombie1 = InheritO(OrnIIZombies, {
@@ -2692,21 +2650,18 @@ var CZombies = (function (b, a) {
     beAttackedPointL: 60,
     beAttackedPointR: 130,
     LostPaperSpeed: 4.8,
-    HeadPosition: [
-      {
-        x: 62,
-        y: 30,
-        width: 40,
-        height: 40,
-      },
-      {
-        x: 62,
-        y: 30,
-        width: 40,
-        height: 40,
-      },
-    ],
-    PicArr: (function () {
+    HeadPosition: [{
+      x: 62,
+      y: 30,
+      width: 40,
+      height: 40,
+    }, {
+      x: 62,
+      y: 30,
+      width: 40,
+      height: 40,
+    }, ],
+    PicArr: (function() {
       var a = "images/Zombies/NewspaperZombie/";
       return [
         "images/Card/Zombies/NewspaperZombie.png",
@@ -2727,12 +2682,11 @@ var CZombies = (function (b, a) {
       ];
     })(),
     AudioArr: ["newspaper_rarrgh2"],
-    Produce:
-      '他的报纸只能提供有限的防御。<p>韧性：<font color="#FF0000">中</font><br>报纸韧性：<font color="#FF0000">低</font><br>速度：正常，而后快(失去报纸后)</p>看到在另一个平行宇宙称霸的二爷，停留在原时空的读报也坐不住了，终于在星云的帮助下喝了药水，喝完后，他的感言：“ I feel I become stronger!',
-    getShadow: function (a) {
+    Produce: '他的报纸只能提供有限的防御。<p>韧性：<font color="#FF0000">中</font><br>报纸韧性：<font color="#FF0000">低</font><br>速度：正常，而后快(失去报纸后)</p>看到在另一个平行宇宙称霸的二爷，停留在原时空的读报也坐不住了，终于在星云的帮助下喝了药水，喝完后，他的感言：“ I feel I become stronger!',
+    getShadow: function(a) {
       return "left:75px;top:" + (a.height - 25) + "px";
     },
-    GoingDie: function (b) {
+    GoingDie: function(b) {
       var a = this,
         c = a.id;
       a.EleBody.src = b;
@@ -2741,11 +2695,11 @@ var CZombies = (function (b, a) {
           0,
           a.PicArr[a.HeadGif] + Math.random(),
           "left:" +
-            a.AttackedLX +
-            "px;top:" +
-            (a.pixelTop - 20) +
-            "px;z-index:" +
-            a.zIndex,
+          a.AttackedLX +
+          "px;top:" +
+          (a.pixelTop - 20) +
+          "px;z-index:" +
+          a.zIndex,
           EDPZ
         ),
       ]);
@@ -2753,7 +2707,7 @@ var CZombies = (function (b, a) {
       a.FreeFreezeTime = a.FreeSetbodyTime = a.FreeSlowTime = 0;
       a.AutoReduceHP(c);
     },
-    getHurtOrnLost: function (j, a, g, m, c, l, k, i) {
+    getHurtOrnLost: function(j, a, g, m, c, l, k, i) {
       var e = this;
       if (!e.beAttacked) {
         k && e.DisappearDie();
@@ -2787,21 +2741,21 @@ var CZombies = (function (b, a) {
       SetAlpha(e.EleBody, 50, 0.5);
       oSym.addTask(
         10,
-        function (q) {
+        function(q) {
           var n = $Z[q];
           n && SetAlpha(n.EleBody, 100, 1);
         },
         [b]
       );
     },
-    getSnowPea: function (c, a, b) {
+    getSnowPea: function(c, a, b) {
       PlayAudio("splat" + Math.floor(1 + Math.random() * 3));
       c.getHit0(c, a, b);
     },
-    getFirePea: function (f, b, e) {
+    getFirePea: function(f, b, e) {
       f.PlayFireballAudio();
       (f.FreeSlowTime || f.FreeFreezeTime) &&
-        ((f.Speed = f.OSpeed), (f.FreeSlowTime = 0), (f.FreeFreezeTime = 0));
+      ((f.Speed = f.OSpeed), (f.FreeSlowTime = 0), (f.FreeFreezeTime = 0));
       f.Attack = 100;
       var d = f.AttackedLX,
         g = f.AttackedRX,
@@ -2811,8 +2765,8 @@ var CZombies = (function (b, a) {
       while (c--) {
         (h = a[c]) != this && h.getFirePeaSputtering();
       }
-      (f.HP -= b) < f.BreakPoint
-        ? ((f.getFirePea = OrnNoneZombies.prototype.getFirePea),
+      (f.HP -= b) < f.BreakPoint ?
+        ((f.getFirePea = OrnNoneZombies.prototype.getFirePea),
           f.GoingDie(
             f.PicArr[[f.LostHeadGif, f.LostHeadAttackGif][f.isAttacking]]
           ),
@@ -2821,30 +2775,30 @@ var CZombies = (function (b, a) {
             f.getHit1 =
             f.getHit2 =
             f.getHit3 =
-              function () {}))
-        : (f.CheckOrnHP(f, f.id, f.OrnHP, b, f.PicArr, f.isAttacking, 0),
+            function() {})) :
+        (f.CheckOrnHP(f, f.id, f.OrnHP, b, f.PicArr, f.isAttacking, 0),
           f.SetAlpha(f, f.EleBody, 50, 0.5),
           oSym.addTask(
             10,
-            function (j, i) {
+            function(j, i) {
               (i = $Z[j]) && i.SetAlpha(i, i.EleBody, 100, 1);
             },
             [f.id]
           ));
     },
-    getHit0: function (c, a, b) {
-      b == c.WalkDirection
-        ? (c.CheckOrnHP(c, c.id, c.OrnHP, a, c.PicArr, c.isAttacking, 1),
+    getHit0: function(c, a, b) {
+      b == c.WalkDirection ?
+        (c.CheckOrnHP(c, c.id, c.OrnHP, a, c.PicArr, c.isAttacking, 1),
           c.SetAlpha(c, c.EleBody, 50, 0.5),
           oSym.addTask(
             10,
-            function (e, d) {
+            function(e, d) {
               (d = $Z[e]) && d.SetAlpha(d, d.EleBody, 100, 1);
             },
             [c.id]
-          ))
-        : (c.HP -= a) < c.BreakPoint &&
-          (c.GoingDie(
+          )) :
+        (c.HP -= a) < c.BreakPoint &&
+        (c.GoingDie(
             c.PicArr[[c.LostHeadGif, c.LostHeadAttackGif][c.isAttacking]]
           ),
           (c.getFirePea = OrnNoneZombies.prototype.getFirePea),
@@ -2854,11 +2808,11 @@ var CZombies = (function (b, a) {
             c.getHit1 =
             c.getHit2 =
             c.getHit3 =
-              function () {}));
+            function() {}));
     },
-    getHit1: function (b, a) {
-      (b.HP -= a) < b.BreakPoint
-        ? (b.GoingDie(
+    getHit1: function(b, a) {
+      (b.HP -= a) < b.BreakPoint ?
+        (b.GoingDie(
             b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]
           ),
           (b.getFirePea = OrnNoneZombies.prototype.getFirePea),
@@ -2868,20 +2822,20 @@ var CZombies = (function (b, a) {
             b.getHit1 =
             b.getHit2 =
             b.getHit3 =
-              function () {}))
-        : (b.CheckOrnHP(b, b.id, b.OrnHP, a, b.PicArr, b.isAttacking, 0),
+            function() {})) :
+        (b.CheckOrnHP(b, b.id, b.OrnHP, a, b.PicArr, b.isAttacking, 0),
           b.SetAlpha(b, b.EleBody, 50, 0.5),
           oSym.addTask(
             10,
-            function (d, c) {
+            function(d, c) {
               (c = $Z[d]) && c.SetAlpha(c, c.EleBody, 100, 1);
             },
             [b.id]
           ));
     },
-    getHit2: function (b, a) {
-      (b.HP -= a) < b.BreakPoint
-        ? (b.GoingDie(
+    getHit2: function(b, a) {
+      (b.HP -= a) < b.BreakPoint ?
+        (b.GoingDie(
             b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]
           ),
           (b.getFirePea = OrnNoneZombies.prototype.getFirePea),
@@ -2891,19 +2845,19 @@ var CZombies = (function (b, a) {
             b.getHit1 =
             b.getHit2 =
             b.getHit3 =
-              function () {}))
-        : (b.SetAlpha(b, b.EleBody, 50, 0.5),
+            function() {})) :
+        (b.SetAlpha(b, b.EleBody, 50, 0.5),
           oSym.addTask(
             10,
-            function (d, c) {
+            function(d, c) {
               (c = $Z[d]) && c.SetAlpha(c, c.EleBody, 100, 1);
             },
             [b.id]
           ));
     },
-    getHit3: function (b, a) {
-      (b.HP -= a) < b.BreakPoint
-        ? (b.GoingDie(
+    getHit3: function(b, a) {
+      (b.HP -= a) < b.BreakPoint ?
+        (b.GoingDie(
             b.PicArr[[b.LostHeadGif, b.LostHeadAttackGif][b.isAttacking]]
           ),
           (b.getFirePea = OrnNoneZombies.prototype.getFirePea),
@@ -2913,63 +2867,63 @@ var CZombies = (function (b, a) {
             b.getHit1 =
             b.getHit2 =
             b.getHit3 =
-              function () {}))
-        : (b.CheckOrnHP(b, b.id, b.OrnHP, a, b.PicArr, b.isAttacking, 0),
+            function() {})) :
+        (b.CheckOrnHP(b, b.id, b.OrnHP, a, b.PicArr, b.isAttacking, 0),
           b.SetAlpha(b, b.EleBody, 50, 0.5),
           oSym.addTask(
             10,
-            function (d, c) {
+            function(d, c) {
               (c = $Z[d]) && c.SetAlpha(c, c.EleBody, 100, 1);
             },
             [b.id]
           ));
     },
-    CheckOrnHP: function (g, h, d, c, f, b, a) {
+    CheckOrnHP: function(g, h, d, c, f, b, a) {
       var e = OrnNoneZombies.prototype;
       (g.OrnHP = d -= c) < 1 &&
         (a && (g.HP += d),
-        (g.ChkActs = function () {
-          return 1;
-        }),
-        (g.ChkActs1 = function () {
-          return 1;
-        }),
-        (g.EleBody.src = f[g.LostPaperGif] + $Random + Math.random()),
-        (g.Ornaments = 0),
-        (g.LostHeadGif = 8),
-        (g.LostHeadAttackGif = 9),
-        (g.getFirePea = e.getFirePea),
-        (g.getSnowPea = e.getSnowPea),
-        (g.getHit = g.getHit0 = g.getHit1 = g.getHit2 = g.getHit3 = e.getHit),
-        oSym.addTask(
-          150,
-          function (m, l) {
-            var k = $Z[m];
-            if (!k) {
-              return;
-            }
-            var j = CZombies.prototype,
-              i = (k.OSpeed = k.LostPaperSpeed);
-            k.ChkActs = j.ChkActs;
-            k.ChkActs1 = j.ChkActs1;
-            k.Speed && (k.Speed = !k.FreeSlowTime ? i : 0.5 * i);
-            if (!k.beAttacked) {
-              return;
-            }
-            PlayAudio("newspaper_rarrgh2");
-            k.EleBody.src = l;
-            k.JudgeAttack();
-          },
-          [
-            h,
-            f[
-              [
-                (g.NormalGif = g.OrnLostNormalGif),
-                (g.AttackGif = g.OrnLostAttackGif),
-              ][b]
-            ],
-          ]
-        ));
+          (g.ChkActs = function() {
+            return 1;
+          }),
+          (g.ChkActs1 = function() {
+            return 1;
+          }),
+          (g.EleBody.src = f[g.LostPaperGif] + $Random + Math.random()),
+          (g.Ornaments = 0),
+          (g.LostHeadGif = 8),
+          (g.LostHeadAttackGif = 9),
+          (g.getFirePea = e.getFirePea),
+          (g.getSnowPea = e.getSnowPea),
+          (g.getHit = g.getHit0 = g.getHit1 = g.getHit2 = g.getHit3 = e.getHit),
+          oSym.addTask(
+            150,
+            function(m, l) {
+              var k = $Z[m];
+              if (!k) {
+                return;
+              }
+              var j = CZombies.prototype,
+                i = (k.OSpeed = k.LostPaperSpeed);
+              k.ChkActs = j.ChkActs;
+              k.ChkActs1 = j.ChkActs1;
+              k.Speed && (k.Speed = !k.FreeSlowTime ? i : 0.5 * i);
+              if (!k.beAttacked) {
+                return;
+              }
+              PlayAudio("newspaper_rarrgh2");
+              k.EleBody.src = l;
+              k.JudgeAttack();
+            },
+            [
+              h,
+              f[
+                [
+                  (g.NormalGif = g.OrnLostNormalGif),
+                  (g.AttackGif = g.OrnLostAttackGif),
+                ][b]
+              ],
+            ]
+          ));
     },
   }),
   oScreenDoorZombie = InheritO(oNewspaperZombie, {
@@ -2984,7 +2938,7 @@ var CZombies = (function (b, a) {
     height: 144,
     beAttackedPointL: 60,
     beAttackedPointR: 116,
-    PicArr: (function () {
+    PicArr: (function() {
       var a = "images/Zombies/ScreenDoorZombie/",
         b = "images/Zombies/Zombie/";
       return [
@@ -3004,46 +2958,45 @@ var CZombies = (function (b, a) {
         a + "1.gif",
       ];
     })(),
-    PlayNormalballAudio: function () {
+    PlayNormalballAudio: function() {
       PlayAudio("splat" + Math.floor(1 + Math.random() * 3));
     },
-    Produce:
-      '他的铁栅门是有效的盾牌。<p>韧性：<font color="#FF0000">低</font><br>铁栅门韧性：<font color="#FF0000">高</font><br>弱点：大喷菇和磁力菇</p>其实读报的增强，他也沾了一点光，但可惜，就算是这么一点光，星云也不让他沾，也许是因为他曾经有吃过脑的经历吧',
+    Produce: '他的铁栅门是有效的盾牌。<p>韧性：<font color="#FF0000">低</font><br>铁栅门韧性：<font color="#FF0000">高</font><br>弱点：大喷菇和磁力菇</p>其实读报的增强，他也沾了一点光，但可惜，就算是这么一点光，星云也不让他沾，也许是因为他曾经有吃过脑的经历吧',
     GoingDie: CZombies.prototype.GoingDie,
-    getFirePea: function (c, a, b) {
+    getFirePea: function(c, a, b) {
       PlayAudio(
-        b == c.WalkDirection
-          ? ["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)]
-          : "splat" + Math.floor(1 + Math.random() * 3)
+        b == c.WalkDirection ?
+        ["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)] :
+        "splat" + Math.floor(1 + Math.random() * 3)
       );
       c.getHit0(c, a, b);
     },
-    getFirePeaSputtering: function () {},
-    getSnowPea: function (c, a, b) {
+    getFirePeaSputtering: function() {},
+    getSnowPea: function(c, a, b) {
       PlayAudio(["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)]);
       c.getHit0(c, a, b);
     },
-    getPea: function (c, a, b) {
+    getPea: function(c, a, b) {
       PlayAudio(
-        b == c.WalkDirection
-          ? ["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)]
-          : "splat" + Math.floor(1 + Math.random() * 3)
+        b == c.WalkDirection ?
+        ["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)] :
+        "splat" + Math.floor(1 + Math.random() * 3)
       );
       c.getHit0(c, a, b);
     },
-    getHit0: function (c, a, b) {
-      b == c.WalkDirection
-        ? (c.CheckOrnHP(c, c.id, c.OrnHP, a, c.PicArr, c.isAttacking, 1),
+    getHit0: function(c, a, b) {
+      b == c.WalkDirection ?
+        (c.CheckOrnHP(c, c.id, c.OrnHP, a, c.PicArr, c.isAttacking, 1),
           c.SetAlpha(c, c.EleBody, 50, 0.5),
           oSym.addTask(
             10,
-            function (e, d) {
+            function(e, d) {
               (d = $Z[e]) && d.SetAlpha(d, d.EleBody, 100, 1);
             },
             [c.id]
-          ))
-        : (c.HP -= a) < c.BreakPoint &&
-          (c.GoingDie(
+          )) :
+        (c.HP -= a) < c.BreakPoint &&
+        (c.GoingDie(
             c.PicArr[[c.LostHeadGif, c.LostHeadAttackGif][c.isAttacking]]
           ),
           (c.getHit =
@@ -3051,46 +3004,46 @@ var CZombies = (function (b, a) {
             c.getHit1 =
             c.getHit2 =
             c.getHit3 =
-              function () {}));
+            function() {}));
     },
-    CheckOrnHP: function (g, h, d, c, f, b, a) {
+    CheckOrnHP: function(g, h, d, c, f, b, a) {
       var e = OrnNoneZombies.prototype;
       (g.OrnHP = d -= c) < 1 &&
         (a && (g.HP += d),
-        (g.Ornaments = 0),
-        (g.EleBody.src =
-          f[
-            [
-              (g.NormalGif = g.OrnLostNormalGif),
-              (g.AttackGif = g.OrnLostAttackGif),
-            ][b]
-          ]),
-        (g.LostHeadGif = 8),
-        (g.LostHeadAttackGif = 9),
-        (g.getPea = e.getPea),
-        (g.getFirePea = e.getFirePea),
-        (g.getSnowPea = e.getSnowPea),
-        (g.getFirePeaSputtering = e.getFirePeaSputtering),
-        (g.getSnowPea = g.getSnowPea),
-        (g.PlayNormalballAudio = e.PlayNormalballAudio),
-        (g.PlayFireballAudio = e.PlayFireballAudio),
-        (g.PlaySlowballAudio = e.PlaySlowballAudio),
-        (g.getHit = g.getHit0 = g.getHit1 = g.getHit2 = g.getHit3 = e.getHit));
+          (g.Ornaments = 0),
+          (g.EleBody.src =
+            f[
+              [
+                (g.NormalGif = g.OrnLostNormalGif),
+                (g.AttackGif = g.OrnLostAttackGif),
+              ][b]
+            ]),
+          (g.LostHeadGif = 8),
+          (g.LostHeadAttackGif = 9),
+          (g.getPea = e.getPea),
+          (g.getFirePea = e.getFirePea),
+          (g.getSnowPea = e.getSnowPea),
+          (g.getFirePeaSputtering = e.getFirePeaSputtering),
+          (g.getSnowPea = g.getSnowPea),
+          (g.PlayNormalballAudio = e.PlayNormalballAudio),
+          (g.PlayFireballAudio = e.PlayFireballAudio),
+          (g.PlaySlowballAudio = e.PlaySlowballAudio),
+          (g.getHit = g.getHit0 = g.getHit1 = g.getHit2 = g.getHit3 = e.getHit));
     },
-    getFireball: function (c, a, b) {
-      b != c.WalkDirection
-        ? ((c.FreeSlowTime = 0),
+    getFireball: function(c, a, b) {
+      b != c.WalkDirection ?
+        ((c.FreeSlowTime = 0),
           (c.Attack = 100),
-          c.Speed != c.OSpeed
-            ? (c.PlayNormalballAudio(), (c.Speed = c.OSpeed))
-            : c.PlayFireballAudio())
-        : c.PlayNormalballAudio();
+          c.Speed != c.OSpeed ?
+          (c.PlayNormalballAudio(), (c.Speed = c.OSpeed)) :
+          c.PlayFireballAudio()) :
+        c.PlayNormalballAudio();
     },
-    getSputtering: function () {},
-    getSlow: function (d, a, c, b, e) {
-      b != d.WalkDirection || e != -1
-        ? CZombies.prototype.getSlow(d, a, c)
-        : d.PlayNormalballAudio();
+    getSputtering: function() {},
+    getSlow: function(d, a, c, b, e) {
+      b != d.WalkDirection || e != -1 ?
+        CZombies.prototype.getSlow(d, a, c) :
+        d.PlayNormalballAudio();
     },
   }),
   oAquaticZombie = InheritO(OrnNoneZombies, {
@@ -3100,10 +3053,10 @@ var CZombies = (function (b, a) {
     DieGif: 7,
     WalkGif0: 2,
     WalkGif1: 3,
-    CanPass: function (b, a) {
+    CanPass: function(b, a) {
       return a == 2;
     },
-    BirthCallBack: function (g) {
+    BirthCallBack: function(g) {
       var e = g.delayT,
         c = g.id,
         b = (g.Ele = $(c)),
@@ -3131,8 +3084,8 @@ var CZombies = (function (b, a) {
             (a = c + "_splash"),
             "div",
             "position:absolute;background:url(images/interface/splash.png);left:61px;top:" +
-              (g.height - 88) +
-              "px;width:97px;height:88px;over-flow:hidden",
+            (g.height - 88) +
+            "px;width:97px;height:88px;over-flow:hidden",
             0,
             b
           );
@@ -3150,111 +3103,112 @@ var CZombies = (function (b, a) {
               ["-679px 0", 9, -1],
             ],
             0,
-            function (i, j) {
+            function(i, j) {
               ClearChild($(i));
             }
           );
       }
       e
-        ? oSym.addTask(
-            e,
-            function (j, i) {
-              var k = $Z[j];
-              k && ((k.FreeSetbodyTime = 0), SetBlock(i));
-            },
-            [c, b]
-          )
-        : SetBlock(b);
+        ?
+        oSym.addTask(
+          e,
+          function(j, i) {
+            var k = $Z[j];
+            k && ((k.FreeSetbodyTime = 0), SetBlock(i));
+          },
+          [c, b]
+        ) :
+        SetBlock(b);
     },
-    ChkActsL1: function (f, e, g, d) {
+    ChkActsL1: function(f, e, g, d) {
       var c,
         a,
         b = f.id;
       !(f.FreeFreezeTime || f.FreeSetbodyTime) &&
-        ((f.AttackedRX -= c = f.Speed),
+      ((f.AttackedRX -= c = f.Speed),
         (LX = f.ZX = f.AttackedLX -= c),
         (f.Ele.style.left = Math.floor((f.X -= c)) + "px"));
       f.AttackedLX < GetX(9) &&
         (PlayAudio("zombie_entering_water"),
-        (f.WalkStatus = 1),
-        (f.EleBody.src = f.PicArr[(f.NormalGif = f.WalkGif1)]),
-        SetHidden(f.EleShadow),
-        NewEle(
-          (a = b + "_splash"),
-          "div",
-          "position:absolute;background:url(images/interface/splash.png);left:61px;top:" +
+          (f.WalkStatus = 1),
+          (f.EleBody.src = f.PicArr[(f.NormalGif = f.WalkGif1)]),
+          SetHidden(f.EleShadow),
+          NewEle(
+            (a = b + "_splash"),
+            "div",
+            "position:absolute;background:url(images/interface/splash.png);left:61px;top:" +
             (f.height - 88) +
             "px;width:97px;height:88px;over-flow:hidden",
-          0,
-          f.Ele
-        ),
-        (f.ChkActs = f.ChkActsL2),
-        ImgSpriter(
-          a,
-          b,
-          [
-            ["0 0", 9, 1],
-            ["-97px 0", 9, 2],
-            ["-194px 0", 9, 3],
-            ["-291px 0", 9, 4],
-            ["-388px 0", 9, 5],
-            ["-485px 0", 9, 6],
-            ["-582px 0", 9, 7],
-            ["-679px 0", 9, -1],
-          ],
-          0,
-          function (h, i) {
-            ClearChild($(h));
-          }
-        ));
+            0,
+            f.Ele
+          ),
+          (f.ChkActs = f.ChkActsL2),
+          ImgSpriter(
+            a,
+            b,
+            [
+              ["0 0", 9, 1],
+              ["-97px 0", 9, 2],
+              ["-194px 0", 9, 3],
+              ["-291px 0", 9, 4],
+              ["-388px 0", 9, 5],
+              ["-485px 0", 9, 6],
+              ["-582px 0", 9, 7],
+              ["-679px 0", 9, -1],
+            ],
+            0,
+            function(h, i) {
+              ClearChild($(h));
+            }
+          ));
       return 1;
     },
-    ChkActsL2: function (d, c, e, b) {
+    ChkActsL2: function(d, c, e, b) {
       var a;
       !(d.FreeFreezeTime || d.FreeSetbodyTime) &&
-        (d.beAttacked && !d.isAttacking && d.JudgeAttack(),
+      (d.beAttacked && !d.isAttacking && d.JudgeAttack(),
         !d.isAttacking &&
-          ((d.AttackedRX -= a = d.Speed),
+        ((d.AttackedRX -= a = d.Speed),
           (d.ZX = d.AttackedLX -= a),
           (d.Ele.style.left = Math.floor((d.X -= a)) + "px")));
       d.AttackedLX < GetX(0) &&
         ((d.WalkStatus = 0),
-        (d.EleBody.src = d.PicArr[(d.NormalGif = d.WalkGif0)]),
-        SetVisible(d.EleShadow),
-        (d.ChkActs = d.ChkActsL3));
+          (d.EleBody.src = d.PicArr[(d.NormalGif = d.WalkGif0)]),
+          SetVisible(d.EleShadow),
+          (d.ChkActs = d.ChkActsL3));
       return 1;
     },
     ChkActsL3: CZombies.prototype.ChkActs,
-    ChkActs1: function (d, c, e, b) {
+    ChkActs1: function(d, c, e, b) {
       var a;
       !(d.FreeFreezeTime || d.FreeSetbodyTime) &&
-        (d.beAttacked && !d.isAttacking && d.JudgeAttack(),
+      (d.beAttacked && !d.isAttacking && d.JudgeAttack(),
         !d.isAttacking &&
-          ((d.AttackedLX += a = d.Speed),
+        ((d.AttackedLX += a = d.Speed),
           (d.ZX = d.AttackedRX += a),
           (d.Ele.style.left = Math.ceil((d.X += a)) + "px")));
       d.AttackedLX > GetX(9) &&
         ((d.WalkStatus = 0),
-        (d.EleBody.src = d.PicArr[(d.NormalGif = d.WalkGif0)]),
-        SetVisible(d.EleShadow),
-        (d.ChkActs = d.ChkActs2));
+          (d.EleBody.src = d.PicArr[(d.NormalGif = d.WalkGif0)]),
+          SetVisible(d.EleShadow),
+          (d.ChkActs = d.ChkActs2));
       return 1;
     },
-    ChkActs2: function (e, c, f, b) {
+    ChkActs2: function(e, c, f, b) {
       var a, d;
-      !(e.FreeFreezeTime || e.FreeSetbodyTime)
-        ? (e.beAttacked && !e.isAttacking && e.JudgeAttack(),
-          !e.isAttacking
-            ? (e.AttackedLX += a = e.Speed) > oS.W
-              ? (f.splice(b, 1), e.DisappearDie(), (d = 0))
-              : ((e.ZX = e.AttackedRX += a),
-                (e.Ele.style.left = Math.ceil((e.X += a)) + "px"),
-                (d = 1))
-            : (d = 1))
-        : (d = 1);
+      !(e.FreeFreezeTime || e.FreeSetbodyTime) ?
+      (e.beAttacked && !e.isAttacking && e.JudgeAttack(),
+        !e.isAttacking ?
+        (e.AttackedLX += a = e.Speed) > oS.W ?
+        (f.splice(b, 1), e.DisappearDie(), (d = 0)) :
+        ((e.ZX = e.AttackedRX += a),
+          (e.Ele.style.left = Math.ceil((e.X += a)) + "px"),
+          (d = 1)) :
+        (d = 1)) :
+      (d = 1);
       return d;
     },
-    ExchangeLR: function (d, b) {
+    ExchangeLR: function(d, b) {
       var c = d.width,
         f = d.beAttackedPointL,
         a = d.beAttackedPointR,
@@ -3269,7 +3223,7 @@ var CZombies = (function (b, a) {
         "px";
       d.ExchangeLR2(d, d.EleBody, b);
     },
-    GoingDie: function () {
+    GoingDie: function() {
       var b = this,
         c = b.id,
         a = b.PicArr;
@@ -3279,38 +3233,38 @@ var CZombies = (function (b, a) {
       b.FreeFreezeTime = b.FreeSetbodyTime = b.FreeSlowTime = 0;
       b.AutoReduceHP(c);
     },
-    AutoReduceHP: function (a) {
+    AutoReduceHP: function(a) {
       oSym.addTask(
         100,
-        function (c) {
+        function(c) {
           var b = $Z[c];
           b &&
-            ((b.HP -= 60) < 1
-              ? (b.NormalDie(), oSym.addTask(50, ClearChild, [b.Ele]))
-              : oSym.addTask(100, arguments.callee, [c]));
+            ((b.HP -= 60) < 1 ?
+              (b.NormalDie(), oSym.addTask(50, ClearChild, [b.Ele])) :
+              oSym.addTask(100, arguments.callee, [c]));
         },
         [a]
       );
     },
-    ExplosionDie: function () {
+    ExplosionDie: function() {
       ClearChild(this.Ele);
       this.HP = 0;
       delete $Z[this.id];
       this.PZ && oP.MonPrgs();
     },
-    DisappearDie: function () {
+    DisappearDie: function() {
       ClearChild(this.Ele);
       this.HP = 0;
       delete $Z[this.id];
       this.PZ && oP.MonPrgs();
     },
-    CrushDie: function () {
+    CrushDie: function() {
       ClearChild(this.Ele);
       this.HP = 0;
       delete $Z[this.id];
       this.PZ && oP.MonPrgs();
     },
-    NormalDie: function () {
+    NormalDie: function() {
       this.HP = 0;
       delete $Z[this.id];
       this.PZ && oP.MonPrgs();
@@ -3320,12 +3274,11 @@ var CZombies = (function (b, a) {
     EName: "oDuckyTubeZombie1",
     CName: "鸭子救生圈僵尸",
     beAttackedPointR: 130,
-    GetDY: function () {
+    GetDY: function() {
       return 5;
     },
-    Produce:
-      '鸭子救生圈能让僵尸能浮在水面上。<p>韧性：<font color="#FF0000">低</font><br>只在水池关卡出现</font></p>只有特定的僵尸才能成为救生圈僵尸。并不是每个僵尸都能胜任的。有些救生圈有点漏气，但他们没能注意到，所以他们离开并放弃了对脑子的渴求。',
-    PicArr: (function () {
+    Produce: '鸭子救生圈能让僵尸能浮在水面上。<p>韧性：<font color="#FF0000">低</font><br>只在水池关卡出现</font></p>只有特定的僵尸才能成为救生圈僵尸。并不是每个僵尸都能胜任的。有些救生圈有点漏气，但他们没能注意到，所以他们离开并放弃了对脑子的渴求。',
+    PicArr: (function() {
       var a = "images/Zombies/DuckyTubeZombie1/";
       return [
         "images/Card/Zombies/DuckyTubeZombie1.png",
@@ -3349,10 +3302,10 @@ var CZombies = (function (b, a) {
     CanDisplay: 0,
     OrnLostNormalGif: 9,
     OrnLostAttackGif: 10,
-    PlayNormalballAudio: function () {
+    PlayNormalballAudio: function() {
       PlayAudio("plastichit");
     },
-    PicArr: (function () {
+    PicArr: (function() {
       var b = "images/Zombies/DuckyTubeZombie2/",
         a = "images/Zombies/DuckyTubeZombie1/";
       return [
@@ -3382,11 +3335,11 @@ var CZombies = (function (b, a) {
     OrnHP: 1100,
     Lvl: 3,
     SunNum: 125,
-    PlayNormalballAudio: function () {
+    PlayNormalballAudio: function() {
       PlayAudio(["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)]);
     },
     AudioArr: ["shieldhit", "shieldhit2", "zombie_entering_water"],
-    PicArr: (function () {
+    PicArr: (function() {
       var b = "images/Zombies/DuckyTubeZombie3/",
         a = "images/Zombies/DuckyTubeZombie1/";
       return [
@@ -3416,27 +3369,23 @@ var CZombies = (function (b, a) {
     OSpeed: 3.2,
     Speed: 3.2,
     Altitude: 1,
-    HeadPosition: [
-      {
-        x: 42,
-        y: 146,
-        width: 40,
-        height: 40,
-      },
-      {
-        x: 42,
-        y: 146,
-        width: 40,
-        height: 40,
-      },
-    ],
-    Produce:
-      '潜水僵尸可以在水下前行。<p>韧性：<font color="#FF0000">低</font><br>特点：<font color="#FF0000">潜泳以避免遭到攻击<br>只在水池关卡出现</font></p>潜水僵尸一直都知道“低头做人”的僵生格言，这样可以让他多活一会儿，但是仅此而已',
+    HeadPosition: [{
+      x: 42,
+      y: 146,
+      width: 40,
+      height: 40,
+    }, {
+      x: 42,
+      y: 146,
+      width: 40,
+      height: 40,
+    }, ],
+    Produce: '潜水僵尸可以在水下前行。<p>韧性：<font color="#FF0000">低</font><br>特点：<font color="#FF0000">潜泳以避免遭到攻击<br>只在水池关卡出现</font></p>潜水僵尸一直都知道“低头做人”的僵生格言，这样可以让他多活一会儿，但是仅此而已',
     JumpTime: 40,
-    getShadow: function (a) {
+    getShadow: function(a) {
       return "left:" + a.beAttackedPointL + "px;top:" + (a.height - 45) + "px";
     },
-    PicArr: (function () {
+    PicArr: (function() {
       var a = "images/Zombies/SnorkelZombie/";
       return [
         "images/Card/Zombies/SnorkelZombie.png",
@@ -3453,64 +3402,64 @@ var CZombies = (function (b, a) {
       ];
     })(),
     AudioArr: ["zombie_entering_water"],
-    BirthCallBack: function (a) {
+    BirthCallBack: function(a) {
       oAquaticZombie.prototype.BirthCallBack(a),
         GetC(this.ZX) <= 9 && this.Jump(this);
     },
-    Jump: function (a) {
+    Jump: function(a) {
       a.beAttacked &&
         (PlayAudio("zombie_entering_water"),
-        (a.Altitude = 2),
-        SetHidden(a.EleShadow),
-        (a.EleBody.src = a.PicArr[8] + Math.random()),
-        oSym.addTask(
-          160,
-          function (c, b) {
-            $Z[c] &&
-              b.beAttacked &&
-              ((b.WalkStatus = 1),
-              (b.Altitude = 0),
-              (b.OSpeed = b.Speed = 2),
-              (b.EleBody.src = b.PicArr[(b.NormalGif = b.WalkGif1)]),
-              (b.ChkActs = b.ChkActsL2));
-          },
-          [a.id, a]
-        ),
-        (a.ChkActs = function () {
-          return 1;
-        }));
+          (a.Altitude = 2),
+          SetHidden(a.EleShadow),
+          (a.EleBody.src = a.PicArr[8] + Math.random()),
+          oSym.addTask(
+            160,
+            function(c, b) {
+              $Z[c] &&
+                b.beAttacked &&
+                ((b.WalkStatus = 1),
+                  (b.Altitude = 0),
+                  (b.OSpeed = b.Speed = 2),
+                  (b.EleBody.src = b.PicArr[(b.NormalGif = b.WalkGif1)]),
+                  (b.ChkActs = b.ChkActsL2));
+            },
+            [a.id, a]
+          ),
+          (a.ChkActs = function() {
+            return 1;
+          }));
     },
-    ChkActsL1: function (d, c, e, b) {
+    ChkActsL1: function(d, c, e, b) {
       if (d.JumpTime <= 0) {
         d.Jump(d);
         return 1;
       }
       var a;
       !(d.FreeFreezeTime || d.FreeSetbodyTime) &&
-        ((d.AttackedRX -= a = d.Speed),
+      ((d.AttackedRX -= a = d.Speed),
         (LX = d.ZX = d.AttackedLX -= a),
         (d.Ele.style.left = Math.floor((d.X -= a)) + "px"),
         --d.JumpTime);
       return 1;
     },
-    ChkActsL2: function (d, c, e, b) {
+    ChkActsL2: function(d, c, e, b) {
       var a;
       !(d.FreeFreezeTime || d.FreeSetbodyTime) &&
-        (d.AttackedLX > GetX(0)
-          ? (d.beAttacked && !d.isAttacking && d.JudgeAttack(),
-            !d.isAttacking &&
-              ((d.AttackedRX -= a = d.Speed),
-              (d.ZX = d.AttackedLX -= a),
-              (d.Ele.style.left = Math.floor((d.X -= a)) + "px")))
-          : d.beAttacked &&
-            ((d.WalkStatus = 0),
-            (d.Altitude = 1),
-            (d.EleBody.src = d.PicArr[(d.NormalGif = d.WalkGif0)]),
-            SetVisible(d.EleShadow),
-            (d.ChkActs = d.ChkActsL3)));
+      (d.AttackedLX > GetX(0) ?
+        (d.beAttacked && !d.isAttacking && d.JudgeAttack(),
+          !d.isAttacking &&
+          ((d.AttackedRX -= a = d.Speed),
+            (d.ZX = d.AttackedLX -= a),
+            (d.Ele.style.left = Math.floor((d.X -= a)) + "px"))) :
+        d.beAttacked &&
+        ((d.WalkStatus = 0),
+          (d.Altitude = 1),
+          (d.EleBody.src = d.PicArr[(d.NormalGif = d.WalkGif0)]),
+          SetVisible(d.EleShadow),
+          (d.ChkActs = d.ChkActsL3)));
       return 1;
     },
-    JudgeAttack: function () {
+    JudgeAttack: function() {
       var e = this,
         b = e.ZX,
         c = e.R + "_",
@@ -3518,28 +3467,27 @@ var CZombies = (function (b, a) {
         g = oGd.$,
         a,
         f = e.id;
-      (a = e.JudgeLR(e, c, d, b, g) || e.JudgeSR(e, c, d, b, g))
-        ? !e.isAttacking
-          ? ((e.isAttacking = 1),
-            (e.EleBody.src = e.PicArr[9] + Math.random()),
-            oSym.addTask(
-              50,
-              function (i, h) {
-                $Z[i] &&
-                  h.beAttacked &&
-                  ((h.EleBody.src = h.PicArr[h.AttackGif]),
+      (a = e.JudgeLR(e, c, d, b, g) || e.JudgeSR(e, c, d, b, g)) ?
+      !e.isAttacking ?
+        ((e.isAttacking = 1),
+          (e.EleBody.src = e.PicArr[9] + Math.random()),
+          oSym.addTask(
+            50,
+            function(i, h) {
+              $Z[i] &&
+                h.beAttacked &&
+                ((h.EleBody.src = h.PicArr[h.AttackGif]),
                   (h.Altitude = 1),
                   h.NormalAttack(a[0], a[1]));
-              },
-              [f, e]
-            ))
-          : e.NormalAttack(a[0], a[1])
-        : e.isAttacking &&
-          ((e.EleBody.src = e.PicArr[10] + Math.random()),
+            },
+            [f, e]
+          )) :
+        e.NormalAttack(a[0], a[1]): e.isAttacking &&
+        ((e.EleBody.src = e.PicArr[10] + Math.random()),
           (e.Altitude = 0),
           oSym.addTask(
             70,
-            function (i, h) {
+            function(i, h) {
               $Z[i] &&
                 h.beAttacked &&
                 ((h.isAttacking = 0), (h.EleBody.src = h.PicArr[h.NormalGif]));
@@ -3547,10 +3495,10 @@ var CZombies = (function (b, a) {
             [f, e]
           ));
     },
-    NormalAttack: function (b, a) {
+    NormalAttack: function(b, a) {
       oSym.addTask(
         100,
-        function (d, c) {
+        function(d, c) {
           var f = $Z[d],
             e;
           f &&
@@ -3562,37 +3510,37 @@ var CZombies = (function (b, a) {
         [b, a]
       );
     },
-    JudgeAttackH: function () {
+    JudgeAttackH: function() {
       var c = this,
         b = oZ.getZ0(c.ZX, c.R),
         d = c.id,
         a;
-      b && b.beAttacked && b.AttackedLX < 900 && b.Altitude < 2
-        ? !c.isAttacking
-          ? ((c.isAttacking = 1),
-            (c.EleBody.src = c.PicArr[9] + Math.random()),
-            (a = b.id),
-            !b.isAttacking && b.AttackZombie2(b, a, d),
-            oSym.addTask(
-              50,
-              function (g, h, f, e) {
-                $Z[h] &&
-                  g.beAttacked &&
-                  ($Z[e] && f.beAttacked
-                    ? ((g.EleBody.src = g.PicArr[g.AttackGif]),
-                      (g.Altitude = 1),
-                      g.AttackZombie(h, e))
-                    : g.JudgeAttackH());
-              },
-              [c, d, b, a]
-            ))
-          : c.AttackZombie(d, a)
-        : c.isAttacking &&
-          ((c.EleBody.src = c.PicArr[10] + Math.random()),
+      b && b.beAttacked && b.AttackedLX < 900 && b.Altitude < 2 ?
+        !c.isAttacking ?
+        ((c.isAttacking = 1),
+          (c.EleBody.src = c.PicArr[9] + Math.random()),
+          (a = b.id),
+          !b.isAttacking && b.AttackZombie2(b, a, d),
+          oSym.addTask(
+            50,
+            function(g, h, f, e) {
+              $Z[h] &&
+                g.beAttacked &&
+                ($Z[e] && f.beAttacked ?
+                  ((g.EleBody.src = g.PicArr[g.AttackGif]),
+                    (g.Altitude = 1),
+                    g.AttackZombie(h, e)) :
+                  g.JudgeAttackH());
+            },
+            [c, d, b, a]
+          )) :
+        c.AttackZombie(d, a) :
+        c.isAttacking &&
+        ((c.EleBody.src = c.PicArr[10] + Math.random()),
           (c.Altitude = 0),
           oSym.addTask(
             70,
-            function (f, e) {
+            function(f, e) {
               $Z[f] &&
                 e.beAttacked &&
                 ((e.isAttacking = 0), (e.EleBody.src = e.PicArr[e.NormalGif]));
@@ -3600,51 +3548,51 @@ var CZombies = (function (b, a) {
             [d, c]
           ));
     },
-    AttackZombie2: function (c, b, a) {
+    AttackZombie2: function(c, b, a) {
       c.isAttacking = 1;
       c.EleBody.src = c.PicArr[9] + Math.random();
       oSym.addTask(
         50,
-        function (g, e, d, f) {
+        function(g, e, d, f) {
           $Z[e] &&
             g.beAttacked &&
-            ((f = $Z[d]) && f.beAttacked
-              ? ((g.EleBody.src = g.PicArr[g.AttackGif]),
+            ((f = $Z[d]) && f.beAttacked ?
+              ((g.EleBody.src = g.PicArr[g.AttackGif]),
                 (g.Altitude = 1),
                 oSym.addTask(
                   10,
-                  function (k, i, j, h) {
+                  function(k, i, j, h) {
                     $Z[i] &&
                       k.beAttacked &&
                       !k.FreeFreezeTime &&
                       !k.FreeSetbodyTime &&
-                      ($Z[h] && j.beAttacked
-                        ? (j.getHit0(j, 10, 0),
-                          oSym.addTask(10, arguments.callee, [k, i, j, h]))
-                        : ((k.EleBody.src = k.PicArr[10] + Math.random()),
+                      ($Z[h] && j.beAttacked ?
+                        (j.getHit0(j, 10, 0),
+                          oSym.addTask(10, arguments.callee, [k, i, j, h])) :
+                        ((k.EleBody.src = k.PicArr[10] + Math.random()),
                           (k.Altitude = 0),
                           oSym.addTask(
                             70,
-                            function (l, m) {
+                            function(l, m) {
                               $Z[l] &&
                                 m.beAttacked &&
                                 ((m.isAttacking = 0),
-                                (m.EleBody.src = m.PicArr[m.NormalGif]));
+                                  (m.EleBody.src = m.PicArr[m.NormalGif]));
                             },
                             [i, k]
                           )));
                   },
                   [g, e, f, d]
-                ))
-              : ((g.EleBody.src = g.PicArr[10] + Math.random()),
+                )) :
+              ((g.EleBody.src = g.PicArr[10] + Math.random()),
                 (g.Altitude = 0),
                 oSym.addTask(
                   70,
-                  function (h, i) {
+                  function(h, i) {
                     $Z[h] &&
                       i.beAttacked &&
                       ((i.isAttacking = 0),
-                      (i.EleBody.src = i.PicArr[i.NormalGif]));
+                        (i.EleBody.src = i.PicArr[i.NormalGif]));
                   },
                   [e, g]
                 )));
@@ -3652,27 +3600,27 @@ var CZombies = (function (b, a) {
         [c, b, a]
       );
     },
-    AutoReduceHP: function (a) {
+    AutoReduceHP: function(a) {
       oSym.addTask(
         100,
-        function (c) {
+        function(c) {
           var b = $Z[c];
           b &&
-            ((b.HP -= 60) < 1
-              ? (b.NormalDie(), oSym.addTask(200, ClearChild, [b.Ele]))
-              : oSym.addTask(100, arguments.callee, [c]));
+            ((b.HP -= 60) < 1 ?
+              (b.NormalDie(), oSym.addTask(200, ClearChild, [b.Ele])) :
+              oSym.addTask(100, arguments.callee, [c]));
         },
         [a]
       );
     },
   }),
-  oZomboni = (function () {
-    var a = function (d, b) {
+  oZomboni = (function() {
+    var a = function(d, b) {
       var c = d.HP;
       switch (true) {
         case (d.HP = c -= b) < 200:
           d.GoingDie();
-          d.getHit0 = d.getHit1 = d.getHit2 = d.getHit3 = function () {};
+          d.getHit0 = d.getHit1 = d.getHit2 = d.getHit3 = function() {};
           return;
         case c < 391:
           d.EleBody.src = "images/Zombies/Zomboni/3.gif";
@@ -3683,7 +3631,7 @@ var CZombies = (function (b, a) {
       d.SetAlpha(d, d.EleBody, 50, 0.5);
       oSym.addTask(
         10,
-        function (f, e) {
+        function(f, e) {
           (e = $Z[f]) && e.SetAlpha(e, e.EleBody, 100, 1);
         },
         [d.id]
@@ -3705,26 +3653,22 @@ var CZombies = (function (b, a) {
       beAttackedPointR: 290,
       BreakPoint: 200,
       SunNum: 175,
-      GetDY: function () {
+      GetDY: function() {
         return 0;
       },
-      HeadPosition: [
-        {
-          x: 185,
-          y: 180,
-        },
-        {
-          x: 185,
-          y: 180,
-        },
-      ],
+      HeadPosition: [{
+        x: 185,
+        y: 180,
+      }, {
+        x: 185,
+        y: 180,
+      }, ],
       OSpeed: 2.5,
       Speed: 2.5,
       AKind: 2,
       Attack: 50,
-      Produce:
-        '冰车僵尸运用冰雪，碾过你的植物。<p>韧性：<font color="#FF0000">高</font><br>特点：<font color="#FF0000">碾压植物，留下条冰道</font></p>经常被误以为是在驾驶着冰车的僵尸，但事实上冰车僵尸是种完全不同的生物形式，他与太空兽人联系更紧密而不是僵尸。',
-      PicArr: (function () {
+      Produce: '冰车僵尸运用冰雪，碾过你的植物。<p>韧性：<font color="#FF0000">高</font><br>特点：<font color="#FF0000">碾压植物，留下条冰道</font></p>经常被误以为是在驾驶着冰车的僵尸，但事实上冰车僵尸是种完全不同的生物形式，他与太空兽人联系更紧密而不是僵尸。',
+      PicArr: (function() {
         var b = "images/Zombies/Zomboni/";
         return [
           "images/Card/Zombies/Zomboni.png",
@@ -3740,7 +3684,7 @@ var CZombies = (function (b, a) {
         ];
       })(),
       AudioArr: ["zamboni", "explosion"],
-      BirthCallBack: function (h) {
+      BirthCallBack: function(h) {
         var g = h.delayT,
           e = h.id,
           c = (h.Ele = $(e)),
@@ -3749,13 +3693,13 @@ var CZombies = (function (b, a) {
           b = oGd.$Ice;
         h.EleShadow = c.firstChild;
         h.EleBody = c.childNodes[1];
-        !b[d]
-          ? ((f = NewEle(
+        !b[d] ?
+          ((f = NewEle(
               "dIceCar" + d,
               "div",
               "position:absolute;z-index:1;left:145px;top:" +
-                (GetY(d) - 65) +
-                "px;width:800px;height:72px",
+              (GetY(d) - 65) +
+              "px;width:800px;height:72px",
               0,
               EDPZ
             )),
@@ -3771,21 +3715,22 @@ var CZombies = (function (b, a) {
               "position:absolute;display:none;left:0",
               f
             ),
-            (b[d] = [1, 11, h.AttackedLX]))
-          : ++b[d][0];
+            (b[d] = [1, 11, h.AttackedLX])) :
+          ++b[d][0];
         g
-          ? oSym.addTask(
-              g,
-              function (j, i) {
-                var k = $Z[j];
-                k &&
-                  ((k.FreeSetbodyTime = 0), SetBlock(i), PlayAudio("zamboni"));
-              },
-              [e, c]
-            )
-          : (SetBlock(c), PlayAudio("zamboni"));
+          ?
+          oSym.addTask(
+            g,
+            function(j, i) {
+              var k = $Z[j];
+              k &&
+                ((k.FreeSetbodyTime = 0), SetBlock(i), PlayAudio("zamboni"));
+            },
+            [e, c]
+          ) :
+          (SetBlock(c), PlayAudio("zamboni"));
       },
-      ChkActs: function (e, j, q, k) {
+      ChkActs: function(e, j, q, k) {
         var b,
           r,
           m,
@@ -3803,8 +3748,8 @@ var CZombies = (function (b, a) {
             "dIceCar" + j,
             "div",
             "position:absolute;z-index:1;left:145px;top:" +
-              (GetY(e.R) - 65) +
-              "px;width:800px;height:72px",
+            (GetY(e.R) - 65) +
+            "px;width:800px;height:72px",
             0,
             EDPZ
           ); // 生成新的冰道
@@ -3825,10 +3770,11 @@ var CZombies = (function (b, a) {
 
         e.JudgeAttack();
         (r = e.AttackedRX -= b = e.Speed) < -50
-          ? (q.splice(k, 1), e.DisappearDie(), (m = 0))
-          : (r < 100 &&
-              !e.PointZombie &&
-              ((e.PointZombie = 1),
+          ?
+          (q.splice(k, 1), e.DisappearDie(), (m = 0)) :
+          (r < 100 &&
+            !e.PointZombie &&
+            ((e.PointZombie = 1),
               !oS.CardKind && (StopMusic(), PlayAudio("losemusic", false)),
               e.ChangeR({
                 R: j,
@@ -3846,38 +3792,38 @@ var CZombies = (function (b, a) {
         h > 120 &&
           h < n[2] &&
           ((n[2] = h),
-          (l.firstChild.style.clip = "rect(0,auto,auto," + f + "px)"),
-          (l.childNodes[1].style.left = Math.max(0, f) + "px"));
+            (l.firstChild.style.clip = "rect(0,auto,auto," + f + "px)"),
+            (l.childNodes[1].style.left = Math.max(0, f) + "px"));
         GetC(e.AttackedLX) > 5 && (e.OSpeed = e.Speed -= 0.005);
         return m;
       },
-      ChkActs1: function (f, d, g, c) {
+      ChkActs1: function(f, d, g, c) {
         var b, e;
         f.JudgeAttack();
-        (f.AttackedLX += b = f.Speed) > oS.W
-          ? (g.splice(c, 1), f.DisappearDie(), (e = 0))
-          : ((f.ZX = f.AttackedRX += b),
+        (f.AttackedLX += b = f.Speed) > oS.W ?
+          (g.splice(c, 1), f.DisappearDie(), (e = 0)) :
+          ((f.ZX = f.AttackedRX += b),
             (f.Ele.style.left = Math.ceil((f.X += b)) + "px"),
             (e = 1));
         return e;
       },
-      getPea: function (c, b) {
+      getPea: function(c, b) {
         PlayAudio(["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)]);
         c.getHit0(c, b);
       },
-      getFirePea: function (c, b) {
+      getFirePea: function(c, b) {
         PlayAudio(["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)]);
         c.getHit0(c, b);
       },
-      getSnowPea: function (c, b) {
+      getSnowPea: function(c, b) {
         PlayAudio(["shieldhit", "shieldhit2"][Math.floor(Math.random() * 2)]);
         c.getHit0(c, b);
       },
-      getFirePeaSputtering: function () {},
-      getFreeze: function (c, b) {
+      getFirePeaSputtering: function() {},
+      getFreeze: function(c, b) {
         c.getHit0(c, 20);
       },
-      getShadow: function (b) {
+      getShadow: function(b) {
         return (
           "left:" +
           (b.beAttackedPointL - 10) +
@@ -3891,12 +3837,12 @@ var CZombies = (function (b, a) {
       getHit1: a,
       getHit2: a,
       getHit3: a,
-      GoingDie: function () {
+      GoingDie: function() {
         var b = this;
         b.beAttacked = 0;
         b.AutoReduceHP(b.id);
       },
-      NormalDie: function () {
+      NormalDie: function() {
         var b = this;
         PlayAudio("explosion");
         b.EleBody.src = b.PicArr[b.DieGif] + Math.random();
@@ -3906,7 +3852,7 @@ var CZombies = (function (b, a) {
         b.JudgeIce();
         b.PZ && oP.MonPrgs();
       },
-      DisappearDie: function () {
+      DisappearDie: function() {
         var b = this;
         ClearChild(b.Ele);
         b.HP = 0;
@@ -3914,7 +3860,7 @@ var CZombies = (function (b, a) {
         b.JudgeIce();
         b.PZ && oP.MonPrgs();
       },
-      ExplosionDie: function () {
+      ExplosionDie: function() {
         var b = this;
         b.EleBody.src = b.PicArr[b.BoomDieGif] + Math.random();
         oSym.addTask(300, ClearChild, [b.Ele]);
@@ -3923,10 +3869,10 @@ var CZombies = (function (b, a) {
         b.JudgeIce();
         b.PZ && oP.MonPrgs();
       },
-      CrushDie: function () {
+      CrushDie: function() {
         this.NormalDie();
       },
-      JudgeIce: function () {
+      JudgeIce: function() {
         var d = this,
           b = d.R,
           e = $("dIceCar" + b),
@@ -3938,7 +3884,7 @@ var CZombies = (function (b, a) {
         --c[0] <= 0 &&
           oSym.addTask(
             3000,
-            function (k, h) {
+            function(k, h) {
               var j = oGd.$Ice[h],
                 g,
                 f = oGd.$Crater;
@@ -3954,23 +3900,23 @@ var CZombies = (function (b, a) {
             [e, b]
           );
       },
-      flatTire: function () {
+      flatTire: function() {
         var b = this;
         b.EleBody.src = "images/Zombies/Zomboni/4.gif";
         b.beAttacked = 0;
         b.HP = 0;
-        b.getHit0 = b.getHit1 = b.getHit2 = b.getHit3 = function () {};
-        b.ChkActs = b.ChkActs1 = function () {};
+        b.getHit0 = b.getHit1 = b.getHit2 = b.getHit3 = function() {};
+        b.ChkActs = b.ChkActs1 = function() {};
         oSym.addTask(
           290,
-          function (e, c) {
+          function(e, c) {
             var d = $Z[e];
             d && d.NormalDie();
           },
           [b.id, b.EleBody]
         );
       },
-      JudgeAttack: function () {
+      JudgeAttack: function() {
         var f = this,
           c = f.ZX,
           d = f.R + "_",
@@ -3978,48 +3924,48 @@ var CZombies = (function (b, a) {
           g = oGd.$,
           b;
         (b = f.JudgeLR(f, d, e, c, g) || f.JudgeSR(f, d, e, c, g)) &&
-          f.NormalAttack(b[0], b[1]);
+        f.NormalAttack(b[0], b[1]);
       },
-      JudgeLR: function (e, c, d, b, f) {
-        return d > 10 || d < 1
-          ? false
-          : (function () {
-              c += --d + "_";
-              var g = 3,
-                h;
-              while (g--) {
-                if ((h = f[c + g])) {
-                  return h.AttackedRX >= b && h.AttackedLX <= b
-                    ? [e.id, h.id]
-                    : false;
-                }
+      JudgeLR: function(e, c, d, b, f) {
+        return d > 10 || d < 1 ?
+          false :
+          (function() {
+            c += --d + "_";
+            var g = 3,
+              h;
+            while (g--) {
+              if ((h = f[c + g])) {
+                return h.AttackedRX >= b && h.AttackedLX <= b ?
+                  [e.id, h.id] :
+                  false;
               }
-            })();
+            }
+          })();
       },
-      JudgeSR: function (e, c, d, b, f) {
-        return d > 9
-          ? false
-          : (function () {
-              c += d + "_";
-              var g = 3,
-                h;
-              while (g--) {
-                if ((h = f[c + g])) {
-                  return h.AttackedRX >= b && h.AttackedLX <= b
-                    ? [e.id, h.id]
-                    : false;
-                }
+      JudgeSR: function(e, c, d, b, f) {
+        return d > 9 ?
+          false :
+          (function() {
+            c += d + "_";
+            var g = 3,
+              h;
+            while (g--) {
+              if ((h = f[c + g])) {
+                return h.AttackedRX >= b && h.AttackedLX <= b ?
+                  [e.id, h.id] :
+                  false;
               }
-            })();
+            }
+          })();
       },
-      NormalAttack: function (c, b) {
+      NormalAttack: function(c, b) {
         var d = $Z[c];
         $P[b].getHurt(d, 2, d.Attack);
       },
-      getThump: function () {
+      getThump: function() {
         this.NormalDie();
       },
-      prepareBirth: function (f, R) {
+      prepareBirth: function(f, R) {
         var h = this,
           e = h.ArR,
           d = R || e[Math.floor(Math.random() * e.length)],
@@ -4052,27 +3998,24 @@ var CZombies = (function (b, a) {
     width: 282,
     height: 210,
     Lvl: 2,
-    HeadPosition: [
-      {
-        x: 177,
-        y: 105,
-        width: 40,
-        height: 40,
-      },
-      {
-        x: 177,
-        y: 105,
-        width: 40,
-        height: 40,
-      },
-    ],
-    getShadow: function (a) {
+    HeadPosition: [{
+      x: 177,
+      y: 105,
+      width: 40,
+      height: 40,
+    }, {
+      x: 177,
+      y: 105,
+      width: 40,
+      height: 40,
+    }, ],
+    getShadow: function(a) {
       return "left:105px;top:175px";
     },
-    GetDX: function () {
+    GetDX: function() {
       return -137;
     },
-    GetDY: function () {
+    GetDY: function() {
       return 0;
     },
     GetDTop: 0,
@@ -4084,7 +4027,7 @@ var CZombies = (function (b, a) {
     SunNum: 75,
     OSpeed: 3.2,
     Speed: 3.2,
-    PicArr: (function () {
+    PicArr: (function() {
       var a = "images/Zombies/DolphinRiderZombie/";
       return [
         "images/Card/Zombies/DolphinRiderZombie.png",
@@ -4108,64 +4051,63 @@ var CZombies = (function (b, a) {
       "dolphin_appears",
       "zombie_entering_water",
     ],
-    Produce:
-      '海豚骑士僵尸善于利用你水池防御的弱点。<p>韧性：<font color="#FF0000">中</font><br>速度：<font color="#FF0000">快，慢（跳越后）</font><br>特点：<font color="#FF0000">跃过他所遇到的第一株植物</font><br>只在水池关卡出现</font></p>那海豚其实也是个僵尸。',
-    BirthCallBack: function (a) {
+    Produce: '海豚骑士僵尸善于利用你水池防御的弱点。<p>韧性：<font color="#FF0000">中</font><br>速度：<font color="#FF0000">快，慢（跳越后）</font><br>特点：<font color="#FF0000">跃过他所遇到的第一株植物</font><br>只在水池关卡出现</font></p>那海豚其实也是个僵尸。',
+    BirthCallBack: function(a) {
       PlayAudio("dolphin_appears");
       oAquaticZombie.prototype.BirthCallBack(a),
         GetC(this.ZX) <= 9 && this.Jump(this);
     },
-    Jump: function (a) {
+    Jump: function(a) {
       a.beAttacked &&
         (PlayAudio("zombie_entering_water"),
-        (a.Altitude = 2),
-        SetHidden(a.EleShadow),
-        (a.EleBody.src = a.PicArr[8] + Math.random()),
-        oSym.addTask(
-          240,
-          function (d, b) {
-            var c;
-            $Z[d] &&
-              b.beAttacked &&
-              ((b.WalkStatus = 1),
-              (b.Altitude = 1),
-              (b.OSpeed = b.Speed = 10.8),
-              SetStyle(b.Ele, {
-                left: (c = b.X -= 140) + "px",
-              }),
-              (b.AttackedLX = c + (b.beAttackedPointL = 185)),
-              (b.AttackedRX = c + (b.beAttackedPointR = 265)),
-              (b.EleBody.src = b.PicArr[(b.NormalGif = b.WalkGif1)]),
-              (b.ChkActs = b.ChkActsL2));
-          },
-          [a.id, a]
-        ),
-        (a.ChkActs = function () {
-          return 1;
-        }));
+          (a.Altitude = 2),
+          SetHidden(a.EleShadow),
+          (a.EleBody.src = a.PicArr[8] + Math.random()),
+          oSym.addTask(
+            240,
+            function(d, b) {
+              var c;
+              $Z[d] &&
+                b.beAttacked &&
+                ((b.WalkStatus = 1),
+                  (b.Altitude = 1),
+                  (b.OSpeed = b.Speed = 10.8),
+                  SetStyle(b.Ele, {
+                    left: (c = b.X -= 140) + "px",
+                  }),
+                  (b.AttackedLX = c + (b.beAttackedPointL = 185)),
+                  (b.AttackedRX = c + (b.beAttackedPointR = 265)),
+                  (b.EleBody.src = b.PicArr[(b.NormalGif = b.WalkGif1)]),
+                  (b.ChkActs = b.ChkActsL2));
+            },
+            [a.id, a]
+          ),
+          (a.ChkActs = function() {
+            return 1;
+          }));
     },
-    ChkActsL1: function (d, c, e, b) {
+    ChkActsL1: function(d, c, e, b) {
       if (d.JumpTime <= 0) {
         d.Jump(d);
         return 1;
       }
       var a;
       !(d.FreeFreezeTime || d.FreeSetbodyTime) &&
-        ((d.AttackedRX -= a = d.Speed),
+      ((d.AttackedRX -= a = d.Speed),
         (LX = d.ZX = d.AttackedLX -= a),
         (d.Ele.style.left = Math.floor((d.X -= a)) + "px"),
         --d.JumpTime);
       return 1;
     },
-    getCrushed: function (a) {
+    getCrushed: function(a) {
       this.NormalAttack(this.id, a.id, a.AttackedLX);
-      this.getCrushed = function () {
+      this.getCrushed = function() {
         return false;
       };
       a.Stature > 0 &&
         oSym.addTask(
           50,
-          function (c) {
+          function(c) {
             var b = $Z[c];
             b && b.CrushDie();
           },
@@ -4173,12 +4115,12 @@ var CZombies = (function (b, a) {
         );
       return false;
     },
-    getRaven: function (a) {
+    getRaven: function(a) {
       return (
         !this.isAttacking && this.NormalAttack(this.id, a, $P[a].AttackedLX), 0
       );
     },
-    JudgeAttack: function () {
+    JudgeAttack: function() {
       var f = this,
         b = f.ZX,
         d = f.R + "_",
@@ -4191,27 +4133,26 @@ var CZombies = (function (b, a) {
           continue;
         }
         for (
-          a = 2;
-          a > -1;
+          a = 2; a > -1;
           (p = g[d + e + "_" + a--]) &&
-          (p.EName != "oBrains"
-            ? p.AttackedRX >= b &&
-              p.AttackedLX < b &&
-              ((a = -1),
+          (p.EName != "oBrains" ?
+            p.AttackedRX >= b &&
+            p.AttackedLX < b &&
+            ((a = -1),
               (f.JudgeAttack = CZombies.prototype.JudgeAttack),
-              f.NormalAttack(f.id, p.id, p.AttackedLX))
-            : p.AttackedRX >= b &&
-              p.AttackedLX < b &&
-              ((a = -1),
+              f.NormalAttack(f.id, p.id, p.AttackedLX)) :
+            p.AttackedRX >= b &&
+            p.AttackedLX < b &&
+            ((a = -1),
               (f.JudgeAttack = CZombies.prototype.JudgeAttack),
               (f.NormalAttack = CZombies.prototype.NormalAttack)(f.id, p.id)))
         ) {}
       }
     },
-    AttackZombie2: function (c, b, a) {
+    AttackZombie2: function(c, b, a) {
       c.NormalAttack(b, a, $Z[a].AttackedLX);
     },
-    NormalAttack: function (d, b, g) {
+    NormalAttack: function(d, b, g) {
       var f = $Z[d],
         a = f.Ele,
         c = f.EleShadow,
@@ -4222,33 +4163,30 @@ var CZombies = (function (b, a) {
       f.Altitude = 2;
       f.haveDolphin = 0;
       PlayAudio("dolphin_before_jumping");
-      f.getFreeze = function () {
+      f.getFreeze = function() {
         f.getSnow(f, 20, 0);
       };
       oSym.addTask(
         50,
-        function (m, j, i, l, q) {
+        function(m, j, i, l, q) {
           var h = $Z[m],
             k,
             r,
             s,
-            n = function () {
+            n = function() {
               q.src = h.PicArr[10];
-              (h.HeadPosition = [
-                {
-                  x: 42,
-                  y: 140,
-                  width: 40,
-                  height: 40,
-                },
-                {
-                  x: 42,
-                  y: 140,
-                  width: 40,
-                  height: 40,
-                },
-              ]),
-                (h.isAttacking = 0);
+              (h.HeadPosition = [{
+                x: 42,
+                y: 140,
+                width: 40,
+                height: 40,
+              }, {
+                x: 42,
+                y: 140,
+                width: 40,
+                height: 40,
+              }, ]),
+              (h.isAttacking = 0);
               h.Altitude = 1;
               h.OSpeed = h.Speed = 1.6;
               h.WalkGif0 = 11;
@@ -4261,8 +4199,8 @@ var CZombies = (function (b, a) {
               h.AttackZombie2 = s.AttackZombie2;
             };
           h &&
-            ((k = $P[j]) && k.Stature > 0
-              ? ((h.AttackedRX =
+            ((k = $P[j]) && k.Stature > 0 ?
+              ((h.AttackedRX =
                   (h.X =
                     (h.AttackedLX = h.ZX = r = k.AttackedRX) -
                     (h.beAttackedPointL = 45)) + (h.beAttackedPointR = 100)),
@@ -4270,8 +4208,8 @@ var CZombies = (function (b, a) {
                   left: h.X + "px",
                 }),
                 (h.EleShadow.style.left = "45px"),
-                n())
-              : ((h.ZX = h.AttackedLX =
+                n()) :
+              ((h.ZX = h.AttackedLX =
                   (h.X = (h.AttackedRX = g) - (h.beAttackedPointR = 100)) +
                   (h.beAttackedPointL = 45)),
                 SetStyle(i, {
@@ -4281,7 +4219,7 @@ var CZombies = (function (b, a) {
                 (q.src = h.PicArr[13] + Math.random()),
                 oSym.addTask(
                   170,
-                  function (t, w) {
+                  function(t, w) {
                     var v = $Z[t],
                       u;
                     v && n();
@@ -4292,7 +4230,7 @@ var CZombies = (function (b, a) {
         [d, b, a, c, e]
       );
     },
-    GoingDie: function () {
+    GoingDie: function() {
       var b = this,
         c = b.id,
         a = b.PicArr;
@@ -4319,34 +4257,30 @@ var CZombies = (function (b, a) {
     AttackGif: 2,
     OSpeed: 5.4,
     Speed: 5.4,
-    HeadPosition: [
-      {
-        x: 22,
-        y: 30,
-        width: 40,
-        height: 40,
-      },
-      {
-        x: 22,
-        y: 30,
-        width: 40,
-        height: 40,
-      },
-    ],
-    GetDX: function () {
+    HeadPosition: [{
+      x: 22,
+      y: 30,
+      width: 40,
+      height: 40,
+    }, {
+      x: 22,
+      y: 30,
+      width: 40,
+      height: 40,
+    }, ],
+    GetDX: function() {
       return -50;
     },
-    GetDY: function () {
+    GetDY: function() {
       return 0;
     },
-    getShadow: function (a) {
+    getShadow: function(a) {
       return (
         "left:" + (a.beAttackedPointL - 20) + "px;top:" + (a.height - 32) + "px"
       );
     },
-    Produce:
-      '小淘气们是一群小型僵尸，他们被伽刚特尔用来投掷进你的防御体系。</p><p>韧性：<font color="#FF0000">低</font><br>小淘气虽然瘦小，却很结实。他精通僵尸柔道，僵尸空手道和僵尸关节技。另外，他还会吹口琴。',
-    GoingDie: function () {
+    Produce: '小淘气们是一群小型僵尸，他们被伽刚特尔用来投掷进你的防御体系。</p><p>韧性：<font color="#FF0000">低</font><br>小淘气虽然瘦小，却很结实。他精通僵尸柔道，僵尸空手道和僵尸关节技。另外，他还会吹口琴。',
+    GoingDie: function() {
       var b = this,
         c = b.id,
         a = b.PicArr;
@@ -4355,21 +4289,21 @@ var CZombies = (function (b, a) {
       b.FreeFreezeTime = b.FreeSetbodyTime = b.FreeSlowTime = 0;
       b.AutoReduceHP(c);
     },
-    NormalDie: function () {
+    NormalDie: function() {
       var a = this;
       oSym.addTask(250, ClearChild, [a.Ele]);
       a.HP = 0;
       delete $Z[a.id];
       a.PZ && oP.MonPrgs();
     },
-    CrushDie: function () {
+    CrushDie: function() {
       var a = this;
       ClearChild(a.Ele);
       a.HP = 0;
       delete $Z[a.id];
       a.PZ && oP.MonPrgs();
     },
-    PicArr: (function () {
+    PicArr: (function() {
       var a = "images/Zombies/Imp/";
       return [
         "images/Card/Zombies/Imp.png",
@@ -4404,10 +4338,9 @@ var CZombies = (function (b, a) {
     AttackGif: 2,
     OSpeed: 3.6,
     Speed: 3.6,
-    Produce:
-      '这种僵尸带着个会爆炸的潘多拉盒子。</p><p>韧性：<font color="#FF0000">中</font><br>速度：<font color="#FF0000">快</font><br>特点：<font color="#FF0000">打开玩偶匣会爆炸</font><br>弱点：<font color="#FF0000">磁力菇</font><br>他最近一次谈女朋友是在几年前，可是因为他长得矮穷矬，女友就甩了他，这已经是他第五次被甩了，他的精神崩溃了，便成了现在这个样子',
+    Produce: '这种僵尸带着个会爆炸的潘多拉盒子。</p><p>韧性：<font color="#FF0000">中</font><br>速度：<font color="#FF0000">快</font><br>特点：<font color="#FF0000">打开玩偶匣会爆炸</font><br>弱点：<font color="#FF0000">磁力菇</font><br>他最近一次谈女朋友是在几年前，可是因为他长得矮穷矬，女友就甩了他，这已经是他第五次被甩了，他的精神崩溃了，便成了现在这个样子',
     AudioArr: ["jackinthebox", "jack_surprise", "explosion"],
-    PicArr: (function () {
+    PicArr: (function() {
       var a = "images/Zombies/JackinTheBoxZombie/";
       return [
         "images/Card/Zombies/JackboxZombie.png",
@@ -4424,50 +4357,50 @@ var CZombies = (function (b, a) {
         "images/Zombies/Zombie/ZombieHead.gif" + $Random,
       ];
     })(),
-    RandomOpenBox: function (a) {
+    RandomOpenBox: function(a) {
       oSym.addTask(
-        Math.floor(Math.random() * 100) > 4
-          ? Math.floor(1325 + Math.random() * 976)
-          : Math.floor(450 + Math.random() * 301),
-        function (c) {
+        Math.floor(Math.random() * 100) > 4 ?
+        Math.floor(1325 + Math.random() * 976) :
+        Math.floor(450 + Math.random() * 301),
+        function(c) {
           var b = $Z[c];
           b && b.beAttacked && b.OpenBox(c);
         },
         [a]
       );
     },
-    OpenBox: function (b) {
+    OpenBox: function(b) {
       var a = $Z[b];
       a.EleBody.src = a.PicArr[7];
-      a.ChkActs = a.ChkActs1 = function () {
+      a.ChkActs = a.ChkActs1 = function() {
         return 1;
       };
-      a.JudgeAttack = function () {
+      a.JudgeAttack = function() {
         var g = this,
           d = g.ZX,
           e = g.R + "_",
           f = GetC(d),
           h = oGd.$,
           c;
-        (c = g.JudgeLR(g, e, f, d, h) || g.JudgeSR(g, e, f, d, h))
-          ? (!g.isAttacking &&
-              ((g.isAttacking = 1), (g.EleBody.src = g.PicArr[g.AttackGif])),
-            g.NormalAttack(c[0], c[1]))
-          : g.isAttacking && (g.isAttacking = 0);
+        (c = g.JudgeLR(g, e, f, d, h) || g.JudgeSR(g, e, f, d, h)) ?
+        (!g.isAttacking &&
+          ((g.isAttacking = 1), (g.EleBody.src = g.PicArr[g.AttackGif])),
+          g.NormalAttack(c[0], c[1])) :
+        g.isAttacking && (g.isAttacking = 0);
       };
-      a.JudgeAttackH = function () {
+      a.JudgeAttackH = function() {
         var e = this,
           d = oZ.getZ0(e.ZX, e.R),
           f = e.id,
           c;
-        d && d.beAttacked && d.AttackedLX < oS.W && d.Altitude == 1
-          ? !e.isAttacking
-            ? ((e.isAttacking = 1),
-              (e.EleBody.src = e.PicArr[e.AttackGif]),
-              e.AttackZombie(f, (c = d.id)),
-              !d.isAttacking && d.AttackZombie2(d, c, f))
-            : e.AttackZombie(f, d.id, 1)
-          : e.isAttacking && (e.isAttacking = 0);
+        d && d.beAttacked && d.AttackedLX < oS.W && d.Altitude == 1 ?
+          !e.isAttacking ?
+          ((e.isAttacking = 1),
+            (e.EleBody.src = e.PicArr[e.AttackGif]),
+            e.AttackZombie(f, (c = d.id)),
+            !d.isAttacking && d.AttackZombie2(d, c, f)) :
+          e.AttackZombie(f, d.id, 1) :
+          e.isAttacking && (e.isAttacking = 0);
       };
       a.getPea =
         a.getSnowPea =
@@ -4480,35 +4413,35 @@ var CZombies = (function (b, a) {
         a.getHit3 =
         a.ChangeR =
         a.bedevil =
-          function () {};
+        function() {};
       oSym.addTask(
         50,
-        function (c) {
+        function(c) {
           $Z[c] &&
             ((a.Status = 0),
-            !--oGd.$JackinTheBox && StopAudio("jackinthebox"),
-            PlayAudio("jack_surprise"),
-            oSym.addTask(
-              90,
-              function (f) {
-                var e = $Z[f],
-                  d;
-                e &&
-                  ((d = NewImg(
-                    "",
-                    "images/interface/blank.png",
-                    "width:306px;height:300px;left:" +
-                      (e.X - 16) +
-                      "px;top:" +
-                      (e.pixelTop - 90) +
-                      "px;z-index:20"
-                  )),
-                  PlayAudio("explosion"),
-                  (d.src = e.PicArr[8] + Math.random()),
-                  EDPZ.appendChild(d),
-                  oSym.addTask(70, ClearChild, [d]),
-                  e.PZ
-                    ? (function (k, g) {
+              !--oGd.$JackinTheBox && StopAudio("jackinthebox"),
+              PlayAudio("jack_surprise"),
+              oSym.addTask(
+                90,
+                function(f) {
+                  var e = $Z[f],
+                    d;
+                  e &&
+                    ((d = NewImg(
+                        "",
+                        "images/interface/blank.png",
+                        "width:306px;height:300px;left:" +
+                        (e.X - 16) +
+                        "px;top:" +
+                        (e.pixelTop - 90) +
+                        "px;z-index:20"
+                      )),
+                      PlayAudio("explosion"),
+                      (d.src = e.PicArr[8] + Math.random()),
+                      EDPZ.appendChild(d),
+                      oSym.addTask(70, ClearChild, [d]),
+                      e.PZ ?
+                      (function(k, g) {
                         var q = Math.max(1, k - 1),
                           o = Math.min(oS.R, k + 1),
                           n = Math.max(1, g - 1),
@@ -4526,8 +4459,8 @@ var CZombies = (function (b, a) {
                             }
                           } while (g++ < h);
                         } while (q++ < o);
-                      })(e.R, GetC(e.ZX))
-                    : (function (j, l) {
+                      })(e.R, GetC(e.ZX)) :
+                      (function(j, l) {
                         var m = j - 120,
                           o = j + 120,
                           h = Math.max(1, l - 1),
@@ -4541,45 +4474,46 @@ var CZombies = (function (b, a) {
                           }
                         } while (h++ < g);
                       })(e.ZX, e.R),
-                  e.DisappearDie());
-              },
-              [c]
-            ));
+                      e.DisappearDie());
+                },
+                [c]
+              ));
         },
         [b]
       );
     },
-    getShadow: function (a) {
+    getShadow: function(a) {
       return (
         "left:" + (a.beAttackedPointL - 8) + "px;top:" + (a.height - 32) + "px"
       );
     },
-    BirthCallBack: function (d) {
+    BirthCallBack: function(d) {
       var c = d.delayT,
         b = d.id,
         a = (d.Ele = $(b));
       d.EleShadow = a.firstChild;
       d.EleBody = a.childNodes[1];
       c
-        ? oSym.addTask(
-            c,
-            function (f, e) {
-              var g = $Z[f];
-              g &&
-                (PlayAudio("jackinthebox", true),
+        ?
+        oSym.addTask(
+          c,
+          function(f, e) {
+            var g = $Z[f];
+            g &&
+              (PlayAudio("jackinthebox", true),
                 ++oGd.$JackinTheBox,
                 (g.FreeSetbodyTime = 0),
                 SetBlock(e),
                 g.RandomOpenBox(f));
-            },
-            [b, a]
-          )
-        : (PlayAudio("jackinthebox", true),
+          },
+          [b, a]
+        ) :
+        (PlayAudio("jackinthebox", true),
           ++oGd.$JackinTheBox,
           SetBlock(a),
           d.RandomOpenBox(b));
     },
-    NormalDie: function () {
+    NormalDie: function() {
       var a = this;
       a.Status && !--oGd.$JackinTheBox && StopAudio("jackinthebox");
       a.EleBody.src = a.PicArr[a.DieGif] + Math.random();
@@ -4588,7 +4522,7 @@ var CZombies = (function (b, a) {
       delete $Z[a.id];
       a.PZ && oP.MonPrgs();
     },
-    ExplosionDie: function () {
+    ExplosionDie: function() {
       var a = this;
       a.Status && !--oGd.$JackinTheBox && StopAudio("jackinthebox");
       a.EleBody.src = a.PicArr[a.BoomDieGif] + Math.random();
@@ -4597,14 +4531,14 @@ var CZombies = (function (b, a) {
       delete $Z[a.id];
       a.PZ && oP.MonPrgs();
     },
-    DisappearDie: function () {
+    DisappearDie: function() {
       this.Status && !--oGd.$JackinTheBox && StopAudio("jackinthebox");
       ClearChild(this.Ele);
       this.HP = 0;
       delete $Z[this.id];
       this.PZ && oP.MonPrgs();
     },
-    CrushDie: function () {
+    CrushDie: function() {
       var a = this;
       a.Status && !--oGd.$JackinTheBox && StopAudio("jackinthebox");
       a.GoingDieHead(a.id, a.PicArr, a);
@@ -4630,24 +4564,24 @@ var CZombies = (function (b, a) {
     OrnLostAttackGif: 3,
     DropPoint: 0,
     BreakBall: false, // 气球是否被戳破
-    MulBallNum: function () {
+    MulBallNum: function() {
       // 减去气球数
       if (!this.BreakBall)
         (this.BreakBall = true),
-          (oGd.$Balloon[this.R] |= 0),
-          --oGd.$Balloon[this.R];
+        (oGd.$Balloon[this.R] |= 0),
+        --oGd.$Balloon[this.R];
     },
-    getShadow: function (a) {
+    getShadow: function(a) {
       return (
         "left:" + (a.beAttackedPointL - 10) + "px;top:" + (a.height - 32) + "px"
       );
     },
-    CanPass: function (d, c) {
+    CanPass: function(d, c) {
       return c;
     },
     AudioArr: ["ballooninflate", "balloon_pop"],
     BookHandPosition: "80% 80%",
-    PicArr: (function () {
+    PicArr: (function() {
       var a = "images/Zombies/BalloonZombie/";
       return [
         "images/Card/Zombies/Balloonzombie.png",
@@ -4664,9 +4598,8 @@ var CZombies = (function (b, a) {
         a + "Boom2.gif",
       ];
     })(),
-    Produce:
-      '气球僵尸漂浮在空中，躲过大多数攻击。<p>韧性：<font color="#FF0000">低</font><br>特点：<font color="#FF0000">飞行</font><br>弱点：<font color="#FF0000">仙人掌和三叶草</font></p>气球在天空中飞，你说你有点难追~～。',
-    BirthCallBack: function (e) {
+    Produce: '气球僵尸漂浮在空中，躲过大多数攻击。<p>韧性：<font color="#FF0000">低</font><br>特点：<font color="#FF0000">飞行</font><br>弱点：<font color="#FF0000">仙人掌和三叶草</font></p>气球在天空中飞，你说你有点难追~～。',
+    BirthCallBack: function(e) {
       var d = e.delayT,
         c = e.id,
         a = (e.Ele = $(c)),
@@ -4675,59 +4608,59 @@ var CZombies = (function (b, a) {
       e.EleShadow = a.firstChild;
       e.EleBody = a.childNodes[1];
       d
-        ? oSym.addTask(
-            d,
-            function (i, g, c) {
-              var j = $Z[i],
-                k = oGd.$Balloon;
-              j && ((j.FreeSetbodyTime = 0), SetBlock(g));
-              (k[c] |= 0), ++k[c]; // 增加数量
-              PlayAudio("ballooninflate");
-            },
-            [c, a, b]
-          )
-        : (SetBlock(a),
+        ?
+        oSym.addTask(
+          d,
+          function(i, g, c) {
+            var j = $Z[i],
+              k = oGd.$Balloon;
+            j && ((j.FreeSetbodyTime = 0), SetBlock(g));
+            (k[c] |= 0), ++k[c]; // 增加数量
+            PlayAudio("ballooninflate");
+          },
+          [c, a, b]
+        ) :
+        (SetBlock(a),
           f[b] == undefined ? (f[b] = 1) : ++f[b],
           PlayAudio("ballooninflate"));
     },
-    ChkActs: function (f, d, g, c) {
+    ChkActs: function(f, d, g, c) {
       var b, a, e;
       if (f.Altitude == 3 && f.AttackedRX < GetX(1)) {
         // 气球掉落
         f.Drop();
         return 1;
-      }
-      !(f.FreeFreezeTime || f.FreeSetbodyTime)
-        ? (a = f.AttackedRX -= b = f.Speed) < -50
-          ? (g.splice(c, 1), f.DisappearDie(), (e = 0))
-          : (a < 100 &&
-              !f.PointZombie &&
-              ((f.PointZombie = 1),
-              !oS.CardKind && (StopMusic(), PlayAudio("losemusic", false)),
-              f.ChangeR({
-                R: d,
-                ar: [oS.R - 1],
-                CustomTop: 400 - f.height + f.GetDY(),
-              })),
-            (f.ZX = f.AttackedLX -= b),
-            (f.Ele.style.left = Math.floor((f.X -= b)) + "px"),
-            (e = 1))
-        : (e = 1);
+      }!(f.FreeFreezeTime || f.FreeSetbodyTime) ?
+      (a = f.AttackedRX -= b = f.Speed) < -50
+        ?
+        (g.splice(c, 1), f.DisappearDie(), (e = 0)) :
+        (a < 100 &&
+          !f.PointZombie &&
+          ((f.PointZombie = 1),
+            !oS.CardKind && (StopMusic(), PlayAudio("losemusic", false)),
+            f.ChangeR({
+              R: d,
+              ar: [oS.R - 1],
+              CustomTop: 400 - f.height + f.GetDY(),
+            })),
+          (f.ZX = f.AttackedLX -= b),
+          (f.Ele.style.left = Math.floor((f.X -= b)) + "px"),
+          (e = 1)): (e = 1);
       return e;
     },
-    Drop: function () {
+    Drop: function() {
       var a = this;
       PlayAudio("balloon_pop");
       a.EleBody.src =
         "images/Zombies/BalloonZombie/Drop.gif" + $Random + Math.random();
-      a.ChkActs = function () {
+      a.ChkActs = function() {
         return 1;
       };
       a.Altitude = 4;
       a.MulBallNum();
       oSym.addTask(
         120,
-        function (b) {
+        function(b) {
           var c = $Z[b];
           a.DropPoint = a.AttackedRX - a.Speed;
           if (oGd.$LF[a.R] == 2 && a.DropPoint >= 183) {
@@ -4740,7 +4673,7 @@ var CZombies = (function (b, a) {
             c.getFreeze = OrnIZombies.prototype.getFreeze;
             c.EleBody.src = "images/Zombies/BalloonZombie/Walk.gif";
             c.ChkActs = OrnIZombies.prototype.ChkActs;
-            c.ExplosionDie = function () {
+            c.ExplosionDie = function() {
               var d = this;
               d.EleBody.src = d.PicArr[d.BoomDieGif];
               oSym.addTask(200, ClearChild, [d.Ele]);
@@ -4749,14 +4682,14 @@ var CZombies = (function (b, a) {
               d.PZ && oP.MonPrgs();
               d.MulBallNum();
             };
-            c.DisappearDie = function () {
+            c.DisappearDie = function() {
               ClearChild(this.Ele);
               this.HP = 0;
               delete $Z[this.id];
               this.PZ && oP.MonPrgs();
               this.MulBallNum();
             };
-            c.CrushDie = function () {
+            c.CrushDie = function() {
               var d = this;
               d.GoingDieHead(d.id, d.PicArr, d);
               ClearChild(d.Ele);
@@ -4766,19 +4699,19 @@ var CZombies = (function (b, a) {
               d.MulBallNum();
             };
           }
-          a.CanPass = function (d, c) {
+          a.CanPass = function(d, c) {
             return c && c != 2;
           };
         },
         [a.id]
       );
     },
-    getFreeze: function (b, a) {
+    getFreeze: function(b, a) {
       b.Attack = 50;
       b.Speed = 0.5 * b.OSpeed;
       oSym.addTask(
         1500,
-        function (d, c) {
+        function(d, c) {
           var e = $Z[d];
           e &&
             e.FreeSlowTime == c &&
@@ -4787,7 +4720,7 @@ var CZombies = (function (b, a) {
         [a, (b.FreeSlowTime = oSym.Now + 1500)]
       );
     },
-    NormalDie: function () {
+    NormalDie: function() {
       var a = this;
       a.EleBody.src = a.PicArr[a.DieGif] + Math.random();
       oSym.addTask(250, ClearChild, [a.Ele]);
@@ -4796,7 +4729,7 @@ var CZombies = (function (b, a) {
       a.PZ && oP.MonPrgs();
       a.MulBallNum();
     },
-    ExplosionDie: function () {
+    ExplosionDie: function() {
       var a = this;
       a.EleBody.src = a.PicArr[a.BoomDieGif];
       oSym.addTask(200, ClearChild, [a.Ele]);
@@ -4805,24 +4738,24 @@ var CZombies = (function (b, a) {
       a.PZ && oP.MonPrgs();
       a.MulBallNum();
     },
-    DisappearDie: function () {
+    DisappearDie: function() {
       ClearChild(this.Ele);
       this.HP = 0;
       delete $Z[this.id];
       this.PZ && oP.MonPrgs();
       this.MulBallNum();
     },
-    CrushDie: function () {
+    CrushDie: function() {
       this.DisappearDie();
     },
-    getDispelled: function () {
+    getDispelled: function() {
       if (this.Altitude != 3 || this.AttackedRX < GetX(0)) {
         return;
       }
-      this.ChkActs = function () {
+      this.ChkActs = function() {
         return 1;
       };
-      (function (id) {
+      (function(id) {
         var o = $Z[id];
         if (!o) return;
         var d = (o.WalkDirection = 1),
@@ -4836,11 +4769,13 @@ var CZombies = (function (b, a) {
           o.DisappearDie();
           return;
         }
-        SetStyle($(id), { left: o.X + "px" });
+        SetStyle($(id), {
+          left: o.X + "px"
+        });
         oSym.addTask(2, arguments.callee, [id]);
       })(this.id);
     },
-    getFirePeaSputtering: function () {
+    getFirePeaSputtering: function() {
       this.Altitude == 1 && this.getHit0(this, 13);
     },
     prepareBirth: oZomboni.prototype.prepareBirth,
@@ -4879,67 +4814,70 @@ oDiggerZombie = InheritO(OrnNoneZombies, {
   LostHeadGif: 5,
   LostHeadAttackGif: 5,
 
-  Produce:
-    '这种僵尸通过挖地来绕过防线。<p>韧性：<font color="#FF0000">中</font><Br>速度：<font color="#FF0000">快,而后慢</font><BR>特点：<font color="#FF0000">挖地道，然后在草地的左侧现身</font><BR>弱点：<font color="#FF0000">分裂射手，磁力菇</font></p>最近，他一直在听奥特曼的主题曲，据他所述，他好像是在某一处听到这首歌，觉得很好听，于是他现在也不挖土了，天天循环播放这首歌',
-  BirthCallBack: function (f) {
+  Produce: '这种僵尸通过挖地来绕过防线。<p>韧性：<font color="#FF0000">中</font><Br>速度：<font color="#FF0000">快,而后慢</font><BR>特点：<font color="#FF0000">挖地道，然后在草地的左侧现身</font><BR>弱点：<font color="#FF0000">分裂射手，磁力菇</font></p>最近，他一直在听奥特曼的主题曲，据他所述，他好像是在某一处听到这首歌，觉得很好听，于是他现在也不挖土了，天天循环播放这首歌',
+  BirthCallBack: function(f) {
     var e = f.delayT,
       d = f.id,
       c = (f.Ele = $(d));
     (f.EleShadow = c.firstChild),
-      (f.EleBody = c.childNodes[1]),
-      SetHidden(f.EleShadow);
+    (f.EleBody = c.childNodes[1]),
+    SetHidden(f.EleShadow);
     e
-      ? oSym.addTask(
-          e,
-          function (h, g) {
-            var i = $Z[h];
-            i && ((i.FreeSetbodyTime = 0), SetBlock(g));
-          },
-          [d, c]
-        )
-      : SetBlock(c);
+      ?
+      oSym.addTask(
+        e,
+        function(h, g) {
+          var i = $Z[h];
+          i && ((i.FreeSetbodyTime = 0), SetBlock(g));
+        },
+        [d, c]
+      ) :
+      SetBlock(c);
   },
-  HeadPosition: [
-    { x: 42, y: 146 },
-    { x: 40, y: 147 },
-  ],
-  getShadow: function (a) {
+  HeadPosition: [{
+    x: 42,
+    y: 146
+  }, {
+    x: 40,
+    y: 147
+  }, ],
+  getShadow: function(a) {
     return "left:" + a.beAttackedPointL + "px;top:" + (a.height - 20) + "px";
   },
   isUp: 0,
-  JudgeLR: function (f, d, e, c, g) {
-    return e > 10 || e < 1
-      ? false
-      : (function () {
-          d += --e + "_";
-          var h = 3,
-            i;
-          while (h--) {
-            if ((i = g[d + h]) && i.canEat) {
-              return i.AttackedRX >= c && i.AttackedLX <= c
-                ? [f.id, i.id]
-                : false;
-            }
+  JudgeLR: function(f, d, e, c, g) {
+    return e > 10 || e < 1 ?
+      false :
+      (function() {
+        d += --e + "_";
+        var h = 3,
+          i;
+        while (h--) {
+          if ((i = g[d + h]) && i.canEat) {
+            return i.AttackedRX >= c && i.AttackedLX <= c ?
+              [f.id, i.id] :
+              false;
           }
-        })();
+        }
+      })();
   },
-  JudgeSR: function (f, d, e, c, g) {
-    return e > 9
-      ? false
-      : (function () {
-          d += e + "_";
-          var h = 3,
-            i;
-          while (h--) {
-            if ((i = g[d + h]) && i.canEat) {
-              return i.AttackedRX >= c && i.AttackedLX <= c
-                ? [f.id, i.id]
-                : false;
-            }
+  JudgeSR: function(f, d, e, c, g) {
+    return e > 9 ?
+      false :
+      (function() {
+        d += e + "_";
+        var h = 3,
+          i;
+        while (h--) {
+          if ((i = g[d + h]) && i.canEat) {
+            return i.AttackedRX >= c && i.AttackedLX <= c ?
+              [f.id, i.id] :
+              false;
           }
-        })();
+        }
+      })();
   },
-  PicArr: (function () {
+  PicArr: (function() {
     var a = "images/Zombies/Diggerzombie/";
     return [
       "images/Card/Zombies/Diggerzombie.png",
@@ -4958,48 +4896,49 @@ oDiggerZombie = InheritO(OrnNoneZombies, {
     ];
   })(),
   AudioArr: ["zombie_entering_water"],
-  Go_Up: function (a, WD) {
+  Go_Up: function(a, WD) {
     // WD: 方向，1右0左
     a.isUp = 1; //a.Ifgc=0;
     a.beAttacked &&
       ((a.WalkDirection = WD),
-      (a.BoomDieGif = 12),
-      PlayAudio("zombie_entering_water"),
-      (a.Altitude = 4),
-      SetVisible(a.EleShadow),
-      (a.EleBody.src = a.PicArr[a.UpGif] + Math.random()),
-      (a.OSpeed = a.Speed = 0)),
-      (a.ChkActs = function () {
+        (a.BoomDieGif = 12),
+        PlayAudio("zombie_entering_water"),
+        (a.Altitude = 4),
+        SetVisible(a.EleShadow),
+        (a.EleBody.src = a.PicArr[a.UpGif] + Math.random()),
+        (a.OSpeed = a.Speed = 0)),
+      (a.ChkActs = function() {
         return 1;
       }); // 跳起来
     oSym.addTask(
       100,
-      function (c, b) {
+      function(c, b) {
         WD
-          ? ((b.AttackGif = b.AttackGif_Up0),
+          ?
+          ((b.AttackGif = b.AttackGif_Up0),
             (b.AttackedRX += 30),
             (b.beAttackedPointL = 70),
             (b.beAttackedPointR = 130),
             (b.Ele.lastChild.style.left = "40px"),
-            (b.JudgeAttack = b.JudgeAttack_Up1))
-          : (b.AttackGif = b.AttackGif_Up1); // GIF
+            (b.JudgeAttack = b.JudgeAttack_Up1)) :
+          (b.AttackGif = b.AttackGif_Up1); // GIF
         $Z[c] &&
           b.beAttacked &&
           (WD && b.ExchangeLR(b, WD),
-          (b.Altitude = 1),
-          (b.isAttacking = 0),
-          (b.EleBody.src = b.PicArr[(b.NormalGif = b.DownGif)])); // 眩晕
+            (b.Altitude = 1),
+            (b.isAttacking = 0),
+            (b.EleBody.src = b.PicArr[(b.NormalGif = b.DownGif)])); // 眩晕
         $Z[c] &&
           b.beAttacked &&
           oSym.addTask(
             WD ? 400 : 0,
-            function (c, b) {
+            function(c, b) {
               // 行走
               (b.EleBody.src =
                 b.PicArr[(b.NormalGif = WD ? b.WalkGif1 : b.WalkGif2)]),
-                (b.OSpeed = b.Speed = 1.6),
-                (b.ChkActs =
-                  OrnNoneZombies["prototype"][WD ? "ChkActs1" : "ChkActs"]);
+              (b.OSpeed = b.Speed = 1.6),
+              (b.ChkActs =
+                OrnNoneZombies["prototype"][WD ? "ChkActs1" : "ChkActs"]);
             },
             [c, b]
           );
@@ -5007,34 +4946,36 @@ oDiggerZombie = InheritO(OrnNoneZombies, {
       [a.id, a]
     );
   },
-  ChkActs: function (f, d, g, c) {
+  ChkActs: function(f, d, g, c) {
     // 到了左边自己钻出来
     if (f.Altitude == 0 && f.AttackedRX < GetX(1) - 15) return f.Go_Up(f, 1), 1;
 
     var b, a, e;
-    !(f.FreeFreezeTime || f.FreeSetbodyTime)
-      ? (f.beAttacked && !f.isAttacking && f.JudgeAttack_Dig(),
-        !f.isAttacking
-          ? (a = f.AttackedRX -= b = f.Speed) < -50
-            ? (g.splice(c, 1), f.DisappearDie(), (e = 0))
-            : (a < 100 &&
-                !f.PointZombie &&
-                ((f.PointZombie = 1),
-                !oS.CardKind && (StopMusic(), PlayAudio("losemusic", false)),
-                f.ChangeR({
-                  R: d,
-                  ar: [oS.R - 1],
-                  CustomTop: 400 - f.height + f.GetDY(),
-                })),
-              (f.ZX = f.AttackedLX -= b),
-              (f.Ele.style.left = Math.floor((f.X -= b)) + "px"),
-              (e = 1))
-          : (e = 1))
-      : (e = 1);
+    !(f.FreeFreezeTime || f.FreeSetbodyTime) ?
+    (f.beAttacked && !f.isAttacking && f.JudgeAttack_Dig(),
+      !f.isAttacking ?
+      (a = f.AttackedRX -= b = f.Speed) < -50 ?
+      (g.splice(c, 1), f.DisappearDie(), (e = 0)) :
+      (a < 100 &&
+        !f.PointZombie &&
+        ((f.PointZombie = 1),
+          !oS.CardKind && (StopMusic(), PlayAudio("losemusic", false)),
+          f.ChangeR({
+            R: d,
+            ar: [oS.R - 1],
+            CustomTop: 400 - f.height + f.GetDY(),
+          })),
+        (f.ZX = f.AttackedLX -= b),
+        (f.Ele.style.left = Math.floor((f.X -= b)) + "px"),
+        (e = 1)) :
+      (e = 1)) :
+    (e = 1);
     return e;
   },
-  CanDig: { oPotatoMine: true },
-  JudgeAttack_Dig: function () {
+  CanDig: {
+    oPotatoMine: true
+  },
+  JudgeAttack_Dig: function() {
     var g = this,
       d = g.ZX,
       e = g.R + "_",
@@ -5042,40 +4983,40 @@ oDiggerZombie = InheritO(OrnNoneZombies, {
       h = oGd.$,
       c;
     (c = g.JudgeLR(g, e, f, d, h) || g.JudgeSR(g, e, f, d, h)) &&
-    g.CanDig[$P[c[1]]["EName"]]
-      ? (!g.isAttacking &&
-          ((g.isAttacking = 1), (g.EleBody.src = g.PicArr[g.AttackGif])),
-        g.NormalAttack(c[0], c[1]))
-      : g.isAttacking &&
-        ((g.isAttacking = 0), (g.EleBody.src = g.PicArr[g.NormalGif]));
+    g.CanDig[$P[c[1]]["EName"]] ?
+      (!g.isAttacking &&
+        ((g.isAttacking = 1), (g.EleBody.src = g.PicArr[g.AttackGif])),
+        g.NormalAttack(c[0], c[1])) :
+      g.isAttacking &&
+      ((g.isAttacking = 0), (g.EleBody.src = g.PicArr[g.NormalGif]));
   },
-  JudgeAttack_Up1: function () {
+  JudgeAttack_Up1: function() {
     var g = this,
       d = g.AttackedRX,
       e = g.R + "_",
       f = GetC(d),
       h = oGd.$,
       c;
-    (c = g.JudgeSR(g, e, f, d, h) || g.JudgeLR(g, e, f, d, h))
-      ? (!g.isAttacking &&
-          ((g.isAttacking = 1), (g.EleBody.src = g.PicArr[g.AttackGif])),
-        g.NormalAttack(c[0], c[1]))
-      : g.isAttacking &&
-        ((g.isAttacking = 0), (g.EleBody.src = g.PicArr[g.NormalGif]));
+    (c = g.JudgeSR(g, e, f, d, h) || g.JudgeLR(g, e, f, d, h)) ?
+    (!g.isAttacking &&
+      ((g.isAttacking = 1), (g.EleBody.src = g.PicArr[g.AttackGif])),
+      g.NormalAttack(c[0], c[1])) :
+    g.isAttacking &&
+      ((g.isAttacking = 0), (g.EleBody.src = g.PicArr[g.NormalGif]));
   },
-  Stone_of_Sinan_Up: function () {
+  Stone_of_Sinan_Up: function() {
     // 被磁铁吸了镐子调用的函数
     var g = this; //alert(1);
     if (g.isUp) {
       g.EleBody.src =
         g.PicArr[
-          g.isAttacking
-            ? (g.AttackGif = g.AttackGif_Up1)
-            : (g.NormalGif = g.WalkGif2)
+          g.isAttacking ?
+          (g.AttackGif = g.AttackGif_Up1) :
+          (g.NormalGif = g.WalkGif2)
         ];
     } else {
       g.Go_Up(g, 0);
     }
-    g.Stone_of_Sinan_Up = function () {};
+    g.Stone_of_Sinan_Up = function() {};
   },
 });

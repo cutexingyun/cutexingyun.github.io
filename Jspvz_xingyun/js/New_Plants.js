@@ -1069,7 +1069,7 @@ var // 定义火炬树桩类，继承自植物类
     }
   },
 })),
-(oDoomShroom1 = InheritO(oFumeShroom, {
+(oDoomShroom1 = InheritO(oHypnoShroom, {
   EName: "oDoomShroom1",
   CName: "毁灭菇",
   width: 102,
@@ -1139,7 +1139,7 @@ var // 定义火炬树桩类，继承自植物类
           do {
             k = (e = oZ.getArZ(n, m, h)).length;
             while (k--) {
-              e[k].getExplosion();
+              e[k].bedevil(e);
             }
           } while (h++ < f);
           PlayAudio("doomshroom");
