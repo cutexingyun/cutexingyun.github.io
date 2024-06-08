@@ -781,7 +781,7 @@ var // 定义火炬树桩类，继承自植物类
     "images/Plants/IcyFumeShroom/FumeShroomAttack.gif",
     "images/Plants/IcyFumeShroom/FumeShroomBullet.gif",
   ],
-  Tooltip: "Shoots icy fumes that can pass through screen doors",
+  Tooltip: "减速的穿透攻击",
   Produce: '大喷菇喷出的臭气可以穿透铁丝网门。<p>Harm:<font color="#FF0000">普通，可穿透铁丝网门</font><br>Scope:<font color="#FF0000">臭气中的所有僵尸<br>白天睡觉</font></p>“我以前那份没前途的工作，是为一个面包房</font><br>生产酵母孢，”大喷菇说。“然后小喷菇，上帝</font><br>保佑它，告诉了我这个喷杀僵尸的机会。现在</font><br>我真觉得自己完全不同了。”',
   PrivateBirth: function(b) {
     var a = b.id;
