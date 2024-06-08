@@ -1,6 +1,6 @@
 oS.Init({
-    PName: [ oSnowPea1,ofirePeashooter, oDoomShroom1, oSunPeashooter, ofireWallNut, oIceFumeShroom, oGatlingPea, oNutBowling, oHugeNutBowling, oBoomNutBowling, oTorchwood1, oSunFlower1, oGatlingPea1, oHypnoShroom1, oGloomShroom1, oLawnCleaner, oCoffeeBean],
-    ZName: [oZombie],
+    PName: [ oSnowPea1,ofirePeashooter, oLilyPad,oDoomShroom1, oSunPeashooter, ofireWallNut, oIceFumeShroom, oGatlingPea, oNutBowling, oHugeNutBowling, oBoomNutBowling, oTorchwood1, oSunFlower1, oGatlingPea1, oHypnoShroom1, oGloomShroom1, oLawnCleaner, oCoffeeBean],
+    ZName: [oZombie,oJalapenoZombie2],
     PicArr: ["images/interface/background3.jpg"],
     backgroundImage: "images/interface/background3.jpg",
     Coord: 2,
@@ -18,7 +18,7 @@ oS.Init({
     AZ: [
         //oZombie,oConeheadZombie,oFlagZombie,oPoleVaultingZombie,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie
         [oZombie, 1, 1, [1]],
-
+        [oJalapenoZombie2 , 1 ,1]
     ],
     FlagNum: 20,
     FlagToSumNum: {

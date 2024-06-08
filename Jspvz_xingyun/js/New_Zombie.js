@@ -2706,6 +2706,89 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
       this.DisappearDie();
     },
   }),
+    oJalapenoZombie2 = InheritO(oDuckyTubeZombie1, {
+    EName: "oJalapenoZombie2",
+    CName: "火爆辣椒僵尸",
+    HP: 270,
+    width: 68,
+    height: 89,
+    beAttackedPointL: 5,
+    beAttackedPointR: 48,
+    PicArr: (function () {
+      var a = "images/Plants/Jalapeno/",
+        b = "images/Zombies/Zombie/";
+      return [
+        "images/Card/Plants/Jalapeno1.png",
+        a + "0.gif",
+        a + "Jalapeno.gif",
+        a + "Jalapeno.gif",
+        a + "Jalapeno.gif",
+        a + "Jalapeno.gif",
+        a + "Jalapeno.gif" + $Random,
+        a + "Jalapeno.gif" + $Random,
+        a + "Jalapeno.gif" + $Random,
+        a + "Jalapeno.gif",
+      ];
+    })(),
+    Produce:
+      '韧性：<font color="#FF0000">中等</font></p>植物家族叛变的火爆辣椒，代号47，经常自爆以摧毁植物。',
+    BirthCallBack: function (f) {
+      var e = f.delayT,
+        d = f.id,
+        c = (f.Ele = $(d));
+      f.EleShadow = c.firstChild;
+      f.EleBody = c.childNodes[1];
+      e
+        ? oSym.addTask(
+            e,
+            function (h, g) {
+              var i = $Z[h];
+              i && ((i.FreeSetbodyTime = 0), SetBlock(g));
+            },
+            [d, c]
+          )
+        : SetBlock(c);
+      f.CheckBoomFire(f);
+    },
+    CheckBoomFire: function (f) {
+      oSym.addTask(
+        3000,
+        function (f) {
+          // 生成1到100之间的随机整数
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+
+          $Z[f.id] && randomNumber <= 10 && f.BoomFire(f.R);
+          oSym.addTask(100, arguments.callee, [f]);
+        },
+        [f]
+      );
+    },
+    BoomFire: function (y) {
+      PlayAudio("jalapeno");
+      fireid = "fire_" + Math.random();
+      NewImg(
+        fireid,
+        "images/Plants/Jalapeno/JalapenoAttack.gif",
+        "width:755px;height:131px;left:120px;top:" + (GetY(y - 1) - 42) + "px",
+        EDAll
+      );
+      oSym.addTask(
+        135,
+        (id) => {
+          ClearChild($(id));
+        },
+        [fireid]
+      );
+      for (let i = 1; i <= oS.C; i++) {
+        for (let j = 0; j < 4; j++) {
+          let g = oGd.$[y + "_" + i + "_" + j];
+          g && g.BoomDie();
+        }
+      }
+      this.DisappearDie();
+    },
+  }),
+
   oBigFootballZombie = InheritO(oConeheadZombie, {
     EName: "oBigFootballZombie",
     CName: "橄榄球僵尸",
