@@ -1,5 +1,5 @@
 oS.Init({
-    PName: [oPuffShroom1, oSnowPea1, ofirePeashooter, oDoomShroom1, oSunPeashooter, ofireWallNut, oIceFumeShroom, oGatlingPea, oNutBowling, oHugeNutBowling, oBoomNutBowling, oTorchwood1, oSunFlower1, oGatlingPea1, oHypnoShroom1, oGloomShroom1, oLawnCleaner, oCoffeeBean],
+    PName: [oPuffShroom1,oSnowPea1, ofirePeashooter, oDoomShroom1, oSunPeashooter, ofireWallNut, oIceFumeShroom, oGatlingPea, oNutBowling, oHugeNutBowling, oBoomNutBowling, oTorchwood1, oSunFlower1, oGatlingPea1, oHypnoShroom1, oGloomShroom1, oLawnCleaner, oCoffeeBean],
     ZName: [oZombie, oConeheadZombie, oTrashZombie, orandomZombie, oNewspaperZombie2, oFlagZombie, oJalapenoZombie, oPoleVaultingZombie, oZombiejump, oBucketheadZombie, oNewspaperZombie, oScreenDoorZombie, oFootballZombie, oDancingZombie, oDancingZombie1, oBackupDancer, oDuckyTubeZombie1, oDuckyTubeZombie2, oDuckyTubeZombie3, oSnorkelZombie, oZomboni, oDolphinRiderZombie, oJackinTheBoxZombie, oBalloonZombie, oImp, oDiggerZombie, oSmallZombie,
         oSmallFlagZombie,
         oSmallDuckyTubeZombie1,
