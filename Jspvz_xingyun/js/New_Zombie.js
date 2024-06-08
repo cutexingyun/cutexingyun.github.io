@@ -2708,7 +2708,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
   }),
     oJalapenoZombie2 = InheritO(oDuckyTubeZombie1, {
     EName: "oJalapenoZombie2",
-    CName: "火爆辣椒僵尸",
+    CName: "火爆辣椒鸭子僵尸",
     HP: 270,
     width: 68,
     height: 89,
