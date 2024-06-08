@@ -153,7 +153,7 @@ var // 定义火炬树桩类，继承自植物类
     height: 71,
     beAttackedPointR: 51,
     SunNum: 150,
-    BKind: 0,
+    BKind: 1,
     AudioArr: [
       "splat1",
       "splat2",
