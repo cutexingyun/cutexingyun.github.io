@@ -3114,6 +3114,6 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
         "px"
       );
     },
-  }),
+  });
 
 
