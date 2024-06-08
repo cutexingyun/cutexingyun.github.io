@@ -9,7 +9,7 @@ oS.Init({
     CanSelectCard: 1,
     LevelName: "测试植物",
     LvlEName: 1,
-    SunNum: 1000,
+    SunNum: 5000,
     LargeWaveFlag: {
         10: $("imgFlag3"),
         20: $("imgFlag1")
