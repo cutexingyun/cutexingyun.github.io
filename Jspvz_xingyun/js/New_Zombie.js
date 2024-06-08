@@ -3117,7 +3117,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
   }),
     orandomZombie = InheritO(OrnNoneZombies, {
     EName: "orandomZombie",
-    CName: "随机僵尸",
+    CName: "随机出怪僵尸",
     StandGif: 9,
     PicArr: (function() {
       var a = "images/Zombies/Zombie/";
@@ -3134,7 +3134,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
         a + "1.gif",
       ];
     })(),
-    Produce: '韧性：<font color="#FF0000">低</font></p>这种僵尸喜爱脑髓，贪婪而不知足。脑髓，脑髓，脑髓，夜以继日地追求着。老而臭的脑髓？腐烂的脑髓？都没关系。僵尸需要它们。',
+    Produce: '韧性：<font color="#FF0000">低</font></p>用于随机出怪',
     NormalDie: function(a) {
     var c = this,
     b = a.id,
@@ -3170,12 +3170,8 @@ oSmallConeheadZombie,
 oSmallFootballZombie,
 oSmallSnorkelZombie,],
     Zombie = ZombieList[Math.floor(Math.random()*ZombieList.length)];
-    oSym.addTask(100,function() {
-    $(b).childNodes[1].src = "images/Zombies/Zombie/0.gif";
-    oSym.addTask(100,function() {
-      CustomSpecial2(Zombie,c.R,c.C)
-    })
-  })
     
         },
   });
+
+
