@@ -1,7 +1,7 @@
 
 oS.Init({
     PName: [oPuffShroom1,oSnowPea1, ofirePeashooter, oDoomShroom1,oSunPeashooter ,ofireWallNut, oIceFumeShroom , oGatlingPea,oNutBowling,oHugeNutBowling,oBoomNutBowling,oTorchwood1,oSunFlower1,oGatlingPea1,oHypnoShroom1,oGloomShroom1,oLawnCleaner,oCoffeeBean],
-    ZName: [oZombie,oConeheadZombie,oTrashZombie,oNewspaperZombie2,oFlagZombie,oJalapenoZombie,oPoleVaultingZombie,oZombiejump,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oDancingZombie1,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie],
+    ZName: [oZombie,oConeheadZombie, oTrashZombie , orandomZombie ,oNewspaperZombie2,oFlagZombie,oJalapenoZombie,oPoleVaultingZombie,oZombiejump,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oDancingZombie1,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie],
     PicArr: ["images/interface/background3.jpg"], 
     backgroundImage: "images/interface/background3.jpg",
 	Coord:2,
@@ -20,7 +20,7 @@ oS.Init({
     AZ: [
 //oZombie,oConeheadZombie,oFlagZombie,oPoleVaultingZombie,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie
 	[oZombie, 1, 1,[1]],
-    [oNewspaperZombie2,1,1,[1]],
+    [orandomZombie,1,1,[1]],
     [oTrashZombie,1,1,[1]],
     [oConeheadZombie,1,1,[1]],
     [oFlagZombie,1,1,[1]],

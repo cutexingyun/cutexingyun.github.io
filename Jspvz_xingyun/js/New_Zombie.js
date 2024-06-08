@@ -3114,4 +3114,68 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
         "px"
       );
     },
+  }),
+    orandomZombie = InheritO(OrnNoneZombies, {
+    EName: "orandomZombie",
+    CName: "随机僵尸",
+    StandGif: 9,
+    PicArr: (function() {
+      var a = "images/Zombies/Zombie/";
+      return [
+        "images/Card/Zombies/Zombie.png",
+        a + "0.gif",
+        a + "Zombie.gif",
+        a + "ZombieAttack.gif",
+        a + "ZombieLostHead.gif",
+        a + "ZombieLostHeadAttack.gif",
+        a + "ZombieHead.gif" + $Random,
+        a + "ZombieDie.gif" + $Random,
+        a + "BoomDie.gif" + $Random,
+        a + "1.gif",
+      ];
+    })(),
+    Produce: '韧性：<font color="#FF0000">低</font></p>这种僵尸喜爱脑髓，贪婪而不知足。脑髓，脑髓，脑髓，夜以继日地追求着。老而臭的脑髓？腐烂的脑髓？都没关系。僵尸需要它们。',
+    NormalDie: function(a) {
+    var c = this,
+    b = a.id,
+    Zombielist = [oBackupDancer,
+oBalloonZombie,
+oBucketheadZombie ,
+oBigBucketheadZombie,
+oBucketheadZombie1,
+oConeheadZombie ,
+oBigConeheadZombiebie ,
+oConeheadZombie1 ,
+oDancingZombie ,
+oFlagZombie ,
+oFootballZombie ,
+ oBigFootballZombie ,
+oImp ,
+oJackinTheBoxZombie ,
+oNewspaperZombie ,
+oNewspaperZombie1 ,
+oPoleVaultingZombie ,
+oScreenDoorZombie ,
+oZombie ,
+oZomboni , 
+oDolphinRiderZombie ,
+oDuckyTubeZombie1 ,
+oDuckyTubeZombie2 ,
+oDuckyTubeZombie3 ,
+oSnorkelZombie ,
+oSmallZombie,
+oSmallFlagZombie,
+oSmallDuckyTubeZombie1,
+oSmallConeheadZombie,
+oSmallFootballZombie,
+oSmallSnorkelZombie,],
+    Zombie = ZombieList[Math.floor(Math.random()*ZombieList.length)];
+    oSym.addTask(100,function() {
+    $(b).childNodes[1].src = "images/Zombies/Zombie/0.gif";
+    oSym.addTask(100,function() {
+      CustomSpecial2(Zombie,c.R,c.C)
+    })
+  })
+    
+        },
   });

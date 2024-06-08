@@ -303,6 +303,30 @@
     Tooltip: "池塘清扫车",
     AudioArr: ["pool_cleaner"],
   }),
+  oRoofCleaner = InheritO(oLawnCleaner, {
+    EName: "oRoofCleaner",
+    CName: "屋顶推车",
+    width: 56,
+    height: 43,
+    beAttackedPointL: 0,
+    beAttackedPointR: 56,
+    SunNum: 0,
+    coolTime:0,
+    PicArr: ["images/interface/RoofCleaner.png","images/interface/RoofCleaner.png"],
+    Tooltip: "屋顶推车",
+    Produce: '清扫屋顶的小推车。<p>伤害：<font color="#FF0000">秒杀</font><br>范围：<font color="#FF0000">正前方一整行</font><br>启动方式：<font color="#FF0000">僵尸碰到它</font></p>屋顶清理者，还是那句话，请让路！',
+    AudioArr: ["lawnmover"],
+  Die: function(a) {
+    var b = this,
+    c = b.id;
+    b.oTrigger && oT.delP(b);
+    b.HP = 0;
+    delete $P[c];
+    delete oGd.$[b.R + "_" + b.C + "_" + b.PKind];
+    $P.length -= 1; ! a && ClearChild($(c));
+    b.PrivateDie(b)
+  }
+}),
   oBrains = InheritO(CPlants, {
     EName: "oBrains",
     CName: "脑子",
