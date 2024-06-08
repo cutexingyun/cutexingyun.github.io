@@ -56,9 +56,9 @@ var // 定义火炬树桩类，继承自植物类
     width: 73,
     height: 74,
     beAttackedPointR: 53,
-    coolTime: 0,
+    coolTime: 30,
     HP: 540,
-    SunNum: 50,
+    SunNum: 0,
     PicArr: [
       "images/Card/Plants/SunFlower.png",
       "images/Plants/SunFlower/0.gif",

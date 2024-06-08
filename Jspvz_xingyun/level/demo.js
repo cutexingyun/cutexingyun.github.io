@@ -18,7 +18,7 @@ oS.Init({
     AZ: [
         //oZombie,oConeheadZombie,oFlagZombie,oPoleVaultingZombie,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie
         [oZombie, 1, 1, [1]],
-        [oJalapenoZombie2 , 1 ,1]
+        [oJalapenoZombie2 , 1 ,1],
     ],
     FlagNum: 20,
     FlagToSumNum: {

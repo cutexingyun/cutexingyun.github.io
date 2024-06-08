@@ -251,7 +251,7 @@
     beAttackedPointL: 0,
     beAttackedPointR: 71,
     SunNum: 1000,
-    cooltime: 50,
+    coolTime: 50,
     PicArr: [
       "images/interface/LawnCleaner.png",
       "images/interface/LawnCleaner.png",
