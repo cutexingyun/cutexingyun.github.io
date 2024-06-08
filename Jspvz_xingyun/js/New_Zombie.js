@@ -3170,7 +3170,12 @@ oSmallConeheadZombie,
 oSmallFootballZombie,
 oSmallSnorkelZombie,],
     Zombie = ZombieList[Math.floor(Math.random()*ZombieList.length)];
-    
+      oSym.addTask(100,function() {
+    $(b).childNodes[1].src = "images/Plants/Imitater/Imitater2.gif";
+    oSym.addTask(100,function() {
+      CustomSpecialLn(Plant,c.R,c.C)
+    })
+  })
         },
   });
 
