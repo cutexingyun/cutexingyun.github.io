@@ -1669,6 +1669,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
     beAttackedPointL: 215,
     beAttackedPointR: 260,
     StandGif: 13,
+    SunNum: 225,
     GetDX: function () {
       return -238;
     },
