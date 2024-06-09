@@ -654,12 +654,8 @@ InitGame();
 <!--网站统计代码-->
 <script async src="//webviso.yestool.org/js/index.min.js"></script>
 <p style="color:White;">本页访问人数:<span id="page_uv"></span></p>
-
-    <button onclick="showMusicList()">显示/隐藏歌曲</button>
-
-    <div id="musicList" class="hidden">
-        <h2>音乐歌单</h2>
-        <table>
+	<img id="MusicList" src="new_skin/UI/主界面/音乐.png" onclick="toggleTable()"> 
+        <table id="musiclist" class="musiclist">
             <tr>
                 <th>歌曲名</th>
                 <th>播放器</th>
@@ -779,18 +775,15 @@ InitGame();
                 </td>
             </tr>	
         </table>
-    </div>
-
     <script>
-        function showMusicList() {
-                       var musicListDiv = document.getElementById("musicList");
-            if (musicListDiv.style.display === "none") {
-                musicListDiv.style.display = "block";
-            } else {
-                musicListDiv.style.display = "none";
-            }
+        function toggleTable() {
+        var table = document.getElementById('musiclist');
+        if (table.style.display === 'none') {
+            table.style.display = 'table';  // 当图像被点击时，显示表格
+        } else {
+            table.style.display = 'none';  // 再次点击时隐藏表格
         }
-        
+    }        
     </script>
     <script>
 function showDialogAndRedirect() {

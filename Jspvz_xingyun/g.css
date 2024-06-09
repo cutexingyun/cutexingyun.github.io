@@ -2031,6 +2031,6 @@ button.jhp:focus {
 	float: left
 }
 
-.hidden {
-	display: none;
-}
+.musiclist {
+            display: none; /* 初始时表格不可见 */
+        }
