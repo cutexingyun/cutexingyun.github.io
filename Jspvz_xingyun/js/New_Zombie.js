@@ -1677,7 +1677,6 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
       return 2;
     },
     Lvl: 2,
-    SunNum: 75,
     BookHandPosition: "-30px 70%",
     PicArr: (function () {
       var a = "images/Zombies/PoleVaultingZombie/";
