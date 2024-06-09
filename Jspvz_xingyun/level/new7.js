@@ -33,7 +33,7 @@ oS.TsSsC = function() {
 	} else {
 		oS.Init({
 			PName: ShengPlantList,
-			ZName: [oZombie, oZombie2, oZombie3, oConeheadZombie, oPoleVaultingZombie, oBucketheadZombie, oNewspaperZombie, oFootballZombie, oDuckyTubeZombie1, oDuckyTubeZombie2, oDuckyTubeZombie3],
+			ZName: [oZombie, oZombie2, oZombie3, oConeheadZombie, oPoleVaultingZombie, oBucketheadZombie, oNewspaperZombie1, oFootballZombie, oDuckyTubeZombie1, oDuckyTubeZombie2, oDuckyTubeZombie3],
 			PicArr: ["images/interface/background3.jpg"],
 			Coord: 2,
 			backgroundImage: "images/interface/background3.jpg",
@@ -55,7 +55,7 @@ oS.TsSsC = function() {
 				[oConeheadZombie, 5, 1],
 				[oPoleVaultingZombie, 4, 1],
 				[oBucketheadZombie, 4, 1],
-				[oNewspaperZombie, 1, 1],
+				[oNewspaperZombie1, 1, 1],
 				[oFootballZombie, 1, 5],
 				[oDuckyTubeZombie1, 1, 6, [6, 7, 8, 10, 19, 20, 25, 30]],
 				[oDuckyTubeZombie2, 1, 6, [10, 20, 30]],
