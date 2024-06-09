@@ -51,8 +51,7 @@ google_ad_height = 15;
 		<img src="images/interface/Surface.jpg" usemap="#FPMap0" border="0">
 		<div style="position:absolute;width:350px;height:150px;left:468px;top:62px;background:url(images/interface/SelectorScreen_Shadow_Adventure.png)"></div>
 		<div class="adventure0" id="dAdventure" onmouseover="this.style.backgroundPosition='bottom';PlayAudio('bleep');" onmouseout="this.style.backgroundPosition='top'" onclick="StartAdventure()"></div>
-		<div class="Sunflower_trophy"><script>document.write('<img onclick="PlayAudio(\'buttonclick\');alert(\'查看更新进度！\')" title="更新进度" alt="查看更新进度" src="images/interface/Sunflower_trophy'+($User.Browser.IE?8:32)+'.png"> ')
-	</script></div>
+		<div class="Sunflower_trophy" onclick="showDialogAndRedirect()"></div>
 		<div style="position:absolute;width:318px;height:136px;left:476px;top:168px;background:url(images/interface/SelectorScreen_Shadow_Survival.png)"></div>
 		<div class="mini" onmouseover="this.style.backgroundPosition='bottom';PlayAudio('bleep');" onmouseout="this.style.backgroundPosition='top'" onclick="ShowMiniGame()"></div>
 		<div style="position:absolute;width:289px;height:127px;left:480px;top:252px;background:url(images/interface/SelectorScreen_Shadow_Challenge.png)"></div>
@@ -793,6 +792,12 @@ InitGame();
         }
         
     </script>
+    <script>
+function showDialogAndRedirect() {
+  alert("恭喜你发现了更新进度！");
+  window.location.href = "process.htm";
+}
+</script>
 
 <script id="JSPVZ"></script>
 
