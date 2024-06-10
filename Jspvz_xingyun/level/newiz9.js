@@ -14,6 +14,7 @@ oS.Init(
     ], // 植物名称数组
     ZName: [
         oBigFootballZombie,
+        oJalapenoZombie3,
     ], // 僵尸名称数组
     PicArr: [
       "images/interface/background2.jpg",
@@ -38,7 +39,6 @@ oS.Init(
       Auto: 1, // 是否自动
       P: [
         [0, 1, 1], //植物，列，行
-        [2, 1, 1],
         [8 ,2 ,1],
         [8 ,3 ,1],
         [8 ,4 ,1],
@@ -56,9 +56,7 @@ oS.Init(
         [2, 2, 3],
         [8, 3, 3],
         [8, 4, 3],
-        [2, 4, 2],
         [8, 5, 3],
-        [2, 5, 2],
         [8, 6, 3],
         [2, 6, 2],
         [3, 1, 4],
