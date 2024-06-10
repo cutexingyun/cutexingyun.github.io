@@ -2873,7 +2873,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
   oBigFootballZombie = InheritO(oConeheadZombie, {
     EName: "oBigFootballZombie",
     CName: "橄榄球僵尸",
-    OrnHP: 5000,
+    OrnHP: 5300,
     Lvl: 3,
     SunNum: 350,
     StandGif: 11,
