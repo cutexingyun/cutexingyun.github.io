@@ -315,7 +315,7 @@ var // 定义火炬树桩类，继承自植物类
   width: 88,
   height: 84,
   beAttackedPointR: 68,
-  SunNum: 250,
+  SunNum: 450,
   coolTime: 7.5,
   PicArr: [
     "images/Card/Plants/GatlingPea.png",
@@ -332,7 +332,7 @@ var // 定义火炬树桩类，继承自植物类
     "shieldhit",
     "shieldhit2",
   ],
-  Tooltip: "一次发射四颗豌豆",
+  Tooltip: "一次发射四颗豌豆,无需双发",
   Produce: '加特林可以一次发射四颗豌豆<p>伤害：<font color="#FF0000">中等(每颗)</font><br>发射速度：<font color="#FF0000">四倍</font></p>当加特林宣布他要参军的时候，他的父母很为他担心，他们异口同声地对他说：“亲爱的，但这太危险了。”加特林拒绝让步，“生活本就危险，”他这样回答着，此时他的眼睛里，正闪烁着钢铁般的信念。',
   PrivateBirth: function(c) {
     var b = c.AttackedLX,
@@ -416,7 +416,7 @@ var // 定义火炬树桩类，继承自植物类
   width: 230,
   height: 140,
   beAttackedPointR: 140,
-  SunNum: 200,
+  SunNum: 450,
   AttackGif: 4,
   Attack: 80,
   coolTime: 50,
@@ -440,7 +440,7 @@ var // 定义火炬树桩类，继承自植物类
       b + "Attack.gif",
     ].concat(arr);
   })(),
-  Tooltip: "向敌人抛出带有溅射的冰西瓜瓣",
+  Tooltip: "向敌人抛出带有溅射的冰西瓜瓣，无需西瓜",
   Produce: '冰瓜投手能对成群僵尸造成大量伤害并减速他们。<p>伤害：<font color="#FF0000">高</font><br>范围：<font color="#FF0000">投掷</font><br>特点：<font color="#FF0000">西瓜会对附近僵尸造成溅射伤害并减速他们</font></p>冰瓜投手试着让自己紧绷的神经冷静下来，他听到僵尸步步逼近。他能做到吗？有人能做到吗？',
   PrivateBirth(a) {
     a.BulletEle = NewImg(
