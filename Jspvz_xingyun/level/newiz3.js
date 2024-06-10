@@ -1,7 +1,7 @@
 // 初始化游戏设置
 oS.Init({
     PName: [oGloomShroom,oSunFlower,oGarlic,oPumpkinHead,oRepeater,oSpikeweed,oFumeShroom,oTorchwood,oPotatoMine,oGatlingPea,oHypnoShroom], // 植物名称数组
-    ZName: [oJalapenoZombie, oZombiejump, oZombieBoss], // 僵尸名称数组
+    ZName: [oJalapenoZombie, oZombiejump, oZombieBoss,oDiggerZombie1], // 僵尸名称数组
     PicArr: ["images/interface/background2.jpg", "images/interface/trophy.png", "images/interface/Stripe.png"], // 图片数组
     backgroundImage: "images/interface/background2.jpg", // 背景图片
     ShowScroll: false, // 是否显示滚动条

@@ -3202,7 +3202,7 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
     EName: "oDiggerZombie1",
     CName: "矿工僵尸",
     Lvl: 4,
-    SunNum: 125,
+    SunNum: 225,
     HP: 500,
     BreakPoint: 70,
     width: 167,
