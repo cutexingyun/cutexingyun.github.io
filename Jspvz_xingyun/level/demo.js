@@ -30,6 +30,7 @@ oS.Init(
       oSmallFlagZombie,
       oSmallConeheadZombie,
       oSmallFootballZombie,
+      oDiggerZombie1
     ],
     PicArr: ["images/interface/background3.jpg"],
     backgroundImage: "images/interface/background3.jpg",
@@ -48,7 +49,7 @@ oS.Init(
   {
     AZ: [
       //oZombie,oConeheadZombie,oFlagZombie,oPoleVaultingZombie,oBucketheadZombie,oNewspaperZombie,oScreenDoorZombie,oFootballZombie,oDancingZombie,oBackupDancer,oDuckyTubeZombie1,oDuckyTubeZombie2,oDuckyTubeZombie3,oSnorkelZombie,oZomboni,oDolphinRiderZombie,oJackinTheBoxZombie,oBalloonZombie,oImp,oDiggerZombie
-      [oZombie, 1, 1, [1]],
+      [oDiggerZombie1, 1, 1, [1]],
       [oJalapenoZombie2, 1, 10, [15, 20]],
       [oTrashZombie, 1, 5],
       [oZombiejump, , 1, 5],
