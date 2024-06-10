@@ -34,7 +34,7 @@ oS.Init(
     DKind: 1,
     LevelName: "隐藏植物",
     LvlEName: 1,
-    SunNum: 1000,
+    SunNum: 9000,
     LargeWaveFlag: {
       10: $("imgFlag3"),
       20: $("imgFlag1"),
