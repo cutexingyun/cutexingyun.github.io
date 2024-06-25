@@ -15,6 +15,7 @@ oS.Init(
       oGatlingPea,
       oStarfruit,
       oThreepeater,
+      oRepeater
     ], // 植物名称数组
     ZName: [oNewspaperZombie2], // 僵尸名称数组
     PicArr: [
@@ -59,7 +60,7 @@ oS.Init(
         [7, 7, 4],
         [7, 8, 4],
         [8, 1, 5],
-        [10, 5, 5],
+        [13, 5, 5],
         [10, 6, 5],
         [10, 7, 5],
         [9, 8, 5],
