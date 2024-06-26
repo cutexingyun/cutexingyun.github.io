@@ -4948,7 +4948,7 @@ oDiggerZombie = InheritO(OrnNoneZombies, {
   },
   ChkActs: function(f, d, g, c) {
     // 到了左边自己钻出来
-    if (f.Altitude == 0 && f.AttackedRX < GetX(1) - 15) return f.Go_Up(f, 1), 1;
+    if (f.Altitude == 0 && f.AttackedRX < GetX(1) - 20) return f.Go_Up(f, 1), 1;
 
     var b, a, e;
     !(f.FreeFreezeTime || f.FreeSetbodyTime) ?
@@ -4956,7 +4956,7 @@ oDiggerZombie = InheritO(OrnNoneZombies, {
       !f.isAttacking ?
       (a = f.AttackedRX -= b = f.Speed) < -50 ?
       (g.splice(c, 1), f.DisappearDie(), (e = 0)) :
-      (a < 100 &&
+      (a < 80 &&
         !f.PointZombie &&
         ((f.PointZombie = 1),
           !oS.CardKind && (StopMusic(), PlayAudio("losemusic", false)),
