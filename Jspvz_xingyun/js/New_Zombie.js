@@ -2633,19 +2633,19 @@ oDancingZombie1 = InheritO(OrnNoneZombies, {
     beAttackedPointL: 5,
     beAttackedPointR: 48,
     PicArr: (function () {
-      var a = "images/Plants/Jalapeno/",
+      var a = "images//Zombies/JalapenoZombie/",
         b = "images/Zombies/Zombie/";
       return [
         "images/Card/Plants/Jalapeno1.png",
         a + "0.gif",
-        a + "Jalapeno.gif",
-        a + "Jalapeno.gif",
-        a + "Jalapeno.gif",
-        a + "Jalapeno.gif",
+        a + "JalapenoZombie4.gif",
+        a + "JalapenoZombie4.gif",
+        a + "JalapenoZombie1.gif",
+        a + "JalapenoZombie3.gif",
+        "images/Zombies/Zombie/ZombieHead.gif" + $Random,
         a + "Jalapeno.gif" + $Random,
         a + "Jalapeno.gif" + $Random,
-        a + "Jalapeno.gif" + $Random,
-        a + "Jalapeno.gif",
+        a + "JalapenoZombie4.gif",
       ];
     })(),
     Produce:
