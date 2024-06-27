@@ -4791,7 +4791,7 @@ oDiggerZombie = InheritO(OrnNoneZombies, {
   height: 170,
   GetDTop: 20,
   beAttackedPointL: 65,
-  beAttackedPointR: 70,
+  beAttackedPointR: 90,
   OrnHP: 100,
   OSpeed: 7.8,
   Speed: 7.8,
