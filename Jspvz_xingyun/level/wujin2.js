@@ -1,6 +1,6 @@
 oS.Init({
     PName: ShengPlantList,
-    ZName: [oBackupDancer, oZombie, oZombie2, oZombie3, oPoleVaultingZombie, oConeheadZombie, oBucketheadZombie, oNewspaperZombie, oScreenDoorZombie, oFootballZombie, oDancingZombie, oJackinTheBoxZombie, oBalloonZombie],
+    ZName: [oBackupDancer, oZombie, oZombie2, oZombie3, oPoleVaultingZombie, oConeheadZombie, oBucketheadZombie, oNewspaperZombie, oScreenDoorZombie, oFootballZombie, oDancingZombie, oJackinTheBoxZombie, oBalloonZombie,oDiggerZombie],
 	PicArr: ["images/interface/background2.jpg"],
     backgroundImage: "images/interface/background2.jpg",
     CanSelectCard: 1,
