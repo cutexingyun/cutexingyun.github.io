@@ -6068,7 +6068,7 @@
   SunNum: 100,
   BookHandBack: 2,
   SleepGif: 3,
-  cd: 1,
+  cd: 15,
   cotcd: 1000,
   night: true,
   Tooltip: "可以用磁力吸取僵尸的头盔",
