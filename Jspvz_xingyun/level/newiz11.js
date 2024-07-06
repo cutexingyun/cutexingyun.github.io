@@ -1,6 +1,6 @@
 // 初始化游戏设置
 oS.Init(
-  [oSpiltPea,oGloomShroom,oReapeater2,oSpilkerock,oSquash,oWallnut,oMagnetShroom,oCobCannon,oSunflower,oStarFruit,oTorchwood,
+ { [oSpiltPea,oGloomShroom,oReapeater2,oSpilkerock,oSquash,oWallnut,oMagnetShroom,oCobCannon,oSunflower,oStarFruit,oTorchwood,
 oPumpkinHead,oSpikeweed,oPuffShroom,oFlowerPot
     ], // 植物名称数组
     ZName: [oDiggerZombie,oImp]，// 僵尸名称数组
