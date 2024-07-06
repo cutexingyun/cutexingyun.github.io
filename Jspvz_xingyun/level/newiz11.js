@@ -3,7 +3,7 @@ oS.Init( {
  PName:[oSpiltPea,oGloomShroom,oReapeater2,oSpilkerock,oSquash,oWallnut,oMagnetShroom,oCobCannon,oSunflower,oStarFruit,oTorchwood,
 oPumpkinHead,oSpikeweed,oPuffShroom,oFlowerPot
     ], // 植物名称数组
-    ZName: [oDiggerZombie,oImp]，// 僵尸名称数组
+    ZName: [oDiggerZombie,oImp],// 僵尸名称数组
     PicArr: [
       "images/interface/background2.jpg",
       "images/interface/trophy.png",
