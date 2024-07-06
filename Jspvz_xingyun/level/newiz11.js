@@ -71,7 +71,7 @@ oPumpkinHead,oSpikeweed,oPuffShroom,oFlowerPot
         g = f[0], // 获取ArC数组的第一个元素
         b = f[1], // 获取ArC数组的第二个元素
         i = j[0], // 获取ArR数组的第一个元素
-2        h = j[1], // 获取ArR数组的第二个元素
+        h = j[1], // 获取ArR数组的第二个元素
         a;
       if (k.Auto) {
         // 如果自动增长
