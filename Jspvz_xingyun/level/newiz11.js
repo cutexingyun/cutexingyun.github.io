@@ -11,7 +11,7 @@ oPumpkinHead,oSpikeweed,oPuffShroom,oFlowerPot
     ], // 图片数组
     backgroundImage: "images/interface/background2.jpg", // 背景图片
     ShowScroll: false, // 是否显示滚动条
-    SunNum: 400, // 初始阳光数量
+    SunNum: 350, // 初始阳光数量
     BrainsNum: 5, // 初始大脑数量
     ProduceSun: false, // 是否产生阳光
     CardKind: 1, // 卡片种类
@@ -40,7 +40,8 @@ oPumpkinHead,oSpikeweed,oPuffShroom,oFlowerPot
         [3, 2, 3],
         [4, 3, 3],
         [4, 4, 3], 
-        [6, 5, 3], 
+        [6, 5, 3],
+        [11,3,5], 
         [10, 6, 3],
         [0, 7, 3], 
         [3, 9, 3],
