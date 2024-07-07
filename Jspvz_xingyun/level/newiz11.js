@@ -52,7 +52,7 @@ oPumpkinHead,oSpikeweed,oPuffShroom,oFlowerPot
         [11, 6, 4],
         [2, 6, 4],
         [4, 7, 4],
-        [3, 8, 4]
+        [3, 8, 4],
         [1, 2, 5],
         [13, 3, 5],
         [1, 4, 5],
